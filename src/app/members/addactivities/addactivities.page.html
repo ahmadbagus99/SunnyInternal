@@ -1,0 +1,54 @@
+<ion-header color="primary">
+  <ion-toolbar color="primary" >
+    <ion-title  >
+      Lihat Aktivitas
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button color="light" defaultHref="dashboard"></ion-back-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+ 
+  <!-- Card untuk menambahkan event baru -->
+  <ion-card color="primary">
+    <ion-card-header>
+      <ion-card-title>Tambah Aktivitas</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+ 
+      <ion-item>
+        <ion-input type="text" placeholder="Title" [(ngModel)]="event.title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Description" [(ngModel)]="event.desc"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Start</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>End</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>All Day</ion-label>
+        <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label>Alarm</ion-label>
+        <ion-toggle checked> </ion-toggle>
+      </ion-item>
+      <ion-button  fill="outline" expand="block" (click)="addEvent()" [disabled]="event.title == ''">
+        <ion-text color="light"> Tambah </ion-text>
+      </ion-button>
+ 
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

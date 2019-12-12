@@ -1,0 +1,37 @@
+
+ion-content{
+  --background: url('../../../assets/img/backgroundFix.svg') no-repeat center center / cover;
+}
+//Funsi untuk mengatur jarak tulisan dan besar tulisan//
+ion-text{
+  color: white;
+  text-align: justify ;
+  font-size: 4.5vw;
+  max-width: 600px;
+  max-height: 1000px; 
+}
+
+//fungsi untuk mengantuk warna, besar, lebar, dan batas tulisan//
+ion-slide > h2 {
+  margin-top: 2.8rem;
+  color: white;
+}
+ion-slide > img {
+  max-height: 50%;
+  max-width: 60%;
+  margin: 36px 0;
+}
+ion-button{
+  color: white;
+  margin-top: 10vw;
+}
+
+//fungsi untuk mengantur batas jarak di slide 1//
+.icon{
+  margin-top: 40%;
+}
+
+//fungsi untuk page loading tidak bisa slide ke bawah //
+.swiper-slide {
+  display: block;
+}

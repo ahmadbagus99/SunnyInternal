@@ -1,0 +1,71 @@
+<ion-header color="primary">
+    <ion-toolbar color="primary" >
+      <ion-title  >
+        Lihat Aktivitas
+      </ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button color="light" defaultHref="dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+        <ion-button (click)="addactivities()">
+        <ion-icon name="add"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+
+  
+  <ion-content>
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+          <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
+    <ion-row>
+      <!-- Mengubah mode kalender yang ditampilkan -->
+      <ion-col size="4">
+        <ion-button expand="block" [color]="calendar.mode == 'month' ? 'primary' : 'secondary'" (click)="changeMode('month')">Month</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" [color]="calendar.mode == 'week' ? 'primary' : 'secondary'" (click)="changeMode('week')">Week</ion-button>
+      </ion-col>
+      <ion-col size="4">
+        <ion-button expand="block" [color]="calendar.mode == 'day' ? 'primary' : 'secondary'" (click)="changeMode('day')">Day</ion-button>
+      </ion-col>
+   
+      <!-- berguna untuk mengundur satu layar slide sebelumnya -->
+      <ion-col size="6" text-left>
+        <ion-button fill="clear" (click)="back()">
+          <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+   
+      <!-- berguna untuk memajukan satu layar slide sebelumnyas -->
+      <ion-col size="6" text-right>
+        <ion-button fill="clear" (click)="next()">
+          <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <h4 text-center>{{viewTitle}}</h4>
+   
+    <!-- FUNGSI SEMUA CALENDER DAN TAMPILAN CALENDER -->
+    <calendar 
+    [eventSource]="eventSource" 
+    [calendarMode]="calendar.mode"
+    [currentDate]="calendar.currentDate"
+    (onEventSelected)="onEventSelected($event)"
+    (onTitleChanged)="onViewTitleChanged($event)"
+    (onTimeSelected)="onTimeSelected($event)" 
+    startHour="6"
+    endHour="20"
+    step="30"
+    startingDayWeek="1">
+    </calendar>
+   
+ 
+     
+  </ion-content>

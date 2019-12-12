@@ -1,0 +1,101 @@
+ion-button{
+    color: white;
+  }
+
+
+ion-header{
+  background-color: #F57F17;
+}
+new-background-color {
+  background-color: #F57F17;
+}
+ion-toolbar{
+  background-color: #F57F17;
+}
+ion-title{
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 90px 1px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: white;
+    }
+
+//layanan alamat//
+
+ .judul{
+h2{
+    text-align: left;
+    margin-left: 7vw;
+    text-decoration: underline;
+    font-size: 18px;
+  }
+ p{
+   text-align: left;
+   margin-left: 7vw;
+   margin-right: 7vw;
+ } 
+ }
+
+//layanan telepon//
+.layanan{
+  h2{
+    text-align: left;
+    margin-left: 7vw;
+    text-decoration: underline;
+    font-size: 22px;
+  }
+ p{
+   text-align: left;
+   margin-left: 7vw;
+   margin-right: 7vw;
+ } 
+}
+
+//layanan isi pesan//
+.pesan{
+  p{
+    text-align: left;
+    margin-left: 7vw;
+    margin-right: 7vw;
+  } 
+}
+.text-content{
+  text-align: left;
+  margin-left: 7vw;
+  margin-right: 7vw;
+
+  ion-text{
+    font-size: 5vw;
+  }
+}
+
+//background//
+
+.background{
+  .add{
+      position: relative;
+      width: 30px;
+      height: 30px;
+      margin-left: 28%;
+      opacity: 30%;
+      margin-top: -12vw;
+    img{
+      position: relative;
+      width: 30px;
+      height: 30px;
+      margin-left: 37%;
+      opacity: 30%;
+      margin-top: -100vw;
+    }
+  }
+  height: 180px;
+  background-image: url('../../../assets/img/Protruding-Squares.svg');
+  background-attachment: fixed;
+  background-size: cover;
+  ion-text{
+    visibility: hidden;
+  } 
+}

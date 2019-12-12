@@ -1,0 +1,51 @@
+<ion-header>
+     <ion-toolbar color=#F57F17; class="new-background-color">
+      <ion-buttons slot="start">
+        <ion-back-button color="light" defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Sistem Pengguna</ion-title>
+      <ion-buttons *ngFor="let item of items" slot="primary">
+          <ion-button (click)="edit(item.id,item.email,item.password)">Edit</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+      <ion-grid>
+          <ion-row>
+            <ion-col></ion-col>
+            <ion-col></ion-col>
+            <ion-col>
+              <ion-avatar>
+                  <div class="container">
+                  <img src="https://s3.ap-south-1.amazonaws.com/gg-statics/testimonial/1521018917.png">
+                  </div>
+              </ion-avatar>
+         
+            </ion-col>
+            <ion-col></ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+        </ion-grid>
+  
+      <ion-list>
+        <ion-item-sliding *ngFor="let item of items">
+        <ion-item class="email">
+          <ion-label position="floating">Email</ion-label>
+          <br>
+          <ion-input type="text" class="valueEmail">{{item.email}}</ion-input>
+        </ion-item>
+
+        <ion-item class="password">
+         <ion-label position="floating">Password</ion-label>
+         <br>
+         <ion-input type="password" class="valuePassword">{{item.password}}</ion-input>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  
+      </ion-content>
+  

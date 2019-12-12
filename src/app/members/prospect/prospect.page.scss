@@ -1,0 +1,178 @@
+ion-title{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 90px 1px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color:white;
+}
+
+ion-button{
+  text-transform: capitalize;
+  color: white;
+  span{
+    text-align:left;
+    width:100%;
+  }
+}
+
+ion-header{
+  background-color: #F57F17;
+}
+
+new-background-color {
+  background-color: #F57F17;
+}
+ion-toolbar{
+  background-color: #F57F17;
+}
+ion-segment{
+  color: white;
+
+}
+
+.fullname{
+  .image-upload > input
+{
+    display: none;
+}
+.image-upload img
+{
+  
+  margin-top: 8vw;
+  margin-left: 6vw;
+    width: 18vw;
+    cursor: pointer;
+     max-width: 700px;
+     max-height: 800px;
+   
+}
+
+}
+
+.tambah{
+  margin-left: 15vw;
+  margin-top: 5vw;
+  margin-bottom: 5vw;
+  position: relative;
+  // word-spacing: 10px;
+  }
+
+.seeall{
+  margin-left: 50vw;
+  margin-top: -16vw;
+  margin-bottom: 0vw;
+  position: static;
+  // word-spacing: 10px;
+  }
+
+
+.text{
+  margin-top: -18vw;
+  margin-left: 36vw;
+  position: relative;
+  max-width: 1000px;
+  max-height: 1000px;
+  color: white
+
+}
+
+.text-job{
+  margin-top: 4vw;
+  margin-left: 36vw;
+  position: relative;
+  max-width: 1000px;
+  max-height: 1000px;
+  color: white
+}
+
+ion-button{
+  width: 30vw;
+}
+
+.fixed[scrollx=true], div[scrolly=true] {
+  position: relative;
+  overflow: hidden;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.fixed[scrollx=true] {
+  overflow-x: auto;
+}
+
+.fixed[scrolly=true] {
+  overflow-y: auto;
+}
+
+
+#myFixZone {
+  height: 200px;
+ 
+}
+.tombol{
+  margin-left: 55px;
+  margin-bottom: 10px;
+}
+
+.scrolling-wrapper {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  color: #EEEEEE;
+
+  .card {
+    display: inline-block;
+    width: 30vw; 
+     
+    // border-radius:200vw;
+    // box-shadow: #989aa2 8px;
+    // --padding-top:30px !important;
+    //   --padding-end:30px !important;
+    //   --padding-bottom:30px !important;
+    //   --padding-start:30px !important;
+    //   box-shadow: 10px 10px 10px #888888;
+  
+    h2{
+      font-weight: bold;
+      position: relative;
+     margin-right: 5vw; 
+     font-size: 3.5vw;
+    
+    }
+  }
+}
+
+.judul{
+    margin-left: 7vw;
+    color: #8b8b8b;
+    font-weight: bold; 
+  }
+
+  .tabs{
+    background: cover;
+  }
+
+  .image-upload img
+{
+  border-style: solid;
+    border:3px solid #EEEEEE;
+    width: 100px;
+    height: 79px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+  .segment {
+    color: #EEEEEE;
+    border-radius: 20%;
+    height: 20vw;
+    padding: 0 10px;
+}

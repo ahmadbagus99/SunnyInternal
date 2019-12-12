@@ -1,0 +1,103 @@
+<ion-header>
+    <ion-toolbar color=#F57F17 class="new-background-color" >
+      <ion-buttons color=#FFFFFF slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-buttons slot="primary">
+        <ion-button *ngIf="!id" (click)="Simpan()">Simpan</ion-button>
+        <ion-button *ngIf="id>=1" (click)="update()">Simpan</ion-button>
+      </ion-buttons>
+      <ion-title *ngIf="!id">Tambah Produk</ion-title>
+      <ion-title  *ngIf="id>=1">Ubah Produk</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+<<<<<<< HEAD
+      <ion-grid>
+        <ion-row>
+=======
+  <div class="Produk">
+    
+    <div class="image-upload">
+        <label for="file-input">
+          <img *ngFor="let item of images | async" [src]="item.filepath" />
+        
+
+           <!-- Kegunaan untuk membuat fill dan untuk mengupload foto ke dalam produk -->
+        <div class="add">
+            <img src="assets/img/add.png">
+          </div>
+        </label>
+        <input id="file-input" type="file" class="upload" (change)="uploadFile($event.target.files)" />
+      </div>
+      <div text-center>
+        <div class="fileUpload btn btn-primary">
+          <!-- <input id="uploadBtn" type="file" class="upload" (change)="uploadFile($event.target.files)" /> -->
+        </div>
+        <div text-center *ngIf="isUploading && !isUploaded">
+          <ion-card-header>
+            <ion-card-title>Selected File:<b>{{ fileName }}</b></ion-card-title>
+          </ion-card-header>
+  
+          <div *ngIf="percentage | async as pct">
+            Progress: {{ pct | number }}%
+            <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
+          </div>
+          <div *ngIf="snapshot | async as snap">
+            File Size: {{ snap.totalBytes | fileSizePipe }} Transfered:
+            {{ snap.bytesTransferred | fileSizePipe }}
+            <div *ngIf="snapshot && snap.bytesTransferred != snap.totalBytes">
+              <ion-button color="warning" size="small" (click)="task.pause()" class="button is-warning">Pause</ion-button>
+              <ion-button size="small" (click)="task.resume()" class="button is-info">Resume</ion-button>
+              <ion-button color="danger" size="small" (click)="task.cancel()" class="button is-danger">Cancel</ion-button>
+            </div>
+          </div>
+        </div>
+      </div> 
+  </div>
+>>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
+        <ion-col>
+           <!-- fill data pengisian Nama Produk user-->
+        <ion-item class="item">
+          <ion-label position="floating" >Nama Produk</ion-label>
+          <ion-input type="text" [(ngModel)]="userID" hidden  ></ion-input>
+          <ion-input type="text" [(ngModel)]="namaProduk"></ion-input>
+        </ion-item>
+        </ion-col>
+        <ion-col>
+          
+           <!-- fill data pengisian Tipe Produk yng diingikan user-->
+        <ion-item class="item" >
+          <ion-label position = "floating"  >Tipe Produk</ion-label>
+          <ion-select placeholder="Produk" [(ngModel)]="tipeProduk">
+            <ion-select-option value="corporate">Corporate</ion-select-option>
+            <ion-select-option value="retail">Retail</ion-select-option>
+          </ion-select>
+        </ion-item>
+        </ion-col>
+       
+         <!-- fill data pengisian status produk yang akan ready user-->
+      <ion-item class="item">
+        <ion-label position="floating"  class="label">Status Produk</ion-label>
+        <ion-input type="text" [(ngModel)]="statusProduk"></ion-input>
+      </ion-item>
+
+       <!-- fill data pengisian Jumalah produk  user-->
+      <ion-item class="item">
+        <ion-label position="floating"  class="label">Jumlah Produk</ion-label>
+        <ion-input type="text" [(ngModel)]="jumlahProduk"></ion-input>
+      </ion-item>
+
+       <!-- fill data pengisian Harga produk  user-->
+      <ion-item class="item">
+        <ion-label position="floating"  class="label">Harga Produk</ion-label>
+        <ion-input type="text" [(ngModel)]="hargaProduk"></ion-input>
+      </ion-item>
+
+       <!-- fill data pengisian Deskripsi produk/ kategorinya user-->
+      <ion-item class="item">
+        <ion-label position="floating"  class="label">Deskripsi Produk</ion-label>
+        <ion-input type="text" [(ngModel)]="deskripsiProduk"></ion-input>
+      </ion-item>
+</ion-content>

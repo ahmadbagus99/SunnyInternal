@@ -1,0 +1,145 @@
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    
+  <div class="Background-top">
+    <div class="logo">
+        <img src="assets/img/logo-isa-white.png"/>
+    </div>
+    <div class="notif">
+      <a [routerLink]="['/members/profile']">
+        <ion-icon name="contact"></ion-icon>
+      </a>
+    </div>
+    <div class="fullname">
+      <ion-text *ngFor="let item of items">{{item.fullname}}</ion-text>
+    </div>
+  </div>
+
+  <div class="menu">
+    <ion-grid>
+      <ion-row justify-content-center align-items-center style="height: 100%">
+        <div class="button">
+          <a [routerLink]="['/members/contact']">
+            <ion-icon class="icon" src="/assets/icon/contact.svg"></ion-icon>
+          </a>
+          <div class="font"> KONTAK </div>
+        </div>
+
+        <div class="button">
+          <a [routerLink]="['/members/account']">
+            <ion-icon class="icon" src="/assets/icon/account.svg"></ion-icon>
+          </a>
+          <div class="font">AKUN </div>
+        </div>
+
+        <div class="button">
+          <a [routerLink]="['/members/product']">
+            <ion-icon class="icon" src="/assets/icon/product.svg"></ion-icon>
+          </a>
+          <div class="font"> PRODUK </div>
+        </div>
+
+        <div class="button">
+          <a [routerLink]="['/members/prospect']">
+            <ion-icon class="icon" src="/assets/icon/prospect.svg"></ion-icon>
+          </a>
+          <div class="font"> PROSPEK </div>
+        </div>
+
+        <div class="button">
+          <a [routerLink]="['/members/activities']">
+            <ion-icon class="icon" src="/assets/icon/activities.svg"></ion-icon>
+          </a>
+          <div class="font"> AKTIVITAS </div>
+        </div>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+   <!-- Menampilkan Detail Report Total Customer  -->
+
+  <div class="content">
+    <ion-text><b>Report for you</b></ion-text>
+    <!-- <div class="see-all"> <ion-text>See all</ion-text> </div> -->
+    <div class="report">
+      <div class="text-report">
+      <ion-text><b> {{totalCustomer}} </b></ion-text> <br>
+      </div>
+        <div class="detail-report">
+          <ion-text><b> Total Customer </b></ion-text> <br>
+          <ion-text> / month </ion-text>
+        </div>
+    </div>
+
+    <div class="report3">
+      <div class="text-report3">
+      <ion-text><b>{{totalProspect}}</b></ion-text> <br>
+      </div>
+        <div class="detail-report3">
+          <ion-text><b> Total Prospect </b></ion-text> <br>
+          <ion-text> / month </ion-text>
+        </div>
+    </div>
+  
+    <!-- Menampilkan Report Incentive  -->
+
+    <div class="incentive">
+    <div class="text-report-2">
+        <ion-text><b> IDR </b></ion-text> <br>
+        <ion-input type="text" value="{{ incentive | currency:'Rp ' }}" readOnly></ion-input>
+    </div>
+      <div class="detail-report2">
+        <ion-text><b> Total Incentive </b></ion-text> <br>
+        <ion-text> / month </ion-text>
+      </div>
+    </div>
+  </div>
+
+  <div class="extra-content">
+    <ion-text><b>Activities for you</b></ion-text>
+    <div class="see-all"> <a [routerLink]="['/members/activities']"> 
+    <ion-text>See all</ion-text></a>
+  </div>
+    <div class="scrolling-wrapper">
+        <p text-center>{{textActivity}}</p>
+      <div class="card-new">
+      <ion-slides [options]="slideOptsOne">
+        <ion-slide *ngFor="let item of Activity">
+          <ion-col>
+          <p>{{item.title}}</p>
+          <span>
+            <p>{{item.desc}}</p>
+          </span>
+        </ion-col>
+        </ion-slide>
+      </ion-slides>
+      </div>
+  </div>
+  </div>
+
+<div class="extra-content">
+  <ion-text><b>Prospect for you</b></ion-text>
+  <div class="see-all">
+    <ion-buttons (click)="prospect()">
+    <a>
+      <ion-text class="seeall">See all</ion-text>
+    </a>
+  </ion-buttons>
+  </div>
+  
+  <div class="scrolling-wrapper">
+    <p text-center>{{text}}</p>
+    <div *ngFor="let item of itemProspect" class="card">
+      <ion-card>
+        <img src="assets/icon/pros.svg"/>
+        <ion-card-header>
+          <ion-card-title text-center>{{item.nama}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </div>
+  </div>
+</div>
+
+</ion-content>

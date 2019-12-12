@@ -1,0 +1,128 @@
+<ion-header>
+  <ion-toolbar color=#F57F17 class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-button [hidden]="isHidden" (click)="checkStatus()">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </ion-button>
+      <ion-back-button [hidden]="!isHidden" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary" [hidden]="isHidden">
+      <ion-button (click)="Update()">Simpan</ion-button>
+    </ion-buttons>
+    <ion-title>Prospect {{note}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-label class="segment">Company Info</ion-label>
+    <br>
+  </div>
+  <div>
+    <span>
+      <ion-item>
+        <ion-label position="stacked">Company Name</ion-label>
+        <ion-input [(ngModel)]="company" readOnly></ion-input>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item>
+        <ion-label position="stacked">Alamat Company</ion-label>
+        <ion-input [(ngModel)]="alamatCompany" readOnly></ion-input>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item>
+        <ion-label position="stacked"> Email Company </ion-label>
+        <ion-input [(ngModel)]="emailCompany" readOnly></ion-input>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item>
+        <ion-label position="stacked">No.Telp company</ion-label>
+        <ion-input [(ngModel)]="nomorCompany" readOnly></ion-input>
+      </ion-item>
+    </span>
+  </div>
+  <div>
+    <ion-label class="segment">Customer Info</ion-label>
+    <br>
+  </div>
+  <div>
+    <span>
+      <ion-item>
+        <ion-label position="stacked">Name Costumer</ion-label>
+        <ion-input [(ngModel)]="namaCustomer" readOnly></ion-input>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item>
+        <ion-label position="stacked"> Email Costumer </ion-label>
+        <ion-input [(ngModel)]="emailCustomer" readOnly></ion-input>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item>
+        <ion-label position="stacked"> Alamat Costumer </ion-label>
+        <ion-input [(ngModel)]="alamatCustomer" readOnly></ion-input>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item>
+        <ion-label position="floating">Nomor Telepon Customer</ion-label>
+        <ion-input type="text" [(ngModel)]="no_tlp" readOnly></ion-input>
+      </ion-item>
+    </span>
+  </div>
+  <div>
+    <ion-label class="segment">Product Information</ion-label>
+    <br>
+  </div>
+  <div>
+    <span>
+      <ion-item>
+        <ion-label position="stacked">Product Name</ion-label>
+        <ion-input [(ngModel)]="customerneed" readOnly></ion-input>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item>
+        <ion-label position="stacked">Quantity</ion-label>
+        <ion-input [(ngModel)]="stock" readOnly></ion-input>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item>
+        <ion-label position="stacked"> Detail price Per unit </ion-label>
+        <ion-input type="text" value="{{ hargaProduk | currency:'Rp'}}" readOnly></ion-input>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item>
+        <ion-label position="stacked"> Total Price </ion-label>
+        <ion-input type="text" value="{{ totalPrice | currency:'Rp'}}" readOnly></ion-input>
+      </ion-item>
+    </span>
+    <span>
+      <ion-item>
+        <ion-label position="stacked"> Sub Budget </ion-label>
+        <ion-input type="text" value="{{ budget | currency:'Rp'}}" readOnly></ion-input>
+      </ion-item>
+    </span>
+  </div>
+  <br>
+  <div class="toggle">
+    <ion-item>
+      <div class="status">
+        <ion-label></ion-label>
+      </div>
+      <ion-label>Status</ion-label>
+      <ion-toggle [(ngModel)]="toggleWon" (ionChange)="checkToggle()" color="success" [disabled]="toggleWon">
+      </ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-text>Status anda {{note}}</ion-text>
+    </ion-item>
+    <br>
+  </div>
+</ion-content>

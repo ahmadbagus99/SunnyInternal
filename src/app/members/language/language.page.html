@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar color=#F57F17 class="new-background-color">
+        <ion-buttons slot="start">
+            <ion-back-button color="light"defaultHref="/"></ion-back-button>
+          </ion-buttons>
+    <ion-title>Bahasa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h2>
+      Bahasa Default
+  </h2>
+
+  <ion-list >
+    <ion-item button (click)="profile()">
+      <ion-icon slot="end" name="create"></ion-icon>
+      <ion-label>
+        <h3>Bahasa Indonesia</h3>
+        <p>Indonesia</p>
+      </ion-label>
+    </ion-item>
+</ion-list>
+
+<ion-button>
+  Tambahkan bahasa lain
+</ion-button>
+
+</ion-content>

@@ -1,0 +1,234 @@
+<ion-header>
+    <ion-toolbar color=#F57F17 class="new-background-color" >
+        <ion-buttons color=#FFFFFF slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+      </ion-buttons>
+      <ion-title *ngIf="!id">Tambah Kontak</ion-title>
+      <ion-title  *ngIf="id>=1">Ubah Kontak</ion-title>
+      <ion-buttons slot="primary">
+          
+          <ion-button *ngIf="id>=1" (click)="updateProcess()">Simpan</ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+     <!-- Kegunaan untuk membuat fill dan untuk mengupload foto ke dalam akun -->
+<ion-grid>
+          <ion-row>
+            <ion-col></ion-col>
+            <ion-col></ion-col>
+            <ion-col>
+                <div class="image-upload">
+                    <label for="file-input">
+                        <img src="assets/icon/add.png"/>
+                    </label>
+                
+                    <input id="file-input" type="file"/>
+                </div>    
+            </ion-col>
+            <ion-col></ion-col>
+            <ion-col></ion-col>
+          </ion-row>
+        </ion-grid>
+
+    <ion-slides [options]="options" #slides class="swiper-no-swiping">
+      <ion-slide>
+        <ion-col>
+          <!-- Slide - 1 -->
+        <div>
+            <ion-label class="segment">Informasi Pribadi</ion-label>
+            <br>
+   <!-- fill data pengisian Nama user-->
+            <ion-item>
+                <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
+                <ion-label position="floating">Nama  <ion-text color="danger">*</ion-text> </ion-label>
+                  <ion-input type="text" [(ngModel)]="nama"></ion-input>
+            </ion-item>
+<<<<<<< HEAD
+          <span>
+            <ion-item>
+              <ion-label position="floating">Email <ion-text color="danger">*</ion-text></ion-label>
+              <ion-input type="text" [(ngModel)]="email"></ion-input>
+            </ion-item>
+          </span>
+
+=======
+>>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
+        <span>
+        <!-- fill data pengisian Alamat user-->
+            <ion-item>
+                <ion-label position="floating">Alamat  <ion-text color="danger">*</ion-text> </ion-label>
+                <ion-input type="text" [(ngModel)]="alamat"></ion-input>
+              </ion-item>
+      </span>
+      <span>
+        <!-- fill data pengisian Tanggal Lahir user-->
+          <ion-item>
+              <ion-label>Tanggal Lahir  <ion-text color="danger">*</ion-text> </ion-label>
+              <ion-datetime [(ngModel)]="tgl_lahir"></ion-datetime>
+            </ion-item>
+      </span>
+      <span>
+       <!-- fill data pengisian Jenis Kelamin user-->
+          <ion-item> 
+              <ion-label position="floating">Jenis Kelamin  <ion-text color="danger">*</ion-text> </ion-label>
+              <ion-select placeholder="Jenis Kelamin" [(ngModel)]="kelamin">
+                  <ion-select-option value="Laki-laki">Laki-Laki</ion-select-option>
+                  <ion-select-option value="Perempuan">Perempuan</ion-select-option>
+              </ion-select>
+            </ion-item>
+      </span>
+      <span>
+      <!-- fill data pengisian Nomor Telepon user-->
+          <ion-item>
+              <ion-label position="floating">Nomor Telepon  <ion-text color="danger">*</ion-text> </ion-label>
+              <ion-input type="text" [(ngModel)]="no_tlp"></ion-input>
+            </ion-item>
+      </span>
+      <span>
+         <!-- fill data pengisian Alamat Rumah user-->
+          <ion-item>
+              <ion-label position="floating">Alamat Rumah  <ion-text color="danger">*</ion-text> </ion-label>
+              <ion-input type="text" [(ngModel)]="almt_rumah"></ion-input>
+            </ion-item>
+      </span>
+      </div>
+     <!-- fungsi untuk lanjut (next) ke slide ke 2 atau page ke 2 -->
+      <div class="button-next">
+        <ion-button fill="clear" (click)="next()" color="primary"> Selanjutnya
+          <ion-icon name="arrow-round-forward"></ion-icon> 
+        </ion-button>
+      </div>
+    </ion-col>
+    
+      </ion-slide>
+   
+    <!-- slide 2 -->
+    <ion-slide>
+      <ion-col>
+    <div>
+    <ion-label class="segment">Informasi Pekerjaan  <ion-text color="danger">*</ion-text> </ion-label>
+    <br>
+      <span>
+         <!-- fill data pengisian jabatan perusahaan di user-->
+    <ion-item>
+      <ion-label position="floating">Title  <ion-text color="danger">*</ion-text> </ion-label>
+      <ion-input type="text" [(ngModel)]="title"></ion-input>
+    </ion-item>
+  </span>
+
+  <span>
+    <ion-item>
+     <!-- fill data pengisian Alamat Perusahaan user-->
+      <ion-label position="floating">Perusahaan  <ion-text color="danger">*</ion-text> </ion-label>
+      <!-- <ion-input *ngFor="let item of items" type="text" [(ngModel)]="perusahaan">{{item.nama}}</ion-input> -->
+      <ion-select placeholder="Pilih Perusahaan" [(ngModel)]="perusahaan">
+        <ion-select-option *ngFor="let item of items">{{item.nama}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </span>
+
+  <span>
+    <ion-item>
+       <!-- fill data pengisian Alamat Perusahaan user-->
+      <ion-label position="floating">Alamat Perusahaan  <ion-text color="danger">*</ion-text> </ion-label>
+      <ion-input type="text" [(ngModel)]="almt_perusahaan"></ion-input>
+    </ion-item>
+  </span>
+
+  <span>
+      <ion-item>
+        <!-- fill data pengisian Penghasilan  user-->
+          <ion-label>Penghasilan  <ion-text color="danger">*</ion-text> </ion-label>
+              <ion-select placeholder="Select Category Companies" [(ngModel)]="penghasilan">
+                <ion-select-option value="-5juta">kurang dari 5 juta/bulan</ion-select-option>
+                <ion-select-option value="5-10juta">5 - 10 juta/bulan</ion-select-option>
+                <ion-select-option value="10-20juta">10 - 20 juta/bulan</ion-select-option>
+                <ion-select-option value="+20juta">lebih dari 20 juta/bulan</ion-select-option>
+              </ion-select>
+        </ion-item>
+  </span>
+  <!-- fungsi untuk kembali(back) ke slide ke 1 atau page ke 1-->
+  </div>
+  <div class="button-before">
+  <ion-button fill="clear" (click)="prev()" color="primary">
+    <ion-icon name="arrow-round-back"></ion-icon>Sebelumnya
+  </ion-button>
+  </div>
+    <!-- fungsi untuk lanjut (next) ke slide ke 3 atau page ke 3-->
+  <div class="button-next1">
+  <ion-button fill="clear" (click)="next()" color="primary">Selanjutnya
+    <ion-icon name="arrow-round-forward"></ion-icon>
+  </ion-button>
+</div>
+</ion-col>
+    </ion-slide>
+
+    <ion-slide>
+        <ion-col>
+            <div>
+                <ion-label class="segment">Informasi Lainnya</ion-label>
+                <br>
+            <span>
+              <!-- fill data pengisisan Hobi user-->
+                <ion-item class="card1">
+                    <ion-label position="floating">Hobi  <ion-text color="danger">*</ion-text> </ion-label>
+                    <ion-input type="text" [(ngModel)]="Hobi"></ion-input>
+                  </ion-item>
+            </span>
+            <span>
+              <!-- fill data pengisisan Makanan Favorit user-->
+                <ion-item class="card1">
+                    <ion-label position="floating">Makanan Favorit  <ion-text color="danger">*</ion-text> </ion-label>
+                    <ion-input type="text" [(ngModel)]="Makanan_Favorit"></ion-input>
+                  </ion-item>
+            </span>
+            <span>
+            <!-- fill data pengisisan NPWP user-->
+                <ion-item class="card1">
+                    <ion-label position="floating">NPWP  <ion-text color="danger">*</ion-text> </ion-label>
+                    <ion-input type="text" [(ngModel)]="NPWP"></ion-input>
+                  </ion-item>
+            </span>
+            <span>
+                <ion-label class="segment">Media Sosial</ion-label>
+                <br>
+            </span>
+            <span>
+                 <!-- fill data pengisisan Facebook user-->
+                <ion-item class="card1">
+                    <ion-label position="floating">Facebook  <ion-text color="danger">*</ion-text> </ion-label>
+                    <ion-input type="text" [(ngModel)]="Facebook"></ion-input>
+                  </ion-item>
+            </span>
+            <span>
+                <!-- fill data pengisisan Twitter user-->
+                <ion-item class="card1">
+                    <ion-label position="floating">Twitter  <ion-text color="danger">*</ion-text> </ion-label>
+                    <ion-input type="text" [(ngModel)]="Twitter"></ion-input>
+                  </ion-item>
+            </span>
+            <span>
+                <!-- fill data pengisisan instagram user-->
+                <ion-item class="card1">
+                    <ion-label position="floating">Instagram  <ion-text color="danger">*</ion-text> </ion-label>
+                    <ion-input type="text" [(ngModel)]="Instagram"></ion-input>
+                  </ion-item>
+            </span>
+            </div>
+              <!-- fungsi untuk kembali(back) ke slide ke 2 atau page ke 2-->
+            <div class="sebelumnya2">
+              <ion-button fill="clear" (click)="prev()" color="primary">
+                <ion-icon name="arrow-round-back"></ion-icon>Sebelumnya
+              </ion-button>
+            </div>
+            
+            <div class="simpan">
+              <ion-button *ngIf="!id" fill="clear" color="primary" (click)="createdProcess()">Simpan</ion-button>
+            </div>
+          </ion-col>
+    </ion-slide>
+    </ion-slides>
+
+  </ion-content>

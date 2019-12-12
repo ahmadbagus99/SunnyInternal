@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color=#F57F17 class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button color="light"defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Tentang Sunny</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- kegunaan untuk membuat fill faq atau button faq untuk ke page faq (pertanyaan) -->
+    <ion-list >
+        <ion-item button (click)="faq()">
+          <ion-icon slot="center" name="person"></ion-icon>
+          <ion-label>
+            <h3>FAQ</h3>       
+          </ion-label>
+          <ion-icon name="arrow-dropright"></ion-icon>
+        </ion-item>
+    </ion-list>
+
+    <!-- kegunaan untuk membuat fill syaratketentua atau button faq untuk ke page syaratketentuan (pertanyaan) -->
+<ion-list >
+    <ion-item button (click)="syaratketentuan()">
+      <ion-icon slot="center" name="person"></ion-icon>
+      <ion-label>
+        <h3>Syarat dan Ketentuan</h3>       
+      </ion-label>
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </ion-item>
+</ion-list>
+
+<!-- kegunaan untuk membuat fill kebijakanPrivasi atau button kebijakanPrivasi untuk ke page kebijakanPrivasi  (pertanyaan) -->
+<ion-list >
+  <ion-item button (click)="kebijakanPrivasi()">
+    <ion-icon slot="center" name="person"></ion-icon>
+    <ion-label>
+      <h3>Kebijakan Privasi</h3>
+    </ion-label>
+    <ion-icon name="arrow-dropright"></ion-icon>
+  </ion-item>
+</ion-list>
+
+
+<!-- <ion-list >
+    <ion-item button (click)="pusatBantuan()">
+      <ion-icon slot="center" name="person"></ion-icon>
+      <ion-label>
+        <h3>Pusat Bantuan</h3>
+      </ion-label>
+      <ion-icon name="arrow-dropright"></ion-icon>
+    </ion-item>
+  </ion-list> -->
+
+<!-- kegunaan untuk membuat fill hubungiKami atau button hubungiKami untuk ke page hubungiKami  (pertanyaan) -->
+<ion-list >
+  <ion-item button (click)="hubungiKami()">
+    <ion-icon slot="center" name="person"></ion-icon>
+    <ion-label>
+      <h3>Hubungi Kami</h3>
+    </ion-label>
+    <ion-icon name="arrow-dropright"></ion-icon>
+  </ion-item>
+</ion-list>
+
+<!-- kegunaan cuma melihat versi applikasi sunny crm -->
+<ion-list >
+  <ion-item >
+    <ion-icon slot="center" name="person"></ion-icon>
+    <ion-label>
+      <h3>Versi</h3>
+      <p>1.0.0</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+
+</ion-content>
