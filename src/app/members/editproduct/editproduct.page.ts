@@ -11,34 +11,6 @@ import { LoadingController, ToastController } from '@ionic/angular';
   styleUrls: ['./editproduct.page.scss'],
 })
 export class EditproductPage implements OnInit {
-<<<<<<< HEAD
-=======
-  // Mengupload Task
-  task: AngularFireUploadTask;
-
-  // Perkembangan dalam persentase
-  percentage: Observable<number>;
-
-  // foto dari file yang upload
-  snapshot: Observable<any>;
-
-  // Mengupload file URL
-  UploadedFileURL: Observable<string>;
-
-  //Mengupload daftar gambar
-  images: Observable<MyData[]>;
-
-  //File details  
-  fileName: string = '';
-  fileSize: number;
-
-  //Status check 
-  isUploading: boolean;
-  isUploaded: boolean;
-
-  userIDDesc: string = 'product';
-  private imageCollection: AngularFirestoreCollection<MyData>;
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
 
   items2: any;
   user: any;

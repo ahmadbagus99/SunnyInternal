@@ -74,13 +74,8 @@ export class EditaccountPage implements OnInit {
       this.nomor = data.no_tlp;
     });
   }
-<<<<<<< HEAD
 
   updateAccount(id, nama, alamat, web, phone, email, owner, type, event_date, category, industry, employee)
-=======
-   // Fungsi untuk menarik/mendapatkan data untuk data add akun server php
-  updateAccount(id, nama, web, phone, email, owner, type, event_date, Category, industry, employee)
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
   {
     this.router.navigate(['members/addaccount/'
     +id+'/'

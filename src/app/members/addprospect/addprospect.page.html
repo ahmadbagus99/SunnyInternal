@@ -5,16 +5,10 @@
         <ion-icon name="arrow-round-back" color=#FFFFFF></ion-icon>
       </ion-button>
     </ion-buttons>
-<<<<<<< HEAD
     <ion-title *ngIf="!id">Tambah Prospect</ion-title>
     <ion-title *ngIf="id>=1">Ubah Prospect</ion-title>
     <ion-buttons slot="primary">
       <ion-button [routerLink]="['/members/main']" [disabled]="!pdfObj">Done</ion-button>
-=======
-    <ion-title *ngIf="!id">New Prospect</ion-title>
-    <ion-title *ngIf="id>=1">Ubah Prospect</ion-title>
-    <ion-buttons slot="primary">
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
       <!-- <ion-button *ngIf="!id" (click)="createdProcess()">Simpan</ion-button>
         <ion-button *ngIf="id>=1" (click)="updateProcess()">Simpan</ion-button> -->
     </ion-buttons>
@@ -22,43 +16,23 @@
 </ion-header>
 
 <ion-content>
-<<<<<<< HEAD
+    
     <ion-card>
         <img src="assets/img/banner-prospect.png">
+        <ion-progress-bar value="{{progress}}" color="success"></ion-progress-bar>
         <ion-card-content>
           <h2><b>NEW</b> - DETAIL OF PROGRESS </h2>
-          <ion-progress-bar value="{{progress}}" color="success"></ion-progress-bar>
+          
         </ion-card-content>
       </ion-card>
-=======
-  <div class="statusprocess"></div>
-  <ion-progress-bar value="{{progress}}" color="medium"></ion-progress-bar>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
   <ion-slides [options]="options" #slides class="swiper-no-swiping">
     <ion-slide>
       <ion-col>
         <div>
-<<<<<<< HEAD
           <ion-label class="segment">New</ion-label>
           <br>
 
           <ion-item [hidden]="selectHidden">
-=======
-          <!-- <ion-label class="segment"> New Prospect </ion-label> -->
-          <!-- Slide 1 -->
-
-          <ion-item [hidden]="selectHidden">
-             
-          <ion-card>
-            <img src="assets/img/banner-prospect.png">
-            <ion-card-content>
-              <h2><b>NEW</b> - DETAIL OF PROGRESS </h2>
-            </ion-card-content>
-          </ion-card>
-
-          <br>
-  
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
             <ion-label position="floating">Nama Customer</ion-label>
             <ion-select [(ngModel)]="namaCustomer" placeholder="Pilih Customer" (ionChange)="showNow()">
@@ -69,19 +43,6 @@
           </ion-item>
           <div [hidden]="isHidden">
             <span>
-<<<<<<< HEAD
-=======
-
-                <ion-card>
-                    <img src="assets/img/banner-prospect.png">
-                    <ion-card-content>
-                      <h2><b>NEW</b> - DETAIL OF PROGRESS </h2>
-                    </ion-card-content>
-                  </ion-card>
-        
-                  <br>
-
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
               <ion-item>
                 <ion-label position="stacked">Nama</ion-label>
                 <ion-input [(ngModel)]="namaCustomer"></ion-input>
@@ -128,14 +89,7 @@
           </span>
 
         </div>
-<<<<<<< HEAD
         <ion-button expand="full" (click)="next()" color="success" [disabled]="!namaCustomer">Next Progress</ion-button>
-=======
-
-        <ion-button class="next-butt" expand=full (click)="next()" color="medium" [disabled]="stock==0">Next Progress </ion-button>
-       
-
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
       </ion-col>
     </ion-slide>
 
@@ -183,13 +137,8 @@
             </ion-item>
           </span>
         </div>
-<<<<<<< HEAD
         <ion-button expand="full" (click)="prev()" color="primary">Previous</ion-button>
         <ion-button expand="full" (click)="nextSlide3()" color="success" [disabled]="stock==0">Next Progress</ion-button>
-=======
-        <ion-button expand="full" (click)="prev()" color="primary">Previous Progress</ion-button>
-        <ion-button expand="full" (click)="nextSlide3()" color="medium" [disabled]="stock==0">Next Progress</ion-button>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
       </ion-col>
     </ion-slide>
     <!-- Slide 3 -->
@@ -203,41 +152,25 @@
           <span>
             <ion-item>
               <ion-label position="stacked">Company Name</ion-label>
-<<<<<<< HEAD
               <ion-input [(ngModel)]="company" readOnly></ion-input>
-=======
-              <ion-input [(ngModel)]="company"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
           <span>
             <ion-item>
               <ion-label position="stacked">Alamat Company</ion-label>
-<<<<<<< HEAD
               <ion-input [(ngModel)]="alamatCompany" readOnly></ion-input>
-=======
-              <ion-input [(ngModel)]="alamatCompany"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
           <span>
             <ion-item>
               <ion-label position="stacked"> Email Company </ion-label>
-<<<<<<< HEAD
               <ion-input [(ngModel)]="emailCompany" readOnly></ion-input>
-=======
-              <ion-input [(ngModel)]="emailCompany"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
           <span>
             <ion-item>
               <ion-label position="stacked">No.Telp company</ion-label>
-<<<<<<< HEAD
               <ion-input [(ngModel)]="nomorCompany" readOnly></ion-input>
-=======
-              <ion-input [(ngModel)]="nomorCompany"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
         </div>
@@ -249,41 +182,25 @@
           <span>
             <ion-item>
               <ion-label position="stacked">Name Costumer</ion-label>
-<<<<<<< HEAD
               <ion-input [(ngModel)]="namaCustomer" readOnly></ion-input>
-=======
-              <ion-input [(ngModel)]="namaCustomer"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
           <span>
             <ion-item>
               <ion-label position="stacked"> Email Costumer </ion-label>
-<<<<<<< HEAD
               <ion-input [(ngModel)]="emailCustomer" readOnly></ion-input>
-=======
-              <ion-input [(ngModel)]="emailCustomer"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
           <span>
             <ion-item>
               <ion-label position="stacked"> Alamat Costumer </ion-label>
-<<<<<<< HEAD
               <ion-input [(ngModel)]="alamatCustomer" readOnly></ion-input>
-=======
-              <ion-input [(ngModel)]="alamatCustomer"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
           <span>
             <ion-item>
               <ion-label position="floating">Nomor Telepon Customer</ion-label>
-<<<<<<< HEAD
               <ion-input type="text" [(ngModel)]="no_tlp" readOnly></ion-input>
-=======
-              <ion-input type="text" [(ngModel)]="no_tlp"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
         </div>
@@ -295,70 +212,40 @@
           <span>
             <ion-item>
               <ion-label position="stacked">Product Name</ion-label>
-<<<<<<< HEAD
               <ion-input [(ngModel)]="customerneed" readOnly></ion-input>
-=======
-              <ion-input [(ngModel)]="customerneed"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
           <span>
             <ion-item>
               <ion-label position="stacked">Quantity</ion-label>
-<<<<<<< HEAD
               <ion-input [(ngModel)]="stock" readOnly></ion-input>
-=======
-              <ion-input [(ngModel)]="stock"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
           <span>
             <ion-item>
               <ion-label position="stacked"> Detail price Per unit </ion-label>
-<<<<<<< HEAD
               <ion-input type="text" value="{{ hargaProduk | currency:'Rp'}}" readOnly></ion-input>
-=======
-              <ion-input type="text" value="{{ hargaProduk | currency:'Rp'}}"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
           <span>
             <ion-item>
               <ion-label position="stacked"> Total Price </ion-label>
-<<<<<<< HEAD
               <ion-input type="text" value="{{ totalPrice | currency:'Rp'}}" readOnly></ion-input>
-=======
-              <ion-input type="text" value="{{ totalPrice | currency:'Rp'}}"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
           <span>
             <ion-item>
               <ion-label position="stacked"> Sub Budget </ion-label>
-<<<<<<< HEAD
               <ion-input type="text" value="{{ budget | currency:'Rp'}}" readOnly></ion-input>
-=======
-              <ion-input type="text" value="{{ budget | currency:'Rp'}}"></ion-input>
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
             </ion-item>
           </span>
         </div>
         <div>
-<<<<<<< HEAD
           <ion-button fill="clear" (click)="prev()" color="primary">Previous</ion-button>
           <ion-button expand="full" (click)="SaveProspect()" [hidden]="savebutton">Simpan</ion-button>
           <ion-button expand="full" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Download PDF</ion-button>
           <br>
         </div>
-=======
-          <ion-button expand="full" (click)="prev()" color="primary">Previous Progress</ion-button>
-          <ion-button expand="full"  (click)="createPdf()" color="medium">Create PDf</ion-button>
-          <ion-button expand="full" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Download PDF</ion-button>
-        </div>
-          
-        <!-- <ion-button fill="clear" (click)="downloadPdf()" color="primary">Download Pdf</ion-button> -->
-        
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
       </ion-col>
     </ion-slide>
   </ion-slides>

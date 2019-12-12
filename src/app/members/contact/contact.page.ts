@@ -71,13 +71,8 @@ export class ContactPage implements OnInit {
           this.ionViewWillEnter();
         });
     }
-<<<<<<< HEAD
 
     updatecontact(id,nama,email,alamat,tgl_lahir,kelamin,no_tlp,almt_rumah,title,perusahaan,almt_perusahaan,penghasilan,Hobi,Makanan_Favorit,NPWP,Facebook,Twitter,Instagram){
-=======
- // Fungsi untuk menarik/mendapatkan data untuk data edit contact dari server php//
-    updatecontact(id,nama,alamat,tgl_lahir,kelamin,no_tlp,almt_rumah,title,perusahaan,almt_perusahaan,penghasilan,Hobi,Makanan_Favorit,NPWP,Facebook,Twitter,Instagram){
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
       this.router.navigate(['members/editcontact/'
       +id+'/'
       +nama+'/'

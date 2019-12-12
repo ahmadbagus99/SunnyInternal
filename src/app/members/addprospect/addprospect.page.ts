@@ -6,12 +6,8 @@ import { LoadingController, ToastController, AlertController } from '@ionic/angu
 import { ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import { DataService } from "src/app/services/data.service";
-<<<<<<< HEAD
 import { LocalNotifications, ELocalNotificationTriggerUnit } from '@ionic-native/local-notifications/ngx';
 //pdf package
-=======
-//pdf package module
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { Platform } from '@ionic/angular'
@@ -29,12 +25,8 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 export class AddprospectPage implements OnInit {
   isHidden = true;
-<<<<<<< HEAD
   selectHidden: boolean;
   savebutton : boolean;
-=======
-  selectHidden : boolean;
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
   id: number;
   items2: any;
   user: any;
@@ -52,17 +44,12 @@ export class AddprospectPage implements OnInit {
   Nameproduct: any;
   jumlahProduk: any;
   hargaProduk: any;
-<<<<<<< HEAD
   stock: number;
-=======
-  stock: number ;
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
   totalPrice: number;
   price: number;
   itemsAccount: any;
   itemsEmailAccount: any;
   emailAccount: any;
-<<<<<<< HEAD
   budget: number;
   itemsContact = [];
   alamatCompany: string;
@@ -70,15 +57,6 @@ export class AddprospectPage implements OnInit {
   nomorCompany: number;
   emailCustomer: string;
   alamatCustomer: string;
-=======
-  budget : number;
-  itemsContact = [];
-  alamatCompany : string;
-  emailCompany : string;
-  nomorCompany : string;
-  emailCustomer : string;
-  alamatCustomer : string;
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
   itemsCustomer = [];
   letterObj = {
     address: ' Arkadia Green Park Estate, Tower F, 6th Floor, Jl. TB Simatupang No.Kav. 88, RT.1/RW.2, Kebagusan, Kec. Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12520',
@@ -138,7 +116,6 @@ export class AddprospectPage implements OnInit {
     });
   }
 
-<<<<<<< HEAD
   pushNotif(seconds: number){
     this.localNotifications.schedule({
       title : `Prospek Baru`,
@@ -152,17 +129,12 @@ export class AddprospectPage implements OnInit {
 
   showNow() {
     if (this.namaCustomer == 'new') {
-=======
-  showNow(){
-    if (this.namaCustomer == 'new'){
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
       this.isHidden = false;
       this.selectHidden = true;
       this.namaCustomer = '';
     }
     this.itemsCustomer = [];
     this.LoadDataCustomer();
-<<<<<<< HEAD
   }
 
   loadContact() {
@@ -203,50 +175,6 @@ export class AddprospectPage implements OnInit {
         })
       }
     });
-=======
-    console.log(this.itemsCustomer)
-
-  }
-
-  loadContact(){
-    this.storage.get('IdLogin').then((IdLogin)=>{
-        this.user = IdLogin;
-        let body = {
-          aksi : 'getdata',
-          limit : this.limit,
-          start : this.start,
-          };
-          this.postPvdr.postData(body, 'LoadContact.php?Id='+this.user).subscribe(data =>{
-              for(let item of data){
-                this.itemsContact.push(item);
-            } 
-          });
-      })
-  }
-
-  LoadDataCustomer(){
-        let body = {
-          aksi : 'getdata',
-          limit : this.limit,
-          start : this.start,
-          };
-          this.postPvdr.postData(body, 'LoadDataCustomer.php?Customer='+this.namaCustomer).subscribe(data =>{
-              for(let item of data){
-                this.itemsCustomer.push(item);
-                this.storage.set('DataCustomer',this.itemsCustomer).then(()=>{
-                  this.storage.get('DataCustomer').then((data)=>{
-                    var DataCustomer = data;
-                    var emailCustomer = DataCustomer.map( data => data.email);
-                    var alamatCustomer = DataCustomer.map( data => data.almt_rumah);
-                    var nomorCustomer = DataCustomer.map( data => data.no_tlp);
-                    this.emailCustomer = emailCustomer;
-                    this.alamatCustomer = alamatCustomer;
-                    this.no_tlp = nomorCustomer;
-                  })
-                })
-            } 
-          });
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
   }
 
   async loadProduct() {
@@ -276,7 +204,6 @@ export class AddprospectPage implements OnInit {
   }
 
   loadQuantityroduct() {
-<<<<<<< HEAD
     let body = {
       aksi: 'getdata',
       limit: this.limit,
@@ -318,49 +245,6 @@ export class AddprospectPage implements OnInit {
         })
       }
     });
-=======
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadQuantityProduct.php?Product=' + this.customerneed).subscribe(data => {
-        for (let item of data) {
-          this.itemQunatityProduct.push(item);
-          this.storage.set('Stock', this.itemQunatityProduct).then(() => {
-            this.storage.get('Stock').then((harga) => {
-              var harga = harga;
-              var hargaProduk = harga.map( data => data.hargaProduk);
-              this.hargaProduk = parseInt(hargaProduk);
-            })
-          })
-        }
-      });
-  }
-
-  loadEmailAccount() {
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadEmailAccount.php?Account=' + this.company).subscribe(data => {
-        for (let item of data) {
-          this.itemsEmailAccount.push(item);
-          this.storage.set('DataAccount', this.itemsEmailAccount).then(() => {
-            this.storage.get('DataAccount').then((email) => {
-              var DataAccount = email;
-              var DataAlamat = DataAccount.map( data => data.alamat);
-              var DataEmail = DataAccount.map( data => data.email);
-              var DataNomor = DataAccount.map( data => data.phone);
-              this.alamatCompany = DataAlamat;
-              this.emailCompany = DataEmail;
-              this.nomorCompany = DataNomor;
-            })
-          })
-        }
-      });
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
   }
 
   async SaveProspect() {
@@ -404,73 +288,8 @@ export class AddprospectPage implements OnInit {
         }
       ]
     })
-<<<<<<< HEAD
     this.pushNotif(5);
     await alert.present();
-=======
-    loading.present();
-    if (this.namaCustomer == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Nama tidak boleh kosong',
-          duration: 2000
-        })
-        toast.present();
-      })
-    } else if (this.company == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Company tidak boleh kosong',
-          duration: 2000
-        })
-        toast.present();
-      })
-    } else if (this.no_tlp == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'No telepon tidak boleh kosong',
-          duration: 2000
-        })
-        toast.present();
-      })
-    } else if (this.almt_rumah == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Alamat rumah mohon di isi',
-          duration: 2000
-        })
-        toast.present();
-      })
-    } else if (this.customerneed == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Field Customerneed mohon di isi',
-          duration: 2000
-        })
-        toast.present();
-      })
-    } else {
-      return new Promise(resolve => {
-        let body = {
-          aksi: 'add',
-          nama: this.namaCustomer,
-          company: this.company,
-          no_tlp: this.no_tlp,
-          almt_rumah: this.almt_rumah,
-          customerneed: this.customerneed,
-          userID: this.userID,
-          email: this.email,
-        };
-        this.postPvdr.postData(body, 'InsertProspect.php').subscribe(data => {
-          console.log(data)
-          loading.dismiss().then(() => {
-            // this.router.navigate(['members/prospect']);
-          })
-        });
-      });
-    }
-
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
   }
 
   async updateProcess() {
@@ -531,23 +350,12 @@ export class AddprospectPage implements OnInit {
     this.slides.lockSwipes(false);
     this.progress = this.progress + 0.5;
     this.slides.slideNext();
-<<<<<<< HEAD
     // console.log(this.emailCustomer)
     // console.log(this.alamatCustomer)
     // console.log(this.no_tlp)
     // console.log(this.alamatCompany)
     // console.log(this.emailCompany)
     // console.log(this.nomorCompany)
-=======
-    // this.createPdf();
-    console.log('Isystem Asia')
-    console.log('To', this.company)
-    console.log('Email', this.emailAccount)
-    console.log('Produk yang dipilih', this.customerneed)
-    console.log('Harga Per satuan', this.hargaProduk)
-    console.log('Quantity', this.stock)
-    console.log('Harga Total', this.totalPrice)
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
   }
 
   prev() {
@@ -615,11 +423,7 @@ export class AddprospectPage implements OnInit {
             ]
           }
         },
-<<<<<<< HEAD
         { text: 'Thank you for your bussiness!', style: 'subheader', alignment: 'right' },
-=======
-        { text: 'Thank you for your bussiness!', style: 'subheader' , alignment: 'right'  },
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
         { text: new Date().toString(), alignment: 'right' },
         // {
         //   ul: [
@@ -673,14 +477,8 @@ export class AddprospectPage implements OnInit {
   }
   async cancel() {
     const alert = await this.alertCtrl.create({
-<<<<<<< HEAD
       header: 'Apa kamu yakin membatalkan proses ini ?',
       buttons: [
-=======
-      header : 'Apa kamu yakin?',
-      subHeader: 'Untuk membatalkan proses ini?',
-      buttons : [
->>>>>>> 62f305c286fbee980a4244bea54ab7fb9fafdb78
         {
           text: 'Batal',
           role: 'cancel',
