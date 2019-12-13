@@ -49,6 +49,24 @@ export class ProductPage implements OnInit {
 // Fungsi untuk menarik/mendapatkan data untuk data add product dari server php
 
   updateProduct(id,namaProduk,tipeProduk,statusProduk,jumlahProduk,hargaProduk,deskripsiProduk){
+    if(namaProduk==""){
+      namaProduk=" ";
+    }
+    if(tipeProduk==""){
+      tipeProduk=" ";
+    }
+    if(statusProduk==""){
+      statusProduk=" ";
+    }
+    if(jumlahProduk==""){
+      jumlahProduk=" ";
+    }
+    if(hargaProduk==""){
+      hargaProduk=" ";
+    }
+    if(deskripsiProduk==""){
+      deskripsiProduk=" ";
+    }
     this.router.navigate(['members/addproduct/'
     +id+'/'
     +namaProduk+'/'

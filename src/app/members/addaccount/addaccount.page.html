@@ -34,38 +34,38 @@
 
         <!-- fill data dimana tempat pengisian Nama perusahaan user -->
         <ion-item class="row2">
-            <ion-label position="floating">Nama Perusahaan  <ion-text color="danger">*</ion-text> </ion-label>
+            <ion-label position="stacked">Nama Perusahaan  <ion-text color="danger">*</ion-text> </ion-label>
             <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
-            <ion-input type="text" [(ngModel)]="nama" class="nama"></ion-input>
+            <ion-input type="text" placeholder="{{warning}}" [(ngModel)]="nama" class="nama"></ion-input>
           </ion-item>
 
           <ion-item class="row2">
-            <ion-label position="floating">Alamat</ion-label>
+            <ion-label position="stacked">Alamat</ion-label>
             <ion-input  type="text" class="nama" [(ngModel)]="alamat"></ion-input>
           </ion-item>
     
           <ion-item class="row2">
-            <ion-label position="floating">Website  <ion-text color="danger">*</ion-text> </ion-label>
+            <ion-label position="stacked">Website</ion-label>
             <ion-input type="text" [(ngModel)]="web" class="web"></ion-input>
           </ion-item>
 
         <!-- fill data dimana tempat pengisian no telepon perusahaan user -->
           <ion-item class="row2">
-              <ion-label position="floating"> No.Telp <ion-text color="danger">*</ion-text> </ion-label>
-              <ion-input type="text" [(ngModel)]="phone" class="phone"></ion-input>
+              <ion-label position="stacked"> No.Telp <ion-text color="danger">*</ion-text> </ion-label>
+              <ion-input type="text" placeholder="{{warning}}" [(ngModel)]="phone" class="phone"></ion-input>
           </ion-item>
 
         <!-- fill data dimana tempat pengisian alamat email perusahaan user -->
           <ion-item class="row2">
-              <ion-label position="floating">Email  <ion-text color="danger">*</ion-text> </ion-label>
-              <ion-input type="text" [(ngModel)]="email" class="email"></ion-input>
+              <ion-label position="stacked">Email  <ion-text color="danger">*</ion-text> </ion-label>
+              <ion-input type="text" placeholder="{{warning}}" [(ngModel)]="email" class="email"></ion-input>
           </ion-item>
     <ion-grid>
     <ion-row class="row2">
       <ion-col>
           <!-- fill data dimana tempat pengisian pemilik user -->
           <ion-item>
-              <ion-label position="floating">Pemilik  <ion-text color="danger">*</ion-text> </ion-label>
+              <ion-label position="stacked">Pemilik</ion-label>
               <ion-select placeholder="Pilih salah satu" [(ngModel)]="owner">
                 <ion-select-option value="user">Pengguna</ion-select-option>
               </ion-select>
@@ -75,7 +75,7 @@
     <ion-col>
     <ion-item> 
         <!-- fill data dimana tempat pengisian tipe perusahaan si user-->
-      <ion-label position="floating">Tipe  <ion-text color="danger">*</ion-text> </ion-label>
+      <ion-label position="stacked">Tipe</ion-label>
       <ion-select placeholder="Pilih Tipe Perusahaan" [(ngModel)]="type">
         <ion-select-option value="pt">PT</ion-select-option>
         <ion-select-option value="cv">CV</ion-select-option>
@@ -88,7 +88,7 @@
   
         <!-- fill data dimana tempat pengisian acara yang akan di adakan user-->
       <ion-item class="row2">
-        <ion-label position="floating">Tanggal Acara  <ion-text color="danger">*</ion-text> </ion-label>
+        <ion-label position="stacked">Tanggal Acara</ion-label>
         <ion-datetime [(ngModel)]="event_date"></ion-datetime>
       </ion-item>
   <br>
@@ -98,7 +98,7 @@
   <br>
   <!-- fill data dimana pemilihan kategori untuk akun nya user -->
   <ion-item class="row2">
-    <ion-label position="floating">Kategori  <ion-text color="danger">*</ion-text> </ion-label>
+    <ion-label position="stacked">Kategori</ion-label>
         <ion-select placeholder="Pilih Kategori Perusahaan" [(ngModel)]="category">
           <ion-select-option value="Silver">Silver</ion-select-option>
           <ion-select-option value="Gold">Gold</ion-select-option>
@@ -108,7 +108,7 @@
 
         <!-- fill data dimana tempat pengisian di bidang industri apa perusahaan si user -->
   <ion-item class="row2">
-      <ion-label position="floating">Industri  <ion-text color="danger">*</ion-text> </ion-label>
+      <ion-label position="stacked">Industri</ion-label>
         <ion-select placeholder="Pilih Tipe Industri" [(ngModel)]="industry">
           <ion-select-option value="Bank">Bank</ion-select-option>
           <ion-select-option value="Insurance">Asuransi</ion-select-option>
@@ -118,7 +118,7 @@
   
         <!-- fill data dimana tempat pengisian jumlah karyawan di perusahaan user -->
   <ion-item class="row2">
-      <ion-label position="floating">Karyawan  <ion-text color="danger">*</ion-text> </ion-label>
+      <ion-label position="stacked">Karyawan</ion-label>
         <ion-select placeholder="Jumlah Karyawan" [(ngModel)]="employee">
           <ion-select-option value="1-10">1-10</ion-select-option>
           <ion-select-option value="10-100">10-100</ion-select-option>

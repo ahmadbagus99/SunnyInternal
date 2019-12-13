@@ -73,6 +73,51 @@ export class ContactPage implements OnInit {
     }
 
     updatecontact(id,nama,email,alamat,tgl_lahir,kelamin,no_tlp,almt_rumah,title,perusahaan,almt_perusahaan,penghasilan,Hobi,Makanan_Favorit,NPWP,Facebook,Twitter,Instagram){
+      if(nama==""){
+        nama=" "
+      }
+      if(email==""){
+        email=" "
+      }
+      if(alamat==""){
+        alamat=" "
+      }
+      if(kelamin==""){
+        kelamin=" "
+      }
+      if(no_tlp==""){
+        no_tlp=" "
+      }
+      if(almt_rumah==""){
+        almt_rumah=" "
+      }
+      if(title==""){
+        title=" "
+      }
+      if(perusahaan==""){
+        perusahaan=" "
+      }
+      if(penghasilan==""){
+        penghasilan=" "
+      }
+      if(Hobi==""){
+        Hobi=" "
+      }
+      if(Makanan_Favorit==""){
+        Makanan_Favorit=" "
+      }
+      if(Facebook==""){
+        Facebook=" "
+      }
+      if(Twitter==""){
+        Twitter=" "
+      }
+      if(Instagram==""){
+        Instagram=" "
+      }
+      if(almt_perusahaan==""){
+        almt_perusahaan=" "
+      }
       this.router.navigate(['members/editcontact/'
       +id+'/'
       +nama+'/'

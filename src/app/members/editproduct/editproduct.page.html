@@ -18,16 +18,16 @@
         <ion-col>
            <!-- fill data pengisian Nama Produk user-->
         <ion-item class="item">
-          <ion-label position="floating" >Nama Produk</ion-label>
+          <ion-label position="stacked" >Nama Produk  <ion-text color="danger">*</ion-text></ion-label>
           <ion-input type="text" [(ngModel)]="userID" hidden  ></ion-input>
-          <ion-input type="text" [(ngModel)]="namaProduk"></ion-input>
+          <ion-input type="text" placeholder="{{warning}}" [(ngModel)]="namaProduk"></ion-input>
         </ion-item>
         </ion-col>
         <ion-col>
           
            <!-- fill data pengisian Tipe Produk yng diingikan user-->
         <ion-item class="item" >
-          <ion-label position = "floating"  >Tipe Produk</ion-label>
+          <ion-label position="stacked">Tipe Produk</ion-label>
           <ion-select placeholder="Produk" [(ngModel)]="tipeProduk">
             <ion-select-option value="corporate">Corporate</ion-select-option>
             <ion-select-option value="retail">Retail</ion-select-option>
@@ -37,25 +37,25 @@
        
          <!-- fill data pengisian status produk yang akan ready user-->
       <ion-item class="item">
-        <ion-label position="floating"  class="label">Status Produk</ion-label>
+        <ion-label position="stacked"  class="label">Status Produk</ion-label>
         <ion-input type="text" [(ngModel)]="statusProduk"></ion-input>
       </ion-item>
 
        <!-- fill data pengisian Jumalah produk  user-->
       <ion-item class="item">
-        <ion-label position="floating"  class="label">Jumlah Produk</ion-label>
-        <ion-input type="text" [(ngModel)]="jumlahProduk"></ion-input>
+        <ion-label position="stacked"  class="label">Jumlah Produk  <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" placeholder="{{warning}}" [(ngModel)]="jumlahProduk"></ion-input>
       </ion-item>
 
        <!-- fill data pengisian Harga produk  user-->
       <ion-item class="item">
-        <ion-label position="floating"  class="label">Harga Produk</ion-label>
-        <ion-input type="text" [(ngModel)]="hargaProduk"></ion-input>
+        <ion-label position="stacked"  class="label">Harga Produk  <ion-text color="danger">*</ion-text></ion-label>
+        <ion-input type="text" placeholder="{{warning}}" [(ngModel)]="hargaProduk"></ion-input>
       </ion-item>
 
        <!-- fill data pengisian Deskripsi produk/ kategorinya user-->
       <ion-item class="item">
-        <ion-label position="floating"  class="label">Deskripsi Produk</ion-label>
+        <ion-label position="stacked"  class="label">Deskripsi Produk</ion-label>
         <ion-input type="text" [(ngModel)]="deskripsiProduk"></ion-input>
       </ion-item>
       </ion-row>

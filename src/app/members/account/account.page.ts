@@ -65,9 +65,37 @@ export class AccountPage implements OnInit {
   
  // Fungsi untuk menarik/mendapatkan data untuk data edit account dari server php//
 
-  updateAccount(id, nama, alamat, web, phone, email, owner, type, event_date, category, industry, employee)
-  
-  {
+  updateAccount(id, nama, alamat, web, phone, email, owner, type, event_date, category, industry, employee){
+    if(nama==""){
+      nama=" ";
+    }
+    if(alamat==""){
+      alamat=" ";
+    }
+    if(web==""){
+      web=" ";
+    }
+    if(phone==""){
+      phone=" ";
+    }
+    if(email==""){
+      email=" ";
+    }
+    if(owner==""){
+      owner=" ";
+    }
+    if(type==""){
+      type=" ";
+    }
+    if(category==""){
+      category=" ";
+    }
+    if(industry==""){
+      industry=" ";
+    }
+    if(employee==""){
+      employee=" "
+    }
     this.router.navigate(['members/editaccount/'
     +id+'/'
     +nama+'/'
