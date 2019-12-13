@@ -16,22 +16,17 @@
 </ion-header>
 
 <ion-content>
-    
-    <ion-card>
-        <img src="assets/img/banner-prospect.png">
-        <ion-progress-bar value="{{progress}}" color="success"></ion-progress-bar>
-        <ion-card-content>
-          <h2><b>NEW</b> - DETAIL OF PROGRESS </h2>
-          
-        </ion-card-content>
-      </ion-card>
   <ion-slides [options]="options" #slides class="swiper-no-swiping">
     <ion-slide>
       <ion-col>
+          <ion-card>
+              <img src="assets/img/banner-prospect.png">
+              <ion-progress-bar value="{{progress}}" color="success"></ion-progress-bar>
+              <ion-card-content>
+                <h2><b>NEW</b> - DETAIL OF PROGRESS </h2>
+              </ion-card-content>
+            </ion-card>
         <div>
-          <ion-label class="segment">New</ion-label>
-          <br>
-
           <ion-item [hidden]="selectHidden">
             <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
             <ion-label position="floating">Nama Customer</ion-label>
@@ -89,7 +84,10 @@
           </span>
 
         </div>
+
+        <div class="next-prog">
         <ion-button expand="full" (click)="next()" color="success" [disabled]="!namaCustomer">Next Progress</ion-button>
+      </div>
       </ion-col>
     </ion-slide>
 
@@ -97,9 +95,14 @@
 
     <ion-slide>
       <ion-col>
+          <ion-card>
+              <img src="assets/img/banner-prospect.png">
+              <ion-progress-bar value="{{progress}}" color="success"></ion-progress-bar>
+              <ion-card-content>
+                <h2><b>NEW</b> - DETAIL OF PROGRESS </h2>
+              </ion-card-content>
+            </ion-card>
         <div>
-          <ion-label class="segment">Qualify</ion-label>
-          <br>
           <span>
             <ion-item *ngFor="let item of itemQunatityProduct">
               <ion-label position="stacked">Produk</ion-label>
@@ -137,8 +140,11 @@
             </ion-item>
           </span>
         </div>
-        <ion-button expand="full" (click)="prev()" color="primary">Previous</ion-button>
-        <ion-button expand="full" (click)="nextSlide3()" color="success" [disabled]="stock==0">Next Progress</ion-button>
+        
+        <div class="next-prog">
+            <ion-button expand="full" (click)="prev()" color="primary">Previous</ion-button>
+          <ion-button expand="full" (click)="nextSlide3()" color="success" [disabled]="stock==0">Next Progress</ion-button>  
+        </div>
       </ion-col>
     </ion-slide>
     <!-- Slide 3 -->
@@ -241,8 +247,8 @@
           </span>
         </div>
         <div>
-          <ion-button fill="clear" (click)="prev()" color="primary">Previous</ion-button>
-          <ion-button expand="full" (click)="SaveProspect()" [hidden]="savebutton">Simpan</ion-button>
+          <ion-button expand="full" (click)="prev()" color="primary">Previous</ion-button>
+          <ion-button expand="full" (click)="SaveProspect()" [hidden]="savebutton" color="success">Save Prospect</ion-button>
           <ion-button expand="full" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Download PDF</ion-button>
           <br>
         </div>
