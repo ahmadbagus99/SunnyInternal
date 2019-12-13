@@ -4,11 +4,11 @@
         <ion-back-button defaultHref="/"></ion-back-button>
       </ion-buttons>
       <ion-buttons slot="primary">
-        <ion-button *ngIf="!id" (click)="AddAccount()">Simpan</ion-button>
-        <ion-button *ngIf="id>=1" (click)="updateAccount()">Simpan</ion-button>
+        <ion-button *ngIf="!id" (click)="AddAccount()">save</ion-button>
+        <ion-button *ngIf="id>=1" (click)="updateAccount()">save</ion-button>
       </ion-buttons>
-      <ion-title *ngIf="!id">Tambah Akun</ion-title>
-      <ion-title *ngIf="id>=1">Ubah Akun</ion-title>
+      <ion-title *ngIf="!id">Add Account </ion-title>
+      <ion-title *ngIf="id>=1">Edit Account</ion-title>
     </ion-toolbar>
   </ion-header>
   
@@ -34,30 +34,30 @@
 
         <!-- fill data dimana tempat pengisian Nama perusahaan user -->
         <ion-item class="row2">
-            <ion-label position="floating">Nama Perusahaan  <ion-text color="danger">*</ion-text> </ion-label>
+            <ion-label position="floating">Company Name  <ion-text color="danger">*</ion-text> </ion-label>
             <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
             <ion-input type="text" [(ngModel)]="nama" class="nama"></ion-input>
           </ion-item>
 
           <ion-item class="row2">
-            <ion-label position="floating">Alamat</ion-label>
+            <ion-label position="floating">Company Address</ion-label>
             <ion-input  type="text" class="nama" [(ngModel)]="alamat"></ion-input>
           </ion-item>
     
           <ion-item class="row2">
-            <ion-label position="floating">Website  <ion-text color="danger">*</ion-text> </ion-label>
+            <ion-label position="floating"> Company Website   <ion-text color="danger">*</ion-text> </ion-label>
             <ion-input type="text" [(ngModel)]="web" class="web"></ion-input>
           </ion-item>
 
         <!-- fill data dimana tempat pengisian no telepon perusahaan user -->
           <ion-item class="row2">
-              <ion-label position="floating"> No.Telp <ion-text color="danger">*</ion-text> </ion-label>
+              <ion-label position="floating"> Company Telephone Number  <ion-text color="danger">*</ion-text> </ion-label>
               <ion-input type="text" [(ngModel)]="phone" class="phone"></ion-input>
           </ion-item>
 
         <!-- fill data dimana tempat pengisian alamat email perusahaan user -->
           <ion-item class="row2">
-              <ion-label position="floating">Email  <ion-text color="danger">*</ion-text> </ion-label>
+              <ion-label position="floating"> Email  <ion-text color="danger">*</ion-text> </ion-label>
               <ion-input type="text" [(ngModel)]="email" class="email"></ion-input>
           </ion-item>
     <ion-grid>
@@ -65,9 +65,9 @@
       <ion-col>
           <!-- fill data dimana tempat pengisian pemilik user -->
           <ion-item>
-              <ion-label position="floating">Pemilik  <ion-text color="danger">*</ion-text> </ion-label>
-              <ion-select placeholder="Pilih salah satu" [(ngModel)]="owner">
-                <ion-select-option value="user">Pengguna</ion-select-option>
+              <ion-label position="floating">Owner  <ion-text color="danger">*</ion-text> </ion-label>
+              <ion-select placeholder="Select One" [(ngModel)]="owner">
+                <ion-select-option value="user">user</ion-select-option>
               </ion-select>
             </ion-item>
       </ion-col>
@@ -75,8 +75,8 @@
     <ion-col>
     <ion-item> 
         <!-- fill data dimana tempat pengisian tipe perusahaan si user-->
-      <ion-label position="floating">Tipe  <ion-text color="danger">*</ion-text> </ion-label>
-      <ion-select placeholder="Pilih Tipe Perusahaan" [(ngModel)]="type">
+      <ion-label position="floating">Type  <ion-text color="danger">*</ion-text> </ion-label>
+      <ion-select placeholder="Comapany Select Type" [(ngModel)]="type">
         <ion-select-option value="pt">PT</ion-select-option>
         <ion-select-option value="cv">CV</ion-select-option>
       </ion-select>
@@ -88,18 +88,18 @@
   
         <!-- fill data dimana tempat pengisian acara yang akan di adakan user-->
       <ion-item class="row2">
-        <ion-label position="floating">Tanggal Acara  <ion-text color="danger">*</ion-text> </ion-label>
+        <ion-label position="floating">Event Date <ion-text color="danger">*</ion-text> </ion-label>
         <ion-datetime [(ngModel)]="event_date"></ion-datetime>
       </ion-item>
   <br>
   <br>
         <!-- fill data dimana tempat pengisian new segmen -->
-    <ion-label class="segment">Segmen </ion-label>
+    <ion-label class="segment"> Segment </ion-label>
   <br>
   <!-- fill data dimana pemilihan kategori untuk akun nya user -->
   <ion-item class="row2">
-    <ion-label position="floating">Kategori  <ion-text color="danger">*</ion-text> </ion-label>
-        <ion-select placeholder="Pilih Kategori Perusahaan" [(ngModel)]="category">
+    <ion-label position="floating">Category  <ion-text color="danger">*</ion-text> </ion-label>
+        <ion-select placeholder="Comapany Select Category" [(ngModel)]="category">
           <ion-select-option value="Silver">Silver</ion-select-option>
           <ion-select-option value="Gold">Gold</ion-select-option>
           <ion-select-option value="Platinum">Platinum</ion-select-option>
@@ -108,18 +108,18 @@
 
         <!-- fill data dimana tempat pengisian di bidang industri apa perusahaan si user -->
   <ion-item class="row2">
-      <ion-label position="floating">Industri  <ion-text color="danger">*</ion-text> </ion-label>
-        <ion-select placeholder="Pilih Tipe Industri" [(ngModel)]="industry">
+      <ion-label position="floating">Industry  <ion-text color="danger">*</ion-text> </ion-label>
+        <ion-select placeholder="Comapany Select Industry" [(ngModel)]="industry">
           <ion-select-option value="Bank">Bank</ion-select-option>
-          <ion-select-option value="Insurance">Asuransi</ion-select-option>
-          <ion-select-option value="Finance">Keuangan</ion-select-option>
+          <ion-select-option value="Insurance">Insurance</ion-select-option>
+          <ion-select-option value="Finance">Finance</ion-select-option>
       </ion-select>
   </ion-item>
   
         <!-- fill data dimana tempat pengisian jumlah karyawan di perusahaan user -->
   <ion-item class="row2">
-      <ion-label position="floating">Karyawan  <ion-text color="danger">*</ion-text> </ion-label>
-        <ion-select placeholder="Jumlah Karyawan" [(ngModel)]="employee">
+      <ion-label position="floating"> Employee  <ion-text color="danger">*</ion-text> </ion-label>
+        <ion-select placeholder="Total Employee" [(ngModel)]="employee">
           <ion-select-option value="1-10">1-10</ion-select-option>
           <ion-select-option value="10-100">10-100</ion-select-option>
           <ion-select-option value="100-1000">100-1000</ion-select-option>

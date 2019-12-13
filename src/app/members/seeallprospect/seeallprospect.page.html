@@ -3,7 +3,7 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/"></ion-back-button>
       </ion-buttons>
-      <ion-title>Prospek Lainnya</ion-title>
+      <ion-title>Another Prospect</ion-title>
     </ion-toolbar>
     <ion-toolbar>
         <ion-searchbar  color="light" animated
@@ -17,18 +17,17 @@
       <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
           <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
-  
       <ion-segment [(ngModel)]="selectCategory">
-          <ion-segment-button value="On Progress">
-            <ion-label>On Progress</ion-label>
+        <ion-segment-button value="Populer">
+          <ion-label>Top Recent</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Terbaru">
+          <ion-label>New</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="Kategori">
+            <ion-label>Category</ion-label>
           </ion-segment-button>
-          <ion-segment-button value="Terbaru">
-            <ion-label>Terbaru</ion-label>
-          </ion-segment-button>
-          <ion-segment-button value="Close Won">
-              <ion-label>Close Won</ion-label>
-            </ion-segment-button>
-        </ion-segment>
+      </ion-segment>
   
       <div [ngSwitch]="selectCategory">
         <div *ngSwitchCase="'On Progress'">

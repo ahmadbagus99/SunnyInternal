@@ -51,6 +51,7 @@
     "ionic2-calendar": "^0.5.7",
     "mx.ferreyra.callnumber": "0.0.2",
     "natives": "^1.1.6",
+    "npm-cache": "^0.7.0",
     "pdfmake": "^0.1.62",
     "rxjs": "~6.5.1",
     "rxjs-compat": "^6.5.2",
