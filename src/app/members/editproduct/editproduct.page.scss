@@ -43,26 +43,33 @@ ion-toolbar{
   margin-left: 10px;
 }
 
-.upload{
-  margin-left: 130px;
-  margin-bottom: 30px;
-  margin-top: -15px;
-  color: #ffffff;
+.row2{
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-.image-upload > input
-{
-    display: none;
-}
 
-.image-upload img{
-  height: 165px;
-  width: 100%;
-  cursor: pointer;
-}
+// .upload{
+//   margin-left: 130px;
+//   margin-bottom: 30px;
+//   margin-top: -15px;
+//   color: #ffffff;
+// }
+
+// .image-upload > input
+// {
+//     display: none;
+// }
+
+// .image-upload img{
+//   height: 165px;
+//   width: 100%;
+//   cursor: pointer;
+// }
+
+
 .Produk{
   height: 160px;
-  position: relative;
   .add{
     img{
       width: 49px;
@@ -73,4 +80,22 @@ ion-toolbar{
       opacity: 20%;
     }
   }
+}
+
+
+.upload{
+  margin-left: 143px;
+  margin-bottom: 50px;
+  color: #ffffff;
+}
+
+.image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    width: 80px;
+    cursor: pointer;
 }

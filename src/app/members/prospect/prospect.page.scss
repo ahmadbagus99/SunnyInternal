@@ -8,6 +8,13 @@ ion-title{
   text-align: center;
   color:white;
 }
+ion-icon{
+  transform-origin: 5px 5px;
+  margin-left: 5vw;
+  margin-top: 3vw;
+  position: fixed;
+  color: #F57F17;
+}
 
 ion-button{
   text-transform: capitalize;
@@ -30,7 +37,21 @@ ion-toolbar{
 }
 ion-segment{
   color: white;
+}
 
+.sc-ion-card-md-h {
+  -webkit-margin-start: 6px;
+  margin-inline-start: 6px ;
+  -webkit-margin-end: 6px ;
+  margin-inline-end: 6px ;
+}
+
+.text1{
+  position: fixed;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 2vw;
+  margin-left: 14vw;
 }
 
 .fullname{
@@ -43,18 +64,16 @@ ion-segment{
   
   margin-top: 8vw;
   margin-left: 6vw;
-    width: 18vw;
+    width: 20vw;
     cursor: pointer;
-     max-width: 700px;
-     max-height: 800px;
-   
+     max-width: 700vw;
+     max-height: 800vw;
 }
-
 }
 
 .tambah{
   margin-left: 15vw;
-  margin-top: 5vw;
+  margin-top: 2vw;
   margin-bottom: 5vw;
   position: relative;
   // word-spacing: 10px;
@@ -62,7 +81,7 @@ ion-segment{
 
 .seeall{
   margin-left: 50vw;
-  margin-top: -16vw;
+  margin-top: -15vw;
   margin-bottom: 0vw;
   position: static;
   // word-spacing: 10px;
@@ -139,7 +158,9 @@ ion-button{
     //   --padding-bottom:30px !important;
     //   --padding-start:30px !important;
     //   box-shadow: 10px 10px 10px #888888;
-  
+    p {
+      color: #F57F17;
+   }
     h2{
       font-weight: bold;
       position: relative;
@@ -151,9 +172,10 @@ ion-button{
 }
 
 .judul{
-    margin-left: 7vw;
-    color: #8b8b8b;
-    font-weight: bold; 
+    margin-left: 6vw;
+    color: #5f5f5f;
+    font-weight: bold;
+    font-size: medium; 
   }
 
   .tabs{
@@ -172,7 +194,23 @@ ion-button{
 
   .segment {
     color: #EEEEEE;
-    border-radius: 20%;
+    border-radius: 50%;
     height: 20vw;
     padding: 0 10px;
+}
+
+.add-pro {
+  position: fixed;
+  background-color: #ffffff;
+  height: 10vw;
+  width: 50vw;
+  padding: 0 10px;
+}
+
+.see-all {
+  margin-left: 50vw;
+  background-color: #ffffff;
+  height: 10vw;
+  width: 50vw;
+  padding: 0 10px;
 }

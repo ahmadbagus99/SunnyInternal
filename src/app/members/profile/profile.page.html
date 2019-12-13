@@ -3,11 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="dashboard"></ion-back-button>
     </ion-buttons>
-    <ion-title>Profilku</ion-title>
+    <ion-title>My Profile</ion-title>
     <ion-buttons slot="primary">
       <div *ngFor="let item of items">
         <ion-button
-          (click)="EditProfile(item.id, item.fullname, item.phonenumber, item.birthday, item.email, item.country)">Ubah
+          (click)="EditProfile(item.id, item.fullname, item.phonenumber, item.birthday, item.email, item.country)">Edit
         </ion-button>
       </div>
     </ion-buttons>
@@ -60,13 +60,13 @@
     <div class="content-item">
       <ion-list *ngFor="let item of items">
         <ion-item class="label">
-          <ion-label position="floating">Nomor Handphone</ion-label>
+          <ion-label position="floating">Phone Number</ion-label>
           <br>
           <ion-input class="phonenumber" type="text" [(ngModel)]="phonenumber" readonly>{{item.phonenumber}}</ion-input>
         </ion-item>
 
         <ion-item class="label">
-          <ion-label position="floating">Tanggal Lahir</ion-label>
+          <ion-label position="floating">Date of birth</ion-label>
           <br>
           <ion-input class="birthday" type="text" [(ngModel)]="birthday" readonly>{{item.birthday}}</ion-input>
         </ion-item>
@@ -78,7 +78,7 @@
         </ion-item>
 
         <ion-item class="label">
-          <ion-label position="floating">Negara</ion-label>
+          <ion-label position="floating">Country</ion-label>
           <br>
           <ion-input class="country" type="text" [(ngModel)]="country" readonly>{{item.country}}</ion-input>
         </ion-item>

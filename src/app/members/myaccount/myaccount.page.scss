@@ -10,9 +10,13 @@ ion-title{
   text-transform: capitalize;
 }
 ion-button{
-  color: #009edd;
-  text-transform: capitalize;
+  align-content: center;
+  margin-top: 130vw;
+  border-radius: 20px;
+  stroke: #bd0909;
+  color: #bd0909;
 }
+
 ion-grid{
   object-position: unset;
   top: 10px;
@@ -37,5 +41,9 @@ ion-icon{
 
 .container {
   margin-top: -10px;
+}
+
+.signout {
+  border-color: #bd0909;
 }
 
