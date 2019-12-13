@@ -4,11 +4,11 @@
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title>
-      Ubah Profil
+     Edit Profile
     </ion-title>
     <ion-buttons color=#FFFFFF slot="primary">
-      <ion-button *ngIf="!id" (click)="createdProcess()">Simpan</ion-button>
-      <ion-button *ngIf="id>=1" (click)="updateProcess()">Simpan</ion-button>
+      <ion-button *ngIf="!id" (click)="createdProcess()">Save</ion-button>
+      <ion-button *ngIf="id>=1" (click)="updateProcess()">Save</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -39,19 +39,19 @@
 
   <!-- fill data dimana tempat pengisian Nama Lengkap  user -->
   <ion-item class="label">
-    <ion-label position="floating">Nama Lengkap</ion-label>
+    <ion-label position="floating">Full Name</ion-label>
     <ion-input class="fullname" type="text" [(ngModel)]="fullname"></ion-input>
   </ion-item>
 
   <!-- fill data dimana tempat pengisian No hp  user -->
   <ion-item class="label">
-    <ion-label position="floating">Nomor Handphone</ion-label>
+    <ion-label position="floating">Phone Number</ion-label>
     <ion-input class="phonenumber" type="text" [(ngModel)]="phonenumber"></ion-input>
   </ion-item>
 
   <!-- fill data dimana tempat pengisian ulang tahun  user -->
   <ion-item class="label">
-    <ion-label position="floating">Ulang Tahun</ion-label>
+    <ion-label position="floating">Date of birth</ion-label>
     <ion-datetime [(ngModel)]="birthday"></ion-datetime>
   </ion-item>
 
@@ -63,7 +63,7 @@
 
   <!-- fill data dimana tempat pengisian Negara user -->
   <ion-item class="label">
-    <ion-label position="floating">Negara</ion-label>
+    <ion-label position="floating">Country</ion-label>
     <ion-input class="country" type="text" [(ngModel)]="country"></ion-input>
     <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
   </ion-item>

@@ -5,8 +5,8 @@
         <ion-icon name="arrow-round-back" color=#FFFFFF></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title *ngIf="!id">Tambah Prospect</ion-title>
-    <ion-title *ngIf="id>=1">Ubah Prospect</ion-title>
+    <ion-title *ngIf="!id">Add Prospect</ion-title>
+    <ion-title *ngIf="id>=1">Edit Prospect</ion-title>
     <ion-buttons slot="primary">
       <ion-button [routerLink]="['/members/main']" [disabled]="!pdfObj">Done</ion-button>
       <!-- <ion-button *ngIf="!id" (click)="createdProcess()">Simpan</ion-button>
@@ -34,9 +34,9 @@
 
           <ion-item [hidden]="selectHidden">
             <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
-            <ion-label position="floating">Nama Customer</ion-label>
-            <ion-select [(ngModel)]="namaCustomer" placeholder="Pilih Customer" (ionChange)="showNow()">
-              <ion-select-option value="new">Buat Baru</ion-select-option>
+            <ion-label position="floating"> Customer Name</ion-label>
+            <ion-select [(ngModel)]="namaCustomer" placeholder="Select Costumer" (ionChange)="showNow()">
+              <ion-select-option value="new">New Make</ion-select-option>
               <ion-select-option *ngFor="let item of itemsContact" value="{{item.nama}}">{{item.nama}}
               </ion-select-option>
             </ion-select>
@@ -44,7 +44,7 @@
           <div [hidden]="isHidden">
             <span>
               <ion-item>
-                <ion-label position="stacked">Nama</ion-label>
+                <ion-label position="stacked">Name</ion-label>
                 <ion-input [(ngModel)]="namaCustomer"></ion-input>
               </ion-item>
             </span>
@@ -57,20 +57,20 @@
             </span>
             <span>
               <ion-item>
-                <ion-label position="stacked">Alamat</ion-label>
+                <ion-label position="stacked">Address</ion-label>
                 <ion-input [(ngModel)]="alamatCustomer"></ion-input>
               </ion-item>
             </span>
             <span>
               <ion-item>
-                <ion-label position="floating">Nomor Telepon</ion-label>
+                <ion-label position="floating">Phone Number</ion-label>
                 <ion-input type="text" [(ngModel)]="no_tlp"></ion-input>
               </ion-item>
             </span>
           </div>
           <span>
             <ion-item>
-              <ion-label position="floating">Perusahaan</ion-label>
+              <ion-label position="floating">Company</ion-label>
               <ion-select (ionChange)="TakeEmail()" placeholder="Pilih Perusahaan" [(ngModel)]="company">
                 <ion-select-option *ngFor="let item of itemsAccount" value="{{item.nama}}">{{item.nama}}
                 </ion-select-option>
@@ -80,7 +80,7 @@
 
           <span>
             <ion-item>
-              <ion-label position="floating">Produk yang dibutuhkan</ion-label>
+              <ion-label position="floating">Product Needed</ion-label>
               <ion-select placeholder="Product" [(ngModel)]="customerneed">
                 <ion-select-option *ngFor="let item of itemProduct" value="{{item.namaProduk}}">{{item.namaProduk}}
                 </ion-select-option>
@@ -102,7 +102,7 @@
           <br>
           <span>
             <ion-item *ngFor="let item of itemQunatityProduct">
-              <ion-label position="stacked">Produk</ion-label>
+              <ion-label position="stacked">Product</ion-label>
               <ion-input type="text" readOnly>{{item.namaProduk}}</ion-input>
             </ion-item>
           </span>
@@ -157,49 +157,49 @@
           </span>
           <span>
             <ion-item>
-              <ion-label position="stacked">Alamat Company</ion-label>
+              <ion-label position="stacked">Company Address </ion-label>
               <ion-input [(ngModel)]="alamatCompany" readOnly></ion-input>
             </ion-item>
           </span>
           <span>
             <ion-item>
-              <ion-label position="stacked"> Email Company </ion-label>
+              <ion-label position="stacked">  Company Email  </ion-label>
               <ion-input [(ngModel)]="emailCompany" readOnly></ion-input>
             </ion-item>
           </span>
           <span>
             <ion-item>
-              <ion-label position="stacked">No.Telp company</ion-label>
+              <ion-label position="stacked">Company Telephone Number </ion-label>
               <ion-input [(ngModel)]="nomorCompany" readOnly></ion-input>
             </ion-item>
           </span>
         </div>
         <div>
-          <ion-label class="segment">Customer Info</ion-label>
+          <ion-label class="segment">Customer Information</ion-label>
           <br>
         </div>
         <div>
           <span>
             <ion-item>
-              <ion-label position="stacked">Name Costumer</ion-label>
+              <ion-label position="stacked">Costumer Name</ion-label>
               <ion-input [(ngModel)]="namaCustomer" readOnly></ion-input>
             </ion-item>
           </span>
           <span>
             <ion-item>
-              <ion-label position="stacked"> Email Costumer </ion-label>
+              <ion-label position="stacked"> Costumer Email </ion-label>
               <ion-input [(ngModel)]="emailCustomer" readOnly></ion-input>
             </ion-item>
           </span>
           <span>
             <ion-item>
-              <ion-label position="stacked"> Alamat Costumer </ion-label>
+              <ion-label position="stacked"> Costumer Address </ion-label>
               <ion-input [(ngModel)]="alamatCustomer" readOnly></ion-input>
             </ion-item>
           </span>
           <span>
             <ion-item>
-              <ion-label position="floating">Nomor Telepon Customer</ion-label>
+              <ion-label position="floating">Costumer Phone Number</ion-label>
               <ion-input type="text" [(ngModel)]="no_tlp" readOnly></ion-input>
             </ion-item>
           </span>
@@ -242,7 +242,7 @@
         </div>
         <div>
           <ion-button fill="clear" (click)="prev()" color="primary">Previous</ion-button>
-          <ion-button expand="full" (click)="SaveProspect()" [hidden]="savebutton">Simpan</ion-button>
+          <ion-button expand="full" (click)="SaveProspect()" [hidden]="savebutton">Save</ion-button>
           <ion-button expand="full" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Download PDF</ion-button>
           <br>
         </div>

@@ -8,7 +8,7 @@
             <ion-icon name="add"></ion-icon>
           </ion-button>
         </ion-buttons>
-        <ion-title>Akun</ion-title>
+        <ion-title>Account</ion-title>
       </ion-toolbar>
       <ion-toolbar>
         <ion-searchbar  color="light" animated
@@ -27,13 +27,13 @@
         <!-- Fungsi sebagai user bisa membedakan mana yang terbaru dan sering di buka (populer) dan fungsinya sebagai mengkontrol tambilan search yang di butuhkan -->
         <ion-segment [(ngModel)]="selectCategory">
           <ion-segment-button value="Populer">
-            <ion-label>Populer</ion-label>
+            <ion-label>Top Recent</ion-label>
           </ion-segment-button>
           <ion-segment-button value="Terbaru">
-            <ion-label>Terbaru</ion-label>
+            <ion-label>New</ion-label>
           </ion-segment-button>
           <ion-segment-button value="Kategori">
-              <ion-label>Kategori</ion-label>
+              <ion-label>Category</ion-label>
             </ion-segment-button>
         </ion-segment>
 

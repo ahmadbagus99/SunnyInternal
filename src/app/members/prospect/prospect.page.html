@@ -3,15 +3,10 @@
       <ion-buttons slot="start">
           <ion-back-button color="light" defaultHref="/"></ion-back-button>
       </ion-buttons >
-      <ion-title>Prospek</ion-title>
+      <ion-title>Prospect</ion-title>
     </ion-toolbar >
     <div>
     <ion-toolbar color="primary">
-      <ion-searchbar color="light" animated
-      [(ngModel)]="searchTerm"
-      (ionChange)="setFilteredItems()"
-      ></ion-searchbar>
-
       <div class="fullname">
           <div class="image-upload" >
               <label for="file-input">
@@ -51,7 +46,7 @@
   </ion-header>
 
 <ion-content >
-  <h4 class="judul"> Prospek Baru </h4> 
+  <h4 class="judul"> New Prospect </h4> 
   <div class="scrolling-wrapper">
     <p text-center>{{text}}</p>
     <div *ngFor="let item of items" class="card">
@@ -67,7 +62,7 @@
     </div>
 </div>
 
-<h4 class="judul"> Produk Kami</h4> 
+<h4 class="judul"> Our Product</h4> 
   <div class="scrolling-wrapper">
     <div *ngFor="let item of itemsproduct" class="card">
     <ion-card>
