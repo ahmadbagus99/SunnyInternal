@@ -38,6 +38,8 @@ export class AddcontactPage implements OnInit {
   category: any;
   warning: string;
   isHidden: boolean = true;
+  itemsPerusahaan : any = [];
+  selectHidden: boolean;
 
   @ViewChild(IonSlides) slides: IonSlides;
   items: any = [];
@@ -61,6 +63,13 @@ export class AddcontactPage implements OnInit {
   showNow() {
     this.isHidden = false;
     this.warning;
+  }
+  Show() {
+    if (this.title == 'Lainnya') {
+      this.isHidden = false;
+      this.selectHidden = true;
+      this.title = '';
+    }
   }
 
   ngOnInit() {
@@ -157,6 +166,25 @@ export class AddcontactPage implements OnInit {
       this.userID = this.user;
     });
   }
+  loadCompanyAddress() {
+    let body = {
+      aksi: 'getdata',
+      limit: this.limit,
+      start: this.start,
+    };
+    this.postPvdr.postData(body, 'LoadEmailAccount.php?Account=' + this.perusahaan).subscribe(data => {
+      for (let item of data) {
+        this.itemsPerusahaan.push(item);
+        this.storage.set('Data', this.itemsPerusahaan).then(() => {
+          this.storage.get('Data').then((data) => {
+            var Data = data;
+            var DataAddress = Data.map( data => data.alamat);
+            this.almt_perusahaan = DataAddress.toString();
+          })
+        })
+      }
+    });
+  }
 
    //Fungsi dimana user harus mengisi semua fill yang ada di UI dan tidak boleh kosong pas di simpan  
    createdProcess() {
@@ -229,6 +257,7 @@ export class AddcontactPage implements OnInit {
       };
       this.postPvdr.postData(body, 'InsertContact.php').subscribe(data => {
         loading.dismiss().then(() => {
+          this.clearDataStorage();
           this.router.navigate(['members/contact']);
         })
       });
@@ -266,6 +295,9 @@ export class AddcontactPage implements OnInit {
         })
       });
     })
+  }
+  clearDataStorage(){
+    this.storage.remove('Data');
   }
 
 }
