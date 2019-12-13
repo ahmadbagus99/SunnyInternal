@@ -59,9 +59,10 @@
   </div>
 
    <!-- Menampilkan Detail Report Total Customer  -->
-
+   <div class="report-for-you">
+      <ion-text><b>Report for you</b></ion-text>
+    </div>
   <div class="content">
-    <ion-text><b>Report for you</b></ion-text>
     <!-- <div class="see-all"> <ion-text>See all</ion-text> </div> -->
     <div class="report">
       <div class="text-report">
@@ -75,7 +76,7 @@
 
     <div class="report3">
       <div class="text-report3">
-      <ion-text><b>{{totalProspect}}</b></ion-text> <br>
+      <ion-text class="ion-align-items-center"><b>{{totalProspect}}</b></ion-text> <br>
       </div>
         <div class="detail-report3">
           <ion-text><b> Total Prospect </b></ion-text> <br>
@@ -87,11 +88,13 @@
 
     <div class="incentive">
     <div class="text-report-2">
-        <ion-text><b> IDR </b></ion-text> <br>
-        <ion-input type="text" value="{{ incentive | currency:'Rp ' }}" readOnly></ion-input>
+    <div class="idr"><ion-text><b> IDR </b></ion-text></div> 
+    <div class="price">
+        <b><ion-input type="text" value="{{ incentive | currency:'Rp ' }}" readOnly></ion-input></b>
     </div>
+  </div>
       <div class="detail-report2">
-        <ion-text><b> Total Incentive </b></ion-text> <br>
+        <ion-text><b> Total Incentive </b></ion-text><br>
         <ion-text> / month </ion-text>
       </div>
     </div>

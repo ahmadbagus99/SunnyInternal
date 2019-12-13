@@ -55,7 +55,7 @@ ion-card{
     width: 15vw;
     height: 15vw;
     background-color:rgb(255, 177, 108);
-    border-radius:20px;
+    border-radius:20px 20px 20px;
     box-shadow: #989aa2 8px;
     --padding-top:12px !important;
       --padding-end:12px !important;
@@ -79,19 +79,20 @@ ion-card{
 }
 .content{
   ion-text{
+    position: inherit;
     margin-left: 10px;
   }
-  border-radius: 10px;
-  margin-top: 10px;
-  background-color: white;
-  height: 230px;
+    border-radius: 0px;
+    margin-top: 3vw;
+    background-color: white;
+    height: 230px;
 }
 .extra-content{
   ion-text{
     margin-left: 10px;
     margin-top: 90vw;
   }
-  border-radius: 10px;
+  border-radius: 0px;
   margin-top: 10px;
   background-color:white;
   height: 220px;
@@ -128,14 +129,22 @@ ion-card{
   ion-text{
     font-style: bold;
   }
-  margin-top: 3vw;
+  position: absolute;
+  margin-top: 33vw;
   margin-left: 3vw;
-  height: 20vw;
+  height: 21vw;
   width: 45vw;
   border-radius:10px;
-  border-style: solid;
   border-color: #4e4e4e;
-  background-color: #ff7700;
+  background-image: url('../../../assets/img/backgroundFix.svg');
+  background-size: 50px;
+  background-size: auto;
+  // background-color: #ff7700;
+  }
+  .report-for-you{
+    position: absolute;
+    margin-top: 5vw;
+    margin-left: 3vw;
   }
   .see-all {
     margin-left: 80vw;
@@ -148,7 +157,6 @@ ion-card{
     color: darkgrey;
   }
   .text-report {
-    position: relative;
     font-size: 10vw;
     margin-top: -2vw;
     color: #ffffff;
@@ -156,7 +164,7 @@ ion-card{
   .detail-report {
     position: relative;
     font-size: 3vw;
-    margin-top: -1vw;
+    margin-top: 1vw;
     margin-left: 5px;
   }
 
@@ -164,52 +172,67 @@ ion-card{
   .detail-report2 {
     position: relative;
     font-size: 4vw;
-    margin-top: 0px;
-    margin-left: 5px;
+    margin-top: 0vw;
+    margin-left: 8px;
   }
   .incentive{
-    margin-top: -43vw;
+    position: absolute;
+    margin-top: 10vw;
     margin-left: 51vw;
-    height: 43vw;
+    height: 44vw;
     width: 45vw;
     border-radius:10px;
-    border-style: solid;
-    border-color: #4e4e4e;
-    background-color: #ffb030;
+    // border-style: solid;
+    // border-color: #4e4e4e;
+    background-image: url('../../../assets/img/backgroundFix.svg');
+    background-size: 80px;
+    // background-color: #ffb030;
     }
     .text-report-2 {
       position: relative;
+      margin-top: 10vw;
       font-size: 5vw;
-      margin-top: 25px;
       color: #ffffff;
     }
-
+    .price {
+      position: relative;
+      margin-left: 2vw;
+      align-content: center;
+      font-style: bold;
+      font-size: 18px;
+    }
+    .idr {
+      margin-top: 8vw;
+      font-size: 30px;
+    }
     // Grid Report TOTAL PROSPECT
     .report3{
       ion-text{
         font-style: bold;
       }
-      margin-top: 3vw;
+      position: absolute;
+      margin-top: 10vw;
       margin-left: 3vw;
-      height: 20vw;
+      height: 21vw;
       width: 45vw;
       border-radius:10px;
-      border-style: solid;
-      border-color: #4e4e4e;
-      background-color: #ff951c;
+      // border-style: solid;
+      // border-color: #4e4e4e;
+      background-image: url('../../../assets/img/backgroundFix.svg');
+      // background-color: #ff951c;
       }
 
     .detail-report3 {
-      position: relative;
       font-size: 3vw;
-      margin-top: -1vw;
+      margin-top: 0vw;
       margin-left: 5px;
     }
     .text-report3 {
       position: relative;
       font-size: 10vw;
-      margin-top: -2vw;
+      margin-top: -1vw;
       color: #ffffff;
+      align-content: center;
     }
     
     .seeall{
