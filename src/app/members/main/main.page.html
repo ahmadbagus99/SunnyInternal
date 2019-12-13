@@ -8,12 +8,13 @@
         <img src="assets/img/logo-isa-white.png"/>
     </div>
     <div class="notif">
-      <a [routerLink]="['/members/profile']">
-        <ion-icon name="contact"></ion-icon>
+      <a [routerLink]="['/members/notifications']">
+        <ion-icon name="notifications"></ion-icon>
+        <ion-badge>{{totalProspect}}</ion-badge>
       </a>
     </div>
     <div class="fullname">
-      <ion-text *ngFor="let item of items">{{item.fullname}}</ion-text>
+      <!-- <ion-text *ngFor="let item of items">{{item.fullname}}</ion-text> -->
     </div>
   </div>
 

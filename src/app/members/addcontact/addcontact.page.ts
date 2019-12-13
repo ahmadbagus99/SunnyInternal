@@ -17,25 +17,29 @@ export class AddcontactPage implements OnInit {
   id: number;
   items2: any;
   user: any;
-  nama: string = "";
-  alamat: string = "";
-  tgl_lahir: string = "";
-  kelamin: string = "";
-  no_tlp: string = "";
-  almt_rumah: string = "";
-  title: string = "";
-  perusahaan: string = "";
-  almt_perusahaan: string = "";
-  Hobi: string = "";
-  Makanan_Favorit: string = "";
-  Facebook: string = "";
-  Twitter: string = "";
-  Instagram: string = "";
-  NPWP: string = "";
-  userID: string = "";
-  penghasilan: string = "";
+  nama: string='';
+  alamat: string;
+  tgl_lahir: Date = new Date();
+  kelamin: string;
+  no_tlp: string='';
+  almt_rumah: string;
+  title: string;
+  perusahaan: string;
+  almt_perusahaan: string;
+  Hobi: string;
+  Makanan_Favorit: string;
+  Facebook: string;
+  Twitter: string;
+  Instagram: string;
+  NPWP: number = 0;
+  userID: string;
+  penghasilan: string;
+  email : string='';
   category: any;
-  email : string;
+  warning: string;
+  isHidden: boolean = true;
+  itemsPerusahaan : any = [];
+  selectHidden: boolean;
 
   @ViewChild(IonSlides) slides: IonSlides;
   items: any = [];
@@ -56,33 +60,103 @@ export class AddcontactPage implements OnInit {
     this.start = 0;
     this.loadAcount();
   }
+  showNow() {
+    this.isHidden = false;
+    this.warning;
+  }
+  Show() {
+    if (this.title == 'Lainnya') {
+      this.isHidden = false;
+      this.selectHidden = true;
+      this.title = '';
+    }
+  }
+
   ngOnInit() {
     this.actRoute.params.subscribe((data: any) => {
       if (data.id == null) {
-     
       } else {
         this.id = data.id;
-        this.nama = data.nama;
-        this.email = data.email;
-        this.alamat = data.alamat;
-        this.tgl_lahir = data.tgl_lahir;
-        this.kelamin = data.kelamin;
-        this.no_tlp = data.no_tlp;
-        this.almt_rumah = data.almt_rumah;
-        this.title = data.title;
-        this.category = data.category;
-        this.penghasilan = data.penghasilan;
-        this.perusahaan = data.perusahaan;
-        this.almt_perusahaan = data.almt_perusahaan;
-        this.penghasilan = data.penghasilan,
-          this.Hobi = data.Hobi,
-          this.Makanan_Favorit = data.Makanan_Favorit,
-          this.NPWP = data.NPWP,
-          this.Facebook = data.Facebook,
-          this.Twitter = data.Twitter,
+        if ( data.nama == " "){
+          this.nama = "";
+        }else{
+          this.nama = data.nama;
+        }
+        if (data.email == " "){
+          this.email = "";
+        }else{
+          this.email = data.email;
+        }
+        if (data.alamat == " "){
+          this.alamat = "";
+        }else{
+          this.alamat = data.alamat;
+        }
+        if (data.kelamin == " "){
+          this.kelamin = "";
+        }else{
+          this.kelamin = data.kelamin;
+        }
+        if (data.no_tlp == " "){
+          this.no_tlp = "";
+        }else{
+          this.no_tlp = data.no_tlp;
+        }
+        if (data.almt_rumah == " "){
+          this.almt_rumah = "";
+        }else{
+          this.almt_rumah = data.almt_rumah;
+        }
+        if (data.title == " "){
+          this.title = "";
+        }else{
+          this.title = data.title;
+        }
+        if (data.penghasilan == " "){
+          this.penghasilan = "";
+        }else{
+          this.penghasilan = data.penghasilan;
+        }
+        if (data.perusahaan == " "){
+          this.perusahaan = "";
+        }else{
+          this.perusahaan = data.perusahaan;
+        }
+        if (data.almt_perusahaan == " "){
+          this.almt_perusahaan = "";
+        }else{
+          this.almt_perusahaan = data.almt_perusahaan;
+        }
+        if (data.Hobi == " "){
+          this.Hobi = "";
+        }else{
+          this.Hobi = data.Hobi;
+        }
+        if (data.Makanan_Favorit == " "){
+          this.Makanan_Favorit = "";
+        }else{
+          this.Makanan_Favorit = data.Makanan_Favorit;
+        }
+        if (data.Facebook == " "){
+          this.Facebook = "";
+        }else{
+          this.Facebook = data.Facebook;
+        }
+        if (data.Twitter == " "){
+          this.Twitter = "";
+        }else{
+          this.Twitter = data.Twitter;
+        }
+        if (data.Instagram == " "){
+          this.Instagram = "";
+        }else{
           this.Instagram = data.Instagram
+        }
+        this.NPWP = data.NPWP;
+        this.tgl_lahir = data.tgl_lahir;
       } 
     });
+   
     //fungsi dimana data yang akan di isi langsung ke storge database    
     this.storage.get('session_storage').then((iduser) => {
       this.items2 = iduser;
@@ -92,147 +166,34 @@ export class AddcontactPage implements OnInit {
       this.userID = this.user;
     });
   }
-  route() {
-
+  loadCompanyAddress() {
+    let body = {
+      aksi: 'getdata',
+      limit: this.limit,
+      start: this.start,
+    };
+    this.postPvdr.postData(body, 'LoadEmailAccount.php?Account=' + this.perusahaan).subscribe(data => {
+      for (let item of data) {
+        this.itemsPerusahaan.push(item);
+        this.storage.set('Data', this.itemsPerusahaan).then(() => {
+          this.storage.get('Data').then((data) => {
+            var Data = data;
+            var DataAddress = Data.map( data => data.alamat);
+            this.almt_perusahaan = DataAddress.toString();
+          })
+        })
+      }
+    });
   }
-   //Fungsi dimana user harus mengisi semua fill yang ada di UI dan tidak boleh kosong pas di simpan  
-  async createdProcess() {
-    const loading = await this.loadingController.create({
-      spinner: 'crescent',
-      translucent: true,
-      cssClass: 'custom-loader-class',
-      mode: 'md'
-    })
-    loading.present();
-    if (this.nama == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Nama diperlukan!',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.alamat == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Alamat tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
 
-    } else if (this.tgl_lahir == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Tanggal Lahir tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.kelamin == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Kelamin tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
+   //Fungsi dimana user harus mengisi semua fill yang ada di UI dan tidak boleh kosong pas di simpan  
+   createdProcess() {
+    if (this.nama == '') {
+      this.warning = 'Data Tidak Boleh Kosong'
+    } else if (this.email == '') {
+      this.warning = 'Data Tidak Boleh Kosong'
     } else if (this.no_tlp == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Nomor Telepon tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.almt_rumah == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Alamat Rumah tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.title == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Title tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.perusahaan == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Perusahaan tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.almt_perusahaan == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Alamat Perusahaan tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.penghasilan == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Penghasilan tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.Hobi == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Hobi tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.Makanan_Favorit == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Makanan Favorit tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.NPWP == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'NPWP harus diisi!',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.Facebook == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Facebook tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.Twitter == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Twitter tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
-    } else if (this.Instagram == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Instagram tidak boleh kosong',
-          duration: 2000
-        });
-        toast.present();
-      })
+        this.warning = 'Data Tidak Boleh Kosong'
     } else {
       return new Promise(resolve => {
         let body = {
@@ -256,13 +217,11 @@ export class AddcontactPage implements OnInit {
           Instagram: this.Instagram,
           userID: this.userID
         };
-
         //Fungsi untuk menarik/mendapatkan data untuk data add contact dari server php
         this.postPvdr.postData(body, 'InsertContact.php').subscribe(data => {
-          loading.dismiss().then(() => {
+          console.log(data)
             this.router.navigate(['members/contact']);
-          })
-        });
+      });
       });
     }
   }
@@ -298,12 +257,13 @@ export class AddcontactPage implements OnInit {
       };
       this.postPvdr.postData(body, 'InsertContact.php').subscribe(data => {
         loading.dismiss().then(() => {
+          this.clearDataStorage();
           this.router.navigate(['members/contact']);
         })
       });
     });
   }
-    //fungsi untuk memajukan next page yang akan di isi di contact
+ //fungsi untuk memajukan next page yang akan di isi di contact
   next() {
     this.slides.slideNext();
   }
@@ -335,6 +295,9 @@ export class AddcontactPage implements OnInit {
         })
       });
     })
+  }
+  clearDataStorage(){
+    this.storage.remove('Data');
   }
 
 }

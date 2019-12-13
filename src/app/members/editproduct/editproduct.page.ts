@@ -15,14 +15,16 @@ export class EditproductPage implements OnInit {
   items2: any;
   user: any;
   userID: string = "";
-  namaProduk: string = "";
-  tipeProduk: string = "";
-  statusProduk: string = "";
-  jumlahProduk: string = "";
-  hargaProduk: string = "";
-  deskripsiProduk: string = "";
+  namaProduk: string ='';
+  tipeProduk: string;
+  statusProduk: string;
+  jumlahProduk: string ='';
+  hargaProduk: string ='';
+  deskripsiProduk: string;
   id: number;
   isImgLoaded: boolean;
+  warning: string;
+  isHidden: boolean = true;
 
   constructor(
     private storageLocal: Storage,
@@ -35,19 +37,40 @@ export class EditproductPage implements OnInit {
   }
   
   ngOnInit() {
-    
     this.actRoute.params.subscribe((data: any) => {
-      
       if ( data.id == null){
-      
       }else{
       this.id = data.id;
-      this.namaProduk = data.namaProduk;
-      this.tipeProduk = data.tipeProduk;
-      this.statusProduk = data.statusProduk;
-      this.jumlahProduk = data.jumlahProduk;
-      this.hargaProduk = data.hargaProduk;
-      this.deskripsiProduk = data.deskripsiProduk
+      if ( data.namaProduk == " "){
+        this.namaProduk ="";
+      }else{
+        this.namaProduk = data.namaProduk;
+      }
+      if ( data.tipeProduk == " "){
+        this.tipeProduk ="";
+      }else{
+        this.tipeProduk = data.tipeProduk;
+      }
+      if ( data.tipeProduk == " "){
+        this.tipeProduk ="";
+      }else{
+        this.statusProduk = data.statusProduk;
+      }
+      if ( data.jumlahProduk == " "){
+        this.jumlahProduk ="";
+      }else{
+        this.jumlahProduk = data.jumlahProduk;
+      }
+      if ( data.hargaProduk == " "){
+        this.hargaProduk ="";
+      }else{
+        this.hargaProduk = data.hargaProduk;
+      }
+      if ( data.deskripsiProduk == " "){
+        this.deskripsiProduk ="";
+      }else{
+        this.deskripsiProduk = data.deskripsiProduk
+      }
       }
     });
     //fungsi dimana data yang akan di isi langsung ke storge database  
@@ -59,64 +82,19 @@ export class EditproductPage implements OnInit {
     });
   }
 
+  showNow() {
+    this.isHidden = false;
+    this.warning;
+  }
   //Fungsi dimana user harus mengisi semua fill yang ada di UI dan tidak boleh kosong pas di simpan
-  async Simpan() {
-    const loading = await this.loadingController.create({
-      message: "",
-      spinner: 'crescent',
-      translucent: true,
-      cssClass: 'custom-loader-class',
-      mode: 'md'
-    });
-    loading.present();
+  Simpan() {
     if (this.namaProduk == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Nama Produk harus di isi',
-          duration: 2000
-        })
-        toast.present();
-      })
-    } else if (this.tipeProduk == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Tipe Produk harus di isi',
-          duration: 2000
-        })
-        toast.present();
-      })
-    } else if (this.statusProduk == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Status Produk tidak boleh Kosong',
-          duration: 2000,
-        })
-        toast.present();
-      })
+      this.warning = 'Data Tidak Boleh Kosong'
     } else if (this.jumlahProduk == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Jumlah Produk harus di isi',
-          duration: 2000
-        })
-        toast.present();
-      })
-    } else if (this.hargaProduk == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Harga harus di isi',
-          duration: 2000
-        })
-        toast.present();
-      })
-    } else if (this.deskripsiProduk == '') {
-      loading.dismiss().then(async () => {
-        const toast = await this.toastCtrl.create({
-          message: 'Deskripsi harus di isi',
-          duration: 2000
-        })
-        toast.present();
-      })
+      this.warning = 'Data Tidak Boleh Kosong'
+    } else
+      if (this.hargaProduk == '') {
+        this.warning = 'Data Tidak Boleh Kosong'
     } else {
       return new Promise(resolve => {
         let body = {
@@ -131,9 +109,7 @@ export class EditproductPage implements OnInit {
         };
           //Fungsi untuk menarik/mendapatkan data untuk data product dari server php
         this.postPvdr.postData(body, 'InsertProduct.php').subscribe(async data => {
-          loading.dismiss().then(() => {
             this.router.navigate(['members/product']);
-          })
         });
       });
     }

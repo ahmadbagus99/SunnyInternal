@@ -11,7 +11,10 @@ ion-title{
   text-align: center;
   text-transform: capitalize;
 }
-
+ion-input{
+  --placeholder-color: red;
+  --placeholder-opacity: 1;
+}
 ion-title{
   color:#F57F17;
 }
@@ -70,7 +73,6 @@ ion-toolbar{
 .button-next{
   ion-button{
     right: 10px;
-    position: absolute;
   }
 }
 .button-next1{

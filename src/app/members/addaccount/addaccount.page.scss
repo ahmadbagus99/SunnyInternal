@@ -9,7 +9,10 @@ ion-title{
   text-transform: capitalize;
   color:#F57F17;
 }
-
+ion-input{
+  --placeholder-color: red;
+  --placeholder-opacity: 1;
+}
 ion-button{
   color: #F57F17;
   text-transform: capitalize;

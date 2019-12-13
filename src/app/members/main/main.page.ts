@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { ShareService } from 'src/app/share/share';
 import { DataService } from 'src/app/services/data.service';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ApplicationRef, NgZone } from '@angular/core';
 import { Chart } from 'chart.js';
 import { PostProvider } from 'src/providers/post-providers';
 import { IonSlides } from '@ionic/angular';
@@ -61,8 +61,17 @@ export class MainPage implements OnInit {
     public share: ShareService,
     private dataService: DataService,
     private postPvdr: PostProvider,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private applicationRef: ApplicationRef,
+    private zone: NgZone
   ) {
+    router.events.subscribe(() => {
+      zone.run(() =>
+        setTimeout(() => {
+          this.applicationRef.tick();
+        }, 0)
+      );
+    });
   }
   slideOptsOne = {
     initialSlide: 0,

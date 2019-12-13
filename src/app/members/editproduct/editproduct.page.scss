@@ -8,6 +8,10 @@ ion-title{
   text-align: center;
   color: #FFFFFF;
 }
+ion-input{
+  --placeholder-color: red;
+  --placeholder-opacity: 1;
+}
 ion-back-button {
   color: #FFFFFF;
 }

@@ -24,7 +24,7 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
+      this.statusBar.styleLightContent()
       this.splashScreen.hide();
       timer(3000).subscribe(()=> this.showSplash = false)
       this.authenticationService.authenticationState.subscribe(state => {
