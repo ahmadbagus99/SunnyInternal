@@ -9,20 +9,14 @@ ion-title{
   text-align: center;
   text-transform: capitalize;
 }
-ion-button{
-  align-content: center;
-  margin-top: 130vw;
-  border-radius: 20px;
-  stroke: #bd0909;
-  color: #bd0909;
-}
 
 ion-grid{
   object-position: unset;
   top: 10px;
   float: initial;
   padding: 10px;
-  color: #F57F17;;
+  color: #F57F17;
+
   
 }
 ion-header{
@@ -39,11 +33,32 @@ ion-icon{
   color: #222428;
 }
 
+ion-label{
+  span{
+    color: red;
+  }
+}
+
 .container {
   margin-top: -10px;
 }
 
 .signout {
-  border-color: #bd0909;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  box-shadow: #989aa2 8px;
+    --padding-top:12px ;
+      --padding-end:12px ;
+      --padding-bottom:12px ;
+      --padding-start:20px ;
+      color: #bd0909;
+      border: 3px  #F57F17;
 }
 
+ion-button{
+  align-content: center;
+  margin-top: 95vw;
+  stroke: #bd0909;
+  color: #bd0909;
+}

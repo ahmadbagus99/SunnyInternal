@@ -1,6 +1,6 @@
 <ion-header no-border>
   <ion-toolbar color=#F57F17 class="new-background-color">
-    <ion-title>PENGATURAN</ion-title>
+    <ion-title>SETIINGS</ion-title>
       </ion-toolbar>
 </ion-header>
 
@@ -10,7 +10,7 @@
     <ion-item button (click)="profile()">
       <ion-icon slot="center" name="person"></ion-icon>
       <ion-label>
-        <h3>Sistem Pengguna</h3>
+        <h3>System User</h3>
       </ion-label>
       <ion-icon name="arrow-dropright"></ion-icon>
     </ion-item>
@@ -32,25 +32,18 @@
     <ion-item button (click)="showDetail()">
       <ion-icon slot="center" name="person"></ion-icon>
       <ion-label>
-        <h3>Tentang</h3>
+        <h3>About</h3>
       </ion-label>
       <ion-icon name="arrow-dropright"></ion-icon>
     </ion-item>
   </ion-list>
 
-  
-    
-  <!-- <ion-button class="signout" expand="block" shape="round" button (click)="presentAlertMultipleButtons()">Sign Out</ion-button> -->
-  <div class="signout">
-    <ion-button expand="full outline"  shape="round" color="white" (click)="presentAlertMultipleButtons()" >SIGN OUT</ion-button>
-  </div>
    
-
-    <!-- <ion-grid>
-        <ion-row justify-content-center align-items-center style="height: 200%">
-            <ion-button expand="full outline" shape="round" (click)="presentAlertMultipleButtons()" color="danger">
-                   <ion-label>Keluar</ion-label>
+  <div class='signout'>
+    <ion-grid> 
+            <ion-button expand="full outline" shape="round" (click)="presentAlertMultipleButtons()" color="white">
+                   <ion-label> <span>Keluar</span></ion-label>
             </ion-button>
-        </ion-row>
-    </ion-grid> -->
+    </ion-grid>
+  </div>
 </ion-content>
