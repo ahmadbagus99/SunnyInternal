@@ -1,5 +1,5 @@
-ion-title{
-    position: absolute;
+ion-title {
+  position: absolute;
   top: 0;
   left: 0;
   padding: 0 90px 1px;
@@ -8,42 +8,50 @@ ion-title{
   text-align: center;
   color: #FFFFFF;
 }
-ion-input{
+
+ion-input {
   --placeholder-color: red;
   --placeholder-opacity: 1;
 }
+
 ion-back-button {
   color: #FFFFFF;
 }
-ion-title{
-  color:#FFFFFF;
+
+ion-title {
+  color: #FFFFFF;
 }
-ion-button{
+
+ion-button {
   color: white;
   text-transform: capitalize;
 }
-ion-button{
-  span{
-    text-align:left;
-    width:100%;
+
+ion-button {
+  span {
+    text-align: left;
+    width: 100%;
   }
 }
-ion-header{
-  background-color: #F57F17;
-}
-new-background-color {
-  background-color: #F57F17;
-}
-ion-toolbar{
+
+ion-header {
   background-color: #F57F17;
 }
 
-.item{
+new-background-color {
+  background-color: #F57F17;
+}
+
+ion-toolbar {
+  background-color: #F57F17;
+}
+
+.item {
   margin-right: 25px;
   margin-left: 10px;
 }
 
-.row2{
+.row2 {
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -68,10 +76,11 @@ ion-toolbar{
 // }
 
 
-.Produk{
+.Produk {
   height: 160px;
-  .add{
-    img{
+
+  .add {
+    img {
       width: 49px;
       height: 50px;
       position: absolute;
@@ -83,19 +92,17 @@ ion-toolbar{
 }
 
 
-.upload{
+.upload {
   margin-left: 143px;
   margin-bottom: 50px;
   color: #ffffff;
 }
 
-.image-upload > input
-{
-    display: none;
+.image-upload>input {
+  display: none;
 }
 
-.image-upload img
-{
-    width: 80px;
-    cursor: pointer;
+.image-upload img {
+  width: 80px;
+  cursor: pointer;
 }

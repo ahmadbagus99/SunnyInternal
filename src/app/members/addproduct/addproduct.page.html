@@ -1,58 +1,59 @@
 <ion-header>
-    <ion-toolbar color=#F57F17 class="new-background-color">
-      <ion-buttons color=#FFFFFF slot="start" class="new-background-color">
-        <ion-back-button defaultHref="/"></ion-back-button>
-      </ion-buttons>
-      <ion-buttons color=#FFFFFF slot="primary" >
-         <!-- fungsi sebagai tombol button untuk mengedit produk yang di buat -->
-       <ion-button (click)="updateProduct(id,namaProduk,tipeProduk,statusProduk,jumlahProduk,hargaProduk,deskripsiProduk)">
-          Edit
-        </ion-button>
-      </ion-buttons>
-      <ion-title>Product</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content>
-    <div class="background">
-     <div class="cover">
-      <img src="assets/img/4_avatar-512.png"/>
-        <div class="nama">
-          <!-- fungsi sebagai munculnya tampilan namaproduk ketika di view -->
-            <ion-input type="text" [(ngModel)]="namaProduk" readonly></ion-input>
-        </div>
-        <!-- fungsi sebagai munculnya tampilan tipe produk ketika di view -->
-        <div class="perusahaan">
-            <ion-input type="text" [(ngModel)]="tipeProduk" readonly></ion-input>
-        </div>
-     </div>
-     <!-- fungsi sebagai munculnya tampilan Status Produk ketika di view -->
-     <div class="nomor-telepon">
-        <ion-item lines="none">
-            <ion-label position="floating">Product Status</ion-label>
-            <ion-input type="text" [(ngModel)]="statusProduk" readonly></ion-input>
-          </ion-item>
-     </div>
-     <!-- fungsi sebagai munculnya tampilan Jumlah Produk ketika di view -->
-     <div class="alamat">
-        <ion-item lines="none">
-            <ion-label position="floating">Product total</ion-label>
-            <ion-input type="text" [(ngModel)]="jumlahProduk" readonly></ion-input>
-          </ion-item>
-     </div>
-     <!-- fungsi sebagai munculnya tampilan Harga Produk ketika di view -->
-     <div class="npwp">
-        <ion-item lines="none">
-            <ion-label position="floating">Product Price</ion-label>
-            <ion-input type="text" [(ngModel)]="hargaProduk" readonly></ion-input>
-          </ion-item>
-     </div>
-     <!-- fungsi sebagai munculnya tampilan Deskripsi Produk ketika di view -->
-     <div class="twitter">
-        <ion-item lines="none">
-            <ion-label position="floating">Product Description</ion-label>
-            <ion-input type="text" [(ngModel)]="deskripsiProduk" readonly></ion-input>
-          </ion-item>
-     </div>
+  <ion-toolbar color=#F57F17 class="new-background-color">
+    <ion-buttons color=#FFFFFF slot="start" class="new-background-color">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons color=#FFFFFF slot="primary">
+      <!-- fungsi sebagai tombol button untuk mengedit produk yang di buat -->
+      <ion-button
+        (click)="updateProduct(id,namaProduk,tipeProduk,statusProduk,jumlahProduk,hargaProduk,deskripsiProduk)">
+        Edit
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="background">
+    <div class="cover">
+      <img src="assets/img/4_avatar-512.png" />
+      <div class="nama">
+        <!-- fungsi sebagai munculnya tampilan namaproduk ketika di view -->
+        <ion-input type="text" [(ngModel)]="namaProduk" readonly></ion-input>
+      </div>
+      <!-- fungsi sebagai munculnya tampilan tipe produk ketika di view -->
+      <div class="perusahaan">
+        <ion-input type="text" [(ngModel)]="tipeProduk" readonly></ion-input>
+      </div>
     </div>
-    </ion-content>
+    <!-- fungsi sebagai munculnya tampilan Status Produk ketika di view -->
+    <div class="nomor-telepon">
+      <ion-item lines="none">
+        <ion-label position="floating">Product Status</ion-label>
+        <ion-input type="text" [(ngModel)]="statusProduk" readonly></ion-input>
+      </ion-item>
+    </div>
+    <!-- fungsi sebagai munculnya tampilan Jumlah Produk ketika di view -->
+    <div class="alamat">
+      <ion-item lines="none">
+        <ion-label position="floating">Product total</ion-label>
+        <ion-input type="text" [(ngModel)]="jumlahProduk" readonly></ion-input>
+      </ion-item>
+    </div>
+    <!-- fungsi sebagai munculnya tampilan Harga Produk ketika di view -->
+    <div class="npwp">
+      <ion-item lines="none">
+        <ion-label position="floating">Product Price</ion-label>
+        <ion-input type="text" [(ngModel)]="hargaProduk" readonly></ion-input>
+      </ion-item>
+    </div>
+    <!-- fungsi sebagai munculnya tampilan Deskripsi Produk ketika di view -->
+    <div class="twitter">
+      <ion-item lines="none">
+        <ion-label position="floating">Product Description</ion-label>
+        <ion-input type="text" [(ngModel)]="deskripsiProduk" readonly></ion-input>
+      </ion-item>
+    </div>
+  </div>
+</ion-content>

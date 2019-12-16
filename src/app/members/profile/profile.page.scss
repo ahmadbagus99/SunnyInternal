@@ -1,13 +1,16 @@
-ion-content{
+ion-content {
   --ion-background-color: white !important;
 }
-ion-header{
+
+ion-header {
   background-color: #F57F17;
 }
-ion-toolbar{
-  color:white;
+
+ion-toolbar {
+  color: white;
 }
-ion-title{
+
+ion-title {
   color: #FFFFFF;
   position: absolute;
   top: 0;
@@ -17,19 +20,21 @@ ion-title{
   height: 100%;
   text-align: center;
 }
-ion-button{
+
+ion-button {
   text-transform: capitalize;
 }
 
-.background{
-  .add{
-      position: relative;
-      width: 30px;
-      height: 30px;
-      margin-left: 28%;
-      opacity: 30%;
-      margin-top: -12vw;
-    img{
+.background {
+  .add {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin-left: 28%;
+    opacity: 30%;
+    margin-top: -12vw;
+
+    img {
       position: relative;
       width: 30px;
       height: 30px;
@@ -38,44 +43,49 @@ ion-button{
       margin-top: -100vw;
     }
   }
+
   height: 180px;
   background-image: url('../../../assets/img/Protruding-Squares.svg');
   background-attachment: fixed;
   background-size: cover;
-  ion-text{
+
+  ion-text {
     visibility: hidden;
-  } 
+  }
 }
-.name{
+
+.name {
   color: #EEEEEE;
   margin-top: -60px;
   margin-left: 120px;
 }
-.image-upload{
+
+.image-upload {
   height: 80px;
   width: 100px;
   margin-top: 88px;
   margin-left: 15px;
 }
-.image-upload > input
-{
-    display: none;
+
+.image-upload>input {
+  display: none;
 }
 
-.image-upload img
-{
+.image-upload img {
   border-style: solid;
-    border:3px solid #EEEEEE;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    cursor: pointer;
+  border: 3px solid #EEEEEE;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  cursor: pointer;
 }
-.content{
+
+.content {
   height: 400px;
   background-color: white;
 }
-.content-item{
+
+.content-item {
   margin-top: 40px;
   margin-left: 90px;
   height: 400px;

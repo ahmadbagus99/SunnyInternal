@@ -1,241 +1,244 @@
 <ion-header>
-    <ion-toolbar color=#F57F17 class="new-background-color" >
-        <ion-buttons color=#FFFFFF slot="start">
-        <ion-back-button (click)="clearDataStorage()" defaultHref="/"></ion-back-button>
-      </ion-buttons>
-      <ion-title *ngIf="!id">Add Contact</ion-title>
-      <ion-title  *ngIf="id>=1">Edit Contact</ion-title>
-      <ion-buttons slot="primary">
-          <ion-button *ngIf="!id" (click)="createdProcess()">Simpan</ion-button>
-          <ion-button *ngIf="id>=1" (click)="updateProcess()">Simpan</ion-button>
-        </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content>
-     <!-- Kegunaan untuk membuat fill dan untuk mengupload foto ke dalam akun -->
-<ion-grid>
-          <ion-row>
-            <ion-col></ion-col>
-            <ion-col></ion-col>
-            <ion-col>
-                <div class="image-upload">
-                    <label for="file-input">
-                        <img src="assets/icon/add.png"/>
-                    </label>
-                
-                    <input id="file-input" type="file"/>
-                </div>    
-            </ion-col>
-            <ion-col></ion-col>
-            <ion-col></ion-col>
-          </ion-row>
-        </ion-grid>
+  <ion-toolbar color=#F57F17 class="new-background-color">
+    <ion-buttons color=#FFFFFF slot="start">
+      <ion-back-button (click)="clearDataStorage()" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="!id">Add Contact</ion-title>
+    <ion-title *ngIf="id>=1">Edit Contact</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button *ngIf="!id" (click)="createdProcess()">Simpan</ion-button>
+      <ion-button *ngIf="id>=1" (click)="updateProcess()">Simpan</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-    <ion-slides [options]="options" #slides class="swiper-no-swiping">
-      <ion-slide>
-        <ion-col>
-          <!-- Slide - 1 -->
+<ion-content>
+  <!-- Kegunaan untuk membuat fill dan untuk mengupload foto ke dalam akun -->
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col></ion-col>
+      <ion-col>
+        <div class="image-upload">
+          <label for="file-input">
+            <img src="assets/icon/add.png" />
+          </label>
+
+          <input id="file-input" type="file" />
+        </div>
+      </ion-col>
+      <ion-col></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-slides [options]="options" #slides class="swiper-no-swiping">
+    <ion-slide>
+      <ion-col>
+        <!-- Slide - 1 -->
         <div>
-            <ion-label class="segment">Personal Information </ion-label>
-            <br>
-   <!-- fill data pengisian Nama user-->
-            <ion-item>
-                <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
-                <ion-label position="stacked">Full Name  <ion-text color="danger">*</ion-text> </ion-label>
-                  <ion-input type="text" placeholder="{{warning}}" [(ngModel)]="nama"></ion-input>
-            </ion-item>
+          <ion-label class="segment">Personal Information </ion-label>
+          <br>
+          <!-- fill data pengisian Nama user-->
+          <ion-item>
+            <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
+            <ion-label position="stacked">Full Name <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input type="text" placeholder="{{warning}}" [(ngModel)]="nama"></ion-input>
+          </ion-item>
           <span>
             <ion-item>
-              <ion-label position="stacked">Email <ion-text color="danger">*</ion-text></ion-label>
+              <ion-label position="stacked">Email <ion-text color="danger">*</ion-text>
+              </ion-label>
               <ion-input type="text" placeholder="{{warning}}" [(ngModel)]="email"></ion-input>
             </ion-item>
           </span>
 
-        <span>
-        <!-- fill data pengisian Alamat user-->
+          <span>
+            <!-- fill data pengisian Alamat user-->
             <ion-item>
-                <ion-label position="stacked">Address</ion-label>
-                <ion-input type="text" [(ngModel)]="alamat"></ion-input>
-              </ion-item>
-      </span>
-      <span>
-        <!-- fill data pengisian Tanggal Lahir user-->
-          <ion-item>
+              <ion-label position="stacked">Address</ion-label>
+              <ion-input type="text" [(ngModel)]="alamat"></ion-input>
+            </ion-item>
+          </span>
+          <span>
+            <!-- fill data pengisian Tanggal Lahir user-->
+            <ion-item>
               <ion-label position="stacked">Date of birth</ion-label>
               <ion-datetime [(ngModel)]="tgl_lahir"></ion-datetime>
             </ion-item>
-      </span>
-      <span>
-       <!-- fill data pengisian Jenis Kelamin user-->
-          <ion-item> 
+          </span>
+          <span>
+            <!-- fill data pengisian Jenis Kelamin user-->
+            <ion-item>
               <ion-label position="stacked">Gender</ion-label>
               <ion-select placeholder="Jenis Kelamin" [(ngModel)]="kelamin">
-                  <ion-select-option value="Laki-laki">Male</ion-select-option>
-                  <ion-select-option value="Perempuan">Female</ion-select-option>
+                <ion-select-option value="Laki-laki">Male</ion-select-option>
+                <ion-select-option value="Perempuan">Female</ion-select-option>
               </ion-select>
             </ion-item>
-      </span>
-      <span>
-      <!-- fill data pengisian Nomor Telepon user-->
-          <ion-item>
-              <ion-label position="stacked">Phone Number  <ion-text color="danger">*</ion-text> </ion-label>
+          </span>
+          <span>
+            <!-- fill data pengisian Nomor Telepon user-->
+            <ion-item>
+              <ion-label position="stacked">Phone Number <ion-text color="danger">*</ion-text>
+              </ion-label>
               <ion-input type="text" placeholder="{{warning}}" [(ngModel)]="no_tlp"></ion-input>
             </ion-item>
-      </span>
-      <span>
-         <!-- fill data pengisian Alamat Rumah user-->
-          <ion-item>
+          </span>
+          <span>
+            <!-- fill data pengisian Alamat Rumah user-->
+            <ion-item>
               <ion-label position="stacked">Home Address</ion-label>
               <ion-input type="text" [(ngModel)]="almt_rumah"></ion-input>
             </ion-item>
-      </span>
-      </div>
-      <span>
-     <!-- fungsi untuk lanjut (next) ke slide ke 2 atau page ke 2 -->
-      <div class="button-next">
-        <ion-button expand="full" (click)="next()" color="primary"> Next </ion-button>
-      </div>
-    </span>
-    </ion-col>
-    
-      </ion-slide>
-   
+          </span>
+        </div>
+        <span>
+          <!-- fungsi untuk lanjut (next) ke slide ke 2 atau page ke 2 -->
+          <div class="button-next">
+            <ion-button expand="full" (click)="next()" color="primary"> Next </ion-button>
+          </div>
+        </span>
+      </ion-col>
+
+    </ion-slide>
+
     <!-- slide 2 -->
     <ion-slide>
       <ion-col>
-    <div>
-    <ion-label class="segment">Job Information</ion-label>
-    <br>
-      <span>
-         <!-- fill data pengisian jabatan perusahaan di user-->
-    <ion-item [hidden]="selectHidden">
-      <ion-label position="stacked">Title</ion-label>
-      <ion-select [(ngModel)]="title" placeholder="Select title" (ionChange)="Show()">
-        <ion-select-option value="Manager">Manager</ion-select-option>
-        <ion-select-option value="Sales">Sales</ion-select-option>
-        <ion-select-option value="Marketing">Marketing</ion-select-option>
-        <ion-select-option value="Lainnya">Lainnya</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </span>
+        <div>
+          <ion-label class="segment">Job Information</ion-label>
+          <br>
+          <span>
+            <!-- fill data pengisian jabatan perusahaan di user-->
+            <ion-item [hidden]="selectHidden">
+              <ion-label position="stacked">Title</ion-label>
+              <ion-select [(ngModel)]="title" placeholder="Select title" (ionChange)="Show()">
+                <ion-select-option value="Manager">Manager</ion-select-option>
+                <ion-select-option value="Sales">Sales</ion-select-option>
+                <ion-select-option value="Marketing">Marketing</ion-select-option>
+                <ion-select-option value="Lainnya">Lainnya</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </span>
 
-  <div [hidden]="isHidden">
-      <span>
-        <ion-item>
-          <ion-label position="stacked">Title</ion-label>
-          <ion-input [(ngModel)]="title"></ion-input>
-        </ion-item>
-      </span>
-    </div>
+          <div [hidden]="isHidden">
+            <span>
+              <ion-item>
+                <ion-label position="stacked">Title</ion-label>
+                <ion-input [(ngModel)]="title"></ion-input>
+              </ion-item>
+            </span>
+          </div>
 
-  <span>
-    <ion-item>
-     <!-- fill data pengisian Alamat Perusahaan user-->
-      <ion-label position="stacked">Company</ion-label>
-      <!-- <ion-input *ngFor="let item of items" type="text" [(ngModel)]="perusahaan">{{item.nama}}</ion-input> -->
-      <ion-select (ionChange)="loadCompanyAddress()" placeholder="Comapany Select" [(ngModel)]="perusahaan">
-        <ion-select-option *ngFor="let item of items">{{item.nama}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </span>
-  
-  <span>
-    <ion-item>
-       <!-- fill data pengisian Alamat Perusahaan user-->
-      <ion-label position="stacked">Company Address</ion-label>
-      <ion-input type="text" [(ngModel)]="almt_perusahaan" readOnly></ion-input>
-    </ion-item>
-  </span>
+          <span>
+            <ion-item>
+              <!-- fill data pengisian Alamat Perusahaan user-->
+              <ion-label position="stacked">Company</ion-label>
+              <!-- <ion-input *ngFor="let item of items" type="text" [(ngModel)]="perusahaan">{{item.nama}}</ion-input> -->
+              <ion-select (ionChange)="loadCompanyAddress()" placeholder="Comapany Select" [(ngModel)]="perusahaan">
+                <ion-select-option *ngFor="let item of items">{{item.nama}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </span>
 
-  <span>
-      <ion-item>
-          <ion-label position="stacked">NPWP</ion-label>
-          <ion-input type="number" [(ngModel)]="NPWP"></ion-input>
-        </ion-item>
-  </span>
+          <span>
+            <ion-item>
+              <!-- fill data pengisian Alamat Perusahaan user-->
+              <ion-label position="stacked">Company Address</ion-label>
+              <ion-input type="text" [(ngModel)]="almt_perusahaan" readOnly></ion-input>
+            </ion-item>
+          </span>
 
-  <span>
-      <ion-item>
-        <!-- fill data pengisian Penghasilan  user-->
-          <ion-label>Penghasilan</ion-label>
+          <span>
+            <ion-item>
+              <ion-label position="stacked">NPWP</ion-label>
+              <ion-input type="number" [(ngModel)]="NPWP"></ion-input>
+            </ion-item>
+          </span>
+
+          <span>
+            <ion-item>
+              <!-- fill data pengisian Penghasilan  user-->
+              <ion-label>Penghasilan</ion-label>
               <ion-select placeholder="Select Category Companies" [(ngModel)]="penghasilan">
                 <ion-select-option value="-5juta">less than 5 million / month</ion-select-option>
                 <ion-select-option value="5-10juta">5 - 10 million / month</ion-select-option>
                 <ion-select-option value="10-20juta">10 - 20 million / month</ion-select-option>
                 <ion-select-option value="+20juta">More than 20 million / month</ion-select-option>
               </ion-select>
-        </ion-item>
-  </span>
-  <!-- fungsi untuk kembali(back) ke slide ke 1 atau page ke 1-->
-  </div>
-  <div class="button-before">
-  <ion-button fill="clear" (click)="prev()" color="primary">
-    <ion-icon name="arrow-round-back"></ion-icon>Previous
-  </ion-button>
-  </div>
-    <!-- fungsi untuk lanjut (next) ke slide ke 3 atau page ke 3-->
-  <div class="button-next1">
-  <ion-button fill="clear" (click)="next()" color="primary">next
-    <ion-icon name="arrow-round-forward"></ion-icon>
-  </ion-button>
-</div>
-</ion-col>
+            </ion-item>
+          </span>
+          <!-- fungsi untuk kembali(back) ke slide ke 1 atau page ke 1-->
+        </div>
+        <div class="button-before">
+          <ion-button fill="clear" (click)="prev()" color="primary">
+            <ion-icon name="arrow-round-back"></ion-icon>Previous
+          </ion-button>
+        </div>
+        <!-- fungsi untuk lanjut (next) ke slide ke 3 atau page ke 3-->
+        <div class="button-next1">
+          <ion-button fill="clear" (click)="next()" color="primary">next
+            <ion-icon name="arrow-round-forward"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-col>
     </ion-slide>
 
     <ion-slide>
-        <ion-col>
-            <div>
-                <ion-label class="segment">Other Information</ion-label>
-                <br>
-            <span>
-              <!-- fill data pengisisan Hobi user-->
-                <ion-item class="card1">
-                    <ion-label position="stacked">Hobby</ion-label>
-                    <ion-input type="text" [(ngModel)]="Hobi"></ion-input>
-                  </ion-item>
-            </span>
-            <span>
-              <!-- fill data pengisisan Makanan Favorit user-->
-                <ion-item class="card1">
-                    <ion-label position="stacked">Favorite Food</ion-label>
-                    <ion-input type="text" [(ngModel)]="Makanan_Favorit"></ion-input>
-                  </ion-item>
-            </span>
-            <span>
-                <ion-label class="segment">Social Media</ion-label>
-                <br>
-            </span>
-            <span>
-                 <!-- fill data pengisisan Facebook user-->
-                <ion-item class="card1">
-                    <ion-label position="stacked">Facebook</ion-label>
-                    <ion-input type="text" [(ngModel)]="Facebook"></ion-input>
-                  </ion-item>
-            </span>
-            <span>
-                <!-- fill data pengisisan Twitter user-->
-                <ion-item class="card1">
-                    <ion-label position="stacked">Twitter</ion-label>
-                    <ion-input type="text" [(ngModel)]="Twitter"></ion-input>
-                  </ion-item>
-            </span>
-            <span>
-                <!-- fill data pengisisan instagram user-->
-                <ion-item class="card1">
-                    <ion-label position="stacked">Instagram</ion-label>
-                    <ion-input type="text" [(ngModel)]="Instagram"></ion-input>
-                  </ion-item>
-            </span>
-            </div>
-              <!-- fungsi untuk kembali(back) ke slide ke 2 atau page ke 2-->
-            <div class="sebelumnya2">
-              <ion-button fill="clear" (click)="prev()" color="primary">
-                <ion-icon name="arrow-round-back"></ion-icon>Previous
-              </ion-button>
-            </div>
-          </ion-col>
+      <ion-col>
+        <div>
+          <ion-label class="segment">Other Information</ion-label>
+          <br>
+          <span>
+            <!-- fill data pengisisan Hobi user-->
+            <ion-item class="card1">
+              <ion-label position="stacked">Hobby</ion-label>
+              <ion-input type="text" [(ngModel)]="Hobi"></ion-input>
+            </ion-item>
+          </span>
+          <span>
+            <!-- fill data pengisisan Makanan Favorit user-->
+            <ion-item class="card1">
+              <ion-label position="stacked">Favorite Food</ion-label>
+              <ion-input type="text" [(ngModel)]="Makanan_Favorit"></ion-input>
+            </ion-item>
+          </span>
+          <span>
+            <ion-label class="segment">Social Media</ion-label>
+            <br>
+          </span>
+          <span>
+            <!-- fill data pengisisan Facebook user-->
+            <ion-item class="card1">
+              <ion-label position="stacked">Facebook</ion-label>
+              <ion-input type="text" [(ngModel)]="Facebook"></ion-input>
+            </ion-item>
+          </span>
+          <span>
+            <!-- fill data pengisisan Twitter user-->
+            <ion-item class="card1">
+              <ion-label position="stacked">Twitter</ion-label>
+              <ion-input type="text" [(ngModel)]="Twitter"></ion-input>
+            </ion-item>
+          </span>
+          <span>
+            <!-- fill data pengisisan instagram user-->
+            <ion-item class="card1">
+              <ion-label position="stacked">Instagram</ion-label>
+              <ion-input type="text" [(ngModel)]="Instagram"></ion-input>
+            </ion-item>
+          </span>
+        </div>
+        <!-- fungsi untuk kembali(back) ke slide ke 2 atau page ke 2-->
+        <div class="sebelumnya2">
+          <ion-button fill="clear" (click)="prev()" color="primary">
+            <ion-icon name="arrow-round-back"></ion-icon>Previous
+          </ion-button>
+        </div>
+      </ion-col>
     </ion-slide>
-    </ion-slides>
+  </ion-slides>
 
-  </ion-content>
+</ion-content>

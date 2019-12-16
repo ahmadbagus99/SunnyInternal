@@ -42,8 +42,8 @@ export class MainPage implements OnInit {
   totalProspect: number = 0;
   sum: number = 0;
   sumPrice = [];
-  text : string = "Kamu tidak memiliki prospek hari ini"
-  textActivity : string = "Kamu tidak memiliki Agenda Hari ini"
+  text : string = "You don't have prospect today"
+  textActivity : string = "You don't have activities today"
   incentive :number;
   
   @ViewChild("barCanvas") barCanvas: ElementRef;

@@ -1,61 +1,69 @@
 <ion-header>
-    <ion-toolbar color=#F57F17 class="new-background-color">
-        <ion-buttons slot="start">
-            <ion-back-button color="light"defaultHref="/"></ion-back-button>
-          </ion-buttons>
-      <ion-title>Contact us</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar color=#F57F17 class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Contact us</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content fullscreen>
-    <div class="background">
-        <ion-text>Contact us</ion-text>
-    </div>
-  <div class="judul">  
- <h2> Sunny Crm (ISystem Asia)</h2>
- <p> Arkadia Green Park Estate, Tower F, 6th Floor, Jl. TB Simatupang No.Kav. 88, 
-    RT.1/RW.2, Kebagusan, Kec. Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12520
- </p>
-</div>
- <div class="layanan">
-   <h2> Costumer Service  
-   </h2>
-   <h2> (021) 78833022</h2>
-   <p> 
-    Contact our customer care number, or email to for further assistance.</p>
- </div>
- <div class="pesan">
- <p> Please fill out the form below, and we will get back to you as soon as possible. </p>
- </div>
+  <div class="background">
+    <ion-text>Contact us</ion-text>
+  </div>
+  <div class="judul">
+    <h2> Sunny Crm (ISystem Asia)</h2>
+    <p> Arkadia Green Park Estate, Tower F, 6th Floor, Jl. TB Simatupang No.Kav. 88,
+      RT.1/RW.2, Kebagusan, Kec. Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12520
+    </p>
+  </div>
+  <div class="layanan">
+    <h2> Costumer Service
+    </h2>
+    <h2> (021) 78833022</h2>
+    <p>
+      Contact our customer care number, or email to for further assistance.</p>
+  </div>
+  <div class="pesan">
+    <p> Please fill out the form below, and we will get back to you as soon as possible. </p>
+  </div>
 
- <div class="text-content"> 
-  <form onsubmit="processForm(event)">
-    <ion-list lines="full" class="ion-no-margin ion-no-padding">
-      <ion-item>
-        <ion-label position="stacked">  <ion-text > Name </ion-text></ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+  <div class="text-content">
+    <form onsubmit="processForm(event)">
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <ion-item>
+          <ion-label position="stacked">
+            <ion-text> Name </ion-text>
+          </ion-label>
+          <ion-input></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked"> <ion-text > Phone Number </ion-text> </ion-label>
-        <ion-input></ion-input>
-      </ion-item>
-      
-      <ion-item>
-        <ion-label position="stacked">  <ion-text > Email </ion-text> </ion-label>
-        <ion-input></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label position="stacked">
+            <ion-text> Phone Number </ion-text>
+          </ion-label>
+          <ion-input></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label position="stacked"> <ion-text >Massage </ion-text></ion-label>
-        <ion-textarea  rows="4"></ion-textarea>
-      </ion-item>
-    </ion-list>
+        <ion-item>
+          <ion-label position="stacked">
+            <ion-text> Email </ion-text>
+          </ion-label>
+          <ion-input></ion-input>
+        </ion-item>
 
-    <div class="ion-padding">
-      <ion-button expand="block" type="submit" class="ion-no-margin">Send</ion-button>
-    </div>
-  </form>
+        <ion-item>
+          <ion-label position="stacked">
+            <ion-text>Massage </ion-text>
+          </ion-label>
+          <ion-textarea rows="4"></ion-textarea>
+        </ion-item>
+      </ion-list>
 
- </div>
+      <div class="ion-padding">
+        <ion-button expand="block" type="submit" class="ion-no-margin">Send</ion-button>
+      </div>
+    </form>
+
+  </div>
 </ion-content>

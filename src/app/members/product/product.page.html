@@ -1,104 +1,111 @@
 <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-          <ion-back-button  color="light" defaultHref="dashboard"></ion-back-button>
-      </ion-buttons>
-      <ion-buttons slot="primary">
-        <ion-button (click)="addproduct()">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" defaultHref="dashboard"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="addproduct()">
         <ion-icon name="add"></ion-icon>
       </ion-button>
-      </ion-buttons>
-      <ion-title>Product</ion-title>
-    </ion-toolbar>
-    <ion-toolbar>
-      <ion-searchbar  color="light" animated
-      [(ngModel)]="searchTerm"
-    (ionChange)="setFilteredItems()"
-      ></ion-searchbar>
+    </ion-buttons>
+    <ion-title>Product</ion-title>
   </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-searchbar color="light" animated [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
 
 
-  <ion-content>
-      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-          <ion-refresher-content></ion-refresher-content>
-        </ion-refresher>
-    <ion-segment [(ngModel)]="selectCategory">
-      <ion-segment-button value="Populer">
-        <ion-label>Top Recent</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="Terbaru">
-        <ion-label>New</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="Kategori">
-          <ion-label>Category</ion-label>
-        </ion-segment-button>
-    </ion-segment>
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-segment [(ngModel)]="selectCategory">
+    <ion-segment-button value="Populer">
+      <ion-label>Top Recent</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Terbaru">
+      <ion-label>New</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Kategori">
+      <ion-label>Category</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-    <div [ngSwitch]="selectCategory">
-        <div *ngSwitchCase="'Populer'">
+  <div [ngSwitch]="selectCategory">
+    <div *ngSwitchCase="'Populer'">
       <ng-container *ngIf="isLoaded; else elseTemplate">
-    <ion-list>
-        <ion-item-sliding *ngFor="let item of items">
-          <ion-item-options side="end">
+        <ion-list>
+          <ion-item-sliding *ngFor="let item of items">
+            <ion-item-options side="end">
               <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
             </ion-item-options>
-        <ion-item button (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.statusProduk,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
-          <ion-icon slot="start" name="person"></ion-icon>
+            <ion-item button
+              (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.statusProduk,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label>
+                <h3>{{item.namaProduk}}</h3>
+              </ion-label>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
+      </ng-container>
+
+      <ng-template #elseTemplate>
+        <ion-item *ngFor="let item of arrayOne(10)">
+          <ion-avatar slot="start">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-avatar>
           <ion-label>
-            <h3>{{item.namaProduk}}</h3>
+            <h2>
+              <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
+            </h2>
+            <p>
+              <ion-skeleton-text animated style="width: 180px;"></ion-skeleton-text>
+            </p>
           </ion-label>
         </ion-item>
-      </ion-item-sliding>
-    </ion-list>
-  </ng-container>
-  
-  <ng-template #elseTemplate>
-    <ion-item *ngFor="let item of arrayOne(10)">
-      <ion-avatar slot="start">
-        <ion-skeleton-text animated></ion-skeleton-text>
-      </ion-avatar>
-      <ion-label>
-        <h2><ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text></h2>
-        <p><ion-skeleton-text animated style="width: 180px;"></ion-skeleton-text></p>
-      </ion-label>
-    </ion-item>
-  </ng-template>
-  </div>
+      </ng-template>
+    </div>
 
-  <div *ngSwitchCase="'Terbaru'">
+    <div *ngSwitchCase="'Terbaru'">
       <ng-container *ngIf="isLoaded; else elseTemplate">
-          <ion-list>
-              <ion-item-sliding *ngFor="let item of itemsNew">
-                <ion-item-options side="end">
-                    <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
-                  </ion-item-options>
-              <ion-item button (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.statusProduk,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
-                <ion-icon slot="start" name="person"></ion-icon>
-                <ion-label>
-                  <h3>{{item.namaProduk}}</h3>
-                </ion-label>
-              </ion-item>
-            </ion-item-sliding>
-          </ion-list>
-        </ng-container>
-        
-        <ng-template #elseTemplate>
-          <ion-item *ngFor="let item of arrayOne(10)">
-            <ion-avatar slot="start">
-              <ion-skeleton-text animated></ion-skeleton-text>
-            </ion-avatar>
-            <ion-label>
-              <h2><ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text></h2>
-              <p><ion-skeleton-text animated style="width: 180px;"></ion-skeleton-text></p>
-            </ion-label>
-          </ion-item>
-        </ng-template>
-  </div>
+        <ion-list>
+          <ion-item-sliding *ngFor="let item of itemsNew">
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
+            </ion-item-options>
+            <ion-item button
+              (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.statusProduk,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label>
+                <h3>{{item.namaProduk}}</h3>
+              </ion-label>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
+      </ng-container>
 
-  <div *ngSwitchCase="'Kategori'">
-    
-  </div>
+      <ng-template #elseTemplate>
+        <ion-item *ngFor="let item of arrayOne(10)">
+          <ion-avatar slot="start">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-avatar>
+          <ion-label>
+            <h2>
+              <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
+            </h2>
+            <p>
+              <ion-skeleton-text animated style="width: 180px;"></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+    </div>
+
+    <div *ngSwitchCase="'Kategori'">
+
+    </div>
 
   </div>
-  </ion-content>
+</ion-content>

@@ -1,55 +1,63 @@
 * {
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
 .left {
-  background-color:#F57F17;
-  padding:20px;
-  float:left;
-  width:20%; /* The width is 20%, by default */
+  background-color: #F57F17;
+  padding: 20px;
+  float: left;
+  width: 20%;
+  /* The width is 20%, by default */
 }
 
 .main {
-  background-color:#f1f1f1;
-  padding:20px;
-  float:left;
-  width:60%; /* The width is 60%, by default */
+  background-color: #f1f1f1;
+  padding: 20px;
+  float: left;
+  width: 60%;
+  /* The width is 60%, by default */
 }
 
 .right {
-  background-color:#4CAF50;
-  padding:20px;
-  float:left;
-  width:20%; /* The width is 20%, by default */
+  background-color: #4CAF50;
+  padding: 20px;
+  float: left;
+  width: 20%;
+  /* The width is 20%, by default */
 }
 
 /* Use a media query to add a break point at 800px: */
 @media screen and (max-width:500px) {
-  .left, .main, .right {
-    width:100%; /* The width is 100%, when the viewport is 800px or smaller */
+
+  .left,
+  .main,
+  .right {
+    width: 100%;
+    /* The width is 100%, when the viewport is 800px or smaller */
   }
 }
+
 @media screen and (width:300px) {
-  .main{
+  .main {
     height: 2px;
   }
 }
 
-ion-title{
+ion-title {
   color: white;
   text-align: center;
- 
+
 }
 
-ion-datetime{
+ion-datetime {
   background-image: black;
 }
 
-ion-card-title{
+ion-card-title {
   text-align: center;
 }
 
-ion-text{
+ion-text {
   color: white;
   font-weight: 700;
 }
