@@ -18,9 +18,8 @@ ion-slide>h2 {
 }
 
 ion-slide>img {
-  max-height: 50%;
-  max-width: 60%;
   margin: 36px 0;
+  margin-top: 40%;
 }
 
 ion-button {
@@ -36,4 +35,12 @@ ion-button {
 //fungsi untuk page loading tidak bisa slide ke bawah //
 .swiper-slide {
   display: block;
+}
+.icon-slide2 {
+  position: absolute;
+  margin-top: 15vw;
+}
+.img {
+  position: absolute;
+  margin-top: 10vw;
 }

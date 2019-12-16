@@ -21,7 +21,6 @@
     </div>
   </div>
 
-
   <!-- FLOAT MENU BAR -->
 
   <div class="menu">
@@ -64,7 +63,6 @@
       </ion-row>
     </ion-grid>
   </div>
-
 
   <!-- Menampilkan Detail Report Total Customer  -->
 
@@ -116,9 +114,7 @@
     </div>
   </div>
 
-
   <!-- Menampilkan report Activities -->
-
   <div class="activities-text">
     <ion-text><b>Activities for you</b></ion-text>
   </div>
@@ -131,24 +127,23 @@
 
   <div class="extra-content">
     <div class="scrolling-wrapper">
-      <div class="text-noact">
-        <p text-center>{{textActivity}}</p>
-      </div>
-      <div class="card-new">
-        <ion-slides [options]="slideOptsOne">
-          <ion-slide *ngFor="let item of Activity">
-            <ion-col>
-              <p>{{item.title}}</p>
-              <span>
-                <p>{{item.desc}}</p>
-              </span>
-            </ion-col>
-          </ion-slide>
-        </ion-slides>
+      <div *ngFor="let item of Activity" class="card-new">
+        <ion-card>
+          <ion-card-content>
+            <!-- <ion-datetime displayFormat="h:mm a" pickerFormat="h mm a" [(ngModel)]="time"></ion-datetime> -->
+            <h2><b>{{item.title}}</b></h2>
+            <p>
+              {{item.desc}}
+            </p>
+            <div class="time-activities">
+              {{item.startTime}}
+            </div>
+          </ion-card-content>
+        </ion-card>
       </div>
     </div>
   </div>
-
+  
 
   <!-- MENAMPILKAN PROSPECT LAINNYA  -->
 
@@ -168,9 +163,12 @@
       <div *ngFor="let item of itemProspect" class="card">
         <ion-card>
           <img src="assets/icon/pros.svg" />
-          <ion-card-header>
-            <ion-card-title text-center>{{item.nama}}</ion-card-title>
-          </ion-card-header>
+          <ion-card-content>
+            <p>{{item.nama}}</p>
+            <p>
+              {{item.company}}
+            </p>
+          </ion-card-content>
         </ion-card>
       </div>
     </div>

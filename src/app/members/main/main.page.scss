@@ -11,13 +11,33 @@ ion-icon {
 }
 
 ion-card {
+  height: 33vw;
+}
+
+ion-card-content {
   height: 28vw;
+  margin-left: -2vw;
+  .sc-ion-card-md-h {
+    margin-left: unset;
+    margin-right: unset;
+    -webkit-margin-start: 35px;
+    margin-inline-start: 10px;
+    -webkit-margin-end: 10px;
+    margin-inline-end: 5px;
+  }
 }
 
 ion-badge {
   position: absolute;
   margin-top: 4vw;
   margin-left: 84vw;
+}
+
+.sc-ion-card-md-h {
+  -webkit-margin-start: 6px;
+  margin-inline-start: 12px;
+  -webkit-margin-end: 6px;
+  margin-inline-end: 0px;
 }
 
 .Background-top {
@@ -116,37 +136,37 @@ ion-badge {
     margin-left: 10px;
     margin-top: 90vw;
   }
-
   border-radius: 0px;
   margin-top: 10px;
   background-color:white;
-  height: 220px;
+  height: 55vw;
 
   .scrolling-wrapper {
 
     &::-webkit-scrollbar {
       display: none;
     }
-
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
 
     .card {
       ion-card-title {
-        height: 2px;
-        font-size: 10px;
-        text-align: center;
+        position: relative;
+        color: black;
+        font-size: 12vw;
       }
-
+      margin-top: 15vw;
       display: inline-block;
       width: 100px;
+      height: 5vw;
     }
 
     .card-new {
       display: inline-block;
-      width: 30vw;
-      height: 100vw;
+      margin-top: 15vw;
+      width: 100vw;
+      height: 20vw;
     }
 
   }
@@ -287,7 +307,7 @@ ion-badge {
 
 .time-activities {
   position: relative;
-  margin-top: 10vw;
+  margin-top: 8vw;
 }
 
 ion-slide {
@@ -312,4 +332,10 @@ ion-slide {
   position: absolute;
   margin-top: 5vw;
   margin-left: 3vw;
+}
+
+.p {
+  margin-top: -20vw;
+  text-align: center;
+  margin-left: -2vw;
 }

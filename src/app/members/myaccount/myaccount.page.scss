@@ -16,8 +16,6 @@ ion-grid {
   float: initial;
   padding: 10px;
   color: #F57F17;
-
-  
 }
 
 ion-header {
@@ -62,7 +60,8 @@ ion-label{
 
 ion-button{
   align-content: center;
-  margin-top: 95vw;
-  stroke: #bd0909;
+  margin-top: 135%;
+  border-style: solid;
+  border-radius: 30px 30px 30px 30px;
   color: #bd0909;
 }
