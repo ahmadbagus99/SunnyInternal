@@ -29,22 +29,22 @@
     <!-- fungsi sebagai munculnya tampilan Owner ketika di view -->
     <div class="nomor-telepon">
       <ion-item lines="none">
-        <ion-label position="floating">owner </ion-label>
-        <ion-input type="text" [(ngModel)]="owner" readonly></ion-input>
+        <ion-label position="floating">Email  </ion-label>
+        <ion-input type="text" [(ngModel)]="email" readonly></ion-input>
       </ion-item>
     </div>
     <!-- fungsi sebagai munculnya tampilan Email ketika di view -->
     <div class="alamat">
       <ion-item lines="none">
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="text" [(ngModel)]="email" readonly></ion-input>
+        <ion-label position="floating">Website</ion-label>
+        <ion-input type="text" [(ngModel)]="web" readonly></ion-input>
       </ion-item>
     </div>
     <!-- fungsi sebagai munculnya tampilan Website ketika di view -->
     <div class="npwp">
       <ion-item lines="none">
-        <ion-label position="floating">Website</ion-label>
-        <ion-input type="text" [(ngModel)]="web" readonly></ion-input>
+        <ion-label position="floating">Company Address</ion-label>
+        <ion-input type="text" [(ngModel)]="alamat" readonly></ion-input>
       </ion-item>
     </div>
     <!-- fungsi sebagai munculnya tampilan Tanggal Acara ketika di view -->
@@ -54,6 +54,51 @@
         <ion-input type="text" [(ngModel)]="event_date" readonly></ion-input>
       </ion-item>
     </div>
+  </div>
+
+  <div class="new-content">
+  
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>
+          <ion-label>
+            <h2 text-center> View All <ion-icon name="arrow-dropdown"></ion-icon>
+            </h2>
+          </ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="collapseCard">
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Company Type</ion-label>
+            <ion-input type="text" [(ngModel)]="type" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Owner</ion-label>
+            <ion-input type="text" [(ngModel)]="owner" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Category</ion-label>
+            <ion-input type="text" [(ngModel)]="category" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Industry</ion-label>
+            <ion-input type="text" [(ngModel)]="industry" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Employee</ion-label>
+            <ion-input type="text" [(ngModel)]="employee" readonly></ion-input>
+          </ion-item>
+        </div>
+      </ion-card-content>
+  
   </div>
   <!-- fungsi sebagai user bisa langsung call dari akun yang di view -->
   <div class="content">

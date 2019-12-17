@@ -20,12 +20,12 @@
 
     <div class="image-upload">
       <label for="file-input">
-        <img *ngFor="let item of images | async" [src]="item.filepath" />
         <div class="add">
-          <img src="assets/img/add.png">
+          <img [src]="url" height="200" *ngIf="url">
+          <!-- <img src="assets/icon/boss.png" [hidden]="!ShowImage"> -->
         </div>
       </label>
-      <input id="file-input" type="file" class="upload" (change)="uploadFile($event.target.files)" />
+      <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)"/>
     </div>
     <div text-center>
       <div class="fileUpload btn btn-primary">

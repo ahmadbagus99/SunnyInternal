@@ -43,6 +43,13 @@ ion-back-button {
   border-radius: 6px;
   position: relative;
 }
+.background2 {
+  margin: 10px;
+  height: 100px;
+  background-color: white;
+  border-radius: 6px;
+  position: relative;
+}
 
 .cover {
   height: 110px;
@@ -167,4 +174,18 @@ div.content ion-button {
   border-radius: 50%;
   background-color: #14c214;
   --ion-color-primary: #ffffff;
+}
+
+// pertanyaan 1 //
+.text1 {
+  h2 {
+    font-size: 4vw;
+    text-align: left;
+    color: black;
+  }
+
+  p {
+    text-align: justify;
+    color: black;
+  }
 }

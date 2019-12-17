@@ -48,15 +48,15 @@ export class ProductPage implements OnInit {
 
 // Fungsi untuk menarik/mendapatkan data untuk data add product dari server php
 
-  updateProduct(id,namaProduk,tipeProduk,statusProduk,jumlahProduk,hargaProduk,deskripsiProduk){
+  updateProduct(id,namaProduk,tipeProduk,totalProfit,jumlahProduk,hargaProduk,deskripsiProduk){
     if(namaProduk==""){
       namaProduk=" ";
     }
     if(tipeProduk==""){
       tipeProduk=" ";
     }
-    if(statusProduk==""){
-      statusProduk=" ";
+    if(totalProfit==""){
+      totalProfit=" ";
     }
     if(jumlahProduk==""){
       jumlahProduk=" ";
@@ -71,7 +71,7 @@ export class ProductPage implements OnInit {
     +id+'/'
     +namaProduk+'/'
     +tipeProduk+'/'
-    +statusProduk+'/'
+    +totalProfit+'/'
     +jumlahProduk+'/'
     +hargaProduk+'/'
     +deskripsiProduk]);
