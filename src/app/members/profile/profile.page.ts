@@ -10,6 +10,7 @@ import { LoadingController } from '@ionic/angular';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
+
 export class ProfilePage implements OnInit {
     
     items: any = [];
@@ -20,28 +21,27 @@ export class ProfilePage implements OnInit {
     userID: string;
     file = File;
     profile: any = [];
-
+    url :any;
     id: string;
     fullname: string;
     phonenumber: string;
     birthday: string;
     email: string;
     country: string;
-
+   
     constructor(
       private router: Router,
       private postPvdr: PostProvider,
       private storageLocal: Storage,
       public loadingController: LoadingController,
     ) { 
-    
+      this.loadSaved();
     }
 
   editprofile() {
     this.router.navigate(['members/editprofile']);
   }
   ngOnInit() {
-
   }
 
   EditProfile(id, fullname, phonenumber, birthday, email, country) {
@@ -80,11 +80,23 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  changeListener($event): void {
-    this.file = $event.target.files[0];
-    console.log(this.file);
-    this.storageLocal.set('images', this.file);
-  }
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
 
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        // this.url = event.target.result;
+        this.url = reader.result;
+        this.storageLocal.set('Profile', this.url)
+      }
+    }
+  }
+  loadSaved() {
+    this.storageLocal.get('Profile').then((url) => {
+      this.url = url || [];
+    });
+  }
 
 }

@@ -175,13 +175,6 @@ export class AddcontactPage implements OnInit {
     this.postPvdr.postData(body, 'LoadEmailAccount.php?Account=' + this.perusahaan).subscribe(data => {
       for (let item of data) {
         this.itemsPerusahaan.push(item);
-        this.storage.set('Data', this.itemsPerusahaan).then(() => {
-          this.storage.get('Data').then((data) => {
-            var Data = data;
-            var DataAddress = Data.map( data => data.alamat);
-            this.almt_perusahaan = DataAddress.toString();
-          })
-        })
       }
     });
   }

@@ -5,7 +5,7 @@
       </ion-buttons>
       <ion-buttons color=#FFFFFF slot="primary" >
          <!-- fungsi sebagai tombol button untuk mengedit produk yang di buat -->
-       <ion-button (click)="updateProduct(id,namaProduk,tipeProduk,statusProduk,jumlahProduk,hargaProduk,deskripsiProduk)">
+       <ion-button (click)="updateProduct(id,namaProduk,tipeProduk,totalProfit,jumlahProduk,hargaProduk,deskripsiProduk)">
           Edit
         </ion-button>
       </ion-buttons>
@@ -30,7 +30,7 @@
      <div class="nomor-telepon">
         <ion-item lines="none">
             <ion-label position="floating">Product Status</ion-label>
-            <ion-input type="text" [(ngModel)]="statusProduk" readonly></ion-input>
+            <ion-input type="text" [(ngModel)]="totalProfit" readonly></ion-input>
           </ion-item>
      </div>
      <!-- fungsi sebagai munculnya tampilan Jumlah Produk ketika di view -->

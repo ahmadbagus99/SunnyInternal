@@ -23,12 +23,11 @@ const routes: Routes = [
   { path: 'product', loadChildren: './product/product.module#ProductPageModule' },
   { path: 'prospect', loadChildren: './prospect/prospect.module#ProspectPageModule' },
   { path: 'editproduct', loadChildren: './editproduct/editproduct.module#EditproductPageModule' },
-  { path: 'editproduct/:id/:namaProduk/:tipeProduk/:statusProduk/:jumlahProduk/:hargaProduk/:deskripsiProduk', loadChildren: './editproduct/editproduct.module#EditproductPageModule' },
+  { path: 'editproduct/:id/:namaProduk/:tipeProduk/:totalProfit/:jumlahProduk/:hargaProduk/:deskripsiProduk', loadChildren: './editproduct/editproduct.module#EditproductPageModule' },
   { path: 'about', loadChildren: './about/about.module#AboutPageModule' },
   { path: 'language', loadChildren: './language/language.module#LanguagePageModule' },
   { path: 'syaratketentuan', loadChildren: './syaratketentuan/syaratketentuan.module#SyaratketentuanPageModule' },
   { path: 'addactivities', loadChildren: './addactivities/addactivities.module#AddactivitiesPageModule' },
-  { path: 'addproduct/:id/:namaProduk/:tipeProduk/:statusProduk/:jumlahProduk/:hargaProduk/:deskripsiProduk', loadChildren: './addproduct/addproduct.module#AddproductPageModule' },
   { path: 'seeallprospect', loadChildren: './seeallprospect/seeallprospect.module#SeeallprospectPageModule' },
   { path: 'addprospect', loadChildren: './addprospect/addprospect.module#AddprospectPageModule' },
   { path: 'addprospect/:id/:namaCustomer/:emailCustomer/:alamatCustomer/:no_tlp/:company/:alamatCompany/:emailCompany/:nomorCompany/:customerneed/:stock/:hargaProduk/:totalPrice/:budget', loadChildren: './addprospect/addprospect.module#AddprospectPageModule' },
@@ -36,9 +35,9 @@ const routes: Routes = [
   { path: 'hubungikami', loadChildren: './hubungikami/hubungikami.module#HubungikamiPageModule' },
   { path: 'kebijakanprivasi', loadChildren: './kebijakanprivasi/kebijakanprivasi.module#KebijakanprivasiPageModule' },
   { path: 'faq', loadChildren: './faq/faq.module#FaqPageModule' },
-  { path: 'addproduct/:id/:namaProduk/:tipeProduk/:statusProduk/:jumlahProduk/:hargaProduk/:deskripsiProduk', loadChildren: './addproduct/addproduct.module#AddproductPageModule' },
+  { path: 'addproduct/:id/:namaProduk/:tipeProduk/:totalProfit/:jumlahProduk/:hargaProduk/:deskripsiProduk', loadChildren: './addproduct/addproduct.module#AddproductPageModule' },
   { path: 'view-prospect/:id/:namaCustomer/:emailCustomer/:alamatCustomer/:no_tlp/:company/:alamatCompany/:emailCompany/:nomorCompany/:customerneed/:stock/:hargaProduk/:totalPrice/:budget/:status', loadChildren: './view-prospect/view-prospect.module#ViewProspectPageModule' },
-  { path: 'notifications', loadChildren: '../notifications/notifications.module#NotificationsPageModule'},
+  { path: 'notifications', loadChildren: './notifications/notifications.module#NotificationsPageModule'},
 
 
 ];

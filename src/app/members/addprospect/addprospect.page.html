@@ -31,7 +31,7 @@
             <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
             <ion-label position="floating"> Customer Name</ion-label>
             <ion-select [(ngModel)]="namaCustomer" placeholder="Select Costumer" (ionChange)="showNow()">
-              <ion-select-option value="new">New Make</ion-select-option>
+              <ion-select-option value="new">New</ion-select-option>
               <ion-select-option *ngFor="let item of itemsContact" value="{{item.nama}}">{{item.nama}}
               </ion-select-option>
             </ion-select>
@@ -58,21 +58,27 @@
             </span>
             <span>
               <ion-item>
-                <ion-label position="floating">Phone Number</ion-label>
+                <ion-label position="stacked">Phone Number</ion-label>
                 <ion-input type="text" [(ngModel)]="no_tlp"></ion-input>
               </ion-item>
             </span>
+            <span>
+              <ion-item>
+                <ion-label position="floating">Company</ion-label>
+                <ion-select (ionChange)="TakeEmail()" placeholder="Pilih Perusahaan" [(ngModel)]="company">
+                  <ion-select-option *ngFor="let item of itemsAccount" value="{{item.nama}}">{{item.nama}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+            </span>
           </div>
-          <span>
+         
+          <span [hidden]="selectHidden">
             <ion-item>
-              <ion-label position="floating">Company</ion-label>
-              <ion-select (ionChange)="TakeEmail()" placeholder="Pilih Perusahaan" [(ngModel)]="company">
-                <ion-select-option *ngFor="let item of itemsAccount" value="{{item.nama}}">{{item.nama}}
-                </ion-select-option>
-              </ion-select>
+              <ion-label position="stacked">Company</ion-label>
+              <ion-input [(ngModel)]="company"></ion-input>
             </ion-item>
           </span>
-
           <span>
             <ion-item>
               <ion-label position="floating">Product Needed</ion-label>
