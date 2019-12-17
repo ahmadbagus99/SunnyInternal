@@ -130,6 +130,9 @@
       <div *ngFor="let item of Activity" class="card-new">
         <ion-card>
           <ion-card-content>
+            <div class="icon-activities">
+              <img src="assets/icon/Activity.png" />
+            </div>
             <!-- <ion-datetime displayFormat="h:mm a" pickerFormat="h mm a" [(ngModel)]="time"></ion-datetime> -->
             <h2><b>{{item.title}}</b></h2>
             <p>
@@ -143,7 +146,7 @@
       </div>
     </div>
   </div>
-  
+
 
   <!-- MENAMPILKAN PROSPECT LAINNYA  -->
 
@@ -162,13 +165,13 @@
       </div>
       <div *ngFor="let item of itemProspect" class="card">
         <ion-card>
-          <img src="assets/icon/pros.svg" />
-          <ion-card-content>
+          <img src="assets/icon/prospectforyou.png"/>
+          <div class="companyprospect">
             <p>{{item.nama}}</p>
             <p>
               {{item.company}}
             </p>
-          </ion-card-content>
+          </div>
         </ion-card>
       </div>
     </div>

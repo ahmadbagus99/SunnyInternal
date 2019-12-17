@@ -5,10 +5,10 @@
     </ion-buttons>
     <ion-title *ngIf="!id">Add Contact</ion-title>
     <ion-title *ngIf="id>=1">Edit Contact</ion-title>
-    <ion-buttons slot="primary">
+    <!-- <ion-buttons slot="primary">
       <ion-button *ngIf="!id" (click)="createdProcess()">Simpan</ion-button>
       <ion-button *ngIf="id>=1" (click)="updateProcess()">Simpan</ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
@@ -97,7 +97,10 @@
         <span>
           <!-- fungsi untuk lanjut (next) ke slide ke 2 atau page ke 2 -->
           <div class="button-next">
-            <ion-button expand="full" (click)="next()" color="primary"> Next </ion-button>
+            <ion-button expand="full" (click)="next()" color="primary"> Next 
+              <ion-icon name="arrow-round-forward"></ion-icon>
+            </ion-button>
+            
           </div>
         </span>
       </ion-col>
@@ -173,13 +176,13 @@
           <!-- fungsi untuk kembali(back) ke slide ke 1 atau page ke 1-->
         </div>
         <div class="button-before">
-          <ion-button fill="clear" (click)="prev()" color="primary">
+          <ion-button expand="full" (click)="prev()" color="secondary">
             <ion-icon name="arrow-round-back"></ion-icon>Previous
           </ion-button>
         </div>
         <!-- fungsi untuk lanjut (next) ke slide ke 3 atau page ke 3-->
         <div class="button-next1">
-          <ion-button fill="clear" (click)="next()" color="primary">next
+          <ion-button expand="full" (click)="next()" color="primary">next
             <ion-icon name="arrow-round-forward"></ion-icon>
           </ion-button>
         </div>
@@ -233,9 +236,16 @@
         </div>
         <!-- fungsi untuk kembali(back) ke slide ke 2 atau page ke 2-->
         <div class="sebelumnya2">
-          <ion-button fill="clear" (click)="prev()" color="primary">
-            <ion-icon name="arrow-round-back"></ion-icon>Previous
+          <ion-button expand="full" (click)="prev()" color="secondary">
+            <ion-icon name="arrow-round-back"></ion-icon> Previous
           </ion-button>
+
+          <div class="button-next1">
+            <ion-button expand="full" color="success" *ngIf="!id" (click)="createdProcess()">
+              <ion-icon name="save"></ion-icon> Save </ion-button>
+            <ion-button expand="full" color="success" *ngIf="id>=1" (click)="updateProcess()">
+              <ion-icon name="save"></ion-icon> Save </ion-button>
+          </div>
         </div>
       </ion-col>
     </ion-slide>
