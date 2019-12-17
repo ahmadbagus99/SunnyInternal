@@ -1,14 +1,14 @@
 <ion-content>
 
   <div class="back-button">
-    <ion-icon name="arrow-back" size="large" defaultHref="/login"></ion-icon>
+    <ion-icon name="arrow-back" size="large" routerLink="/login"></ion-icon>
   </div>
 
   <div class="oval"></div>
   <div class="logo">
 
     <!-- Fungsi untuk tampilan logo sunny CRM -->
-    <img src="assets/img/logo-isa.png" /></div>
+    <img src="assets/img/welcome-text.png" /></div>
 
   <!-- Berguna untuk sistem letak khusus bagian fill email dan password  -->
   <ion-grid style="grid-auto-rows: 10vw;">
@@ -25,7 +25,7 @@
         <br>
         <ion-button expand="full" shape="round" (click)="login()" color="success">Masuk</ion-button>
         <div class="textlogin">
-          <ion-text routerLink="/register"><u>Daftar akun baru</u></ion-text>
+          <ion-text routerLink="/register"><u>Register new account</u></ion-text>
         </div>
       </ion-list>
     </ion-row>

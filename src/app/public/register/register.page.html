@@ -10,19 +10,19 @@
 <ion-content>
 
   <div class="back-button">
-    <ion-icon name="arrow-back" size="large" defaultHref="/login"></ion-icon>
+    <ion-icon name="arrow-back" size="large" routerLink="/login"></ion-icon>
   </div>
 
   <body>
     <div class="oval"></div>
     <div class="logo">
-      <img src="assets/img/logo-isa.png" /></div>
+      <img src="assets/img/welcome-text.png" /></div>
     <div color=#efefef>
       <ion-grid style="grid-auto-rows: 10vw;">
         <ion-row justify-content-center align-items-center style="height: 100%">
           <ion-list>
             <ion-item>
-              <ion-input placeholder="Nama" type="text" [(ngModel)]="nama"></ion-input>
+              <ion-input placeholder="Name" type="text" [(ngModel)]="nama"></ion-input>
             </ion-item>
 
             <ion-item>
@@ -40,10 +40,10 @@
             <div class="gambar">
               <br>
               <ion-button icon-left size="medium" expand="full" shape="round" (click)="prosesregister()"
-                color="success">Daftar</ion-button>
+                color="success">Register</ion-button>
               <br>
               <div class="textlogin">
-                <ion-text routerLink="/login"><u>Saya sudah punya akun!</u></ion-text>
+                <ion-text routerLink="/login"><u>I have account!</u></ion-text>
               </div>
             </div>
           </ion-list>
