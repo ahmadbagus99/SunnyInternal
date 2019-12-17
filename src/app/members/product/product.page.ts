@@ -48,7 +48,7 @@ export class ProductPage implements OnInit {
 
 // Fungsi untuk menarik/mendapatkan data untuk data add product dari server php
 
-  updateProduct(id,namaProduk,tipeProduk,totalProfit,jumlahProduk,hargaProduk,deskripsiProduk){
+  updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk){
     if(namaProduk==""){
       namaProduk=" ";
     }
@@ -67,11 +67,15 @@ export class ProductPage implements OnInit {
     if(deskripsiProduk==""){
       deskripsiProduk=" ";
     }
+    if(normalPrice==""){
+      normalPrice=" "
+    }
     this.router.navigate(['members/addproduct/'
     +id+'/'
     +namaProduk+'/'
     +tipeProduk+'/'
     +totalProfit+'/'
+    +normalPrice+'/'
     +jumlahProduk+'/'
     +hargaProduk+'/'
     +deskripsiProduk]);

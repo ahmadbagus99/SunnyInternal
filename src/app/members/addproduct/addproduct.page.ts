@@ -23,12 +23,13 @@ export class AddproductPage implements OnInit {
   deskripsiProduk: string = "";
   category: any;
   nomor : string;
-
+  normalPrice : number = 0;
   items : any = [];
   itemsNew : any = [];
   limit : number = 10;
   start : number = 0;
   loadproduct: any;
+  status : string;
 
   constructor(
     private router: Router,
@@ -53,21 +54,27 @@ export class AddproductPage implements OnInit {
       this.namaProduk = data.namaProduk;
       this.tipeProduk = data.tipeProduk;
       this.totalProfit = data.totalProfit;
+      this.normalPrice = data.normalPrice;
       this.jumlahProduk = data.jumlahProduk;
       this.hargaProduk = data.hargaProduk;
       this.category = data.category; 
       this.deskripsiProduk = data.deskripsiProduk;
       this.nomor = data.no_tlp;
-      console.log(this.totalProfit)
+    if (this.jumlahProduk == 0){
+      this.status="Product is not Available";
+    }else{
+      this.status="Product is Available";
+    }
     });
   }
   // Fungsi untuk menarik/mendapatkan data untuk data edit Produk server php
-  updateProduct(id,namaProduk,tipeProduk,totalProfit,jumlahProduk,hargaProduk,deskripsiProduk){
+  updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk){
     this.router.navigate(['members/editproduct/'
     +id+'/'
     +namaProduk+'/'
     +tipeProduk+'/'
     +totalProfit+'/'
+    +normalPrice+'/'
     +jumlahProduk+'/'
     +hargaProduk+'/'
     +deskripsiProduk]);

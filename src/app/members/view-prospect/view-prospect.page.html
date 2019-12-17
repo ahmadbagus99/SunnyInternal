@@ -1,10 +1,11 @@
 <ion-header>
   <ion-toolbar color=#F57F17 class="new-background-color">
     <ion-buttons slot="start">
-      <ion-button [hidden]="isHidden" (click)="checkStatus()">
+      <!-- <ion-button [hidden]="isHidden" (click)="checkStatus()">
         <ion-icon name="arrow-round-back"></ion-icon>
       </ion-button>
-      <ion-back-button [hidden]="!isHidden" defaultHref="/"></ion-back-button>
+      <ion-back-button [hidden]="!isHidden" defaultHref="/"></ion-back-button> -->
+      <ion-back-button defaultHref="dashboard"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="primary" [hidden]="isHidden">
       <ion-button (click)="Update()">Simpan</ion-button>

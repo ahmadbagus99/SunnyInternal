@@ -161,7 +161,8 @@
         <p text-center>{{text}}</p>
       </div>
       <div *ngFor="let item of itemProspect" class="card">
-        <ion-card>
+        <ion-card button
+        (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
           <img src="assets/icon/pros.svg" />
           <ion-card-content>
             <p>{{item.nama}}</p>

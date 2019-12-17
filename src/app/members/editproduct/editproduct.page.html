@@ -46,11 +46,11 @@
       </ion-item>
 
       <ion-item>
-        <ion-label position="stacked">Profit</ion-label>
-        <ion-range min="0" max="50" pin color="secondary" [(ngModel)]="profit" (ionChange)="profitCalculate()">
+        <ion-label position="stacked">Profit in Percentage (%)</ion-label>
+        <div class="profit">
+        <ion-input type="number" max="50" [(ngModel)]="profit" (change)="profitCalculate()"></ion-input> 
+        </div>
           <ion-icon slot="start" src="assets/icon/profit-svgrepo-com.svg"></ion-icon>
-          <ion-text slot="end">%</ion-text>
-        </ion-range>
       </ion-item>
 
       <ion-item class="item">

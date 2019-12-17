@@ -61,6 +61,7 @@ export class AddprospectPage implements OnInit {
   itemsCustomer = [];
   idProduct :number;
   sisaStock : number;
+  checking : string='member';
   letterObj = {
     address: ' Arkadia Green Park Estate, Tower F, 6th Floor, Jl. TB Simatupang No.Kav. 88, RT.1/RW.2, Kebagusan, Kec. Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12520',
     text: ' For purchasing the item with the criteria as below : '
@@ -96,19 +97,6 @@ export class AddprospectPage implements OnInit {
     this.loadProduct();
   }
   ngOnInit() {
-    this.actRoute.params.subscribe((data: any) => {
-      if (data.id == null) {
-
-      } else {
-        this.id = data.id;
-        this.namaCustomer = data.nama;
-        this.company = data.company;
-        this.no_tlp = data.no_tlp;
-        this.almt_rumah = data.almt_rumah;
-        this.customerneed = data.customerneed;
-        this.email = data.email;
-      }
-    });
     this.storage.get('session_storage').then((iduser) => {
       this.items2 = iduser;
       this.items2 = this.items2.map(user => user.id);
@@ -131,6 +119,7 @@ export class AddprospectPage implements OnInit {
 
   showNow() {
     if (this.namaCustomer == 'new') {
+      this.checking = 'new';
       this.isHidden = false;
       this.selectHidden = true;
       this.namaCustomer = '';
@@ -293,7 +282,12 @@ export class AddprospectPage implements OnInit {
           text: 'Ya',
           handler: () => {
             this.createPdf();
-            this.SaveContact();
+            console.log(this.checking)
+            if (this.checking == 'new') {
+              this.SaveContact();
+            }else if(this.checking == 'member'){
+              console.log('Tidak Menyimpan')
+            }
             this.UpdateQuantity();
             return new Promise(resolve => {
               let body = {

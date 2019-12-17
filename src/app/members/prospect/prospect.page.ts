@@ -132,14 +132,57 @@ export class ProspectPage implements OnInit {
       });
   }
 
-  updateprospect(id,nama,_company,no_tlp,almt_rumah,_customerneed){
-    this.router.navigate(['members/editprospect/'
+  updateprospect(id,namaCustomer,emailCustomer,alamatCustomer,no_tlp,company,alamatCompany,emailCompany,nomorCompany,customerneed,stock,hargaProduk,totalPrice,budget,status){
+    this.router.navigate(['members/view-prospect/'
     +id+'/'
-    +nama+'/'
-    +_company+'/'
+    +namaCustomer+'/'
+    +emailCustomer+'/'
+    +alamatCustomer+'/'
     +no_tlp+'/'
-    +almt_rumah+'/'
-    +_customerneed]);
+    +company+'/'
+    +alamatCompany+'/'
+    +emailCompany+'/'
+    +nomorCompany+'/'
+    +customerneed+'/'
+    +stock+'/'
+    +hargaProduk+'/'
+    +totalPrice+'/'
+    +budget+'/'
+    +status
+  ]);
+  }
+  
+  updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk){
+    if(namaProduk==""){
+      namaProduk=" ";
+    }
+    if(tipeProduk==""){
+      tipeProduk=" ";
+    }
+    if(totalProfit==""){
+      totalProfit=" ";
+    }
+    if(jumlahProduk==""){
+      jumlahProduk=" ";
+    }
+    if(hargaProduk==""){
+      hargaProduk=" ";
+    }
+    if(deskripsiProduk==""){
+      deskripsiProduk=" ";
+    }
+    if(normalPrice==""){
+      normalPrice=" "
+    }
+    this.router.navigate(['members/addproduct/'
+    +id+'/'
+    +namaProduk+'/'
+    +tipeProduk+'/'
+    +totalProfit+'/'
+    +normalPrice+'/'
+    +jumlahProduk+'/'
+    +hargaProduk+'/'
+    +deskripsiProduk]);
   }
 
   async loadProspect(){
