@@ -281,10 +281,10 @@ export class AddprospectPage implements OnInit {
   
   async SaveProspect() {
     const alert = await this.alertCtrl.create({
-      subHeader: 'Apa kamu sudah yakin ?',
+      subHeader: 'Are you Sure ?',
       buttons: [
         {
-          text: 'Batal',
+          text: 'Cancel',
           role: 'cancel',
           handler: (blah) => {
             console.log('cancel')
@@ -328,7 +328,7 @@ export class AddprospectPage implements OnInit {
 
   async updateProcess() {
     const loading = await this.loadingController.create({
-      message: "Sedang Memproses",
+      message: "Process",
       translucent: true
     })
     loading.present();
@@ -532,10 +532,11 @@ export class AddprospectPage implements OnInit {
   }
   async cancel() {
     const alert = await this.alertCtrl.create({
-      header: 'Apa kamu yakin membatalkan proses ini ?',
+      header: 'Are you sure ?',
+      subHeader:'Canceled this process ?',
       buttons: [
         {
-          text: 'Batal',
+          text: 'Cancel',
           role: 'cancel',
           handler: (blah) => {
             console.log('cancel')
