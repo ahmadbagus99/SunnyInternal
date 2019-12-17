@@ -65,7 +65,7 @@ export class AddcontactPage implements OnInit {
     this.warning;
   }
   Show() {
-    if (this.title == 'Lainnya') {
+    if (this.title == 'More') {
       this.isHidden = false;
       this.selectHidden = true;
       this.title = '';
@@ -189,11 +189,11 @@ export class AddcontactPage implements OnInit {
    //Fungsi dimana user harus mengisi semua fill yang ada di UI dan tidak boleh kosong pas di simpan  
    createdProcess() {
     if (this.nama == '') {
-      this.warning = 'Data Tidak Boleh Kosong'
+      this.warning = 'Data Cannot Be Empty'
     } else if (this.email == '') {
-      this.warning = 'Data Tidak Boleh Kosong'
+      this.warning = 'Data Cannot Be Empty'
     } else if (this.no_tlp == '') {
-        this.warning = 'Data Tidak Boleh Kosong'
+        this.warning = 'Data Cannot Be Empty'
     } else {
       return new Promise(resolve => {
         let body = {
@@ -228,7 +228,7 @@ export class AddcontactPage implements OnInit {
 
   async updateProcess() {
     const loading = await this.loadingController.create({
-      message: "Sedang Memproses",
+      message: "Processing",
       translucent: true
     })
     loading.present();
