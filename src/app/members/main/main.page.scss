@@ -93,7 +93,7 @@ ion-badge {
     widows: 20vw;
     width: 15vw;
     height: 15vw;
-    background-color: rgb(255, 177, 108);
+    background-color: #ff951c;
     border-radius: 20px 20px 20px;
     box-shadow: #989aa2 8px;
     --padding-top: 12px !important;
@@ -104,16 +104,16 @@ ion-badge {
   }
 
   .icon {
-    margin-left: 3.2vw;
-    margin-top: 3.2vw;
+    margin-left: -2.8vw;
+    margin-top: -2.8vw;
     widows: 20vw;
-    width: 8vw;
-    height: 8vw;
+    width: 20vw;
+    height: 20vw;
   }
 
   .font {
     color: black;
-    margin-top: 3vw;
+    margin-top: -2vw;
     text-align: center;
     font-size: 2.7vw;
   }
@@ -186,8 +186,7 @@ ion-badge {
   border-radius:10px;
   border-color: #4e4e4e;
   background-image: url('../../../assets/img/backgroundFix.svg');
-  background-size: 50px;
-  background-size: auto;
+  background-size: 50vw;
   // background-color: #ff7700;
 }
 
@@ -242,7 +241,7 @@ ion-badge {
   // border-style: solid;
   // border-color: #4e4e4e;
   background-image: url('../../../assets/img/backgroundFix.svg');
-  background-size: 80px;
+  background-size: 362px;
   // background-color: #ffb030;
 }
 
@@ -281,6 +280,7 @@ ion-badge {
   // border-style: solid;
   // border-color: #4e4e4e;
   background-image: url('../../../assets/img/backgroundFix.svg');
+  background-size: 50vw;
   // background-color: #ff951c;
 }
 
@@ -338,4 +338,18 @@ ion-slide {
   margin-top: -20vw;
   text-align: center;
   margin-left: -2vw;
+}
+
+.icon-activities {
+  position: absolute;
+  margin-top: -15vw;
+  margin-left: 53vw;
+  height: 50vw;
+  width: 50vw;
+}
+
+.companyprospect {
+  position: relative;
+  margin-top: -2vw;
+  margin-left: 2.5vw;
 }

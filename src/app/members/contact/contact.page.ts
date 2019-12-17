@@ -188,7 +188,7 @@ export class ContactPage implements OnInit {
   //fungsi sebagai button mengahapus akun dan membuat tampilan text.//
     async presentAlertMultipleButtons(id) {
       const alert = await this.alertController.create({
-        header: 'Apa Kamu Yakin?',
+        header: 'Are you sure?',
         subHeader: '',
         message: '',
         buttons: [

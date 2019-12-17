@@ -19,12 +19,12 @@ export class MyaccountPage implements OnInit {
     }
     async presentAlertMultipleButtons() {
       const alert = await this.alertController.create({
-        header: 'Apa kamu yakin?',
+        header: 'Are You Sure?',
         subHeader: '',
         message: '',
         buttons: [
           {
-            text: 'Batal',
+            text: 'Cancel',
             role: 'cancel',
             cssClass: 'secondary',
             handler: (blah) => {

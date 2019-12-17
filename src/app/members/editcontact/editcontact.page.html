@@ -16,14 +16,14 @@
 <ion-content>
   <div class="background">
     <div class="cover">
-      <img src="assets/img/4_avatar-512.png" />
+      <img src="assets/img/avatar-contact.png" />
       <!-- fungsi sebagai munculnya tampilan Nama ketika di view -->
       <div class="nama">
         <ion-input type="text" [(ngModel)]="nama" readonly></ion-input>
       </div>
       <!-- fungsi sebagai munculnya tampilan Perusahaan ketika di view -->
       <div class="perusahaan">
-        <ion-input type="text" [(ngModel)]="perusahaan" readonly></ion-input>
+        <ion-input type="text" [(ngModel)]="title" readonly></ion-input>
       </div>
     </div>
     <!-- fungsi sebagai munculnya tampilan nomor telepon ketika di view -->
@@ -36,25 +36,105 @@
     <!-- fungsi sebagai munculnya tampilan alamat rumah ketika di view -->
     <div class="alamat">
       <ion-item lines="none">
-        <ion-label position="floating">Home Address</ion-label>
-        <ion-input type="text" [(ngModel)]="almt_rumah" readonly></ion-input>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" [(ngModel)]="email" readonly></ion-input>
       </ion-item>
     </div>
     <!-- fungsi sebagai munculnya tampilan npwp ketika di view -->
     <div class="npwp">
       <ion-item lines="none">
-        <ion-label position="floating">NPWP</ion-label>
-        <ion-input type="text" [(ngModel)]="NPWP" readonly></ion-input>
+        <ion-label position="floating">Home Address</ion-label>
+        <ion-input type="text" [(ngModel)]="almt_rumah" readonly></ion-input>
       </ion-item>
     </div>
     <!-- fungsi sebagai munculnya tampilan Twitter ketika di view -->
     <div class="twitter">
       <ion-item lines="none">
-        <ion-label position="floating">Twitter</ion-label>
-        <ion-input type="text" [(ngModel)]="Twitter" readonly></ion-input>
+        <ion-label position="floating">Date of birth</ion-label>
+        <ion-input type="text" [(ngModel)]="tgl_lahir" readonly></ion-input>
       </ion-item>
     </div>
+  </div> 
+   <div class="text1">
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>
+          <ion-label>
+            <h2 text-center> View All <ion-icon name="arrow-dropdown"></ion-icon>
+            </h2>
+          </ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="collapseCard">
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Company Name</ion-label>
+            <ion-input type="text" [(ngModel)]="perusahaan" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Company Address</ion-label>
+            <ion-input type="text" [(ngModel)]="almt_perusahaan" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Income</ion-label>
+            <ion-input type="text" [(ngModel)]="penghasilan" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">NPWP</ion-label>
+            <ion-input type="text" [(ngModel)]="NPWP" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Gender</ion-label>
+            <ion-input type="text" [(ngModel)]="kelamin" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Address</ion-label>
+            <ion-input type="text" [(ngModel)]="alamat" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Hobby</ion-label>
+            <ion-input type="text" [(ngModel)]="Hobi" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Favorite Food</ion-label>
+            <ion-input type="text" [(ngModel)]="Makanan_Favorit" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Facebook</ion-label>
+            <ion-input type="text" [(ngModel)]="Facebook" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Twitter</ion-label>
+            <ion-input type="text" [(ngModel)]="Twitter" readonly></ion-input>
+          </ion-item>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label position="floating">Instagram</ion-label>
+            <ion-input type="text" [(ngModel)]="Instagram" readonly></ion-input>
+          </ion-item>
+        </div>
+      </ion-card-content>
   </div>
+ 
+
   <!-- fungsi sebagai user bisa langsung call dari akun yang di view -->
   <div class="content">
     <ion-button fill="clear" (click)="call(data)">

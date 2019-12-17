@@ -48,14 +48,14 @@ export class AddaccountPage implements OnInit {
   //Fungsi dimana user harus mengisi semua fill yang ada di UI dan tidak boleh kosong pas di simpan
   AddAccount() {
     if (this.nama == '') {
-      this.warning = 'Data Tidak Boleh Kosong'
+      this.warning = 'Data Cannot Be Empty'
     } else if (this.phone == '') {
-      this.warning = 'Data Tidak Boleh Kosong'
+      this.warning = 'Data Cannot Be Empty'
     } else
       if (this.email == '') {
-        this.warning = 'Data Tidak Boleh Kosong'
+        this.warning = 'Data Cannot Be Empty'
     } else {
-        return new Promise(resolve => {
+        return new Promise(resolve => { 
           let body = {
             aksi: 'add',
             nama: this.nama,

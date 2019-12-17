@@ -1,5 +1,5 @@
 ion-content {
-  --background: url('../../../assets/img/Flat-Mountains.svg') no-repeat center center / cover;
+  --background: url('../../../assets/img/Liquid-Cheese.svg') no-repeat center center / cover;
   --ion-background-color: #2b2b2b00;
 }
 
@@ -26,13 +26,14 @@ ion-text {
   padding: 20px;
   margin: 0px;
   line-height: 0px;
+  color: #941b1b;
 }
 
 .textlogin {
   box-align: center;
   padding: 2vw;
-  margin: 5px;
-  margin-top: 5vw;
+  margin-top: 2vw;
+  margin-left: -2vw;
   line-height: 5px;
 }
 

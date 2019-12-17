@@ -168,3 +168,16 @@ div.content ion-button {
   background-color: #14c214;
   --ion-color-primary: #ffffff;
 }
+
+.new-content {
+  h2 {
+    font-size: 4vw;
+    text-align: left;
+    color: black;
+  }
+
+  p {
+    text-align: justify;
+    color: black;
+  }
+}

@@ -24,12 +24,20 @@ ion-slide>img {
 
 ion-button {
   color: white;
-  margin-top: 10vw;
+  margin-top: 12vw;
+  width: 45vw;
 }
 
 //fungsi untuk mengantur batas jarak di slide 1//
 .icon {
   margin-top: 40%;
+}
+
+.text-load1 {
+  position: relative;
+  margin-left: 8vw;
+  height: 20vw;
+  width: 80vw;
 }
 
 //fungsi untuk page loading tidak bisa slide ke bawah //
@@ -38,9 +46,28 @@ ion-button {
 }
 .icon-slide2 {
   position: absolute;
-  margin-top: 15vw;
+  margin-top: 10vw;
 }
+
+.text-load2 {
+  position: relative;
+  margin-top: 118vw;
+
+}
+
 .img {
   position: absolute;
   margin-top: 10vw;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.icon-slide3 {
+  position: relative;
+  margin-top: 25vw;
+}
+
+.text-load3 {
+  position: relative;
+  margin-top: -15vw;
 }

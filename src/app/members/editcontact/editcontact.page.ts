@@ -73,7 +73,6 @@ export class EditcontactPage implements OnInit {
       this.penghasilan = data.penghasilan;
       this.perusahaan = data.perusahaan;
       this.almt_perusahaan = data.almt_perusahaan;
-      this.penghasilan = data.penghasilan,
         this.Hobi = data.Hobi,
         this.Makanan_Favorit = data.Makanan_Favorit,
         this.NPWP = data.NPWP,
