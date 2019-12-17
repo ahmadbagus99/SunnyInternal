@@ -178,4 +178,14 @@ export class AddaccountPage implements OnInit {
       });
     });
   }
+  //fungsi untuk merfresh data yang masuk ke page akivity
+  doRefresh(event){
+    setTimeout(() => {
+      this.ionViewWillEnter();
+      event.target.complete();
+    }, 500);
+  }
+  ionViewWillEnter() {
+    throw new Error("Method not implemented.");
+  }
 }

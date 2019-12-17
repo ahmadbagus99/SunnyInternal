@@ -1,40 +1,44 @@
-ion-button{
-    color: white;
-  }
+ion-button {
+  color: white;
+}
 
 
-ion-header{
+ion-header {
   background-color: #F57F17;
 }
+
 new-background-color {
   background-color: #F57F17;
 }
-ion-toolbar{
+
+ion-toolbar {
   background-color: #F57F17;
 }
-ion-title{
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0 90px 1px;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    color: white;
-    }
-  
+
+ion-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 90px 1px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: white;
+}
+
 
 //background//
 
-.background{
-  .add{
-      position: relative;
-      width: 30px;
-      height: 30px;
-      margin-left: 28%;
-      opacity: 30%;
-      margin-top: -12vw;
-    img{
+.background {
+  .add {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin-left: 28%;
+    opacity: 30%;
+    margin-top: -12vw;
+
+    img {
       position: relative;
       width: 30px;
       height: 30px;
@@ -43,109 +47,118 @@ ion-title{
       margin-top: -100vw;
     }
   }
+
   height: 180px;
   background-image: url('../../../assets/img/Protruding-Squares.svg');
   background-attachment: fixed;
   background-size: cover;
-  ion-text{
+
+  ion-text {
     visibility: hidden;
-  } 
+  }
 }
 
 //judul 1//
-  .judul1{
-    h2{
-      font-weight: 700;
-      font-size: 4vw;
-    }
+.judul1 {
+  h2 {
+    font-weight: 700;
+    font-size: 4vw;
   }
+}
 
 // pertanyaan 1 //
-.text1{
-  h2{
+.text1 {
+  h2 {
     font-size: 4vw;
     text-align: left;
     color: black;
   }
-  p{
+
+  p {
     text-align: justify;
     color: black;
   }
-} 
+}
 
 // pertanyaan 2 //
-.text2{
-  h2{
+.text2 {
+  h2 {
     font-size: 4vw;
     text-align: left;
     color: black;
   }
-  p{
+
+  p {
     text-align: justify;
     color: black;
   }
 }
 
 // pertanyaan 3 //
-.text3{
-  h2{
+.text3 {
+  h2 {
     font-size: 4vw;
     text-align: left;
     color: black;
   }
-  p{
+
+  p {
     text-align: justify;
     color: black;
   }
 }
 
 // pertanyaan 4 //
-.text4{
-  h2{
+.text4 {
+  h2 {
     font-size: 4vw;
     text-align: left;
     color: black;
   }
-  p{
+
+  p {
     text-align: justify;
     color: black;
   }
 }
 
 // pertanyaan 5 //
-.text5{
-  h2{
+.text5 {
+  h2 {
     font-size: 4vw;
     text-align: left;
     color: black;
   }
-  p{
+
+  p {
     text-align: justify;
     color: black;
   }
 }
 
 // pertanyaan 6 //
-.text6{
-  h2{
+.text6 {
+  h2 {
     font-size: 4vw;
     text-align: left;
     color: black;
   }
-  p{
+
+  p {
     text-align: justify;
     color: black;
   }
 }
 
 // pertanyaan 7 //
-.text7{
-  h2{
+.text7 {
+  h2 {
     font-size: 4vw;
     text-align: left;
     color: black;
   }
-  p{
+
+  p {
     text-align: justify;
     color: black;
   }

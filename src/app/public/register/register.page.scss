@@ -1,15 +1,18 @@
-ion-content{
+ion-content {
   --background: url('../../../assets/img/Flat-Mountains.svg') no-repeat center center / cover;
   --ion-background-color: #2b2b2b00;
 }
-ion-input{
+
+ion-input {
   color: white;
 }
-ion-text{
+
+ion-text {
   position: relative;
   color: white;
   margin-left: 30px;
 }
+
 .logo {
   margin: auto;
   margin-top: 30vw;
@@ -17,19 +20,22 @@ ion-text{
   height: 40vw;
   width: 90vw;
 }
+
 .gambar {
   box-align: center;
   padding: 20px;
   margin: 0px;
   line-height: 0px;
 }
+
 .textlogin {
-  box-align : center;
+  box-align: center;
   padding: 2vw;
   margin: 5px;
   margin-top: 5vw;
   line-height: 5px;
 }
+
 .back-button {
   color: white;
   margin-top: 3vw;

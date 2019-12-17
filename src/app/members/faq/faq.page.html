@@ -1,138 +1,95 @@
 <ion-header>
-    <ion-toolbar color=#F57F17 class="new-background-color">
-        <ion-buttons slot="start">
-            <ion-back-button color="light"defaultHref="/"></ion-back-button>
-          </ion-buttons>
-      <ion-title> FAQ </ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar color=#F57F17 class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title> FAQ </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-content fullscreen>
-    <div class="background">
-      <ion-text>Contact us</ion-text>
-    </div>
-    <div class="judul1"> 
-      <ion-list>
-        <ion-list-header>
-          <h2> Profile dan Akun </h2></ion-list-header>
-      </ion-list>
+<ion-content fullscreen>
+  <div class="background">
+    <ion-text>Contact us</ion-text>
+  </div>
+  <div class="judul1">
+    <ion-list>
+      <ion-list-header>
+        <h2> Profile dan Akun </h2>
+      </ion-list-header>
+    </ion-list>
   </div>
   <div class="text1">
-    <ion-card >
-        <ion-card-header tappable (click)="collapseCard = !collapseCard">
-          <ion-card-title> 
-            <ion-label>
-            <h2> Apa Itu Sunny CRM? <ion-icon name="arrow-dropdown"></ion-icon> </h2>
-          </ion-label>   
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content *ngIf="collapseCard">   
-            <p>
-                Strategi untuk mengelola hubungan dan interaksi organisasi dengan pelanggan dan pelanggan potensial. 
-                Sistem SUNNY CRM adalah Mempercepat dalam pengolahan CRM dan mendapatkan informasi tentang jumlah prospect yang ada. Lalu 360 Customer.
-                Dan mempermudah segmentasi Customers/ Prospect. 
-            </p> 
-          </ion-card-content>
-        </ion-card>
-    </div>
-    <div class="text2">
-      <ion-card>
-        <ion-card-header tappable (click)="collapseCard = !collapseCard">
-          <ion-card-title>
-            <ion-label>
-                <h2> Apa saja sistem Fungsional Sunny CRM?  <ion-icon name="arrow-dropdown"></ion-icon> </h2>
-              </ion-label> 
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content *ngIf="collapseCard">
-          <p>
-            1. Sistem dapat mengelola data Customer (Leads).
-          </p>
-          <p>
-            2. Sistem dapat mengelola data User (Contact, Perusahaan, Supplier,Mitra).
-          </p>
-          <p>
-            3. Sistem dapat mengelola Prospect.
-          </p>
-          <p>
-            4. Sistem dapat mengelola Activities (Lead baru dan lead lama, jadwal meeting, waktu dan tempat)
-          </p>
-          <p>
-            5. Sistem yang digunakan sangat User Freindly
-          </p>
-        </ion-card-content>
-        </ion-card>
-        </div>
-        <div class="text3">
-          <ion-card>
-            <ion-card-header tappable (click)="collapseCard = !collapseCard">
-              <ion-card-title>
-                <ion-label>
-                  <h2> Apakah Sunny CRM bisa digunakan di semua jenis ponsel? <ion-icon name="arrow-dropdown"></ion-icon>
-                  </h2>
-                </ion-label>
-              </ion-card-title>
-            </ion-card-header>
-            <ion-card-content *ngIf="collapseCard">
-              <p>
-                  Untuk saat ini aplikasi Sunny CRM hanya bisa digunakan pada ponsel berbasis iOS dan Android. 
-              </p>
-            </ion-card-content>
-          </ion-card>
-        </div>
-        <div class="text4">
-            <ion-card>
-              <ion-card-header tappable (click)="collapseCard = !collapseCard">
-                <ion-card-title>
-                  <ion-label>
-                    <h2> Apakah bisa saya menggunakan akun di Sunny CRM yang sama di beberapa ponsel? <ion-icon name="arrow-dropdown"></ion-icon>
-                    </h2>
-                  </ion-label>
-                </ion-card-title>
-              </ion-card-header>
-              <ion-card-content *ngIf="collapseCard">
-                <p>
-                    Untuk saat ini tidak bisa, hanya satu akun Sunny CRM yang  hanya bisa digunakan untuk satu ponsel. 
-                </p>
-              </ion-card-content>
-            </ion-card>
-          </div>
-
-          <div class="text5">
-              <ion-card>
-                <ion-card-header tappable (click)="collapseCard = !collapseCard">
-                  <ion-card-title>
-                    <ion-label>
-                      <h2> Apakah Keuntungan saya menggunakan Sunny Crm? <ion-icon name="arrow-dropdown"></ion-icon>
-                      </h2>
-                    </ion-label>
-                  </ion-card-title>
-                </ion-card-header>
-                <ion-card-content *ngIf="collapseCard">
-                  <p>
-                    1. Meningkatkan kesetiaan pelanggan.
-                  </p>
-                  <p>
-                    2. Mengurangi biaya personal maupun perusahaan.
-                  </p>
-                  <p>
-                    3. Kegiatan operasional semakin efisien
-                  </p>
-                  <p>
-                    4. Time to market meningkat
-                  </p>
-                  <p>
-                    5. Pendapatan meningkat dari hari ke hari
-                </ion-card-content>
-                </ion-card>
-                </div>
-
-  <div class="text6">
     <ion-card>
       <ion-card-header tappable (click)="collapseCard = !collapseCard">
         <ion-card-title>
           <ion-label>
-            <h2>Bagaimana melakukan pembukaan akun yang sebelumnya dibekukan? <ion-icon
+            <h2> Apa Itu Sunny CRM? <ion-icon name="arrow-dropdown"></ion-icon>
+            </h2>
+          </ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="collapseCard">
+        <p>
+          Strategi untuk mengelola hubungan dan interaksi organisasi dengan pelanggan dan pelanggan potensial.
+          Sistem SUNNY CRM adalah Mempercepat dalam pengolahan CRM dan mendapatkan informasi tentang jumlah prospect
+          yang ada. Lalu 360 Customer.
+          Dan mempermudah segmentasi Customers/ Prospect.
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="text2">
+    <ion-card>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>
+          <ion-label>
+            <h2> Apa saja sistem Fungsional Sunny CRM? <ion-icon name="arrow-dropdown"></ion-icon>
+            </h2>
+          </ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="collapseCard">
+        <p>
+          1. Sistem dapat mengelola data Customer (Leads).
+        </p>
+        <p>
+          2. Sistem dapat mengelola data User (Contact, Perusahaan, Supplier,Mitra).
+        </p>
+        <p>
+          3. Sistem dapat mengelola Prospect.
+        </p>
+        <p>
+          4. Sistem dapat mengelola Activities (Lead baru dan lead lama, jadwal meeting, waktu dan tempat)
+        </p>
+        <p>
+          5. Sistem yang digunakan sangat User Freindly
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="text3">
+    <ion-card>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>
+          <ion-label>
+            <h2> Apakah Sunny CRM bisa digunakan di semua jenis ponsel? <ion-icon name="arrow-dropdown"></ion-icon>
+            </h2>
+          </ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="collapseCard">
+        <p>
+          Untuk saat ini aplikasi Sunny CRM hanya bisa digunakan pada ponsel berbasis iOS dan Android.
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="text4">
+    <ion-card>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>
+          <ion-label>
+            <h2> Apakah bisa saya menggunakan akun di Sunny CRM yang sama di beberapa ponsel? <ion-icon
                 name="arrow-dropdown"></ion-icon>
             </h2>
           </ion-label>
@@ -140,29 +97,77 @@
       </ion-card-header>
       <ion-card-content *ngIf="collapseCard">
         <p>
-            Silakan hubungi Customer Care Sunny CRM (ISystem Asia) untuk permintaan bantuan lebih lanjut.
+          Untuk saat ini tidak bisa, hanya satu akun Sunny CRM yang hanya bisa digunakan untuk satu ponsel.
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="text5">
+    <ion-card>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>
+          <ion-label>
+            <h2> Apakah Keuntungan saya menggunakan Sunny Crm? <ion-icon name="arrow-dropdown"></ion-icon>
+            </h2>
+          </ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="collapseCard">
+        <p>
+          1. Meningkatkan kesetiaan pelanggan.
+        </p>
+        <p>
+          2. Mengurangi biaya personal maupun perusahaan.
+        </p>
+        <p>
+          3. Kegiatan operasional semakin efisien
+        </p>
+        <p>
+          4. Time to market meningkat
+        </p>
+        <p>
+          5. Pendapatan meningkat dari hari ke hari
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="text6">
+    <ion-card>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>
+          <ion-label>
+            <h2>Bagaimana melakukan pembukaan akun yang sebelumnya dibekukan? <ion-icon name="arrow-dropdown">
+              </ion-icon>
+            </h2>
+          </ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="collapseCard">
+        <p>
+          Silakan hubungi Customer Care Sunny CRM (ISystem Asia) untuk permintaan bantuan lebih lanjut.
         </p>
       </ion-card-content>
     </ion-card>
   </div>
 
   <div class="text7">
-      <ion-card>
-        <ion-card-header tappable (click)="collapseCard = !collapseCard">
-          <ion-card-title>
-            <ion-label>
-              <h2> Bagaimana cara saya melaporkan kalau ada permasalahan di akun saya? <ion-icon
-                  name="arrow-dropdown"></ion-icon>
-              </h2>
-            </ion-label>
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content *ngIf="collapseCard">
-          <p>
-              Segera hubungi Customer Care Sunny CRM (ISystem Asia) untuk permintaan bantuan lebih lanjut.
-          </p>
-        </ion-card-content>
-      </ion-card>
-    </div>
+    <ion-card>
+      <ion-card-header tappable (click)="collapseCard = !collapseCard">
+        <ion-card-title>
+          <ion-label>
+            <h2> Bagaimana cara saya melaporkan kalau ada permasalahan di akun saya? <ion-icon name="arrow-dropdown">
+              </ion-icon>
+            </h2>
+          </ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="collapseCard">
+        <p>
+          Segera hubungi Customer Care Sunny CRM (ISystem Asia) untuk permintaan bantuan lebih lanjut.
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
 </ion-content>

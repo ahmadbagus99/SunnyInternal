@@ -1,4 +1,4 @@
-ion-title{
+ion-title {
   position: absolute;
   top: 0;
   left: 0;
@@ -6,9 +6,10 @@ ion-title{
   width: 100%;
   height: 100%;
   text-align: center;
-  color:white;
+  color: white;
 }
-ion-icon{
+
+ion-icon {
   transform-origin: 5px 5px;
   margin-left: 5vw;
   margin-top: 3vw;
@@ -16,37 +17,40 @@ ion-icon{
   color: #F57F17;
 }
 
-ion-button{
+ion-button {
   text-transform: capitalize;
   color: white;
-  span{
-    text-align:left;
-    width:100%;
+
+  span {
+    text-align: left;
+    width: 100%;
   }
 }
 
-ion-header{
+ion-header {
   background-color: #F57F17;
 }
 
 new-background-color {
   background-color: #F57F17;
 }
-ion-toolbar{
+
+ion-toolbar {
   background-color: #F57F17;
 }
-ion-segment{
+
+ion-segment {
   color: white;
 }
 
 .sc-ion-card-md-h {
   -webkit-margin-start: 6px;
-  margin-inline-start: 6px ;
-  -webkit-margin-end: 6px ;
-  margin-inline-end: 6px ;
+  margin-inline-start: 6px;
+  -webkit-margin-end: 6px;
+  margin-inline-end: 6px;
 }
 
-.text1{
+.text1 {
   position: fixed;
   text-align: center;
   font-weight: bold;
@@ -54,51 +58,49 @@ ion-segment{
   margin-left: 14vw;
 }
 
-.fullname{
-  .image-upload > input
-{
+.fullname {
+  .image-upload>input {
     display: none;
-}
-.image-upload img
-{
-  
-  margin-top: 8vw;
-  margin-left: 6vw;
+  }
+
+  .image-upload img {
+
+    margin-top: 8vw;
+    margin-left: 6vw;
     width: 20vw;
     cursor: pointer;
-     max-width: 700vw;
-     max-height: 800vw;
-}
+    max-width: 700vw;
+    max-height: 800vw;
+  }
 }
 
-.tambah{
+.tambah {
   margin-left: 15vw;
   margin-top: 2vw;
   margin-bottom: 5vw;
   position: relative;
   // word-spacing: 10px;
-  }
+}
 
-.seeall{
+.seeall {
   margin-left: 50vw;
   margin-top: -15vw;
   margin-bottom: 0vw;
   position: static;
   // word-spacing: 10px;
-  }
+}
 
 
-.text{
+.text {
   margin-top: -18vw;
   margin-left: 36vw;
   position: relative;
   max-width: 1000px;
   max-height: 1000px;
   color: white
-
 }
 
-.text-job{
+.text-job {
   margin-top: 4vw;
   margin-left: 36vw;
   position: relative;
@@ -107,11 +109,12 @@ ion-segment{
   color: white
 }
 
-ion-button{
+ion-button {
   width: 30vw;
 }
 
-.fixed[scrollx=true], div[scrolly=true] {
+.fixed[scrollx=true],
+div[scrolly=true] {
   position: relative;
   overflow: hidden;
 
@@ -131,9 +134,10 @@ ion-button{
 
 #myFixZone {
   height: 200px;
- 
+
 }
-.tombol{
+
+.tombol {
   margin-left: 55px;
   margin-bottom: 10px;
 }
@@ -142,6 +146,7 @@ ion-button{
   &::-webkit-scrollbar {
     display: none;
   }
+
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -149,8 +154,8 @@ ion-button{
 
   .card {
     display: inline-block;
-    width: 30vw; 
-     
+    width: 30vw;
+
     // border-radius:200vw;
     // box-shadow: #989aa2 8px;
     // --padding-top:30px !important;
@@ -160,43 +165,43 @@ ion-button{
     //   box-shadow: 10px 10px 10px #888888;
     p {
       color: #F57F17;
-   }
-    h2{
+    }
+
+    h2 {
       font-weight: bold;
       position: relative;
-     margin-right: 5vw; 
-     font-size: 3.5vw;
-    
+      margin-right: 5vw;
+      font-size: 3.5vw;
+
     }
   }
 }
 
-.judul{
-    margin-left: 6vw;
-    color: #5f5f5f;
-    font-weight: bold;
-    font-size: medium; 
-  }
-
-  .tabs{
-    background: cover;
-  }
-
-  .image-upload img
-{
-  border-style: solid;
-    border:3px solid #EEEEEE;
-    width: 100px;
-    height: 79px;
-    border-radius: 50%;
-    cursor: pointer;
+.judul {
+  margin-left: 6vw;
+  color: #5f5f5f;
+  font-weight: bold;
+  font-size: medium;
 }
 
-  .segment {
-    color: #EEEEEE;
-    border-radius: 50%;
-    height: 20vw;
-    padding: 0 10px;
+.tabs {
+  background: cover;
+}
+
+.image-upload img {
+  border-style: solid;
+  border: 3px solid #EEEEEE;
+  width: 100px;
+  height: 79px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.segment {
+  color: #EEEEEE;
+  border-radius: 50%;
+  height: 20vw;
+  padding: 0 10px;
 }
 
 .add-pro {

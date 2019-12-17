@@ -7,47 +7,45 @@
   </ion-toolbar>
 </ion-header>  -->
 
-
-
-
 <ion-content>
 
-<div class="back-button">
-<ion-icon name="arrow-back" size="large" defaultHref="/login"></ion-icon> 
- </div>
+  <div class="back-button">
+    <ion-icon name="arrow-back" size="large" defaultHref="/login"></ion-icon>
+  </div>
 
-        
-<body><div class="oval"></div>
-<div class="logo">
-  <img src="assets/img/logo-isa.png"/></div>
-  <div color=#efefef>
-        <ion-grid style="grid-auto-rows: 10vw;">
+  <body>
+    <div class="oval"></div>
+    <div class="logo">
+      <img src="assets/img/logo-isa.png" /></div>
+    <div color=#efefef>
+      <ion-grid style="grid-auto-rows: 10vw;">
         <ion-row justify-content-center align-items-center style="height: 100%">
-        <ion-list>
-        <ion-item>
-          <ion-input placeholder="Nama" type="text" [(ngModel)]="nama"></ion-input>
-        </ion-item>
+          <ion-list>
+            <ion-item>
+              <ion-input placeholder="Nama" type="text" [(ngModel)]="nama"></ion-input>
+            </ion-item>
 
-        <ion-item>
-          <ion-input placeholder="Email" type="text" [(ngModel)]="email"></ion-input>
-        </ion-item>
+            <ion-item>
+              <ion-input placeholder="Email" type="text" [(ngModel)]="email"></ion-input>
+            </ion-item>
 
-        <ion-item>
-          <ion-input placeholder="Password" type="text" [(ngModel)]="password"></ion-input>
-        </ion-item>
+            <ion-item>
+              <ion-input placeholder="Password" type="text" [(ngModel)]="password"></ion-input>
+            </ion-item>
 
-        <ion-item>
-          <ion-input placeholder="Confirm Password" type="password" [(ngModel)]="confirm_password"></ion-input>
-        </ion-item>
+            <ion-item>
+              <ion-input placeholder="Confirm Password" type="password" [(ngModel)]="confirm_password"></ion-input>
+            </ion-item>
 
-        <div class="gambar">
-          <br>
-        <ion-button icon-left size="medium" expand="full" shape="round"  (click)="prosesregister()" color="success">Daftar</ion-button>
-          <br>
-        <div class="textlogin">  
-        <ion-text routerLink="/login"><u>Saya sudah punya akun!</u></ion-text>
-        </div>
-      </div>
-    </ion-list>
-  </ion-row>
-</ion-grid>
+            <div class="gambar">
+              <br>
+              <ion-button icon-left size="medium" expand="full" shape="round" (click)="prosesregister()"
+                color="success">Daftar</ion-button>
+              <br>
+              <div class="textlogin">
+                <ion-text routerLink="/login"><u>Saya sudah punya akun!</u></ion-text>
+              </div>
+            </div>
+          </ion-list>
+        </ion-row>
+      </ion-grid>

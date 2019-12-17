@@ -1,10 +1,12 @@
-*{
+* {
   --ion-background-color: #ffffff !important;
 }
-ion-content{
+
+ion-content {
   --ion-background-color: #EEEEEE !important;
 }
-ion-title{
+
+ion-title {
   position: absolute;
   top: 0;
   left: 0;
@@ -14,41 +16,48 @@ ion-title{
   text-align: center;
   color: #F57F17;
   text-transform: capitalize;
-  color:#FFFFFF;
+  color: #FFFFFF;
 }
-ion-toolbar{
+
+ion-toolbar {
   background-color: #F57F17;
 }
-ion-button{
+
+ion-button {
   text-transform: capitalize;
   color: white;
 }
+
 ion-back-button {
   color: #FFFFFF;
 }
-.new-background-color{
+
+.new-background-color {
   --background: #54d61c;
 }
-.background{
+
+.background {
   margin: 10px;
   height: 460px;
   background-color: white;
   border-radius: 6px;
   position: relative;
 }
-.cover{
+
+.cover {
   height: 110px;
   background-image: url('../../../assets/img/Randomized-Pattern.svg');
   background-attachment: fixed;
   background-size: cover;
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
-  img{
+
+  img {
     position: absolute;
     bottom: 322px;
     // margin-left: 40%;
     border-style: solid;
-    border:3px solid #EEEEEE;
+    border: 3px solid #EEEEEE;
     width: 70px;
     height: 70px;
     border-radius: 50%;
@@ -56,7 +65,8 @@ ion-back-button {
     margin-left: -35px;
   }
 }
-.nama{
+
+.nama {
   position: absolute;
   width: 141px;
   height: 50px;
@@ -66,80 +76,95 @@ ion-back-button {
   margin-top: -25px;
   text-align: center;
 }
-.perusahaan{
+
+.perusahaan {
   position: absolute;
-    width: 98px;
-    height: 50px;
-    top: 39%;
-    left: 50%;
-    margin-left: -54px;
-    margin-top: -25px;
-    text-align: center;
+  width: 98px;
+  height: 50px;
+  top: 39%;
+  left: 50%;
+  margin-left: -54px;
+  margin-top: -25px;
+  text-align: center;
 }
-.nomor-telepon{
+
+.nomor-telepon {
   position: absolute;
   bottom: 204px;
   margin-left: 20%;
-  ion-input{
+
+  ion-input {
     font-size: 13px;
     font-style: oblique;
     margin: 2px;
   }
-  ion-label{
+
+  ion-label {
     color: #F57F17;
   }
 }
-.alamat{
+
+.alamat {
   position: absolute;
   bottom: 144px;
   margin-left: 20%;
-  ion-input{
+
+  ion-input {
     font-size: 13px;
     font-style: oblique;
   }
-  ion-label{
+
+  ion-label {
     color: #F57F17;
   }
 }
-.npwp{
+
+.npwp {
   position: absolute;
   bottom: 84px;
   margin-left: 20%;
-  ion-input{
+
+  ion-input {
     font-size: 13px;
     font-style: oblique;
   }
-  ion-label{
+
+  ion-label {
     color: #F57F17;
   }
 }
-.twitter{
+
+.twitter {
   position: absolute;
   bottom: 24px;
   margin-left: 20%;
-  ion-input{
+
+  ion-input {
     font-size: 13px;
     font-style: oblique;
   }
-  ion-label{
+
+  ion-label {
     color: #F57F17;
   }
 }
-div.content{
+
+div.content {
   height: 10em;
   position: relative;
-    
+
 }
-div.content ion-button{
-    margin: 0;
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: #14c214;
-    --ion-color-primary: #ffffff;
+
+div.content ion-button {
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #14c214;
+  --ion-color-primary: #ffffff;
 }

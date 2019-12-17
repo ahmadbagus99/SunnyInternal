@@ -1,4 +1,4 @@
-ion-title{
+ion-title {
   color: #FFFFFF;
   position: absolute;
   top: 0;
@@ -10,25 +10,27 @@ ion-title{
   text-transform: capitalize;
 }
 
-ion-grid{
+ion-grid {
   object-position: unset;
   top: 10px;
   float: initial;
   padding: 10px;
   color: #F57F17;
-
-  
 }
-ion-header{
+
+ion-header {
   background-color: #F57F17;
 }
+
 new-background-color {
   background-color: #F57F17;
 }
-ion-toolbar{
+
+ion-toolbar {
   background-color: #F57F17;
 }
-ion-icon{
+
+ion-icon {
   position: relative;
   color: #222428;
 }
@@ -58,7 +60,8 @@ ion-label{
 
 ion-button{
   align-content: center;
-  margin-top: 95vw;
-  stroke: #bd0909;
+  margin-top: 135%;
+  border-style: solid;
+  border-radius: 30px 30px 30px 30px;
   color: #bd0909;
 }

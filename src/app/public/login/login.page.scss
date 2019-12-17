@@ -1,74 +1,81 @@
 //fungsi menampilan background bagian login pages//
-ion-content{
+ion-content {
   --background: url('../../../assets/img/Flat-Mountains.svg') no-repeat center center / cover;
   --ion-background-color: #2b2b2b00;
 }
+
 //fungsi untuk mengantuk warna, besar, lebar, dan batas tulisan//
-  ion-slide > h2 {
-    margin-top: 1rem;
-  }
-  ion-slide > img {
-    margin: center;
-    background-position: relative;
-    z-index: 1;
-  }
-  ion-text{
-    position: static;
-    margin-left: 25%;
-    color: white;
-  }
-  ion-grid {
-    margin-top: 20vw;
-    
-  }
+ion-slide>h2 {
+  margin-top: 1rem;
+}
 
-  ion-input {
-    background-color: transparent;
-    color: white;
-  }
+ion-slide>img {
+  margin: center;
+  background-position: relative;
+  z-index: 1;
+}
+
+ion-text {
+  position: static;
+  margin-left: 25%;
+  color: white;
+}
+
+ion-grid {
+  margin-top: 20vw;
+
+}
+
+ion-input {
+  background-color: transparent;
+  color: white;
+}
+
 //fungsi untuk mengantuk warna, besar, lebar, dan batas logo sunny//
-  .logo {
-    margin: auto;
-    margin-top: 30vw;
-    position: relative;
-    height: 40vw;
-    width: 90vw;
-  }
+.logo {
+  margin: auto;
+  margin-top: 30vw;
+  position: relative;
+  height: 40vw;
+  width: 90vw;
+}
+
 //fungsi untuk mengantuk warna, besar, lebar, dan batas gambar//
-  .gambar {
-    box-align: center;
-    padding: 20px;
-    margin: 0px;
-    line-height: 0px;
-  }
+.gambar {
+  box-align: center;
+  padding: 20px;
+  margin: 0px;
+  line-height: 0px;
+}
 
 
-  .background-load {
-    background-blend-mode: soft-light;
-    
-  }
+.background-load {
+  background-blend-mode: soft-light;
 
-  //fungsi untuk mengantuk warna, besar, lebar, dan batas tulisan daftar akun//
-  .textlogin {
-    box-align : center;
-    padding: 2vw;
-    margin: 5px;
-    margin-top: 5vw;
-    line-height: 5px;
-  }
+}
 
-  :root {
-    --ion-safe-area-top: 20px;
-    --ion-safe-area-bottom: 22px;
-  }
+//fungsi untuk mengantuk warna, besar, lebar, dan batas tulisan daftar akun//
+.textlogin {
+  box-align: center;
+  padding: 2vw;
+  margin: 5px;
+  margin-top: 5vw;
+  line-height: 5px;
+}
+
+:root {
+  --ion-safe-area-top: 20px;
+  --ion-safe-area-bottom: 22px;
+}
+
 //fungsi untuk page loading tidak bisa slide ke bawah //
-  .swiper-slide {    
-    display: block;
-  }
+.swiper-slide {
+  display: block;
+}
 
 //fungsi background untuk tampilan input data jadi transparan//
-  .item-input{
-    background-color: transparent;
+.item-input {
+  background-color: transparent;
 }
 
 //fungsi warnai back button
@@ -77,4 +84,3 @@ ion-content{
   margin-top: 3vw;
   margin-left: 3vw;
 }
-
