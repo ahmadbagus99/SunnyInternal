@@ -17,14 +17,16 @@ export class EditproductPage implements OnInit {
   userID: string = "";
   namaProduk: string ='';
   tipeProduk: string;
-  statusProduk: string;
+  totalProfit: number;
   jumlahProduk: string ='';
-  hargaProduk: string ='';
+  hargaProduk: number;
+  normalPrice: number=0;
   deskripsiProduk: string;
   id: number;
   isImgLoaded: boolean;
   warning: string;
   isHidden: boolean = true;
+  profit :number;
 
   constructor(
     private storageLocal: Storage,
@@ -41,37 +43,33 @@ export class EditproductPage implements OnInit {
       if ( data.id == null){
       }else{
       this.id = data.id;
+      }
+
       if ( data.namaProduk == " "){
         this.namaProduk ="";
       }else{
         this.namaProduk = data.namaProduk;
       }
+
       if ( data.tipeProduk == " "){
         this.tipeProduk ="";
       }else{
         this.tipeProduk = data.tipeProduk;
       }
-      if ( data.tipeProduk == " "){
-        this.tipeProduk ="";
-      }else{
-        this.statusProduk = data.statusProduk;
-      }
+        
       if ( data.jumlahProduk == " "){
         this.jumlahProduk ="";
       }else{
         this.jumlahProduk = data.jumlahProduk;
       }
-      if ( data.hargaProduk == " "){
-        this.hargaProduk ="";
-      }else{
-        this.hargaProduk = data.hargaProduk;
-      }
+
       if ( data.deskripsiProduk == " "){
         this.deskripsiProduk ="";
       }else{
         this.deskripsiProduk = data.deskripsiProduk
       }
-      }
+      this.hargaProduk = data.hargaProduk;
+      this.profit = data.totalProfit;
     });
     //fungsi dimana data yang akan di isi langsung ke storge database  
     this.storageLocal.get('session_storage').then((iduser) => {
@@ -93,7 +91,7 @@ export class EditproductPage implements OnInit {
     } else if (this.jumlahProduk == '') {
       this.warning = 'Data Tidak Boleh Kosong'
     } else
-      if (this.hargaProduk == '') {
+      if (this.hargaProduk == 0 ) {
         this.warning = 'Data Tidak Boleh Kosong'
     } else {
       return new Promise(resolve => {
@@ -101,7 +99,7 @@ export class EditproductPage implements OnInit {
           aksi: 'add',
           namaProduk: this.namaProduk,
           tipeProduk: this.tipeProduk,
-          statusProduk: this.statusProduk,
+          totalProfit: this.profit,
           jumlahProduk: this.jumlahProduk,
           hargaProduk: this.hargaProduk,
           deskripsiProduk: this.deskripsiProduk,
@@ -127,7 +125,7 @@ export class EditproductPage implements OnInit {
         id: this.id,
         namaProduk: this.namaProduk,
         tipeProduk: this.tipeProduk,
-        statusProduk: this.statusProduk,
+        totalProfit: this.profit,
         jumlahProduk: this.jumlahProduk,
         hargaProduk: this.hargaProduk,
         deskripsiProduk: this.deskripsiProduk,
@@ -139,5 +137,10 @@ export class EditproductPage implements OnInit {
       });
     });
   }
+
+  profitCalculate(){
+    var Profit = this.normalPrice*(this.profit*0.01);
+    this.hargaProduk = this.normalPrice + Profit;
+  }  
 
 }

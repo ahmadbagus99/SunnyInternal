@@ -37,6 +37,7 @@ export class AddprospectPage implements OnInit {
   customerneed: string = "";
   userID: string = "";
   email: string = "";
+  NPWP: number = 0;
   category: any;
   progress = 0;
   itemProduct = [];
@@ -58,6 +59,8 @@ export class AddprospectPage implements OnInit {
   emailCustomer: string;
   alamatCustomer: string;
   itemsCustomer = [];
+  idProduct :number;
+  sisaStock : number;
   letterObj = {
     address: ' Arkadia Green Park Estate, Tower F, 6th Floor, Jl. TB Simatupang No.Kav. 88, RT.1/RW.2, Kebagusan, Kec. Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12520',
     text: ' For purchasing the item with the criteria as below : '
@@ -88,10 +91,8 @@ export class AddprospectPage implements OnInit {
     this.items = [];
     this.start = 0;
     this.itemProduct = [];
-    this.itemsAccount = [];
     this.itemsContact = [];
     this.loadContact();
-    this.loadAcount();
     this.loadProduct();
   }
   ngOnInit() {
@@ -118,8 +119,9 @@ export class AddprospectPage implements OnInit {
 
   pushNotif(seconds: number){
     this.localNotifications.schedule({
-      title : `Prospek Baru`,
-      text : `Prospek baru telah di buat`,
+      title : `New Prospect`,
+      text : `You Created New Prospect!`,
+      sound: null,
       trigger: {
         in : seconds,
         unit: ELocalNotificationTriggerUnit.SECOND,
@@ -132,9 +134,12 @@ export class AddprospectPage implements OnInit {
       this.isHidden = false;
       this.selectHidden = true;
       this.namaCustomer = '';
+      this.itemsAccount = [];
+      this.loadAcount();
     }
     this.itemsCustomer = [];
     this.LoadDataCustomer();
+    console.log(this.company)
   }
 
   loadContact() {
@@ -148,6 +153,7 @@ export class AddprospectPage implements OnInit {
       this.postPvdr.postData(body, 'LoadContact.php?Id=' + this.user).subscribe(data => {
         for (let item of data) {
           this.itemsContact.push(item);
+          this.storage.set('Data', this.itemsContact)
         }
       });
     })
@@ -168,6 +174,8 @@ export class AddprospectPage implements OnInit {
             var emailCustomer = DataCustomer.map(data => data.email);
             var alamatCustomer = DataCustomer.map(data => data.almt_rumah);
             var nomorCustomer = DataCustomer.map(data => data.no_tlp);
+            var perusahaanCustomer = DataCustomer.map(data => data.perusahaan);
+            this.company = perusahaanCustomer.toString();
             this.emailCustomer = emailCustomer.toString();
             this.alamatCustomer = alamatCustomer.toString();
             this.no_tlp = parseInt(nomorCustomer);
@@ -211,11 +219,14 @@ export class AddprospectPage implements OnInit {
     };
     this.postPvdr.postData(body, 'LoadQuantityProduct.php?Product=' + this.customerneed).subscribe(data => {
       for (let item of data) {
+        console.log(data)
         this.itemQunatityProduct.push(item);
         this.storage.set('Stock', this.itemQunatityProduct).then(() => {
-          this.storage.get('Stock').then((harga) => {
-            var harga = harga;
-            var hargaProduk = harga.map(data => data.hargaProduk);
+          this.storage.get('Stock').then((data) => {
+            var DataProduct = data;
+            var hargaProduk = DataProduct.map(data => data.hargaProduk);
+            var idProduct = DataProduct.map(data => data.id)
+            this.idProduct = idProduct.toString();
             this.hargaProduk = parseInt(hargaProduk);
           })
         })
@@ -247,6 +258,27 @@ export class AddprospectPage implements OnInit {
     });
   }
 
+  SaveContact(){
+    return new Promise(resolve => {
+      let body = {
+        aksi: 'add',
+        nama: this.namaCustomer,
+        email: this.emailCustomer,
+        alamat: this.alamatCustomer,
+        no_tlp: this.no_tlp,
+        almt_rumah: this.almt_rumah,
+        perusahaan: this.company,
+        NPWP: this.NPWP,
+        almt_perusahaan: this.alamatCompany,
+        userID: this.userID
+      };
+      //Fungsi untuk menarik/mendapatkan data untuk data add contact dari server php
+      this.postPvdr.postData(body, 'InsertContact.php').subscribe(data => {
+        console.log(data)
+    });
+    });
+  }
+  
   async SaveProspect() {
     const alert = await this.alertCtrl.create({
       subHeader: 'Apa kamu sudah yakin ?',
@@ -261,6 +293,8 @@ export class AddprospectPage implements OnInit {
           text: 'Ya',
           handler: () => {
             this.createPdf();
+            this.SaveContact();
+            this.UpdateQuantity();
             return new Promise(resolve => {
               let body = {
                 aksi: 'add',
@@ -324,6 +358,7 @@ export class AddprospectPage implements OnInit {
       this.jumlahProduk = this.jumlahProduk.map(user => user.jumlahProduk);
       var hasilStok = parseInt(this.jumlahProduk);
       var SisaStok = hasilStok - this.stock;
+      this.sisaStock = SisaStok;
     })
     this.price = parseInt(this.hargaProduk)
     var totalHarga = this.price * this.stock;
@@ -344,18 +379,38 @@ export class AddprospectPage implements OnInit {
     this.progress = this.progress + 0.5;
     this.storage.set('NamaProduk', this.customerneed);
     this.loadQuantityroduct()
+    
   }
 
   nextSlide3() {
     this.slides.lockSwipes(false);
     this.progress = this.progress + 0.5;
     this.slides.slideNext();
+
     // console.log(this.emailCustomer)
     // console.log(this.alamatCustomer)
     // console.log(this.no_tlp)
     // console.log(this.alamatCompany)
     // console.log(this.emailCompany)
     // console.log(this.nomorCompany)
+    this.storage.get('Stock').then((data)=>{
+      var Data = data;
+      var id = Data.map( data => data.id);
+      this.idProduct = parseInt(id);
+    })
+    console.log(this.idProduct)
+    console.log(this.sisaStock)
+  }
+  UpdateQuantity(){
+    return new Promise(resolve => {
+      let body = {
+        aksi: 'update',
+        jumlahProduk: this.sisaStock,
+      };
+      this.postPvdr.postData(body, 'updateQuantity.php?Id='+this.idProduct).subscribe(data => {
+        console.log(data)
+      });
+    });
   }
 
   prev() {
