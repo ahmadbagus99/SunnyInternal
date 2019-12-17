@@ -114,7 +114,8 @@ export class ViewProspectPage implements OnInit {
   }
   async cancel() {
     const alert = await this.alertCtrl.create({
-      header: 'Apa kamu yakin membatalkan proses ini ?',
+      header: 'Are you sure ?',
+      subHeader:'Canceled this process ?',
       buttons: [
         {
           text: 'Batal',

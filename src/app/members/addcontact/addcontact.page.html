@@ -6,8 +6,8 @@
     <ion-title *ngIf="!id">Add Contact</ion-title>
     <ion-title *ngIf="id>=1">Edit Contact</ion-title>
     <ion-buttons slot="primary">
-      <ion-button *ngIf="!id" (click)="createdProcess()">Simpan</ion-button>
-      <ion-button *ngIf="id>=1" (click)="updateProcess()">Simpan</ion-button>
+      <ion-button *ngIf="!id" (click)="createdProcess()">Save</ion-button>
+      <ion-button *ngIf="id>=1" (click)="updateProcess()">Save</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

@@ -7,7 +7,7 @@
       <ion-back-button [hidden]="!isHidden" defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="primary" [hidden]="isHidden">
-      <ion-button (click)="Update()">Simpan</ion-button>
+      <ion-button (click)="Update()">Save</ion-button>
     </ion-buttons>
     <ion-title>Prospect {{note}}</ion-title>
   </ion-toolbar>
@@ -51,25 +51,25 @@
   <div>
     <span>
       <ion-item>
-        <ion-label position="stacked">Name Costumer</ion-label>
+        <ion-label position="stacked"> Costumer Name </ion-label>
         <ion-input [(ngModel)]="namaCustomer" readOnly></ion-input>
       </ion-item>
     </span>
     <span>
-      <ion-item>
-        <ion-label position="stacked"> Email Costumer </ion-label>
+      <ion-item> 
+        <ion-label position="stacked"> Costumer Email  </ion-label>
         <ion-input [(ngModel)]="emailCustomer" readOnly></ion-input>
       </ion-item>
     </span>
     <span>
       <ion-item>
-        <ion-label position="stacked"> Alamat Costumer </ion-label>
+        <ion-label position="stacked"> Costumer  Address </ion-label>
         <ion-input [(ngModel)]="alamatCustomer" readOnly></ion-input>
       </ion-item>
     </span>
     <span>
       <ion-item>
-        <ion-label position="floating">Nomor Telepon Customer</ion-label>
+        <ion-label position="floating"> Customer Phone Number </ion-label>
         <ion-input type="text" [(ngModel)]="no_tlp" readOnly></ion-input>
       </ion-item>
     </span>
@@ -93,7 +93,7 @@
     </span>
     <span>
       <ion-item>
-        <ion-label position="stacked"> Detail price Per unit </ion-label>
+        <ion-label position="stacked"> Details price Per unit </ion-label>
         <ion-input type="text" value="{{ hargaProduk | currency:'Rp'}}" readOnly></ion-input>
       </ion-item>
     </span>
