@@ -42,7 +42,11 @@ ion-toolbar {
 ion-segment {
   color: white;
 }
-
+ion-card-content {
+  display: block;
+  position: relative;
+  background: white;
+}
 .sc-ion-card-md-h {
   -webkit-margin-start: 6px;
   margin-inline-start: 6px;
@@ -150,7 +154,7 @@ div[scrolly=true] {
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
-  color: #EEEEEE;
+  background-color: #ffffff;
 
   .card {
     display: inline-block;
@@ -168,9 +172,10 @@ div[scrolly=true] {
     }
 
     h2 {
+      color: black;
       font-weight: bold;
       position: relative;
-      margin-right: 5vw;
+      margin-top: 2vw;
       font-size: 3.5vw;
 
     }

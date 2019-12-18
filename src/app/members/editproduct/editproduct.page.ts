@@ -19,8 +19,9 @@ export class EditproductPage implements OnInit {
   tipeProduk: string;
   totalProfit: number;
   jumlahProduk: string ='';
-  hargaProduk: number;
-  normalPrice: number=0;
+  hargaProduk: string;
+  harga : number=0;
+  normalPrice: number;
   deskripsiProduk: string;
   id: number;
   isImgLoaded: boolean;
@@ -40,6 +41,9 @@ export class EditproductPage implements OnInit {
   
   ngOnInit() {
     this.actRoute.params.subscribe((data: any) => {
+      this.hargaProduk = data.hargaProduk;
+      this.profit = data.totalProfit;
+      this.normalPrice = data.normalPrice;
       if ( data.id == null){
       }else{
       this.id = data.id;
@@ -68,8 +72,6 @@ export class EditproductPage implements OnInit {
       }else{
         this.deskripsiProduk = data.deskripsiProduk
       }
-      this.hargaProduk = data.hargaProduk;
-      this.profit = data.totalProfit;
     });
     //fungsi dimana data yang akan di isi langsung ke storge database  
     this.storageLocal.get('session_storage').then((iduser) => {
@@ -91,7 +93,7 @@ export class EditproductPage implements OnInit {
     } else if (this.jumlahProduk == '') {
       this.warning = 'Data Tidak Boleh Kosong'
     } else
-      if (this.hargaProduk == 0 ) {
+      if (this.hargaProduk == '' ) {
         this.warning = 'Data Tidak Boleh Kosong'
     } else {
       return new Promise(resolve => {
@@ -100,6 +102,7 @@ export class EditproductPage implements OnInit {
           namaProduk: this.namaProduk,
           tipeProduk: this.tipeProduk,
           totalProfit: this.profit,
+          normalPrice : this.normalPrice,
           jumlahProduk: this.jumlahProduk,
           hargaProduk: this.hargaProduk,
           deskripsiProduk: this.deskripsiProduk,
@@ -126,6 +129,7 @@ export class EditproductPage implements OnInit {
         namaProduk: this.namaProduk,
         tipeProduk: this.tipeProduk,
         totalProfit: this.profit,
+        normalPrice : this.normalPrice,
         jumlahProduk: this.jumlahProduk,
         hargaProduk: this.hargaProduk,
         deskripsiProduk: this.deskripsiProduk,
@@ -140,7 +144,8 @@ export class EditproductPage implements OnInit {
 
   profitCalculate(){
     var Profit = this.normalPrice*(this.profit*0.01);
-    this.hargaProduk = this.normalPrice + Profit;
+    this.harga = this.normalPrice + Profit;
+    this.hargaProduk = this.harga.toString();
   }  
 
 }

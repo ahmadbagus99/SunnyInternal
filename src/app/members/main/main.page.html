@@ -158,23 +158,24 @@
       <ion-text>See all</ion-text>
     </a>
   </div>
+
   <div class="extra-content">
     <div class="scrolling-wrapper">
       <div class="text-noact">
         <p text-center>{{text}}</p>
       </div>
       <div *ngFor="let item of itemProspect" class="card">
-        <ion-card>
-          <img src="assets/icon/prospectforyou.png"/>
-          <div class="companyprospect">
+        <ion-card button
+        (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
+          <img src="assets/icon/pros.svg" />
+          <ion-card-content>
             <p>{{item.nama}}</p>
             <p>
               {{item.company}}
             </p>
-          </div>
+          </ion-card-content>
         </ion-card>
       </div>
     </div>
   </div>
-
 </ion-content>
