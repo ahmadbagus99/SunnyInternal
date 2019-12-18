@@ -40,18 +40,19 @@
             <ion-item-options side="end">
               <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
             </ion-item-options>
-        <ion-item button (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
-          <ion-icon slot="start" name="person"></ion-icon>
-          <ion-label>
-            <h2>
-              <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
-            </h2>
-            <p>
-              <ion-skeleton-text animated style="width: 180px;"></ion-skeleton-text>
-            </p>
-          </ion-label>
-        </ion-item>
-      </ng-template>
+            <ion-item button
+              (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
+              <ion-icon slot="start" name="person"></ion-icon>
+              <ion-label>
+                <h2>
+                  <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
+                </h2>
+                <p>
+                  <ion-skeleton-text animated style="width: 180px;"></ion-skeleton-text>
+                </p>
+              </ion-label>
+            </ion-item>
+            </ng-template>
     </div>
 
     <div *ngSwitchCase="'Terbaru'">
