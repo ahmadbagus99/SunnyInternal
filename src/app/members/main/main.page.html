@@ -67,7 +67,9 @@
   <!-- Menampilkan Detail Report Total Customer  -->
 
   <div class="report-for-you">
-    <ion-text><b>Report for you</b></ion-text>
+    <ion-grid fixed>
+      <ion-text><b>Report for you</b></ion-text>
+    </ion-grid>
   </div>
 
   <div class="content">
@@ -166,8 +168,8 @@
       </div>
       <div *ngFor="let item of itemProspect" class="card">
         <ion-card button
-          (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
-          <img src="assets/icon/pros.svg" />
+        (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
+          <img src="assets/img/prospectforyou-page.png" />
           <ion-card-content>
             <p>{{item.nama}}</p>
             <p>

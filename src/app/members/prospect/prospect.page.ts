@@ -27,7 +27,9 @@ export class ProspectPage implements OnInit {
   itemsCustomer : any = [];
   itemTotalProspect : any = [];
   totalProspect : number = 0;
-  text : string = "Kamu tidak memiliki prospek hari ini"
+  text : string = "You don't have prospect for today!";
+  textProduct: string = "You haven't added product";
+  textCustomer: string = "Keep following your prospect to get customer!";
   url :any;
 
   constructor(

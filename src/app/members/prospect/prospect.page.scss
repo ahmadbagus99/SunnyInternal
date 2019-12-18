@@ -11,10 +11,12 @@ ion-title {
 
 ion-icon {
   transform-origin: 5px 5px;
-  margin-left: 5vw;
-  margin-top: 3vw;
+  margin-left: 75vw;
+  margin-top: -4vw;
   position: fixed;
-  color: #F57F17;
+  height: 9vw;
+  width: 9vw;
+  color: white;
 }
 
 ion-button {
@@ -42,11 +44,13 @@ ion-toolbar {
 ion-segment {
   color: white;
 }
+
 ion-card-content {
   display: block;
   position: relative;
   background: white;
 }
+
 .sc-ion-card-md-h {
   -webkit-margin-start: 6px;
   margin-inline-start: 6px;
@@ -55,11 +59,11 @@ ion-card-content {
 }
 
 .text1 {
-  position: fixed;
+  position: relative;
   text-align: center;
   font-weight: bold;
   margin-top: 2vw;
-  margin-left: 14vw;
+  margin-left: 0vw;
 }
 
 .fullname {
@@ -68,10 +72,10 @@ ion-card-content {
   }
 
   .image-upload img {
-
+    height: 20vw;
+    width: 20vw;
     margin-top: 8vw;
     margin-left: 6vw;
-    width: 20vw;
     cursor: pointer;
     max-width: 700vw;
     max-height: 800vw;
@@ -90,7 +94,7 @@ ion-card-content {
   margin-left: 50vw;
   margin-top: -15vw;
   margin-bottom: 0vw;
-  position: static;
+  position: relative;
   // word-spacing: 10px;
 }
 
@@ -172,7 +176,6 @@ div[scrolly=true] {
     }
 
     h2 {
-      color: black;
       font-weight: bold;
       position: relative;
       margin-top: 2vw;
@@ -210,17 +213,17 @@ div[scrolly=true] {
 }
 
 .add-pro {
-  position: fixed;
-  background-color: #ffffff;
-  height: 10vw;
-  width: 50vw;
-  padding: 0 10px;
+  position: static;
+  color: white;
 }
 
 .see-all {
-  margin-left: 50vw;
-  background-color: #ffffff;
+  position: absolute;
+  margin-left: 66vw;
+  margin-top: 1vw;
   height: 10vw;
   width: 50vw;
   padding: 0 10px;
+  color: #F57F17;
+  text-decoration: underline;
 }
