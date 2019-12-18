@@ -10,9 +10,11 @@
       <div class="fullname">
         <div class="image-upload">
           <label for="file-input">
-            <img src="assets/img/4_avatar-512.png" />
+            <div class="add">
+              <img [src]="url" height="200" *ngIf="url">
+            </div>
           </label>
-          <input id="file-input" type="file" class="upload" (change)="uploadFile($event.target.files)" />
+          <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" />
         </div>
       </div>
       <div *ngFor="let item of itemsProfile">
@@ -48,7 +50,8 @@
   <div class="scrolling-wrapper">
     <p text-center>{{text}}</p>
     <div *ngFor="let item of items" class="card">
-      <ion-card button (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
+      <ion-card button
+        (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
         <img src="assets/icon/pros.svg" />
         <ion-card-content>
           <h2>{{item.nama}}</h2>
@@ -64,7 +67,7 @@
   <div class="scrolling-wrapper">
     <div *ngFor="let item of itemsproduct" class="card">
       <ion-card button
-      (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
+        (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
         <img src="assets/img/product.png">
         <ion-card-content>
           <h2 text-center>{{item.namaProduk}}</h2>
@@ -77,7 +80,8 @@
   <h4 class="judul"> Your Customer </h4>
   <div class="scrolling-wrapper">
     <div *ngFor="let item of itemsCustomer" class="card">
-      <ion-card button (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
+      <ion-card button
+        (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
         <img src="assets/icon/customer.svg">
         <ion-card-content>
           <h2 text-center>{{item.nameCustomer}}</h2>

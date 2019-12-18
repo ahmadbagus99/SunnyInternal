@@ -28,6 +28,8 @@ export class ProfilePage implements OnInit {
     birthday: string;
     email: string;
     country: string;
+    isLoaded : boolean;
+    check : any;
    
     constructor(
       private router: Router,
@@ -89,13 +91,21 @@ export class ProfilePage implements OnInit {
       reader.onload = (event) => { // called once readAsDataURL is completed
         // this.url = event.target.result;
         this.url = reader.result;
-        this.storageLocal.set('Profile', this.url)
+        this.storageLocal.set('Profile', this.url).then(()=>{
+          this.isLoaded = true;
+        })
       }
     }
   }
   loadSaved() {
     this.storageLocal.get('Profile').then((url) => {
-      this.url = url || [];
+      this.check = url;
+      if ( this.check == null){
+        this.isLoaded = false;
+      }else {
+        this.isLoaded = true;
+      }
+        this.url = url || [];
     });
   }
 

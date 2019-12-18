@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
-import { AlertController, LoadingController } from '@ionic/angular';
-import { CallNumber } from '@ionic-native/call-number/ngx';
+import { PostProvider } from 'src/providers/post-providers';
+import { Router, ActivatedRoute } from '@angular/router';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-addproduct',
@@ -11,101 +10,140 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
   styleUrls: ['./addproduct.page.scss'],
 })
 export class AddproductPage implements OnInit {
-
-  id: number;
   items2: any;
   user: any;
-  namaProduk: string = "";
-  tipeProduk: string = "";
-  totalProfit: string = "";
-  jumlahProduk: any = "";
-  hargaProduk: string = "";
-  deskripsiProduk: string = "";
-  category: any;
-  nomor : string;
-  normalPrice : number = 0;
-  items : any = [];
-  itemsNew : any = [];
-  limit : number = 10;
-  start : number = 0;
-  loadproduct: any;
-  status : string;
+  userID: string = "";
+  namaProduk: string ='';
+  tipeProduk: string;
+  totalProfit: number;
+  jumlahProduk: string ='';
+  hargaProduk: string;
+  harga : number=0;
+  normalPrice: number;
+  deskripsiProduk: string;
+  id: number;
+  isImgLoaded: boolean;
+  warning: string;
+  isHidden: boolean = true;
+  profit :number;
 
   constructor(
-    private router: Router,
+    private storageLocal: Storage,
     private postPvdr: PostProvider,
-    private storage: Storage,
-    public alertController: AlertController,
+    private router: Router,
     private actRoute: ActivatedRoute,
-    public loadingController : LoadingController,
-    private callNumber : CallNumber
+    public loadingController: LoadingController,
+    public toastCtrl: ToastController
   ) {
   }
-  ionViewWillEnter(){
-    this.items = [];
-    this.start = 0;
-    this.itemsNew = [];
-    this.loadProduct();
-  }
-  //fungsi sebagai router pemanggil data yang sudah disii ke dalam product
+  
   ngOnInit() {
     this.actRoute.params.subscribe((data: any) => {
-      this.id = data.id;
-      this.namaProduk = data.namaProduk;
-      this.tipeProduk = data.tipeProduk;
-      this.totalProfit = data.totalProfit;
-      this.normalPrice = data.normalPrice;
-      this.jumlahProduk = data.jumlahProduk;
       this.hargaProduk = data.hargaProduk;
-      this.category = data.category; 
-      this.deskripsiProduk = data.deskripsiProduk;
-      this.nomor = data.no_tlp;
-    if (this.jumlahProduk == 0){
-      this.status="Product is not Available";
-    }else{
-      this.status="Product is Available";
-    }
+      this.profit = data.totalProfit;
+      this.normalPrice = data.normalPrice;
+      if ( data.id == null){
+      }else{
+      this.id = data.id;
+      }
+
+      if ( data.namaProduk == " "){
+        this.namaProduk ="";
+      }else{
+        this.namaProduk = data.namaProduk;
+      }
+
+      if ( data.tipeProduk == " "){
+        this.tipeProduk ="";
+      }else{
+        this.tipeProduk = data.tipeProduk;
+      }
+        
+      if ( data.jumlahProduk == " "){
+        this.jumlahProduk ="";
+      }else{
+        this.jumlahProduk = data.jumlahProduk;
+      }
+
+      if ( data.deskripsiProduk == " "){
+        this.deskripsiProduk ="";
+      }else{
+        this.deskripsiProduk = data.deskripsiProduk
+      }
+    });
+    //fungsi dimana data yang akan di isi langsung ke storge database  
+    this.storageLocal.get('session_storage').then((iduser) => {
+      this.items2 = iduser;
+      this.items2 = this.items2.map(user => user.id);
+      this.user = parseInt(this.items2)
+      this.userID = this.user;
     });
   }
-  // Fungsi untuk menarik/mendapatkan data untuk data edit Produk server php
-  updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk){
-    this.router.navigate(['members/editproduct/'
-    +id+'/'
-    +namaProduk+'/'
-    +tipeProduk+'/'
-    +totalProfit+'/'
-    +normalPrice+'/'
-    +jumlahProduk+'/'
-    +hargaProduk+'/'
-    +deskripsiProduk]);
-  }
 
-  //fungsi untuk membuat baru produk yang akan diisi
-  async loadProduct(){
+  showNow() {
+    this.isHidden = false;
+    this.warning;
+  }
+  //Fungsi dimana user harus mengisi semua fill yang ada di UI dan tidak boleh kosong pas di simpan
+  Simpan() {
+    if (this.namaProduk == '') {
+      this.warning = 'Data Tidak Boleh Kosong'
+    } else if (this.jumlahProduk == '') {
+      this.warning = 'Data Tidak Boleh Kosong'
+    } else
+      if (this.hargaProduk == '' ) {
+        this.warning = 'Data Tidak Boleh Kosong'
+    } else {
+      return new Promise(resolve => {
+        let body = {
+          aksi: 'add',
+          namaProduk: this.namaProduk,
+          tipeProduk: this.tipeProduk,
+          totalProfit: this.profit,
+          normalPrice : this.normalPrice,
+          jumlahProduk: this.jumlahProduk,
+          hargaProduk: this.hargaProduk,
+          deskripsiProduk: this.deskripsiProduk,
+          userID: this.userID
+        };
+          //Fungsi untuk menarik/mendapatkan data untuk data product dari server php
+        this.postPvdr.postData(body, 'InsertProduct.php').subscribe(async data => {
+            this.router.navigate(['members/product']);
+        });
+      });
+    }
+  }
+//fungsi sebagai mnegupdate product yang sudah di edit ke server php
+  async update() {
     const loading = await this.loadingController.create({
-      message : "",
-      spinner: 'crescent',
-      translucent : true,
-      cssClass:'custom-loader-class',
-      mode: 'md'
-    })
-    await loading.present();
-    this.storage.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
+      message: 'Please Wait..',
+      translucent: true
+    });
+    loading.present();
+    return new Promise(resolve => {
       let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
+        aksi: 'update',
+        id: this.id,
+        namaProduk: this.namaProduk,
+        tipeProduk: this.tipeProduk,
+        totalProfit: this.profit,
+        normalPrice : this.normalPrice,
+        jumlahProduk: this.jumlahProduk,
+        hargaProduk: this.hargaProduk,
+        deskripsiProduk: this.deskripsiProduk,
       };
-      this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.postData(body, 'InsertProduct.php').subscribe(data => {
         loading.dismiss().then(() => {
-          for (let item of data) {
-            this.items.push(item);
-          }
+          this.router.navigate(['members/product']);
         })
       });
-    })
+    });
   }
 
+  profitCalculate(){
+    var Profit = this.normalPrice*(this.profit*0.01);
+    this.harga = this.normalPrice + Profit;
+    this.hargaProduk = this.harga.toString();
+  }  
 
 }
