@@ -16,7 +16,13 @@
 <ion-content>
   <div class="background">
     <div class="cover">
-      <img src="assets/img/4_avatar-512.png" />
+      <div class="add">
+        <label for="file-input">
+          <img [src]="url" *ngIf="url">
+          <img [hidden]="isLoaded" src="assets/img/avatar-contact.png" />
+        </label>
+        <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" />
+      </div>
       <div class="nama">
         <!-- fungsi sebagai munculnya tampilan Nama ketika di view -->
         <ion-input type="text" [(ngModel)]="nama" readonly></ion-input>

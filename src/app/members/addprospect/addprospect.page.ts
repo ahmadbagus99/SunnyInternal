@@ -282,7 +282,7 @@ export class AddprospectPage implements OnInit {
           text: 'Ya',
           handler: () => {
             this.createPdf();
-            console.log(this.checking)
+            this.removeStorage();
             if (this.checking == 'new') {
               this.SaveContact();
             }else if(this.checking == 'member'){
@@ -540,10 +540,20 @@ export class AddprospectPage implements OnInit {
           text: 'Ya',
           handler: () => {
             this.router.navigate(['members/prospect'])
+            this.removeStorage();
           }
         }
       ]
     })
     await alert.present();
+  }
+  removeStorage(){
+    this.storage.remove('Amount');
+    this.storage.remove('Data');
+    this.storage.remove('DataAccount');
+    this.storage.remove('DataCustomer');
+    this.storage.remove('IDPRODUK');
+    this.storage.remove('NamaProduk');
+    this.storage.remove('Stock');
   }
 }
