@@ -100,7 +100,7 @@ export class ViewProspectPage implements OnInit {
       };
       this.postPvdr.postData(body, 'InsertCustomer.php').subscribe(data => {
         console.log(data)
-        this.router.navigate(['members/prospect'])
+        this.router.navigate(['members/dashboard'])
       })
     });
   }

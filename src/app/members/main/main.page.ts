@@ -72,6 +72,11 @@ export class MainPage implements OnInit {
         }, 0)
       );
     });
+    this.loadProspect();
+    this.LoadProfile();
+    this.LoadTotalCustomer();
+    this.LoadTotalProspect();
+    this.CheckPrice();
   }
   slideOptsOne = {
     initialSlide: 0,
