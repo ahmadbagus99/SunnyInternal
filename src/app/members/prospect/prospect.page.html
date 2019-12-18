@@ -2,7 +2,13 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button color="light" defaultHref="/"></ion-back-button>
+
+      <div class="add-pro">
+        <ion-icon (click)="addprospect()" name="md-add-circle"></ion-icon>
+      </div>
+
     </ion-buttons>
+
     <ion-title>Prospect</ion-title>
   </ion-toolbar>
   <div>
@@ -10,7 +16,7 @@
       <div class="fullname">
         <div class="image-upload">
           <label for="file-input">
-            <img src="assets/img/4_avatar-512.png" />
+            <img src="assets/img/avatar-contact.png" />
           </label>
           <input id="file-input" type="file" class="upload" (change)="uploadFile($event.target.files)" />
         </div>
@@ -23,33 +29,23 @@
           {{item.email}}
         </p>
       </div>
-
-      <!-- SEGMENT BAR -->
-      <div class="add-pro" (click)="addprospect()">
-        <ion-icon class="icon-2" name="add-circle"></ion-icon>
-        <div class="text1">
-          <ion-text color="primary"> Add Prospect </ion-text>
-        </div>
-      </div>
-
-      <div class="see-all" (click)="SeeAll()">
-        <ion-icon class="icon-2" name="flag"></ion-icon>
-        <div class="text1">
-          <ion-text color="primary"> See All </ion-text>
-        </div>
-      </div>
-
     </ion-toolbar>
   </div>
 </ion-header>
 
 <ion-content>
-  <h4 class="judul"> New Prospect </h4>
+  <div class="see-all" (click)="SeeAll()">
+    <div class="text1">
+      <ion-text color="primary"> See all </ion-text>
+    </div>
+  </div>
+  <h4 class="judul"><b> New Prospect </b></h4>
   <div class="scrolling-wrapper">
     <p text-center>{{text}}</p>
     <div *ngFor="let item of items" class="card">
-      <ion-card button (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
-        <img src="assets/icon/pros.svg" />
+      <ion-card button
+        (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
+        <img src="assets/img/prospectforyou-page.png" />
         <ion-card-content>
           <h2>{{item.nama}}</h2>
           <p>
@@ -60,11 +56,13 @@
     </div>
   </div>
 
+
   <h4 class="judul"> Our Product</h4>
   <div class="scrolling-wrapper">
+    <p text-center>{{textProduct}}</p>
     <div *ngFor="let item of itemsproduct" class="card">
       <ion-card button
-      (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
+        (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
         <img src="assets/img/product.png">
         <ion-card-content>
           <h2 text-center>{{item.namaProduk}}</h2>
@@ -76,9 +74,11 @@
 
   <h4 class="judul"> Your Customer </h4>
   <div class="scrolling-wrapper">
+    <!-- <p text-center>{{textCustomer}}</p> -->
     <div *ngFor="let item of itemsCustomer" class="card">
-      <ion-card button (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
-        <img src="assets/icon/customer.svg">
+      <ion-card button
+        (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
+        <img src="assets/img/customer-icon.png">
         <ion-card-content>
           <h2 text-center>{{item.nameCustomer}}</h2>
           <p text-center>{{item.company}}</p>

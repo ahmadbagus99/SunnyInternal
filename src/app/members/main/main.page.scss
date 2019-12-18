@@ -17,6 +17,7 @@ ion-card {
 ion-card-content {
   height: 28vw;
   margin-left: -2vw;
+
   .sc-ion-card-md-h {
     margin-left: unset;
     margin-right: unset;
@@ -112,7 +113,6 @@ ion-badge {
   }
 
   .font {
-    color: black;
     margin-top: -2vw;
     text-align: center;
     font-size: 2.7vw;
@@ -121,7 +121,7 @@ ion-badge {
 
 .content {
   ion-text {
-    position: inherit;
+    position: absolute;
     margin-left: 10px;
   }
 
@@ -136,6 +136,7 @@ ion-badge {
     margin-left: 10px;
     margin-top: 90vw;
   }
+
   border-radius: 0px;
   margin-top: 10px;
   background-color:white;
@@ -146,6 +147,7 @@ ion-badge {
     &::-webkit-scrollbar {
       display: none;
     }
+
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
@@ -156,6 +158,7 @@ ion-badge {
         color: black;
         font-size: 12vw;
       }
+
       margin-top: 15vw;
       display: inline-block;
       width: 100px;
@@ -227,8 +230,8 @@ ion-badge {
 .detail-report2 {
   position: relative;
   font-size: 4vw;
-  margin-top: 0vw;
-  margin-left: 8px;
+  margin-top: 28vw;
+  margin-left: 0px;
 }
 
 .incentive {
@@ -252,12 +255,16 @@ ion-badge {
   color: #ffffff;
 }
 
-.price {
-  position: relative;
-  margin-left: 2vw;
-  align-content: center;
-  font-style: bold;
-  font-size: 18px;
+ion-input {
+  position: absolute;
+  margin-top: 8vw;
+
+  .price {
+    margin-left: 2vw;
+    align-content: center;
+    font-style: bold;
+    font-size: 18px;
+  }
 }
 
 .idr {
@@ -325,7 +332,7 @@ ion-slide {
 .text-noact {
   position: absolute;
   margin-top: 20vw;
-  margin-left: 15vw;
+  margin-left: 20vw;
 }
 
 .prospect-text {
@@ -336,8 +343,7 @@ ion-slide {
 
 .p {
   margin-top: -20vw;
-  text-align: center;
-  margin-left: -2vw;
+  margin-left: -3vw;
 }
 
 .icon-activities {
