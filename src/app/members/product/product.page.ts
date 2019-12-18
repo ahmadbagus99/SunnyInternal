@@ -82,14 +82,8 @@ export class ProductPage implements OnInit {
   }
 
   // Fungsi untuk menambahkan item pada page product.
-
   addproduct() {
-    let options: NativeTransitionOptions = {
-      direction: 'up',
-      duration: 600
-    };
-    this.nativePageTransitions.curl(options);
-    this.router.navigate(['members/editproduct'])
+    this.router.navigate(['members/addproduct'])
   }
   ionViewWillEnter() {
     this.items = [];

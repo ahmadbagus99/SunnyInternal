@@ -168,7 +168,7 @@ export class ProspectPage implements OnInit {
     if(normalPrice==""){
       normalPrice=" "
     }
-    this.router.navigate(['members/addproduct/'
+    this.router.navigate(['members/editproduct/'
     +id+'/'
     +namaProduk+'/'
     +tipeProduk+'/'
