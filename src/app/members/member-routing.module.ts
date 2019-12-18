@@ -36,6 +36,7 @@ const routes: Routes = [
   { path: 'kebijakanprivasi', loadChildren: './kebijakanprivasi/kebijakanprivasi.module#KebijakanprivasiPageModule' },
   { path: 'faq', loadChildren: './faq/faq.module#FaqPageModule' },
   { path: 'addproduct/:id/:namaProduk/:tipeProduk/:totalProfit/:normalPrice/:jumlahProduk/:hargaProduk/:deskripsiProduk', loadChildren: './addproduct/addproduct.module#AddproductPageModule' },
+  { path: 'addproduct', loadChildren: './addproduct/addproduct.module#AddproductPageModule' },
   { path: 'view-prospect/:id/:namaCustomer/:emailCustomer/:alamatCustomer/:no_tlp/:company/:alamatCompany/:emailCompany/:nomorCompany/:customerneed/:stock/:hargaProduk/:totalPrice/:budget/:status', loadChildren: './view-prospect/view-prospect.module#ViewProspectPageModule' },
   { path: 'notifications', loadChildren: './notifications/notifications.module#NotificationsPageModule'},
 
