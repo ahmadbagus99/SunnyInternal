@@ -43,6 +43,7 @@ ion-back-button {
   border-radius: 6px;
   position: relative;
 }
+
 .background2 {
   margin: 10px;
   height: 100px;
@@ -82,6 +83,14 @@ ion-back-button {
   margin-left: -73px;
   margin-top: -25px;
   text-align: center;
+
+  h3 {
+    margin-top: 28px;
+    margin-bottom: 0vw;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-left: -10px;
+  }
 }
 
 .perusahaan {
@@ -189,15 +198,18 @@ div.content ion-button {
     color: black;
   }
 }
+
 .add>input {
   display: none;
 }
-.add{
-  img{
+
+.add {
+  img {
     text-indent: -10000px
   }
 }
-.items{
+
+.items {
   position: relative;
   bottom: -71%;
   left: -8%;
