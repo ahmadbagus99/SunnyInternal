@@ -25,6 +25,12 @@
         <ion-textarea type="text" placeholder="Description" [(ngModel)]="event.desc"></ion-textarea>
       </ion-item>
       <ion-item>
+        <ion-label>With</ion-label>
+        <ion-select placeholder="Company" [(ngModel)]="company">
+          <ion-select-option *ngFor="let item of items" value={{item.nama}}>{{item.nama}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
         <ion-label>Start</ion-label>
         <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime"
           [min]="minDate">

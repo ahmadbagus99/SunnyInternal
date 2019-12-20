@@ -6,7 +6,7 @@ import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { DataService } from "src/app/services/data.service";
-import { NativePageTransitions, NativeTransitionOptions  } from '@ionic-native/native-page-transitions/ngx';
+import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
@@ -15,83 +15,77 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
   styleUrls: ['./product.page.scss'],
 })
 export class ProductPage implements OnInit {
-  items : any = [];
-  itemsNew : any = [];
-  limit : number = 10;
-  start : number = 0;
+  items: any = [];
+  itemsNew: any = [];
+  limit: number = 10;
+  start: number = 0;
   isLoaded = false;
-  user : any;
+  user: any;
   userID: string;
-  data : any = [];
-  public searchTerm: string = ""; 
+  data: any = [];
+  public searchTerm: string = "";
   selectCategory = 'Populer';
 
   constructor(
-      private router : Router,
-      private postPvdr : PostProvider,
-      private storageLocal : Storage,
-      public alertController : AlertController,
-      private dataService: DataService,
-      public loadingController : LoadingController,
-      private nativePageTransitions: NativePageTransitions,
-      private callNumber : CallNumber
-  ) { 
+    private router: Router,
+    private postPvdr: PostProvider,
+    private storageLocal: Storage,
+    public alertController: AlertController,
+    private dataService: DataService,
+    public loadingController: LoadingController,
+    private nativePageTransitions: NativePageTransitions,
+    private callNumber: CallNumber
+  ) {
     setTimeout(() => {
       this.isLoaded = true;
     }, 2000);
   }
-  
+
 
   ngOnInit() {
     this.setFilteredItems();
   }
 
-// Fungsi untuk menarik/mendapatkan data untuk data add product dari server php
+  // Fungsi untuk menarik/mendapatkan data untuk data add product dari server php
 
-  updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk){
-    if(namaProduk==""){
-      namaProduk=" ";
+  updateProduct(id, namaProduk, tipeProduk, totalProfit, normalPrice, jumlahProduk, hargaProduk, deskripsiProduk) {
+    if (namaProduk == "") {
+      namaProduk = " ";
     }
-    if(tipeProduk==""){
-      tipeProduk=" ";
+    if (tipeProduk == "") {
+      tipeProduk = " ";
     }
-    if(totalProfit==""){
-      totalProfit=" ";
+    if (totalProfit == "") {
+      totalProfit = " ";
     }
-    if(jumlahProduk==""){
-      jumlahProduk=" ";
+    if (jumlahProduk == "") {
+      jumlahProduk = " ";
     }
-    if(hargaProduk==""){
-      hargaProduk=" ";
+    if (hargaProduk == "") {
+      hargaProduk = " ";
     }
-    if(deskripsiProduk==""){
-      deskripsiProduk=" ";
+    if (deskripsiProduk == "") {
+      deskripsiProduk = " ";
     }
-    if(normalPrice==""){
-      normalPrice=" "
+    if (normalPrice == "") {
+      normalPrice = " "
     }
-    this.router.navigate(['members/addproduct/'
-    +id+'/'
-    +namaProduk+'/'
-    +tipeProduk+'/'
-    +totalProfit+'/'
-    +normalPrice+'/'
-    +jumlahProduk+'/'
-    +hargaProduk+'/'
-    +deskripsiProduk]);
+    this.router.navigate(['members/editproduct/'
+      + id + '/'
+      + namaProduk + '/'
+      + tipeProduk + '/'
+      + totalProfit + '/'
+      + normalPrice + '/'
+      + jumlahProduk + '/'
+      + hargaProduk + '/'
+      + deskripsiProduk]);
   }
 
-// Fungsi untuk menambahkan item pada page product.
-
-  addproduct(){
-    let options: NativeTransitionOptions = {
-      direction: 'up',
-      duration: 600
-     };
-     this.nativePageTransitions.curl(options);
-    this.router.navigate(['members/editproduct'])
+  // Fungsi untuk menambahkan item pada page product.
+  addproduct() {
+    this.router.navigate(['members/addproduct'])
   }
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.items = [];
     this.start = 0;
     this.itemsNew = [];
@@ -99,56 +93,56 @@ export class ProductPage implements OnInit {
     this.loadProductNew();
   }
 
-  async loadProduct(){
+  async loadProduct() {
     const loading = await this.loadingController.create({
-      message : "",
+      message: "",
       spinner: 'crescent',
-      translucent : true,
-      cssClass:'custom-loader-class',
+      translucent: true,
+      cssClass: 'custom-loader-class',
       mode: 'md'
     });
     await loading.present();
-    this.storageLocal.get('IdLogin').then((IdLogin)=>{
+    this.storageLocal.get('IdLogin').then((IdLogin) => {
       this.user = IdLogin;
       let body = {
-      aksi : 'getdata',
-      limit : this.limit,
-      start : this.start,
+        aksi: 'getdata',
+        limit: this.limit,
+        start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProduct.php?Id='+this.user).subscribe(data =>{
-        loading.dismiss().then(()=>{
-          for(let item of data){
+      this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
+        loading.dismiss().then(() => {
+          for (let item of data) {
             this.items.push(item);
-        } 
+          }
         })
-    });
-  })
+      });
+    })
   }
 
-  loadProductNew(){
-    this.storageLocal.get('IdLogin').then((IdLogin)=>{
+  loadProductNew() {
+    this.storageLocal.get('IdLogin').then((IdLogin) => {
       this.user = IdLogin;
       let body = {
-      aksi : 'getdata',
-      limit : this.limit,
-      start : this.start,
+        aksi: 'getdata',
+        limit: this.limit,
+        start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProductNew.php?Id='+this.user).subscribe(data =>{
-        for(let item of data){
+      this.postPvdr.postData(body, 'LoadProductNew.php?Id=' + this.user).subscribe(data => {
+        for (let item of data) {
           this.itemsNew.push(item);
-      } 
-    });
-  })
+        }
+      });
+    })
   }
 
-  delete(id){
+  delete(id) {
     let body = {
-      aksi : 'delete',
-      id : id,
-      };
-      this.postPvdr.postData(body, 'InsertProduct.php').subscribe(data =>{
-        this.ionViewWillEnter();
-      });
+      aksi: 'delete',
+      id: id,
+    };
+    this.postPvdr.postData(body, 'InsertProduct.php').subscribe(data => {
+      this.ionViewWillEnter();
+    });
   }
 
   async presentAlertMultipleButtons(id) {
@@ -168,12 +162,12 @@ export class ProductPage implements OnInit {
           text: 'Yes',
           handler: () => {
             let body = {
-              aksi : 'delete',
-              id : id,
-              };
-              this.postPvdr.postData(body, 'InsertProduct.php').subscribe(data =>{
-                this.ionViewWillEnter();
-              });
+              aksi: 'delete',
+              id: id,
+            };
+            this.postPvdr.postData(body, 'InsertProduct.php').subscribe(data => {
+              this.ionViewWillEnter();
+            });
           }
         }
       ]
@@ -185,7 +179,7 @@ export class ProductPage implements OnInit {
     return Array(n);
   }
 
-  doRefresh(event){
+  doRefresh(event) {
     setTimeout(() => {
       this.ionViewWillEnter();
       event.target.complete();
@@ -194,4 +188,5 @@ export class ProductPage implements OnInit {
   setFilteredItems() {
     this.items = this.dataService.filterProduct(this.searchTerm);
   }
+
 }

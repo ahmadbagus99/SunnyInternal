@@ -27,7 +27,10 @@ export class ProspectPage implements OnInit {
   itemsCustomer : any = [];
   itemTotalProspect : any = [];
   totalProspect : number = 0;
-  text : string = "Kamu tidak memiliki prospek hari ini"
+  text : string = "You don't have prospect for today!";
+  textProduct: string = "You haven't added product";
+  textCustomer: string = "Keep following your prospect to get customer!";
+  url :any;
 
   constructor(
     private router : Router,
@@ -41,16 +44,14 @@ export class ProspectPage implements OnInit {
     setTimeout(() => {
       this.isLoaded = true;
     }, 2000);
+    this.loadSaved(); 
   }
   
   ngOnInit() {
-
   }
-
   addprospect(){
     this.router.navigate(['members/addprospect'])
   }
-
   SeeAll(){
     this.router.navigate(['members/seeallprospect'])
   }
@@ -69,7 +70,6 @@ export class ProspectPage implements OnInit {
     this.LoadProfile();
     this.loadProduct();
   }
-
   async loadProduct(){
     const loading = await this.loadingController.create({
       message : "",
@@ -95,7 +95,6 @@ export class ProspectPage implements OnInit {
     });
   })
   }
-
   async LoadProfile() {
     const loading = await this.loadingController.create({
       message: "",
@@ -121,7 +120,6 @@ export class ProspectPage implements OnInit {
       });
     });
   }
-
   deleteprospect(id){
     let body = {
       aksi : 'delete',
@@ -131,7 +129,6 @@ export class ProspectPage implements OnInit {
         this.ionViewWillEnter();
       });
   }
-
   updateprospect(id,namaCustomer,emailCustomer,alamatCustomer,no_tlp,company,alamatCompany,emailCompany,nomorCompany,customerneed,stock,hargaProduk,totalPrice,budget,status){
     this.router.navigate(['members/view-prospect/'
     +id+'/'
@@ -151,7 +148,6 @@ export class ProspectPage implements OnInit {
     +status
   ]);
   }
-  
   updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk){
     if(namaProduk==""){
       namaProduk=" ";
@@ -174,7 +170,7 @@ export class ProspectPage implements OnInit {
     if(normalPrice==""){
       normalPrice=" "
     }
-    this.router.navigate(['members/addproduct/'
+    this.router.navigate(['members/editproduct/'
     +id+'/'
     +namaProduk+'/'
     +tipeProduk+'/'
@@ -184,7 +180,6 @@ export class ProspectPage implements OnInit {
     +hargaProduk+'/'
     +deskripsiProduk]);
   }
-
   async loadProspect(){
     const loading = await this.loadingController.create({
       message : "",
@@ -210,7 +205,6 @@ export class ProspectPage implements OnInit {
           });
       })
   }
-
   loadProspectNew(){
     this.storageLocal.get('IdLogin').then((IdLogin)=>{
         this.user = IdLogin;
@@ -272,11 +266,9 @@ export class ProspectPage implements OnInit {
           });
       })
   }
-
   arrayOne(n: number): any[] {
     return Array(n);
   }
-
   async presentAlertMultipleButtons(id) {
     const alert = await this.alertController.create({
       header: 'Are you sure?',
@@ -306,15 +298,31 @@ export class ProspectPage implements OnInit {
     });
     await alert.present();
   }
-
   doRefresh(event){
     setTimeout(() => {
       this.ionViewWillEnter();
       event.target.complete();
     }, 500);
   }
-
   setFilteredItems() {
     this.items = this.dataService.filterContact(this.searchTerm);
+  }
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        // this.url = event.target.result;
+        this.url = reader.result;
+        this.storageLocal.set('Profile', this.url)
+      }
+    }
+  }
+  loadSaved() {
+    this.storageLocal.get('Profile').then((url) => {
+      this.url = url || [];
+    });
   }
 }

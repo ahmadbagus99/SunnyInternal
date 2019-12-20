@@ -16,74 +16,49 @@
 
 <ion-content>
   <div class="background">
-    <ion-text>Background</ion-text>
-
-    <div class="image-upload">
-      <label for="file-input">
-        <div class="add">
-          <img [src]="url" height="200" *ngIf="url">
-          <!-- <img src="assets/icon/boss.png" [hidden]="!ShowImage"> -->
-        </div>
-      </label>
-      <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)"/>
-    </div>
-    <div text-center>
-      <div class="fileUpload btn btn-primary">
-        <!-- <input id="uploadBtn" type="file" class="upload" (change)="uploadFile($event.target.files)" /> -->
-      </div>
-      <div text-center *ngIf="isUploading && !isUploaded">
-        <ion-card-header>
-          <!-- <ion-card-title>Selected File:<b>{{ fileName }}</b></ion-card-title> -->
-        </ion-card-header>
-
-        <div *ngIf="percentage | async as pct">
-          <!-- Progress: {{ pct | number }}% -->
-          <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
-        </div>
-        <div *ngIf="snapshot | async as snap">
-          <!-- File Size: {{ snap.totalBytes | fileSizePipe }} Transfered:
-          {{ snap.bytesTransferred | fileSizePipe }} -->
-          <div *ngIf="snapshot && snap.bytesTransferred != snap.totalBytes">
-            <!-- <ion-button color="warning" size="small" (click)="task.pause()" class="button is-warning">Pause</ion-button>
-            <ion-button size="small" (click)="task.resume()" class="button is-info">Resume</ion-button>
-            <ion-button color="danger" size="small" (click)="task.cancel()" class="button is-danger">Cancel</ion-button> -->
-          </div>
-        </div>
+    <div class="cover">
+      <div class="add">
+        <label for="file-input">
+          <img [src]="url" *ngIf="url">
+          <img [hidden]="isLoaded" src="assets/img/avatar-contact.png" />
+        </label>
+        <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" />
       </div>
     </div>
 
-  </div>
-  <div class="name" color="light">
-    <h3 *ngFor="let item of items">{{item.fullname}}</h3>
-  </div>
-  <div class="content">
-    <div class="content-item">
-      <ion-list *ngFor="let item of items">
-        <ion-item class="label">
-          <ion-label position="floating">Phone Number</ion-label>
-          <br>
-          <ion-input class="phonenumber" type="text" [(ngModel)]="phonenumber" readonly>{{item.phonenumber}}</ion-input>
-        </ion-item>
-
-        <ion-item class="label">
-          <ion-label position="floating">Date of birth</ion-label>
-          <br>
-          <ion-input class="birthday" type="text" [(ngModel)]="birthday" readonly>{{item.birthday}}</ion-input>
-        </ion-item>
-
-        <ion-item class="label">
-          <ion-label position="floating">Email</ion-label>
-          <br>
-          <ion-input class="email" type="text" [(ngModel)]="email" readonly>{{item.email}}</ion-input>
-        </ion-item>
-
-        <ion-item class="label">
-          <ion-label position="floating">Country</ion-label>
-          <br>
-          <ion-input class="country" type="text" [(ngModel)]="country" readonly>{{item.country}}</ion-input>
-        </ion-item>
-      </ion-list>
+      <div class="nama">
+        <h3 *ngFor="let item of items">{{item.fullname}}</h3>
+      </div>
+      <!-- fungsi sebagai munculnya tampilan Perusahaan ketika di view -->
+    <div *ngFor="let item of items" class="items">
+    <!-- fungsi sebagai munculnya tampilan nomor telepon ketika di view -->
+    <div class="nomor-telepon">
+      <ion-item lines="none">
+        <ion-label position="stacked">Phone Number </ion-label>
+        <ion-input class="phonenumber" type="text" [(ngModel)]="phonenumber" readonly>{{item.phonenumber}}</ion-input>
+      </ion-item>
     </div>
-
+    <!-- fungsi sebagai munculnya tampilan alamat rumah ketika di view -->
+    <div class="alamat">
+      <ion-item lines="none">
+        <ion-label position="stacked">Birthday</ion-label>
+        <ion-input class="birthday" type="text" [(ngModel)]="birthday" readonly>{{item.birthday}}</ion-input>
+      </ion-item>
+    </div>
+    <!-- fungsi sebagai munculnya tampilan npwp ketika di view -->
+    <div class="npwp">
+      <ion-item lines="none">
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input class="email" type="text" [(ngModel)]="email" readonly>{{item.email}}</ion-input>
+      </ion-item>
+    </div>
+    <div class="twitter">
+      <ion-item lines="none">
+        <ion-label position="stacked">Country</ion-label>
+        <ion-input class="country" type="text" [(ngModel)]="country" readonly>{{item.country}}</ion-input>
+      </ion-item>
+    </div>
+  </div>
+    <!-- fungsi sebagai munculnya tampilan Twitter ketika di view -->
   </div>
 </ion-content>

@@ -121,7 +121,7 @@ export class ActivitiesPage implements OnInit {
    
     const alert = await this.alertCtrl.create({
       header: event.title,
-      subHeader: event.desc,
+      subHeader: event.desc +' With '+event.company,
       message: 'From: ' + start + '<br><br>To: ' + end,
       buttons: ['OK']
     });

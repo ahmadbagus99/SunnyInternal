@@ -38,6 +38,9 @@ export class EditcontactPage implements OnInit {
   itemsNew : any = [];
   limit : number = 10;
   start : number = 0;
+  url : any;
+  isLoaded : boolean;
+  check : any;
 
   constructor(
     private router: Router,
@@ -55,6 +58,7 @@ export class EditcontactPage implements OnInit {
     this.start = 0;
     this.itemsNew = [];
     this.loadContact();
+    this.loadSaved();
   }
 
   //fungsi sebagai router pemanggil data yang sudah disii ke dalam kontak
@@ -139,5 +143,30 @@ export class EditcontactPage implements OnInit {
     .then(res => console.log("Launched Dialer!", res))
     .catch( err => console.log("Dialer Error", err));
   }
-  
+  onSelectFile(event) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+
+      reader.readAsDataURL(event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        // this.url = event.target.result;
+        this.url = reader.result;
+        this.storage.set(this.id.toString(), this.url).then(()=>{
+          this.isLoaded = true;
+        })
+      }
+    }
+  }
+  loadSaved() {
+    this.storage.get(this.id.toString()).then((url) => {
+      this.check = url;
+      if ( this.check == null){
+        this.isLoaded = false;
+      }else {
+        this.isLoaded = true;
+      }
+        this.url = url || [];
+    });
+  }
 }
