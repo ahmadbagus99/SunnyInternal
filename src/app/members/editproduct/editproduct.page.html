@@ -3,72 +3,66 @@
     <ion-buttons color=#FFFFFF slot="start" class="new-background-color">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-buttons color=#FFFFFF slot="primary">
-      <!-- fungsi sebagai tombol button untuk mengedit produk yang di buat -->
-      <ion-button
-        (click)="updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk)">
-        Edit
-      </ion-button>
-    </ion-buttons>
+            <ion-buttons color=#FFFFFF slot="primary">
+            <ion-button
+              (click)="updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk)">
+              Edit
+            </ion-button>
+         </ion-buttons>
     <ion-title>Product</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="background">
-    <div class="coverProduk">
-      <img [src]="url" *ngIf="url">
-    </div>
-    <div class="cover">
-        <div class="add">
-          <label for="file-input">
-          <img src="assets/img/4_avatar-512.png" />
-        </label>
-        <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" />
-        </div>
-
-      <div class="nama">
-        <ion-input type="text" [(ngModel)]="namaProduk" readonly></ion-input>
+      <div class="coverProduk">
+        <img [src]="url" *ngIf="url">
       </div>
+          <div class="cover">
+            <div class="add">
+              <label for="file-input">
+                <img src="assets/img/4_avatar-512.png" />
+              </label>
+              <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" />
+            </div>
+          <!-- Kontent -->
+            <div class="nama">
+              <ion-input type="text" [(ngModel)]="namaProduk" readonly></ion-input>
+            </div>
       
-      <div class="perusahaan">
-        <ion-input type="text" [(ngModel)]="tipeProduk" readonly></ion-input>
-      </div>
-    
-    <!-- fungsi sebagai munculnya tampilan Status Produk ketika di view -->
-    <div class="nomor-telepon">
-      <ion-item lines="none">
-        <ion-label position="stacked">Product Status</ion-label>
-        <ion-input type="text" [(ngModel)]="status" readonly></ion-input>
-      </ion-item>
-    </div>
-    <!-- fungsi sebagai munculnya tampilan Jumlah Produk ketika di view -->
-    <div class="alamat">
-      <ion-item lines="none">
-        <ion-label position="stacked">Product total</ion-label>
-        <ion-input type="text" [(ngModel)]="jumlahProduk" readonly></ion-input>
-      </ion-item>
-    </div>
-    <!-- fungsi sebagai munculnya tampilan Harga Produk ketika di view -->
-    <div class="npwp">
-      <ion-item lines="none">
-        <ion-label position="stacked">Product Price</ion-label>
-        <ion-input type="text" [(ngModel)]="hargaProduk" readonly></ion-input>
-      </ion-item>
-    </div>
-    <!-- fungsi sebagai munculnya tampilan Deskripsi Produk ketika di view -->
-    <div class="twitter">
-      <ion-item lines="none">
-        <ion-label position="stacked">Product Description</ion-label>
-        <ion-input type="text" [(ngModel)]="deskripsiProduk" readonly></ion-input>
-      </ion-item>
-
-      <!-- fill data pengisian Deskripsi produk/ kategorinya user-->
-        <ion-item class="item">
-          <ion-label position="stacked" class="label">Product Description</ion-label>
-          <ion-textarea type="text" [(ngModel)]="deskripsiProduk"></ion-textarea>
-        </ion-item>
-
-        
-   
+            <div class="perusahaan">
+              <ion-input type="text" [(ngModel)]="tipeProduk" readonly></ion-input>
+            </div>
+      
+            <!-- fungsi sebagai munculnya tampilan Status Produk ketika di view -->
+            <div class="nomor-telepon">
+              <ion-item lines="none">
+                <ion-label position="stacked">Product Status</ion-label>
+                <ion-input type="text" [(ngModel)]="status" readonly></ion-input>
+              </ion-item>
+            </div>
+            <!-- fungsi sebagai munculnya tampilan Jumlah Produk ketika di view -->
+            <div class="alamat">
+              <ion-item lines="none">
+                <ion-label position="stacked">Product total</ion-label>
+                <ion-input type="text" [(ngModel)]="jumlahProduk" readonly></ion-input>
+              </ion-item>
+            </div>
+            <!-- fungsi sebagai munculnya tampilan Harga Produk ketika di view -->
+            <div class="npwp">
+              <ion-item lines="none">
+                <ion-label position="stacked">Product Price</ion-label>
+                <ion-input type="text" [(ngModel)]="hargaProduk" readonly></ion-input>
+              </ion-item>
+            </div>
+            <!-- fungsi sebagai munculnya tampilan Deskripsi Produk ketika di view -->
+            <div class="twitter">
+              <ion-item lines="none">
+                <ion-label position="stacked">Product Description</ion-label>
+                <ion-input type="text" [(ngModel)]="deskripsiProduk" readonly></ion-input>
+              </ion-item>
+            </div>
+          <!-- Batas Konten -->
+          </div>
+  </div>
 </ion-content>
