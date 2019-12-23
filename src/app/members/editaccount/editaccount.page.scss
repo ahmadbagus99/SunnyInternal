@@ -43,9 +43,16 @@ ion-back-button {
   border-radius: 6px;
   position: relative;
 }
-
+.coverProduk{
+  position: absolute;
+  img{
+    height: 200px;
+    width: 100%;
+    text-indent: -10000px
+  }
+}
 .cover {
-  height: 110px;
+  height: 200px;
   background-image: url('../../../assets/img/Randomized-Pattern.svg');
   background-attachment: fixed;
   background-size: cover;
@@ -65,7 +72,6 @@ ion-back-button {
     margin-left: -35px;
   }
 }
-
 .nama {
   position: absolute;
   width: 141px;
@@ -83,7 +89,7 @@ ion-back-button {
   height: 50px;
   top: 39%;
   left: 50%;
-  margin-left: -73px;
+  margin-left: -54px;
   margin-top: -25px;
   text-align: center;
 }
