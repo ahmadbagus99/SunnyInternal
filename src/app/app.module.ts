@@ -20,7 +20,7 @@ import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx
 
 import { NgCalendarModule  } from 'ionic2-calendar';
 
-import { environment } from '../environments/environment';
+import { MainPage } from 'src/app/members/main/main.page';
 //pdf
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
@@ -42,6 +42,7 @@ import { CreatPDF } from 'src/app/services/createPDF'
   providers: [
     PostProvider,
     CreatPDF,
+    MainPage,
     CallNumber,
     StatusBar,
     SplashScreen,

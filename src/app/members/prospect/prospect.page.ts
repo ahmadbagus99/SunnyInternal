@@ -5,6 +5,7 @@ import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { DataService } from "src/app/services/data.service";
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { MainPage } from '../main/main.page';
 
 @Component({
   selector: 'app-prospect',
@@ -40,6 +41,7 @@ export class ProspectPage implements OnInit {
     public loadingController: LoadingController,
     private dataService: DataService,
     private callNumber: CallNumber,
+    public mainPage : MainPage
   ) {
     setTimeout(() => {
       this.isLoaded = true;
@@ -48,7 +50,6 @@ export class ProspectPage implements OnInit {
   }
 
   ngOnInit() {
-    //function here
   }
   addprospect() {
     this.router.navigate(['members/addprospect'])
@@ -91,6 +92,12 @@ export class ProspectPage implements OnInit {
         loading.dismiss().then(() => {
           for (let item of data) {
             this.itemsproduct.push(item);
+          }
+          var product = this.itemsproduct.length;
+          if (product == 0){
+            this.textProduct;
+          }else if(product >=1 ){
+            this.textProduct = '';
           }
         })
       });
@@ -263,6 +270,12 @@ export class ProspectPage implements OnInit {
           for (let item of data) {
             this.itemsCustomer.push(item);
           }
+          var customer = this.itemsCustomer.length;
+          if (customer == 0){
+            this.textCustomer;
+          }else if (customer >= 1){
+            this.textCustomer = '';
+          }
         })
       });
     })
@@ -327,6 +340,8 @@ export class ProspectPage implements OnInit {
     });
   }
   movetoMain() {
-    this.router.navigate(['members/main'])
+    this.mainPage.ionViewWillEnter().then(()=>{
+      this.router.navigate(['members/dashboard']);
+    })
   }
 }

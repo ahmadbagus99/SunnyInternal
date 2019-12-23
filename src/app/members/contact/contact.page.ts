@@ -6,6 +6,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { DataService } from "src/app/services/data.service";
 import { NativePageTransitions, NativeTransitionOptions  } from '@ionic-native/native-page-transitions/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { MainPage } from 'src/app/members/main/main.page';
 
 @Component({
   selector: 'app-contact',
@@ -33,6 +34,7 @@ export class ContactPage implements OnInit {
       public loadingController : LoadingController,
       private dataService: DataService,
       private nativePageTransitions: NativePageTransitions,
+      public mainPage : MainPage
     ) { 
       setTimeout(() => {
         this.isLoaded = true;
@@ -227,7 +229,9 @@ export class ContactPage implements OnInit {
       this.items = this.dataService.filterContact(this.searchTerm);
     }
     movetoMain(){
-      this.router.navigate(['members/main'])
+      this.mainPage.ionViewWillEnter().then(()=>{
+        this.router.navigate(['members/dashboard']);
+      })
     }
   }
 

@@ -8,6 +8,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { DataService } from "src/app/services/data.service";
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { MainPage } from '../main/main.page';
 
 @Component({
   selector: 'app-product',
@@ -34,7 +35,8 @@ export class ProductPage implements OnInit {
     private dataService: DataService,
     public loadingController: LoadingController,
     private nativePageTransitions: NativePageTransitions,
-    private callNumber: CallNumber
+    private callNumber: CallNumber,
+    public mainPage : MainPage
   ) {
     setTimeout(() => {
       this.isLoaded = true;
@@ -189,7 +191,9 @@ export class ProductPage implements OnInit {
     this.items = this.dataService.filterProduct(this.searchTerm);
   }
   movetoMain(){
-    this.router.navigate(['members/main'])
+    this.mainPage.ionViewWillEnter().then(()=>{
+      this.router.navigate(['members/dashboard']);
+    })
   }
 
 }

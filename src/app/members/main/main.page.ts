@@ -101,6 +101,7 @@ export class MainPage implements OnInit {
     this.LoadTotalCustomer();
     this.LoadTotalProspect();
     this.CheckPrice();
+    console.log('Load this')
   }
   updateprospect(id,namaCustomer,emailCustomer,alamatCustomer,no_tlp,company,alamatCompany,emailCompany,nomorCompany,customerneed,stock,hargaProduk,totalPrice,budget,status){
     this.router.navigate(['members/view-prospect/'
