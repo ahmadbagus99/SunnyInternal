@@ -1,14 +1,13 @@
 <ion-header>
   <ion-toolbar color=#F57F17 class="new-background-color">
     <ion-buttons slot="start">
-      <!-- <ion-button [hidden]="isHidden" (click)="checkStatus()">
+      <ion-back-button [hidden]="!backButton" defaultHref="/"></ion-back-button>
+      <ion-button [hidden]="backButton" (click)="cancel()">
         <ion-icon name="arrow-round-back"></ion-icon>
       </ion-button>
-      <ion-back-button [hidden]="!isHidden" defaultHref="/"></ion-back-button> -->
-      <ion-back-button defaultHref="dashboard"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="primary" [hidden]="isHidden">
-      <ion-button (click)="Update()">Save</ion-button>
+      <ion-button [hidden]="buttonSave" (click)="Update()">Save</ion-button>
     </ion-buttons>
     <ion-title>Prospect {{note}}</ion-title>
   </ion-toolbar>
@@ -125,5 +124,6 @@
       <ion-text>Status anda {{note}}</ion-text>
     </ion-item>
     <br>
+    <ion-button expand="full" (click)="downloadPDF()" color="secondary" >Download PDF</ion-button>
   </div>
 </ion-content>

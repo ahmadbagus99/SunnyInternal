@@ -142,5 +142,7 @@ export class ActivitiesPage implements OnInit {
       event.target.complete();
     }, 500);
   }
-
+  movetoMain(){
+    this.router.navigate(['members/main'])
+  }
 }

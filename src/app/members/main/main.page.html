@@ -103,8 +103,9 @@
           <ion-text><b> IDR </b></ion-text>
         </div>
         <div class="price">
-          <b>
-            <ion-input type="text" value="{{ incentive | currency:'Rp ' }}" readOnly></ion-input>
+          <b *ngFor="let item of itemIncentive">
+            <!-- <ion-text>{{item.Incentive}}</ion-text> -->
+            <ion-input type="text" value="{{ item.Incentive | currency:'Rp ' }}" readOnly></ion-input>
           </b>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController } from '@ionic/angular';
+import { CreatPDF } from 'src/app/services/createPDF'
 
 @Component({
   selector: 'app-view-prospect',
@@ -32,15 +33,18 @@ export class ViewProspectPage implements OnInit {
   limit: number = 10;
   start: number = 0;
   items: any;
-  isHidden: boolean;
-  buttonSave:boolean;
+  isHidden:boolean;
+  buttonSave:boolean=true;
+  backButton:boolean;
+  pdfObj = null;
 
   constructor(
     private actRoute: ActivatedRoute,
     private postPvdr: PostProvider,
     private storage: Storage,
     private alertCtrl: AlertController,
-    public router: Router
+    public router: Router,
+    public pdf : CreatPDF
   ) { }
 
   ngOnInit() {
@@ -63,6 +67,7 @@ export class ViewProspectPage implements OnInit {
       this.storage.set('Amount', data.totalPrice)
       if (this.toggleParam == 0) {
         this.toggleWon = false;
+        this.backButton = true;
       } else if (this.toggleParam == 1) {
         this.toggleWon = true;
       }
@@ -86,6 +91,8 @@ export class ViewProspectPage implements OnInit {
   checkToggle() {
     if (this.toggleWon == true) {
       this.note = "Close Won"
+      this.backButton = false;
+      this.buttonSave = false;
     } else if (this.toggleWon == false) {
       this.note = "On Progress"
     }
@@ -100,7 +107,7 @@ export class ViewProspectPage implements OnInit {
       };
       this.postPvdr.postData(body, 'InsertCustomer.php').subscribe(data => {
         console.log(data)
-        this.router.navigate(['members/dashboard'])
+        this.router.navigate(['members/prospect']);
       })
     });
   }
@@ -127,12 +134,29 @@ export class ViewProspectPage implements OnInit {
         {
           text: 'Ya',
           handler: () => {
-            this.router.navigate(['members/seeallprospect'])
+            this.router.navigate(['members/seeallprospect']);
           }
         }
       ]
     })
     await alert.present();
   }
-
+  downloadPDF(){
+    this.pdf.createPdf(
+      this.company,
+      this.emailCompany,
+      this.alamatCompany,
+      this.nomorCompany,
+      this.namaCustomer,
+      this.company,
+      this.emailCustomer,
+      this.alamatCustomer,
+      this.no_tlp,
+      this.customerneed,
+      this.hargaProduk,
+      this.stock,
+      this.totalPrice
+      );
+    this.pdf.downloadPdf();
+  }
 }

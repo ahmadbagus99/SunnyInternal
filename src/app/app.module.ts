@@ -25,6 +25,7 @@ import { environment } from '../environments/environment';
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
+import { CreatPDF } from 'src/app/services/createPDF'
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +41,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
   ],
   providers: [
     PostProvider,
+    CreatPDF,
     CallNumber,
     StatusBar,
     SplashScreen,
