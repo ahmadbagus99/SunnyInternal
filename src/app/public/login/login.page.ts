@@ -67,7 +67,7 @@ export class LoginPage implements OnInit {
           //fungsi untuk tampilan loading text/tulisan ketika user berhasil login //
           loading.dismiss().then(async ()=>{
             await this.alertController.create({
-              message: 'Login Berhasil',
+              message: 'Login Succesfully',
               }).then((overlay) => {
                 this.alert = overlay;
                 this.alert.present();
@@ -94,7 +94,7 @@ export class LoginPage implements OnInit {
        //fungsi untuk tampilan loading text/tulisan ketika user salah email dan password//
       loading.dismiss().then(async()=>{
         const toast = await this.toastCtrl.create({
-          message:  'Email dan Password Salah',
+          message:  'Email and password wrong!',
           duration: 2000
            });
         toast.present();

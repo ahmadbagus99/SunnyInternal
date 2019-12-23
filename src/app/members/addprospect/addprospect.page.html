@@ -23,7 +23,7 @@
           <img src="assets/img/banner-prospect.png">
           <ion-progress-bar value="{{progress}}" color="success"></ion-progress-bar>
           <ion-card-content>
-            <h2><b>NEW</b> - DETAIL OF PROGRESS </h2>
+            <h2><b>NEW</b> - PROSPECT PERSONAL DATA </h2>
           </ion-card-content>
         </ion-card>
         <div>
@@ -103,10 +103,10 @@
     <ion-slide>
       <ion-col>
         <ion-card>
-          <img src="assets/img/banner-prospect.png">
+          <img src="assets/img/banner-prospect-info2.png">
           <ion-progress-bar value="{{progress}}" color="success"></ion-progress-bar>
           <ion-card-content>
-            <h2><b>NEW</b> - DETAIL OF PROGRESS </h2>
+            <h2><b>QUALIFY</b> - DETAIL OF PROSPECT </h2>
           </ion-card-content>
         </ion-card>
         <div>
@@ -155,9 +155,18 @@
         </div>
       </ion-col>
     </ion-slide>
+
+
     <!-- Slide 3 -->
     <ion-slide>
       <ion-col>
+        <ion-card>
+          <img src="assets/img/banner-prospect-info3.png">
+          <ion-progress-bar value="{{progress}}" color="success"></ion-progress-bar>
+          <ion-card-content>
+            <h2><b>CHECKING</b> - CHECKING YOUR PROSPECT </h2>
+          </ion-card-content>
+        </ion-card>
         <div>
           <ion-label class="segment">Company Info</ion-label>
           <br>
@@ -257,7 +266,7 @@
         <div>
           <ion-button expand="full" (click)="prev()" color="primary">Previous</ion-button>
           <ion-button expand="full" (click)="SaveProspect()" [hidden]="savebutton" color="success">Save</ion-button>
-          <ion-button expand="full" (click)="downloadPdf()" color="secondary" [disabled]="!pdfObj">Download PDF
+          <ion-button fill="clear" (click)="downloadPdf()" color="dark" [disabled]="!pdfObj">Download PDF
           </ion-button>
           <br>
         </div>
