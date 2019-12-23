@@ -121,7 +121,7 @@ export class AddactivitiesPage implements OnInit {
     this.eventSource.push(eventCopy);
     this.resetEvent();
     this.storage.set('Activity', this.eventSource);
-    console.log('sukses menyimpan ')
+    console.log('save successfully')
     this.router.navigate(['members/activities'])
   }
   //fungsi untuk memajukan calender dari bulan ke bulan lain
