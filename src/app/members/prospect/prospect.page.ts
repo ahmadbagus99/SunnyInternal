@@ -14,48 +14,49 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
 export class ProspectPage implements OnInit {
   items: any = [];
   user: any;
-  limit : number = 10;
-  start : number = 0;
+  limit: number = 10;
+  start: number = 0;
   isLoaded = false;
-  data : any = [];
-  id : string;
-  public searchTerm: string = ""; 
-  selectCategory ='Populer';
+  data: any = [];
+  id: string;
+  public searchTerm: string = "";
+  selectCategory = 'Populer';
   itemsNew: any = [];
-  itemsproduct : any = [];
-  itemsProfile : any = [];
-  itemsCustomer : any = [];
-  itemTotalProspect : any = [];
-  totalProspect : number = 0;
-  text : string = "You don't have prospect for today!";
+  itemsproduct: any = [];
+  itemsProfile: any = [];
+  itemsCustomer: any = [];
+  itemTotalProspect: any = [];
+  totalProspect: number = 0;
+  text: string = "You don't have prospect for today!";
   textProduct: string = "You haven't added product";
   textCustomer: string = "Keep following your prospect to get customer!";
-  url :any;
+  url: any;
 
   constructor(
-    private router : Router,
-    private postPvdr : PostProvider,
-    private storageLocal : Storage,
-    public alertController : AlertController,
-    public loadingController : LoadingController,
+    private router: Router,
+    private postPvdr: PostProvider,
+    private storageLocal: Storage,
+    public alertController: AlertController,
+    public loadingController: LoadingController,
     private dataService: DataService,
-    private callNumber : CallNumber,
-  ) { 
+    private callNumber: CallNumber,
+  ) {
     setTimeout(() => {
       this.isLoaded = true;
     }, 2000);
-    this.loadSaved(); 
+    this.loadSaved();
   }
-  
+
   ngOnInit() {
+    //function here
   }
-  addprospect(){
+  addprospect() {
     this.router.navigate(['members/addprospect'])
   }
-  SeeAll(){
+  SeeAll() {
     this.router.navigate(['members/seeallprospect'])
   }
-  ionViewWillEnter(){
+  ionViewWillEnter() {
     this.items = [];
     this.start = 0;
     this.itemsNew = [];
@@ -70,30 +71,30 @@ export class ProspectPage implements OnInit {
     this.LoadProfile();
     this.loadProduct();
   }
-  async loadProduct(){
+  async loadProduct() {
     const loading = await this.loadingController.create({
-      message : "",
+      message: "",
       spinner: 'crescent',
-      translucent : true,
-      cssClass:'custom-loader-class',
+      translucent: true,
+      cssClass: 'custom-loader-class',
       mode: 'md'
     });
     await loading.present();
-    this.storageLocal.get('IdLogin').then((IdLogin)=>{
+    this.storageLocal.get('IdLogin').then((IdLogin) => {
       this.user = IdLogin;
       let body = {
-      aksi : 'getdata',
-      limit : this.limit,
-      start : this.start,
+        aksi: 'getdata',
+        limit: this.limit,
+        start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProduct.php?Id='+this.user).subscribe(data =>{
-        loading.dismiss().then(()=>{
-          for(let item of data){
+      this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
+        loading.dismiss().then(() => {
+          for (let item of data) {
             this.itemsproduct.push(item);
-        } 
+          }
         })
-    });
-  })
+      });
+    })
   }
   async LoadProfile() {
     const loading = await this.loadingController.create({
@@ -120,105 +121,105 @@ export class ProspectPage implements OnInit {
       });
     });
   }
-  deleteprospect(id){
+  deleteprospect(id) {
     let body = {
-      aksi : 'delete',
-      id : id,
-      };
-      this.postPvdr.postData(body, 'InsertProspect.php').subscribe(_data =>{
-        this.ionViewWillEnter();
-      });
+      aksi: 'delete',
+      id: id,
+    };
+    this.postPvdr.postData(body, 'InsertProspect.php').subscribe(_data => {
+      this.ionViewWillEnter();
+    });
   }
-  updateprospect(id,namaCustomer,emailCustomer,alamatCustomer,no_tlp,company,alamatCompany,emailCompany,nomorCompany,customerneed,stock,hargaProduk,totalPrice,budget,status){
+  updateprospect(id, namaCustomer, emailCustomer, alamatCustomer, no_tlp, company, alamatCompany, emailCompany, nomorCompany, customerneed, stock, hargaProduk, totalPrice, budget, status) {
     this.router.navigate(['members/view-prospect/'
-    +id+'/'
-    +namaCustomer+'/'
-    +emailCustomer+'/'
-    +alamatCustomer+'/'
-    +no_tlp+'/'
-    +company+'/'
-    +alamatCompany+'/'
-    +emailCompany+'/'
-    +nomorCompany+'/'
-    +customerneed+'/'
-    +stock+'/'
-    +hargaProduk+'/'
-    +totalPrice+'/'
-    +budget+'/'
-    +status
-  ]);
+      + id + '/'
+      + namaCustomer + '/'
+      + emailCustomer + '/'
+      + alamatCustomer + '/'
+      + no_tlp + '/'
+      + company + '/'
+      + alamatCompany + '/'
+      + emailCompany + '/'
+      + nomorCompany + '/'
+      + customerneed + '/'
+      + stock + '/'
+      + hargaProduk + '/'
+      + totalPrice + '/'
+      + budget + '/'
+      + status
+    ]);
   }
-  updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk){
-    if(namaProduk==""){
-      namaProduk=" ";
+  updateProduct(id, namaProduk, tipeProduk, totalProfit, normalPrice, jumlahProduk, hargaProduk, deskripsiProduk) {
+    if (namaProduk == "") {
+      namaProduk = " ";
     }
-    if(tipeProduk==""){
-      tipeProduk=" ";
+    if (tipeProduk == "") {
+      tipeProduk = " ";
     }
-    if(totalProfit==""){
-      totalProfit=" ";
+    if (totalProfit == "") {
+      totalProfit = " ";
     }
-    if(jumlahProduk==""){
-      jumlahProduk=" ";
+    if (jumlahProduk == "") {
+      jumlahProduk = " ";
     }
-    if(hargaProduk==""){
-      hargaProduk=" ";
+    if (hargaProduk == "") {
+      hargaProduk = " ";
     }
-    if(deskripsiProduk==""){
-      deskripsiProduk=" ";
+    if (deskripsiProduk == "") {
+      deskripsiProduk = " ";
     }
-    if(normalPrice==""){
-      normalPrice=" "
+    if (normalPrice == "") {
+      normalPrice = " "
     }
     this.router.navigate(['members/editproduct/'
-    +id+'/'
-    +namaProduk+'/'
-    +tipeProduk+'/'
-    +totalProfit+'/'
-    +normalPrice+'/'
-    +jumlahProduk+'/'
-    +hargaProduk+'/'
-    +deskripsiProduk]);
+      + id + '/'
+      + namaProduk + '/'
+      + tipeProduk + '/'
+      + totalProfit + '/'
+      + normalPrice + '/'
+      + jumlahProduk + '/'
+      + hargaProduk + '/'
+      + deskripsiProduk]);
   }
-  async loadProspect(){
+  async loadProspect() {
     const loading = await this.loadingController.create({
-      message : "",
+      message: "",
       spinner: 'crescent',
-      translucent : true,
-      cssClass:'custom-loader-class',
+      translucent: true,
+      cssClass: 'custom-loader-class',
       mode: 'md'
     });
     await loading.present();
-    this.storageLocal.get('IdLogin').then((IdLogin)=>{
-        this.user = IdLogin;
-        let body = {
-          aksi : 'getdata',
-          limit : this.limit,
-          start : this.start,
-          };
-          this.postPvdr.postData(body, 'LoadProspect.php?Id='+this.user).subscribe(data =>{
-            loading.dismiss().then(()=>{
-              for(let item of data){
-                this.items.push(item);
-            } 
-            })
-          });
-      })
+    this.storageLocal.get('IdLogin').then((IdLogin) => {
+      this.user = IdLogin;
+      let body = {
+        aksi: 'getdata',
+        limit: this.limit,
+        start: this.start,
+      };
+      this.postPvdr.postData(body, 'LoadProspect.php?Id=' + this.user).subscribe(data => {
+        loading.dismiss().then(() => {
+          for (let item of data) {
+            this.items.push(item);
+          }
+        })
+      });
+    })
   }
-  loadProspectNew(){
-    this.storageLocal.get('IdLogin').then((IdLogin)=>{
-        this.user = IdLogin;
-        let body = {
-          aksi : 'getdata',
-          limit : this.limit,
-          start : this.start,
-          };
-          this.postPvdr.postData(body, 'LoadProspectNew.php?Id='+this.user).subscribe(data =>{
-            for(let item of data){
-              this.itemsNew.push(item);
-          } 
-          });
-      })
+  loadProspectNew() {
+    this.storageLocal.get('IdLogin').then((IdLogin) => {
+      this.user = IdLogin;
+      let body = {
+        aksi: 'getdata',
+        limit: this.limit,
+        start: this.start,
+      };
+      this.postPvdr.postData(body, 'LoadProspectNew.php?Id=' + this.user).subscribe(data => {
+        for (let item of data) {
+          this.itemsNew.push(item);
+        }
+      });
+    })
   }
   LoadTotalProspect() {
     this.storageLocal.get('IdLogin').then((IdLogin) => {
@@ -232,39 +233,39 @@ export class ProspectPage implements OnInit {
         for (let item of data) {
           this.itemTotalProspect.push(item);
           this.totalProspect = this.itemTotalProspect.length;
-          if ( this.totalProspect == 0){
+          if (this.totalProspect == 0) {
             this.text;
-          }else if ( this.totalProspect >= 1){
+          } else if (this.totalProspect >= 1) {
             this.text = '';
           }
         }
       });
     })
   }
-  async LoadCustomer(){
+  async LoadCustomer() {
     const loading = await this.loadingController.create({
-      message : "",
+      message: "",
       spinner: 'crescent',
-      translucent : true,
-      cssClass:'custom-loader-class',
+      translucent: true,
+      cssClass: 'custom-loader-class',
       mode: 'md'
     });
     await loading.present();
-    this.storageLocal.get('IdLogin').then((IdLogin)=>{
-        this.user = IdLogin;
-        let body = {
-          aksi : 'getdata',
-          limit : this.limit,
-          start : this.start,
-          };
-          this.postPvdr.postData(body, 'LoadCustomer.php?Id='+this.user).subscribe(data =>{
-            loading.dismiss().then(()=>{
-              for(let item of data){
-                this.itemsCustomer.push(item);
-            } 
-            })
-          });
-      })
+    this.storageLocal.get('IdLogin').then((IdLogin) => {
+      this.user = IdLogin;
+      let body = {
+        aksi: 'getdata',
+        limit: this.limit,
+        start: this.start,
+      };
+      this.postPvdr.postData(body, 'LoadCustomer.php?Id=' + this.user).subscribe(data => {
+        loading.dismiss().then(() => {
+          for (let item of data) {
+            this.itemsCustomer.push(item);
+          }
+        })
+      });
+    })
   }
   arrayOne(n: number): any[] {
     return Array(n);
@@ -286,19 +287,19 @@ export class ProspectPage implements OnInit {
           text: 'Yes',
           handler: () => {
             let body = {
-              aksi : 'delete',
-              id : id,
-              };
-              this.postPvdr.postData(body, 'InsertProspect.php').subscribe(_data =>{
-                this.ionViewWillEnter();
-              });
+              aksi: 'delete',
+              id: id,
+            };
+            this.postPvdr.postData(body, 'InsertProspect.php').subscribe(_data => {
+              this.ionViewWillEnter();
+            });
           }
         }
       ]
     });
     await alert.present();
   }
-  doRefresh(event){
+  doRefresh(event) {
     setTimeout(() => {
       this.ionViewWillEnter();
       event.target.complete();
@@ -324,5 +325,8 @@ export class ProspectPage implements OnInit {
     this.storageLocal.get('Profile').then((url) => {
       this.url = url || [];
     });
+  }
+  movetoMain() {
+    this.router.navigate(['members/main'])
   }
 }

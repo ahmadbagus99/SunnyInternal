@@ -1,58 +1,58 @@
-   <ion-header>
-     <ion-toolbar color=#F57F17 class="new-background-color">
-       <ion-buttons slot="start">
-         <ion-back-button color="light" defaultHref="dashboard"></ion-back-button>
-       </ion-buttons>
-       <ion-buttons slot="primary">
-         <ion-button (click)="addaccount()">
-           <ion-icon name="md-add-circle"></ion-icon>
-         </ion-button>
-       </ion-buttons>
-       <ion-title>Account</ion-title>
-     </ion-toolbar>
-     <ion-toolbar>
-       <ion-searchbar color="light" animated [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
-     </ion-toolbar>
-   </ion-header>
+<ion-header>
+  <ion-toolbar color=#F57F17 class="new-background-color">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" (click)="movetoMain()"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="addaccount()">
+        <ion-icon name="md-add-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Account</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar color="light" animated [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
 
-   <ion-content>
-     <!-- fungsinya untuk merefresh data yang baru diisi/baru dibuat -->
-     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-       <ion-refresher-content></ion-refresher-content>
-     </ion-refresher>
+<ion-content>
+  <!-- fungsinya untuk merefresh data yang baru diisi/baru dibuat -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
 
-     <!-- Fungsi sebagai user bisa membedakan mana yang terbaru dan sering di buka (populer) dan fungsinya sebagai mengkontrol tambilan search yang di butuhkan -->
-     <ion-segment [(ngModel)]="selectCategory">
-       <ion-segment-button value="Populer">
-         <ion-label>Top Recent</ion-label>
-       </ion-segment-button>
-       <ion-segment-button value="Terbaru">
-         <ion-label>New</ion-label>
-       </ion-segment-button>
-       <ion-segment-button value="Kategori">
-         <ion-label>Category</ion-label>
-       </ion-segment-button>
-     </ion-segment>
+  <!-- Fungsi sebagai user bisa membedakan mana yang terbaru dan sering di buka (populer) dan fungsinya sebagai mengkontrol tambilan search yang di butuhkan -->
+  <ion-segment [(ngModel)]="selectCategory">
+    <ion-segment-button value="Populer">
+      <ion-label>Top Recent</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Terbaru">
+      <ion-label>New</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Kategori">
+      <ion-label>Category</ion-label>
+    </ion-segment-button>
+  </ion-segment>
 
-     <!-- Fungsi sebagai membuat tampilan yang sudah di buat di addaccount dan sebagai button untuk melihat view account -->
-     <div [ngSwitch]="selectCategory">
-       <div *ngSwitchCase="'Populer'">
-         <ng-container *ngIf="isLoaded; else elseTemplate">
-           <ion-list>
-             <ion-item-sliding *ngFor="let item of items">
-               <ion-item-options side="end">
-                 <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
-               </ion-item-options>
-               <ion-item button
-                 (click)="updateAccount(item.id,item.nama,item.alamat,item.web,item.phone,item.email,item.owner,item.type,item.event_date,item.category,item.industry,item.employee)">
-                 <ion-icon slot="start" name="ios-contacts"></ion-icon>
-                 <ion-label>
-                   <h3>{{item.nama}}</h3>
-                 </ion-label>
-               </ion-item>
-             </ion-item-sliding>
-           </ion-list>
-         </ng-container>
+  <!-- Fungsi sebagai membuat tampilan yang sudah di buat di addaccount dan sebagai button untuk melihat view account -->
+  <div [ngSwitch]="selectCategory">
+    <div *ngSwitchCase="'Populer'">
+      <ng-container *ngIf="isLoaded; else elseTemplate">
+        <ion-list>
+          <ion-item-sliding *ngFor="let item of items">
+            <ion-item-options side="end">
+              <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
+            </ion-item-options>
+            <ion-item button
+              (click)="updateAccount(item.id,item.nama,item.alamat,item.web,item.phone,item.email,item.owner,item.type,item.event_date,item.category,item.industry,item.employee)">
+              <ion-icon slot="start" name="ios-contacts"></ion-icon>
+              <ion-label>
+                <h3>{{item.nama}}</h3>
+              </ion-label>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
+      </ng-container>
 
          <ng-template #elseTemplate>
            <ion-item *ngFor="let item of arrayOne(10)">
@@ -88,27 +88,24 @@
            </ion-list>
          </ng-container>
 
-         <ng-template #elseTemplate>
-           <ion-item *ngFor="let item of arrayOne(10)">
-             <ion-avatar slot="start">
-               <ion-skeleton-text animated></ion-skeleton-text>
-             </ion-avatar>
-             <ion-label>
-               <h2>
-                 <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
-               </h2>
-               <p>
-                 <ion-skeleton-text animated style="width: 180px;"></ion-skeleton-text>
-               </p>
-             </ion-label>
-           </ion-item>
-         </ng-template>
-       </div>
-       <div *ngSwitchCase="'Kategori'">
+      <ng-template #elseTemplate>
+        <ion-item *ngFor="let item of arrayOne(10)">
+          <ion-avatar slot="start">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-avatar>
+          <ion-label>
+            <h2>
+              <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
+            </h2>
+            <p>
+              <ion-skeleton-text animated style="width: 180px;"></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ng-template>
+    </div>
+    <div *ngSwitchCase="'Kategori'">
 
-       </div>
-     </div>
-
-
-
-   </ion-content>
+    </div>
+  </div>
+</ion-content>

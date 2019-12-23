@@ -45,6 +45,7 @@ export class MainPage implements OnInit {
   text : string = "You don't have prospect today"
   textActivity : string = "You don't have activities today"
   incentive :number;
+  itemIncentive : any;
   
   @ViewChild("barCanvas") barCanvas: ElementRef;
   @ViewChild("doughnutCanvas") doughnutCanvas: ElementRef;
@@ -72,18 +73,13 @@ export class MainPage implements OnInit {
         }, 0)
       );
     });
-    this.loadProspect();
-    this.LoadProfile();
-    this.LoadTotalCustomer();
-    this.LoadTotalProspect();
-    this.CheckPrice();
   }
   slideOptsOne = {
     initialSlide: 0,
     slidesPerView: 1,
     autoplay: true
   };
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
     this.storage.get('Activity').then((item) => {
       this.Activity = item;
       if ( this.Activity == null){
@@ -98,6 +94,8 @@ export class MainPage implements OnInit {
     this.itemTotalProspect = [];
     this.itemCustomer = [];
     this.itemProspect = [];
+    this.itemIncentive = [];
+    this.LoadIncentive();
     this.loadProspect();
     this.LoadProfile();
     this.LoadTotalCustomer();
@@ -167,6 +165,22 @@ export class MainPage implements OnInit {
       });
     })
   }
+  LoadIncentive() {
+    this.storage.get('IdLogin').then((IdLogin) => {
+      this.user = IdLogin;
+      let body = {
+        aksi: 'getdata',
+        limit: this.limit,
+        start: this.start,
+      };
+      this.postPvdr.postData(body, 'GetIncentive.php?Id=' + this.user).subscribe(data => {
+        for (let item of data) {
+          this.itemIncentive.push(item);
+        }
+      });
+    })
+  }
+
   LoadTotalProspect() {
     this.storage.get('IdLogin').then((IdLogin) => {
       this.user = IdLogin;
@@ -245,8 +259,4 @@ export class MainPage implements OnInit {
       event.target.complete();
     }, 500);
   }
-
-
-
-
 }

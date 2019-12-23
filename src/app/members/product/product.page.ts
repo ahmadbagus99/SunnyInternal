@@ -188,5 +188,8 @@ export class ProductPage implements OnInit {
   setFilteredItems() {
     this.items = this.dataService.filterProduct(this.searchTerm);
   }
+  movetoMain(){
+    this.router.navigate(['members/main'])
+  }
 
 }

@@ -31,7 +31,7 @@ export class AddcontactPage implements OnInit {
   Facebook: string;
   Twitter: string;
   Instagram: string;
-  NPWP: number = 0;
+  NPWP: string;
   userID: string;
   penghasilan: string;
   email : string='';

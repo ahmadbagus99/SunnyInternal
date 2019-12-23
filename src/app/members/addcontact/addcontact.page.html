@@ -57,8 +57,15 @@
           <span>
             <!-- fill data pengisian Alamat user-->
             <ion-item>
-              <ion-label position="stacked">Address</ion-label>
+              <ion-label position="stacked">Address 1</ion-label>
               <ion-input type="text" [(ngModel)]="alamat"></ion-input>
+            </ion-item>
+          </span>
+              <span>
+            <!-- fill data pengisian Alamat Rumah user-->
+            <ion-item>
+              <ion-label position="stacked">Address 2</ion-label>
+              <ion-input type="text" [(ngModel)]="almt_rumah"></ion-input>
             </ion-item>
           </span>
           <span>
@@ -84,13 +91,6 @@
               <ion-label position="stacked">Phone Number <ion-text color="danger">*</ion-text>
               </ion-label>
               <ion-input type="text" placeholder="{{warning}}" [(ngModel)]="no_tlp"></ion-input>
-            </ion-item>
-          </span>
-          <span>
-            <!-- fill data pengisian Alamat Rumah user-->
-            <ion-item>
-              <ion-label position="stacked">Home Address</ion-label>
-              <ion-input type="text" [(ngModel)]="almt_rumah"></ion-input>
             </ion-item>
           </span>
         </div>

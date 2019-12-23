@@ -309,6 +309,7 @@ export class AddprospectPage implements OnInit {
               };
               this.postPvdr.postData(body, 'InsertProspect.php').subscribe(data => {
                 console.log(data)
+                this.router.navigate(['members/seeallprospect']);
                 this.savebutton = true;
               });
             });
@@ -392,8 +393,8 @@ export class AddprospectPage implements OnInit {
       var id = Data.map( data => data.id);
       this.idProduct = parseInt(id);
     })
-    console.log(this.idProduct)
-    console.log(this.sisaStock)
+    // console.log(this.idProduct)
+    // console.log(this.sisaStock)
   }
   UpdateQuantity(){
     return new Promise(resolve => {

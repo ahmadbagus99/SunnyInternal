@@ -9,8 +9,6 @@
     <ion-title *ngIf="id>=1">Edit Prospect</ion-title>
     <ion-buttons slot="primary">
       <ion-button [routerLink]="['/members/main']" [disabled]="!pdfObj">Done</ion-button>
-      <!-- <ion-button *ngIf="!id" (click)="createdProcess()">Simpan</ion-button>
-        <ion-button *ngIf="id>=1" (click)="updateProcess()">Simpan</ion-button> -->
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -72,7 +70,7 @@
               </ion-item>
             </span>
           </div>
-         
+
           <span [hidden]="selectHidden">
             <ion-item>
               <ion-label position="stacked">Company</ion-label>

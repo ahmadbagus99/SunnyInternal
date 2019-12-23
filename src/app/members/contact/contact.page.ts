@@ -226,6 +226,9 @@ export class ContactPage implements OnInit {
     setFilteredItems() {
       this.items = this.dataService.filterContact(this.searchTerm);
     }
+    movetoMain(){
+      this.router.navigate(['members/main'])
+    }
   }
 
 
