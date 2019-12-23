@@ -54,39 +54,39 @@
         </ion-list>
       </ng-container>
 
-      <ng-template #elseTemplate>
-        <ion-item *ngFor="let item of arrayOne(10)">
-          <ion-avatar slot="start">
-            <ion-skeleton-text animated></ion-skeleton-text>
-          </ion-avatar>
-          <ion-label>
-            <h2>
-              <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
-            </h2>
-            <p>
-              <ion-skeleton-text animated style="width: 180px;"></ion-skeleton-text>
-            </p>
-          </ion-label>
-        </ion-item>
-      </ng-template>
-    </div>
-    <div *ngSwitchCase="'Terbaru'">
-      <ng-container *ngIf="isLoaded; else elseTemplate">
-        <ion-list>
-          <ion-item-sliding *ngFor="let item of itemsNew">
-            <ion-item-options side="end">
-              <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
-            </ion-item-options>
-            <ion-item button
-              (click)="updateAccount(item.id,item.nama,item.alamat,item.web,item.phone,item.email,item.owner,item.type,item.event_date,item.category,item.industry,item.employee)">
-              <ion-icon slot="start" name="person"></ion-icon>
-              <ion-label>
-                <h3>{{item.nama}}</h3>
-              </ion-label>
-            </ion-item>
-          </ion-item-sliding>
-        </ion-list>
-      </ng-container>
+         <ng-template #elseTemplate>
+           <ion-item *ngFor="let item of arrayOne(10)">
+             <ion-avatar slot="start">
+               <ion-skeleton-text animated></ion-skeleton-text>
+             </ion-avatar>
+             <ion-label>
+               <h2>
+                 <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
+               </h2>
+               <p>
+                 <ion-skeleton-text animated style="width: 180px;"></ion-skeleton-text>
+               </p>
+             </ion-label>
+           </ion-item>
+         </ng-template>
+       </div>
+       <div *ngSwitchCase="'Terbaru'">
+         <ng-container *ngIf="isLoaded; else elseTemplate">
+           <ion-list>
+             <ion-item-sliding *ngFor="let item of itemsNew">
+               <ion-item-options side="end">
+                 <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
+               </ion-item-options>
+               <ion-item button
+                 (click)="updateAccount(item.id,item.nama,item.alamat,item.web,item.phone,item.email,item.owner,item.type,item.event_date,item.category,item.industry,item.employee)">
+                 <ion-icon slot="start" name="ios-contacts"></ion-icon>
+                 <ion-label>
+                   <h3>{{item.nama}}</h3>
+                 </ion-label>
+               </ion-item>
+             </ion-item-sliding>
+           </ion-list>
+         </ng-container>
 
       <ng-template #elseTemplate>
         <ion-item *ngFor="let item of arrayOne(10)">
