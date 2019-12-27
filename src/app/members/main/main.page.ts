@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { ShareService } from 'src/app/share/share';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { PostProvider } from 'src/providers/post-providers';
 import { IonSlides } from '@ionic/angular';
 
@@ -10,7 +10,7 @@ import { IonSlides } from '@ionic/angular';
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
 })
-export class MainPage implements OnInit {
+export class MainPage {
   @ViewChild('mySlider') slider: IonSlides;
   sliderOpts = {
     autoplay: true,
@@ -41,15 +41,7 @@ export class MainPage implements OnInit {
     private postPvdr: PostProvider,
   ) {
   }
-  slideOptsOne = {
-    initialSlide: 0,
-    slidesPerView: 1,
-    autoplay: true
-  };
-  ngOnInit() {
-
-  }
-  ionViewWillEnter() {
+  async ionViewWillEnter() {
     this.storage.get('Activity').then((item) => {
       this.Activity = item;
       if (this.Activity == null) {
@@ -165,6 +157,7 @@ export class MainPage implements OnInit {
         }
       });
     });
+    // this.changeRef.detectChanges();
   }
 
   LoadProfile() {

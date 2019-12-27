@@ -16,7 +16,6 @@ export class ProspectPage implements OnInit {
   limit: number = 10;
   start: number = 0;
   isLoaded = false;
-  public searchTerm: string = "";
   selectCategory = 'Populer';
   itemsNew: any = [];
   itemsproduct: any = [];
@@ -28,6 +27,10 @@ export class ProspectPage implements OnInit {
   textProduct: string = "You haven't added product";
   textCustomer: string = "Keep following your prospect to get customer!";
   url: any;
+  ProspectTotal : number;
+  itemProspectVerify : any = [];
+  prospectVerify : number = 0;
+  Move : boolean;
 
   constructor(
     private router: Router,
@@ -43,6 +46,9 @@ export class ProspectPage implements OnInit {
     this.loadSaved();
   }
   ngOnInit() {
+    this.storage.get('TotalProspect').then((data)=>{
+      this.ProspectTotal = data;
+    })
   }
   ionViewWillEnter() {
     //get ID
@@ -57,12 +63,14 @@ export class ProspectPage implements OnInit {
     this.itemsproduct = [];
     this.itemsCustomer = [];
     this.itemTotalProspect = [];
+    this.itemProspectVerify = [];
     this.LoadTotalProspect();
     this.LoadCustomer();
     this.loadProspect();
     this.loadProspectNew();
     this.LoadProfile();
     this.loadProduct();
+    this.check();
   }
   addprospect() {
     this.router.navigate(['members/addprospect'])
@@ -215,6 +223,9 @@ export class ProspectPage implements OnInit {
       });
   }
   LoadTotalProspect() {
+    this.storage.get('session_storage').then((iduser) => {
+      var ID = iduser;
+      this.user = ID.map(data => data.id)
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -230,6 +241,8 @@ export class ProspectPage implements OnInit {
             this.text = '';
           }
         }
+        this.storage.set('TotalProspect',this.totalProspect);
+      });
       });
   }
   async LoadCustomer() {
@@ -298,9 +311,6 @@ export class ProspectPage implements OnInit {
       event.target.complete();
     }, 500);
   }
-  setFilteredItems() {
-    this.items = this.dataService.filterContact(this.searchTerm);
-  }
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
@@ -320,6 +330,32 @@ export class ProspectPage implements OnInit {
     });
   }
   movetoMain() {
-      this.router.navigate(['members/dashboard']);
+    if (this.Move == true){
+      this.router.navigate(['dashboard/dashboard/main'])
+    }else if (this.Move == false){
+      this.router.navigate(['members/dashboard'])
+    }
+  }
+  check(){
+    this.storage.get('session_storage').then((iduser) => {
+      var ID = iduser;
+      this.user = ID.map(data => data.id)
+      let body = {
+        aksi: 'getdata',
+        limit: this.limit,
+        start: this.start,
+      };
+      this.postPvdr.postData(body, 'LoadTotalProspect.php?Id=' + this.user).subscribe(data => {
+        for (let item of data) {
+          this.itemProspectVerify.push(item);
+          this.prospectVerify = this.itemProspectVerify.length;
+        }
+          if ( this.ProspectTotal == this.prospectVerify){
+            this.Move = false;
+          }else{
+            this.Move = true;
+          }
+      });
+    });
   }
 }
