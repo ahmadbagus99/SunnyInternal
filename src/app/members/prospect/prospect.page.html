@@ -61,7 +61,7 @@
 
   <h4 class="judul"> Our Product</h4>
   <div class="scrolling-wrapper">
-    <p text-center>{{textProduct}}</p>
+    <p text-center>{{text}}</p>
     <div *ngFor="let item of itemsproduct" class="card">
       <ion-card button
         (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">

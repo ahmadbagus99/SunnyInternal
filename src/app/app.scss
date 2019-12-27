@@ -7,14 +7,16 @@
 
 @font-face{
     font-family: custom1;
-    src: url('../assets/font/OpenSans-Light.ttf');
+    src: url('../assets/font/poppins/Poppins-Regular.ttf');
 }
 
 *{
-    font-family: 'Segoe UI';
+  font-family: custom1;
+  src: url('../assets/font/poppins/Poppins-Regular.ttf');
 }
 ion-item, ion-label, ion-input, ion-tabs{
-    font-family: 'Segoe UI';
+  font-family: custom1;
+  src: url('../assets/font/poppins/Poppins-Regular.ttf');
 }
 
 .datetimeColor{

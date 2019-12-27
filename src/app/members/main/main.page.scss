@@ -12,13 +12,19 @@ ion-icon {
 
 ion-card {
   height: 33vw;
+  background-color: #ff951c;
+
+  .activities-card {
+    background-color: #ff951c;
+  }
 }
 
 ion-card-content {
-  height: 28vw;
+  height: 30px;
   margin-left: -2vw;
 
   .sc-ion-card-md-h {
+    height: 30px;
     margin-left: unset;
     margin-right: unset;
     -webkit-margin-start: 35px;
@@ -29,9 +35,78 @@ ion-card-content {
 
   .item-name {
     position: absolute;
-    margin-left: 10px;
-    margin-right: 0;
-    margin-top: -10px;
+    left: 2px;
+    margin-top: -14px;
+    font-size: 10px;
+  }
+}
+
+
+ion-col {
+  text-align: center;
+  margin-left: -55px;
+  .customer-report {
+    position: absolute;
+    // margin-left: 40px;
+    margin-top: 0px;
+    font-size: 28px;
+    text-align: center;
+  }
+  
+  .incentive-report {
+    // position: absolute;
+    // margin-left: 40px;
+    margin-top: 0px;
+    font-size: 28px;
+    text-align: center;
+    // border-left: solid 1px black;
+    // border-right: solid 1px black;
+  }
+
+  .prospect-report {
+    position: absolute;
+    // margin-left: 40px;
+    margin-top: 0px;
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .sub-text {
+    position: absolute;
+    // margin-left: 35px;
+    margin-top: 33px;
+    font-size: 12px;
+  }
+
+  .month-text {
+    position: absolute;
+    // margin-left: 35px;
+    margin-top: 50px;
+    font-size: 8px;
+  }
+
+  .vertical-line {
+    position: inherit;
+    align-content: baseline;
+    margin-left: 50px;
+    height: 60px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+  }
+
+}
+
+ion-grid {
+  display: grid;
+  background-color: white;
+  height: 10%;
+
+  .report-for-you {
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    margin-top: 5vw;
+    margin-left: 3vw;
   }
 }
 
@@ -49,15 +124,17 @@ ion-badge {
 }
 
 .item-name {
+  color: white;
   margin-left: 10px;
   margin-right: 0;
-  margin-top: -10px;
+  margin-top: -14px;
 }
 
 .Background-top {
-  margin-top: -10px;
+  margin-top: -140px;
   height: 250px;
-  background-image: url('../../../assets/img/Liquid-Cheese.svg');
+  background-color: white;
+  // background-image: url('../../../assets/img/Liquid-Cheese.svg');
   background-attachment: fixed;
   background-size: cover;
 }
@@ -72,21 +149,23 @@ ion-badge {
 
 .logo {
   height: 50px;
-  width: 300px;
+  width: 340px;
   margin-left: -50px;
-  color: #EEEEEE;
 
   img {
-    color: #EEEEEE;
-    margin-top: 90px;
+    margin-top: 156px;
+    .img-customer {
+      position: absolute;
+      width: 80%;
+    }
   }
 }
 
 .notif {
-  margin-top: -40px;
+  margin-top: 111px;
 
   ion-icon {
-    color: white;
+    color: #ff951c;
     ;
     height: 40px;
     width: 40px;
@@ -97,8 +176,9 @@ ion-badge {
 }
 
 .menu {
-  margin-top: 10px;
-  height: 100px;
+  display: grid;
+  margin-top: 6px;
+  height: 15%;
   background-color: white;
 
   // border-radius: 10px;
@@ -107,7 +187,7 @@ ion-badge {
     widows: 20vw;
     width: 15vw;
     height: 15vw;
-    background-color: #ff951c;
+    background-color: #F3F3F3;
     border-radius: 20px 20px 20px;
     box-shadow: #989aa2 8px;
     --padding-top: 12px !important;
@@ -153,7 +233,7 @@ ion-badge {
   border-radius: 0px;
   margin-top: 10px;
   background-color:white;
-  height: 55vw;
+  margin-top: 6px;
 
   .scrolling-wrapper {
 
@@ -174,8 +254,8 @@ ion-badge {
 
       margin-top: 15vw;
       display: inline-block;
-      width: 100px;
-      height: 5vw;
+      width: 112px;
+      height: 5px;
     }
 
     .card-new {
@@ -204,12 +284,6 @@ ion-badge {
   background-image: url('../../../assets/img/backgroundFix.svg');
   background-size: 50vw;
   // background-color: #ff7700;
-}
-
-.report-for-you {
-  position: absolute;
-  margin-top: 5vw;
-  margin-left: 3vw;
 }
 
 .see-all {
@@ -270,10 +344,12 @@ ion-badge {
 
 ion-input {
   position: absolute;
-  margin-top: 8vw;
+  margin-top: 2vw;
+  margin-left: 5vw;
+
 
   .price {
-    margin-left: 2vw;
+    margin-left: 10vw;
     align-content: center;
     font-style: bold;
     font-size: 18px;
@@ -328,6 +404,7 @@ ion-input {
 .time-activities {
   position: relative;
   margin-top: -6.5vw;
+  color: white;
 }
 
 ion-slide {
@@ -355,13 +432,14 @@ ion-slide {
 }
 
 .p {
+  color: white;
   margin-top: -20vw;
   margin-left: -3vw;
 }
 
 .icon-activities {
   position: absolute;
-  margin-top: -15vw;
+  margin-top: -50px;
   margin-left: 53vw;
   height: 50vw;
   width: 50vw;
@@ -371,4 +449,14 @@ ion-slide {
   position: relative;
   margin-top: -2vw;
   margin-left: 2.5vw;
+}
+
+h2 {
+  font-size: 20px;
+  color: white;
+}
+
+ion-textarea {
+  font-size: 15px;
+  color: white;
 }

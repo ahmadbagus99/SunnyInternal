@@ -21,6 +21,34 @@
     </div>
   </div>
 
+
+  <!-- Report for you new -->
+  <div class="report-for-you">
+    <ion-grid>
+      <ion-row justify-content-center align-items-start style="height: 100%">
+        <ion-col>
+          <ion-text class="customer-report"><b> 2 </b></ion-text>
+          <ion-text class="sub-text"><b> Customer </b></ion-text>
+          <ion-text class="month-text"><b> / month </b></ion-text>
+        </ion-col>
+
+        <ion-col>
+          <ion-text class="sub-text"><b> Incentive </b></ion-text>
+          <ion-text class="month-text"><b> / month </b></ion-text>
+          <div class="vertical-line">
+            <ion-text class="incentive-report"><b> 30K </b></ion-text>
+          </div>
+        </ion-col>
+
+        <ion-col>
+          <ion-text class="prospect-report"><b> 200 </b></ion-text>
+          <ion-text class="sub-text"><b> Prospect </b></ion-text>
+          <ion-text class="month-text"><b> / month </b></ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
   <!-- FLOAT MENU BAR -->
 
   <div class="menu">
@@ -64,58 +92,7 @@
     </ion-grid>
   </div>
 
-  <!-- Menampilkan Detail Report Total Customer  -->
 
-  <div class="report-for-you">
-    <ion-grid fixed>
-      <ion-text><b>Report for you</b></ion-text>
-    </ion-grid>
-  </div>
-
-  <div class="content">
-    <div class="report">
-      <div class="text-report">
-        <ion-text><b> {{totalCustomer}} </b></ion-text> <br>
-      </div>
-
-      <div class="detail-report">
-        <ion-text><b> Total Customer </b></ion-text> <br>
-        <ion-text> / month </ion-text>
-      </div>
-    </div>
-
-    <div class="report3">
-      <div class="text-report3">
-        <ion-text class="ion-align-items-center"><b>{{totalProspect}}</b></ion-text> <br>
-      </div>
-
-      <div class="detail-report3">
-        <ion-text><b> Total Prospect </b></ion-text> <br>
-        <ion-text> / month </ion-text>
-      </div>
-    </div>
-
-    <!-- Menampilkan Report Incentive  -->
-
-    <div class="incentive">
-      <div class="text-report-2">
-        <div class="idr">
-          <ion-text><b> IDR </b></ion-text>
-        </div>
-        <div class="price">
-          <b *ngFor="let item of itemIncentive">
-            <!-- <ion-text>{{item.Incentive}}</ion-text> -->
-            <ion-input type="text" value="{{ item.Incentive | currency:'Rp ' }}" readOnly></ion-input>
-          </b>
-        </div>
-      </div>
-
-      <div class="detail-report2">
-        <ion-text><b> Total Incentive </b></ion-text><br>
-        <ion-text> / month </ion-text>
-      </div>
-    </div>
-  </div>
 
   <!-- Menampilkan report Activities -->
   <div class="activities-text">
@@ -131,14 +108,14 @@
   <div class="extra-content">
     <div class="scrolling-wrapper">
       <div *ngFor="let item of Activity" class="card-new">
-        <ion-card>
+        <ion-card class="activities-card">
           <ion-card-content>
             <div class="icon-activities">
               <img src="assets/icon/Activity.png" />
             </div>
             <!-- <ion-datetime displayFormat="h:mm a" pickerFormat="h mm a" [(ngModel)]="time"></ion-datetime> -->
             <h2><b>{{item.title}}</b></h2>
-              <ion-textarea>
+            <ion-textarea>
               {{item.desc}}
             </ion-textarea>
             <div class="time-activities">
@@ -149,6 +126,7 @@
       </div>
     </div>
   </div>
+
 
 
   <!-- MENAMPILKAN PROSPECT LAINNYA  -->
@@ -169,13 +147,13 @@
       </div>
       <div *ngFor="let item of itemProspect" class="card">
         <ion-card button
-        (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
-          <img src="assets/img/prospectforyou-page.png" />
+          (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
+          <img class="img-customer" src="assets/img/customer-icon.png" />
           <ion-card-content>
             <p>{{item.nama}}</p>
-              <div class="item-name">
-                {{item.company}}
-              </div>
+            <div class="item-name">
+              {{item.company}}
+            </div>
           </ion-card-content>
         </ion-card>
       </div>
