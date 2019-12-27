@@ -4,7 +4,6 @@ import { AlertController } from '@ionic/angular';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
-import { MainPage } from '../main/main.page';
 
 @Component({
   selector: 'app-activities',
@@ -39,9 +38,9 @@ export class ActivitiesPage implements OnInit {
     private alertCtrl: AlertController, 
     @Inject(LOCALE_ID) private locale: string,
     private storage : Storage,
-    public mainPage : MainPage
-    )
-     { }
+    ){
+
+     }
  
   ngOnInit() {
     this.resetEvent();
@@ -145,8 +144,6 @@ export class ActivitiesPage implements OnInit {
     }, 500);
   }
   movetoMain(){
-    this.mainPage.ionViewWillEnter().then(()=>{
       this.router.navigate(['members/dashboard']);
-    })
   }
 }

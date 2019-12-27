@@ -4,8 +4,6 @@ import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { DataService } from "src/app/services/data.service";
-import { CallNumber } from '@ionic-native/call-number/ngx';
-import { MainPage } from '../main/main.page';
 
 @Component({
   selector: 'app-prospect',
@@ -18,8 +16,6 @@ export class ProspectPage implements OnInit {
   limit: number = 10;
   start: number = 0;
   isLoaded = false;
-  data: any = [];
-  id: string;
   public searchTerm: string = "";
   selectCategory = 'Populer';
   itemsNew: any = [];
@@ -36,28 +32,24 @@ export class ProspectPage implements OnInit {
   constructor(
     private router: Router,
     private postPvdr: PostProvider,
-    private storageLocal: Storage,
+    private storage: Storage,
     public alertController: AlertController,
     public loadingController: LoadingController,
     private dataService: DataService,
-    private callNumber: CallNumber,
-    public mainPage : MainPage
   ) {
     setTimeout(() => {
       this.isLoaded = true;
     }, 2000);
     this.loadSaved();
   }
-
   ngOnInit() {
   }
-  addprospect() {
-    this.router.navigate(['members/addprospect'])
-  }
-  SeeAll() {
-    this.router.navigate(['members/seeallprospect'])
-  }
   ionViewWillEnter() {
+    //get ID
+    this.storage.get('session_storage').then((iduser) => {
+      var ID = iduser;
+      this.user = ID.map(data => data.id)
+    });
     this.items = [];
     this.start = 0;
     this.itemsNew = [];
@@ -72,6 +64,12 @@ export class ProspectPage implements OnInit {
     this.LoadProfile();
     this.loadProduct();
   }
+  addprospect() {
+    this.router.navigate(['members/addprospect'])
+  }
+  SeeAll() {
+    this.router.navigate(['members/seeallprospect'])
+  }
   async loadProduct() {
     const loading = await this.loadingController.create({
       message: "",
@@ -81,8 +79,6 @@ export class ProspectPage implements OnInit {
       mode: 'md'
     });
     await loading.present();
-    this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -101,7 +97,6 @@ export class ProspectPage implements OnInit {
           }
         })
       });
-    })
   }
   async LoadProfile() {
     const loading = await this.loadingController.create({
@@ -112,8 +107,6 @@ export class ProspectPage implements OnInit {
       mode: 'md'
     });
     await loading.present();
-    this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -126,7 +119,6 @@ export class ProspectPage implements OnInit {
           }
         })
       });
-    });
   }
   deleteprospect(id) {
     let body = {
@@ -197,8 +189,6 @@ export class ProspectPage implements OnInit {
       mode: 'md'
     });
     await loading.present();
-    this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -211,11 +201,8 @@ export class ProspectPage implements OnInit {
           }
         })
       });
-    })
   }
   loadProspectNew() {
-    this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -226,11 +213,8 @@ export class ProspectPage implements OnInit {
           this.itemsNew.push(item);
         }
       });
-    })
   }
   LoadTotalProspect() {
-    this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -247,7 +231,6 @@ export class ProspectPage implements OnInit {
           }
         }
       });
-    })
   }
   async LoadCustomer() {
     const loading = await this.loadingController.create({
@@ -258,8 +241,6 @@ export class ProspectPage implements OnInit {
       mode: 'md'
     });
     await loading.present();
-    this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -278,7 +259,6 @@ export class ProspectPage implements OnInit {
           }
         })
       });
-    })
   }
   arrayOne(n: number): any[] {
     return Array(n);
@@ -330,18 +310,16 @@ export class ProspectPage implements OnInit {
       reader.onload = (event) => { // called once readAsDataURL is completed
         // this.url = event.target.result;
         this.url = reader.result;
-        this.storageLocal.set('Profile', this.url)
+        this.storage.set('Profile', this.url)
       }
     }
   }
   loadSaved() {
-    this.storageLocal.get('Profile').then((url) => {
+    this.storage.get('Profile').then((url) => {
       this.url = url || [];
     });
   }
   movetoMain() {
-    this.mainPage.ionViewWillEnter().then(()=>{
       this.router.navigate(['members/dashboard']);
-    })
   }
 }

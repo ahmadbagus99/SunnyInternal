@@ -53,7 +53,7 @@
           </ion-item-sliding>
         </ion-list>
       </ng-container>
-
+      
          <ng-template #elseTemplate>
            <ion-item *ngFor="let item of arrayOne(10)">
              <ion-avatar slot="start">
@@ -87,22 +87,6 @@
              </ion-item-sliding>
            </ion-list>
          </ng-container>
-
-      <ng-template #elseTemplate>
-        <ion-item *ngFor="let item of arrayOne(10)">
-          <ion-avatar slot="start">
-            <ion-skeleton-text animated></ion-skeleton-text>
-          </ion-avatar>
-          <ion-label>
-            <h2>
-              <ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text>
-            </h2>
-            <p>
-              <ion-skeleton-text animated style="width: 180px;"></ion-skeleton-text>
-            </p>
-          </ion-label>
-        </ion-item>
-      </ng-template>
     </div>
     <div *ngSwitchCase="'Kategori'">
 

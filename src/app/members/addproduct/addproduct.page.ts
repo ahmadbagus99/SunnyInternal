@@ -10,8 +10,6 @@ import { LoadingController, ToastController } from '@ionic/angular';
   styleUrls: ['./addproduct.page.scss'],
 })
 export class AddproductPage implements OnInit {
-  items2: any;
-  user: any;
   userID: string = "";
   namaProduk: string ='';
   tipeProduk: string;
@@ -28,7 +26,7 @@ export class AddproductPage implements OnInit {
   profit :number;
 
   constructor(
-    private storageLocal: Storage,
+    private storage: Storage,
     private postPvdr: PostProvider,
     private router: Router,
     private actRoute: ActivatedRoute,
@@ -71,12 +69,10 @@ export class AddproductPage implements OnInit {
         this.deskripsiProduk = data.deskripsiProduk
       }
     });
-    //fungsi dimana data yang akan di isi langsung ke storge database  
-    this.storageLocal.get('session_storage').then((iduser) => {
-      this.items2 = iduser;
-      this.items2 = this.items2.map(user => user.id);
-      this.user = parseInt(this.items2)
-      this.userID = this.user;
+    //getID   
+    this.storage.get('session_storage').then((iduser) => {
+      var ID = iduser;
+      this.userID = ID.map(data => data.id)
     });
   }
 

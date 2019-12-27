@@ -52,7 +52,6 @@ export class EditcontactPage implements OnInit {
     private callNumber : CallNumber
   ) {
   }
-
   ionViewWillEnter(){
     this.items = [];
     this.start = 0;
@@ -60,7 +59,6 @@ export class EditcontactPage implements OnInit {
     this.loadContact();
     this.loadSaved();
   }
-
   //fungsi sebagai router pemanggil data yang sudah disii ke dalam kontak
   ngOnInit() {
     this.actRoute.params.subscribe((data: any) => {
@@ -77,16 +75,15 @@ export class EditcontactPage implements OnInit {
       this.penghasilan = data.penghasilan;
       this.perusahaan = data.perusahaan;
       this.almt_perusahaan = data.almt_perusahaan;
-        this.Hobi = data.Hobi,
-        this.Makanan_Favorit = data.Makanan_Favorit,
-        this.NPWP = data.NPWP,
-        this.Facebook = data.Facebook,
-        this.Twitter = data.Twitter,
-        this.Instagram = data.Instagram
-        this.nomor = data.no_tlp;
+      this.Hobi = data.Hobi,
+      this.Makanan_Favorit = data.Makanan_Favorit,
+      this.NPWP = data.NPWP,
+      this.Facebook = data.Facebook,
+      this.Twitter = data.Twitter,
+      this.Instagram = data.Instagram
+      this.nomor = data.no_tlp;
     });
   }
-
   updatecontact(id,nama,email,alamat,tgl_lahir,kelamin,no_tlp,almt_rumah,title,perusahaan,almt_perusahaan,penghasilan,Hobi,Makanan_Favorit,NPWP,Facebook,Twitter,Instagram){
     this.router.navigate(['members/addcontact/'
     +id+'/'
@@ -108,7 +105,6 @@ export class EditcontactPage implements OnInit {
     +Twitter+'/'
     +Instagram]);
   }
-
   //fungsi untuk membuat baru kontak yang akan diisi
   async loadContact(){
     const loading = await this.loadingController.create({

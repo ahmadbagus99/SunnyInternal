@@ -4,7 +4,6 @@ import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from '@ionic/angular';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -12,12 +11,11 @@ import { LoadingController } from '@ionic/angular';
 })
 
 export class ProfilePage implements OnInit {
-    
     items: any = [];
     limit: number = 10;
     start: number = 0;
     items2: any;
-    user: any;
+    user: number;
     userID: string;
     file = File;
     profile: any = [];
@@ -34,7 +32,7 @@ export class ProfilePage implements OnInit {
     constructor(
       private router: Router,
       private postPvdr: PostProvider,
-      private storageLocal: Storage,
+      private storage: Storage,
       public loadingController: LoadingController,
     ) { 
       this.loadSaved();
@@ -51,6 +49,11 @@ export class ProfilePage implements OnInit {
   }
 
   ionViewWillEnter() {
+     //get ID
+     this.storage.get('session_storage').then((iduser) => {
+      var ID = iduser;
+      this.user = ID.map(data => data.id)
+    });
     this.items = [];
     this.start = 0;
     this.LoadProfile();
@@ -65,8 +68,6 @@ export class ProfilePage implements OnInit {
       mode: 'md'
     });
     await loading.present();
-    this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -79,7 +80,6 @@ export class ProfilePage implements OnInit {
           }
         })
       });
-    });
   }
 
   onSelectFile(event) {
@@ -91,14 +91,14 @@ export class ProfilePage implements OnInit {
       reader.onload = (event) => { // called once readAsDataURL is completed
         // this.url = event.target.result;
         this.url = reader.result;
-        this.storageLocal.set('Profile', this.url).then(()=>{
+        this.storage.set('Profile', this.url).then(()=>{
           this.isLoaded = true;
         })
       }
     }
   }
   loadSaved() {
-    this.storageLocal.get('Profile').then((url) => {
+    this.storage.get('Profile').then((url) => {
       this.check = url;
       if ( this.check == null){
         this.isLoaded = false;

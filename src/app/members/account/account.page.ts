@@ -4,10 +4,6 @@ import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { DataService } from "src/app/services/data.service";
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
-import { CallNumber } from '@ionic-native/call-number/ngx';
-import { MainPage } from 'src/app/members/main/main.page';
-
 
 @Component({
   selector: 'app-account',
@@ -21,9 +17,6 @@ export class AccountPage implements OnInit {
   start: number = 0;
   isLoaded = false;
   user: number;
-  userID: string;
-  data: any = [];
-  id: string;
   public searchTerm: string = "";
   selectCategory = 'Populer';
 
@@ -34,36 +27,27 @@ export class AccountPage implements OnInit {
     public alertController: AlertController,
     public loadingController: LoadingController,
     private dataService: DataService,
-    private nativePageTransitions: NativePageTransitions,
-    private callNumber: CallNumber,
-    public mainPage : MainPage
   ) {
-    setTimeout(() => {
-      this.isLoaded = true;
-    }, 2000);
   }
   ngOnInit() {
     this.setFilteredItems();
   }
   // Fungsi untuk menambahkan item pada page account.//
   addaccount() {
-    let options: NativeTransitionOptions = {
-      direction: 'up',
-      duration: 600
-    };
-    this.nativePageTransitions.curl(options);
     this.router.navigate(['members/addaccount'])
   }
-
-
   ionViewWillEnter() {
+    //get ID
+    this.storage.get('session_storage').then((iduser) => {
+      var ID = iduser;
+      this.user = ID.map(data => data.id)
+    });
     this.items = [];
     this.start = 0;
     this.itemsNew = [];
     this.loadAccount();
     this.loadAccountNew();
   }
-
   // Fungsi untuk menarik/mendapatkan data untuk data edit account dari server php//
   updateAccount(id, nama, alamat, web, phone, email, owner, type, event_date, category, industry, employee) {
     if (nama == "") {
@@ -120,7 +104,6 @@ export class AccountPage implements OnInit {
       this.ionViewWillEnter();
     });
   }
-
   async loadAccount() {
     const loading = await this.loadingController.create({
       message: "",
@@ -130,8 +113,6 @@ export class AccountPage implements OnInit {
       mode: 'md'
     });
     await loading.present();
-    this.storage.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -139,17 +120,15 @@ export class AccountPage implements OnInit {
       };
       this.postPvdr.postData(body, 'LoadAccount.php?Id=' + this.user).subscribe(data => {
         loading.dismiss().then(() => {
+          this.isLoaded = true;
           for (let item of data) {
             this.items.push(item);
           }
         })
       });
-    })
   }
   //fungsi database akun yang baru di buat langsung masuk ke server php
   loadAccountNew() {
-    this.storage.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -160,7 +139,6 @@ export class AccountPage implements OnInit {
           this.itemsNew.push(item);
         }
       });
-    })
   }
 
   //fungsi sebagai button mengahapus akun dan membuat tampilan text.//
@@ -209,12 +187,9 @@ export class AccountPage implements OnInit {
   setFilteredItems() {
     this.items = this.dataService.filterAccount(this.searchTerm);
   }
-  movetoMain() {
-    this.mainPage.ionViewWillEnter().then(()=>{
-      this.router.navigate(['members/dashboard']);
-    })
+  movetoMain(){
+    this.router.navigate(['members/dashboard']);
   }
-
 }
 
 

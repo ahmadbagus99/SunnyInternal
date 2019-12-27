@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { LoadingController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notifications',
@@ -17,7 +18,8 @@ limit: number = 10;
   constructor(
     private storage : Storage,
     private postPvdr: PostProvider,
-    private loadingController : LoadingController
+    private loadingController : LoadingController,
+    private router : Router
   ) {}
 
   doRefresh(event) {
@@ -37,7 +39,25 @@ limit: number = 10;
       this.userID = parseInt(UserID)
     });
   }
-
+  updateprospect(id, namaCustomer, emailCustomer, alamatCustomer, no_tlp, company, alamatCompany, emailCompany, nomorCompany, customerneed, stock, hargaProduk, totalPrice, budget, status) {
+    this.router.navigate(['members/view-prospect/'
+      + id + '/'
+      + namaCustomer + '/'
+      + emailCustomer + '/'
+      + alamatCustomer + '/'
+      + no_tlp + '/'
+      + company + '/'
+      + alamatCompany + '/'
+      + emailCompany + '/'
+      + nomorCompany + '/'
+      + customerneed + '/'
+      + stock + '/'
+      + hargaProduk + '/'
+      + totalPrice + '/'
+      + budget + '/'
+      + status
+    ]);
+  }
   async loadProspect(){
     const loading = await this.loadingController.create({
       message : "",

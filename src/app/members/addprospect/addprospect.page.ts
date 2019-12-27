@@ -76,11 +76,9 @@ export class AddprospectPage implements OnInit {
   constructor(
     private postPvdr: PostProvider,
     private router: Router,
-    private actRoute: ActivatedRoute,
     private storage: Storage,
     public loadingController: LoadingController,
     public toastCtrl: ToastController,
-    private dataService: DataService,
     private plt: Platform,
     private file: File,
     private fileOpener: FileOpener,
@@ -104,7 +102,6 @@ export class AddprospectPage implements OnInit {
       this.userID = this.user;
     });
   }
-
   pushNotif(seconds: number){
     this.localNotifications.schedule({
       title : `New Prospect`,
@@ -116,7 +113,6 @@ export class AddprospectPage implements OnInit {
       }
     })
   }
-
   showNow() {
     if (this.namaCustomer == 'new') {
       this.checking = 'new';
@@ -128,7 +124,6 @@ export class AddprospectPage implements OnInit {
     }
     this.itemsCustomer = [];
     this.LoadDataCustomer();
-    console.log(this.company)
   }
 
   loadContact() {
@@ -208,7 +203,6 @@ export class AddprospectPage implements OnInit {
     };
     this.postPvdr.postData(body, 'LoadQuantityProduct.php?Product=' + this.customerneed).subscribe(data => {
       for (let item of data) {
-        console.log(data)
         this.itemQunatityProduct.push(item);
         this.storage.set('Stock', this.itemQunatityProduct).then(() => {
           this.storage.get('Stock').then((data) => {
@@ -263,11 +257,10 @@ export class AddprospectPage implements OnInit {
       };
       //Fungsi untuk menarik/mendapatkan data untuk data add contact dari server php
       this.postPvdr.postData(body, 'InsertContact.php').subscribe(data => {
-        console.log(data)
     });
     });
   }
-  
+
   async SaveProspect() {
     const alert = await this.alertCtrl.create({
       subHeader: 'Are you Sure ?',
@@ -308,7 +301,6 @@ export class AddprospectPage implements OnInit {
                 userID: this.userID
               };
               this.postPvdr.postData(body, 'InsertProspect.php').subscribe(data => {
-                console.log(data)
                 this.router.navigate(['members/seeallprospect']);
                 this.savebutton = true;
               });
@@ -339,7 +331,6 @@ export class AddprospectPage implements OnInit {
         email: this.email,
       };
       this.postPvdr.postData(body, 'InsertProspect.php').subscribe(data => {
-        console.log(data)
         loading.dismiss().then(() => {
           this.router.navigate(['members/seeallprospect']);
         })
@@ -381,20 +372,11 @@ export class AddprospectPage implements OnInit {
     this.slides.lockSwipes(false);
     this.progress = this.progress + 0.5;
     this.slides.slideNext();
-
-    // console.log(this.emailCustomer)
-    // console.log(this.alamatCustomer)
-    // console.log(this.no_tlp)
-    // console.log(this.alamatCompany)
-    // console.log(this.emailCompany)
-    // console.log(this.nomorCompany)
     this.storage.get('Stock').then((data)=>{
       var Data = data;
       var id = Data.map( data => data.id);
       this.idProduct = parseInt(id);
     })
-    // console.log(this.idProduct)
-    // console.log(this.sisaStock)
   }
   UpdateQuantity(){
     return new Promise(resolve => {
@@ -403,7 +385,6 @@ export class AddprospectPage implements OnInit {
         jumlahProduk: this.sisaStock,
       };
       this.postPvdr.postData(body, 'updateQuantity.php?Id='+this.idProduct).subscribe(data => {
-        console.log(data)
       });
     });
   }
@@ -475,14 +456,6 @@ export class AddprospectPage implements OnInit {
         },
         { text: 'Thank you for your bussiness!', style: 'subheader', alignment: 'right' },
         { text: new Date().toString(), alignment: 'right' },
-        // {
-        //   ul: [
-        //     'Nama Produk = ' + this.customerneed,
-        //     'Harga Produk = ' + this.hargaProduk,
-        //     'Quantity = ' + this.stock,
-        //     'Harga Total = ' + this.totalPrice
-        //   ]
-        // }
       ],
       styles: {
         header: {
@@ -513,8 +486,6 @@ export class AddprospectPage implements OnInit {
     if (this.plt.is('cordova')) {
       this.pdfObj.getBuffer((buffer) => {
         var blob = new Blob([buffer], { type: 'application/pdf' });
-
-        // Save the PDF to the data Directory of our App
         this.file.writeFile(this.file.dataDirectory, 'myletter.pdf', blob, { replace: true }).then(fileEntry => {
           // Open the PDf with the correct OS tools
           this.fileOpener.open(this.file.dataDirectory + 'myletter.pdf', 'application/pdf');

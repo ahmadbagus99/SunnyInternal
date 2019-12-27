@@ -1,14 +1,9 @@
-// Import 
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { DataService } from "src/app/services/data.service";
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
-import { CallNumber } from '@ionic-native/call-number/ngx';
-import { MainPage } from '../main/main.page';
 
 @Component({
   selector: 'app-product',
@@ -22,34 +17,37 @@ export class ProductPage implements OnInit {
   start: number = 0;
   isLoaded = false;
   user: any;
-  userID: string;
-  data: any = [];
   public searchTerm: string = "";
   selectCategory = 'Populer';
 
   constructor(
     private router: Router,
     private postPvdr: PostProvider,
-    private storageLocal: Storage,
+    private storage: Storage,
     public alertController: AlertController,
     private dataService: DataService,
     public loadingController: LoadingController,
-    private nativePageTransitions: NativePageTransitions,
-    private callNumber: CallNumber,
-    public mainPage : MainPage
   ) {
     setTimeout(() => {
       this.isLoaded = true;
     }, 2000);
   }
-
-
   ngOnInit() {
     this.setFilteredItems();
   }
-
+  ionViewWillEnter() {
+    //get ID
+    this.storage.get('session_storage').then((iduser) => {
+      var ID = iduser;
+      this.user = ID.map(data => data.id)
+    });
+    this.items = [];
+    this.start = 0;
+    this.itemsNew = [];
+    this.loadProduct();
+    this.loadProductNew();
+  }
   // Fungsi untuk menarik/mendapatkan data untuk data add product dari server php
-
   updateProduct(id, namaProduk, tipeProduk, totalProfit, normalPrice, jumlahProduk, hargaProduk, deskripsiProduk) {
     if (namaProduk == "") {
       namaProduk = " ";
@@ -82,19 +80,10 @@ export class ProductPage implements OnInit {
       + hargaProduk + '/'
       + deskripsiProduk]);
   }
-
   // Fungsi untuk menambahkan item pada page product.
   addproduct() {
     this.router.navigate(['members/addproduct'])
   }
-  ionViewWillEnter() {
-    this.items = [];
-    this.start = 0;
-    this.itemsNew = [];
-    this.loadProduct();
-    this.loadProductNew();
-  }
-
   async loadProduct() {
     const loading = await this.loadingController.create({
       message: "",
@@ -104,8 +93,6 @@ export class ProductPage implements OnInit {
       mode: 'md'
     });
     await loading.present();
-    this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -118,12 +105,8 @@ export class ProductPage implements OnInit {
           }
         })
       });
-    })
   }
-
   loadProductNew() {
-    this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -134,9 +117,7 @@ export class ProductPage implements OnInit {
           this.itemsNew.push(item);
         }
       });
-    })
   }
-
   delete(id) {
     let body = {
       aksi: 'delete',
@@ -146,7 +127,6 @@ export class ProductPage implements OnInit {
       this.ionViewWillEnter();
     });
   }
-
   async presentAlertMultipleButtons(id) {
     const alert = await this.alertController.create({
       header: 'Are you sure?',
@@ -191,9 +171,6 @@ export class ProductPage implements OnInit {
     this.items = this.dataService.filterProduct(this.searchTerm);
   }
   movetoMain(){
-    this.mainPage.ionViewWillEnter().then(()=>{
-      this.router.navigate(['members/dashboard']);
-    })
+    this.router.navigate(['members/dashboard']);
   }
-
 }
