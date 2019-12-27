@@ -1,11 +1,9 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { DataService } from "src/app/services/data.service";
-import { NativePageTransitions, NativeTransitionOptions  } from '@ionic-native/native-page-transitions/ngx';
-import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
   selector: 'app-contact',
@@ -23,7 +21,6 @@ export class ContactPage implements OnInit {
   id : string;
   public searchTerm: string = ""; 
   selectCategory ='Populer';
-  fruits = ["Banana", "Orange", "Apple", "Mango"];
   
     constructor(
       private router : Router,
@@ -31,36 +28,30 @@ export class ContactPage implements OnInit {
       private storage : Storage,
       public alertController : AlertController,
       public loadingController : LoadingController,
-      private dataService: DataService,
-      private nativePageTransitions: NativePageTransitions,
+      public dataService : DataService
     ) { 
-      setTimeout(() => {
-        this.isLoaded = true;
-      }, 2000);
+      
     }
   
     ngOnInit() {
       this.setFilteredItems();
     }
-
      // Fungsi untuk menambahkan item pada page contact.//
     addcontact(){
-      let options: NativeTransitionOptions = {
-        direction: 'up',
-        duration: 600
-       };
-      this.nativePageTransitions.curl(options);
       this.router.navigate(['members/addcontact'])
     }
-
     ionViewWillEnter(){
+      //get ID
+      this.storage.get('session_storage').then((iduser) => {
+        var ID = iduser;
+        this.user = ID.map(data => data.id)
+      });
       this.items = [];
       this.start = 0;
       this.itemsNew = [];
       this.loadContact();
       this.loadContactNew();
     }
-
     //fungsi button/slide dimana kita bisa langsung hapus kontak di page kontak
     deleteContact(id){
       let body = {
@@ -71,7 +62,6 @@ export class ContactPage implements OnInit {
           this.ionViewWillEnter();
         });
     }
-
     updatecontact(id,nama,email,alamat,tgl_lahir,kelamin,no_tlp,almt_rumah,title,perusahaan,almt_perusahaan,penghasilan,Hobi,Makanan_Favorit,NPWP,Facebook,Twitter,Instagram){
       if(nama==""){
         nama=" "
@@ -138,7 +128,6 @@ export class ContactPage implements OnInit {
       +Twitter+'/'
       +Instagram]);
     }
-
     async loadContact(){
       const loading = await this.loadingController.create({
         message : "",
@@ -148,8 +137,6 @@ export class ContactPage implements OnInit {
         mode: 'md'
       });
       await loading.present();
-      this.storage.get('IdLogin').then((IdLogin)=>{
-          this.user = IdLogin;
           let body = {
             aksi : 'getdata',
             limit : this.limit,
@@ -157,18 +144,16 @@ export class ContactPage implements OnInit {
             };
             this.postPvdr.postData(body, 'LoadContact.php?Id='+this.user).subscribe(data =>{
               loading.dismiss().then(()=>{
+                this.isLoaded = true;
                 for(let item of data){
                   this.items.push(item);
               } 
               })
             });
-        })
     }
 
     //fungsi database kontak yang baru di buat langsung masuk ke server php
     loadContactNew(){
-      this.storage.get('IdLogin').then((IdLogin)=>{
-          this.user = IdLogin;
           let body = {
             aksi : 'getdata',
             limit : this.limit,
@@ -179,7 +164,6 @@ export class ContactPage implements OnInit {
                 this.itemsNew.push(item);
             } 
             });
-        })
     }
 
     arrayOne(n: number): any[] {
@@ -222,12 +206,11 @@ export class ContactPage implements OnInit {
         event.target.complete();
       }, 500);
     }
-
     setFilteredItems() {
       this.items = this.dataService.filterContact(this.searchTerm);
     }
     movetoMain(){
-      this.router.navigate(['members/main'])
+      this.router.navigate(['members/dashboard']);
     }
   }
 

@@ -5,7 +5,6 @@ import { Storage } from '@ionic/storage';
 import { ToastController, LoadingController } from '@ionic/angular';
 import { ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
-import { async } from 'q';
 
 @Component({
   selector: 'app-addcontact',
@@ -157,14 +156,11 @@ export class AddcontactPage implements OnInit {
       } 
     });
    
-    //fungsi dimana data yang akan di isi langsung ke storge database    
-    this.storage.get('session_storage').then((iduser) => {
-      this.items2 = iduser;
-      this.items2 = this.items2.map(user => user.id);
-      this.user = parseInt(this.items2)
-      console.log(this.items2)
-      this.userID = this.user;
-    });
+    //getID   
+   this.storage.get('session_storage').then((iduser) => {
+        var ID = iduser;
+        this.userID = ID.map(data => data.id)
+      });
   }
   loadCompanyAddress() {
     let body = {

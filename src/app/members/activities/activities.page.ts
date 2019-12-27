@@ -37,9 +37,10 @@ export class ActivitiesPage implements OnInit {
     private router : Router, 
     private alertCtrl: AlertController, 
     @Inject(LOCALE_ID) private locale: string,
-    private storage : Storage
-    )
-     { }
+    private storage : Storage,
+    ){
+
+     }
  
   ngOnInit() {
     this.resetEvent();
@@ -143,6 +144,6 @@ export class ActivitiesPage implements OnInit {
     }, 500);
   }
   movetoMain(){
-    this.router.navigate(['members/main'])
+      this.router.navigate(['members/dashboard']);
   }
 }

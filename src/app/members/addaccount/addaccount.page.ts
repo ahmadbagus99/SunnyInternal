@@ -3,7 +3,6 @@ import { PostProvider } from 'src/providers/post-providers';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { LoadingController, ToastController } from '@ionic/angular';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-addaccount',
@@ -23,8 +22,6 @@ export class AddaccountPage implements OnInit {
   industry: string;
   employee: string;
   id: number;
-  items2: any;
-  user: any;
   userID: string;
   image: any;
   warning: string;
@@ -39,12 +36,10 @@ export class AddaccountPage implements OnInit {
     public toastCtrl: ToastController
   ) {
   }
-
   showNow() {
     this.isHidden = false;
     this.warning;
   }
-
   //Fungsi dimana user harus mengisi semua fill yang ada di UI dan tidak boleh kosong pas di simpan
   AddAccount() {
     if (this.nama == '') {
@@ -77,7 +72,6 @@ export class AddaccountPage implements OnInit {
         });
       }
   }
-
   ngOnInit() {
     this.actRoute.params.subscribe((data: any) => {
       if (data.id == null) {
@@ -137,13 +131,10 @@ export class AddaccountPage implements OnInit {
         console.log(data);
       }
     });
-    //fungsi dimana data yang akan di isi langsung ke storge database
+    //getID   
     this.storage.get('session_storage').then((iduser) => {
-      this.items2 = iduser;
-      this.items2 = this.items2.map(user => user.id);
-      this.user = parseInt(this.items2)
-      console.log(this.items2)
-      this.userID = this.user;
+      var ID = iduser;
+      this.userID = ID.map(data => data.id)
     });
   }
 

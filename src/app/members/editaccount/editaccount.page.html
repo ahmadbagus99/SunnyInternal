@@ -15,21 +15,23 @@
 
 <ion-content>
   <div class="background">
-    <div class="cover">
-      <div class="add">
-        <label for="file-input">
-          <img [src]="url" *ngIf="url">
-          <img [hidden]="isLoaded" src="assets/img/avatar-contact.png" />
-        </label>
-        <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" />
-      </div>
+    <div class="coverProduk">
+      <img [src]="url" *ngIf="url">
+    </div>
+        <div class="cover">
+          <div class="add">
+            <label for="file-input">
+              <img src="assets/img/4_avatar-512.png" />
+            </label>
+            <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" />
+          </div>
       <div class="nama">
         <!-- fungsi sebagai munculnya tampilan Nama ketika di view -->
         <ion-input type="text" [(ngModel)]="nama" readonly></ion-input>
       </div>
       <!-- fungsi sebagai munculnya tampilan Phone ketika di view -->
       <div class="perusahaan">
-        <ion-input type="text" [(ngModel)]="phone" readonly></ion-input>
+        <ion-input type="text" [(ngModel)]="alamat" readonly></ion-input>
       </div>
     </div>
     <!-- fungsi sebagai munculnya tampilan Owner ketika di view -->
@@ -49,8 +51,8 @@
     <!-- fungsi sebagai munculnya tampilan Website ketika di view -->
     <div class="npwp">
       <ion-item lines="none">
-        <ion-label position="floating">Company Address</ion-label>
-        <ion-input type="text" [(ngModel)]="alamat" readonly></ion-input>
+        <ion-label position="floating">Company Telephone Number</ion-label>
+        <ion-input type="text" [(ngModel)]="phone" readonly></ion-input>
       </ion-item>
     </div>
     <!-- fungsi sebagai munculnya tampilan Tanggal Acara ketika di view -->

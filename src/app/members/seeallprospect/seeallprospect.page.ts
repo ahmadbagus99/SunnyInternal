@@ -201,5 +201,8 @@ export class SeeallprospectPage implements OnInit {
         event.target.complete();
       }, 500);
     }
+    Moveto(){
+      this.router.navigate(['members/prospect']);
+    }
 
   }

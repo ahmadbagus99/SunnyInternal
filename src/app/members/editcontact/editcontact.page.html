@@ -15,14 +15,16 @@
 
 <ion-content>
   <div class="background">
-    <div class="cover">
-      <div class="add">
-        <label for="file-input">
-          <img [src]="url" *ngIf="url">
-          <img [hidden]="isLoaded" src="assets/img/avatar-contact.png" />
-        </label>
-        <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" />
-      </div>
+    <div class="coverProduk">
+      <img [src]="url" *ngIf="url">
+    </div>
+        <div class="cover">
+          <div class="add">
+            <label for="file-input">
+              <img src="assets/img/4_avatar-512.png" />
+            </label>
+            <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" />
+          </div>
 
       <div class="nama">
         <ion-input type="text" [(ngModel)]="nama" readonly></ion-input>
