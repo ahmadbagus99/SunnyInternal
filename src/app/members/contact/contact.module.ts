@@ -1,11 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
-
 import { ContactPage } from './contact.page';
+import { TextAvatarModule  } from 'src/app/text-avatar';
 
 const routes: Routes = [
   {
@@ -19,8 +18,12 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    TextAvatarModule,
     RouterModule.forChild(routes)
   ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
+],
   declarations: [ContactPage]
 })
 export class ContactPageModule {}

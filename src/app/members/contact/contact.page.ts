@@ -4,6 +4,7 @@ import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { DataService } from "src/app/services/data.service";
+import { MainPage } from 'src/app/members/main/main.page';
 
 @Component({
   selector: 'app-contact',
@@ -28,7 +29,8 @@ export class ContactPage implements OnInit {
       private storage : Storage,
       public alertController : AlertController,
       public loadingController : LoadingController,
-      public dataService : DataService
+      public dataService : DataService,
+      public main : MainPage
     ) { 
       
     }
@@ -210,7 +212,7 @@ export class ContactPage implements OnInit {
       this.items = this.dataService.filterContact(this.searchTerm);
     }
     movetoMain(){
-      this.router.navigate(['members/dashboard']);
+        this.router.navigate(['members/dashboard']);
     }
   }
 
