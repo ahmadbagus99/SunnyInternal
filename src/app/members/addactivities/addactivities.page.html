@@ -32,7 +32,7 @@
       </ion-item>
       <ion-item>
         <ion-label>Start</ion-label>
-        <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime"
+        <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="D/M/YYYY" [(ngModel)]="event.startTime"
           [min]="minDate">
         </ion-datetime>
       </ion-item>
@@ -41,6 +41,12 @@
         <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime"
           [min]="minDate">
         </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Hour</ion-label>
+        <ion-datetime displayFormat="HH:mm" pickerFormat="HH:mm" [(ngModel)]="event.startTime"
+        [min]="minDate">
+      </ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>All Day</ion-label>

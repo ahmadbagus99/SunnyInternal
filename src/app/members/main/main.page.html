@@ -27,7 +27,7 @@
     <ion-grid>
       <ion-row justify-content-center align-items-start style="height: 100%">
         <ion-col>
-          <ion-text class="customer-report"><b> 2 </b></ion-text>
+          <ion-text class="customer-report"><b>{{totalCustomer}}</b></ion-text>
           <ion-text class="sub-text"><b> Customer </b></ion-text>
           <ion-text class="month-text"><b> / month </b></ion-text>
         </ion-col>
@@ -36,12 +36,13 @@
           <ion-text class="sub-text"><b> Incentive </b></ion-text>
           <ion-text class="month-text"><b> / month </b></ion-text>
           <div class="vertical-line">
-            <ion-text class="incentive-report"><b> 30K </b></ion-text>
+            <!-- <ion-text class="incentive-report"><b>30K</b></ion-text> -->
+            <ion-input class="incentive-report" *ngFor="let item of itemIncentive"value="{{ item.Incentive | currency:'Rp '}}" readOnly></ion-input>
           </div>
         </ion-col>
 
         <ion-col>
-          <ion-text class="prospect-report"><b> 200 </b></ion-text>
+          <ion-text class="prospect-report"><b>{{totalProspect}}</b></ion-text>
           <ion-text class="sub-text"><b> Prospect </b></ion-text>
           <ion-text class="month-text"><b> / month </b></ion-text>
         </ion-col>
@@ -119,7 +120,7 @@
               {{item.desc}}
             </ion-textarea>
             <div class="time-activities">
-              {{item.startTime}}
+              {{NewDate}}
             </div>
           </ion-card-content>
         </ion-card>

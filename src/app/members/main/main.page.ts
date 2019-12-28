@@ -33,6 +33,7 @@ export class MainPage {
   text: string = "You don't have prospect today"
   textActivity: string = "You don't have activities today"
   itemIncentive: any;
+  NewDate : string;
 
   constructor(
     private storage: Storage,
@@ -49,6 +50,8 @@ export class MainPage {
       } else {
         this.textActivity = '';
       }
+      this.NewDate = this.Activity.map( data => data.startTime);
+      this.NewDate = this.NewDate.toString().substring(0, this.NewDate.toString().length-29)
     })
     this.items = [];
     this.start = 0;
