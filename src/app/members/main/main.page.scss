@@ -226,15 +226,18 @@ ion-badge {
 }
 
 .extra-content {
+  position: relative;
+  width: unset;
+  border-radius: 0px;
+  margin-top: 6px;
+  background-color: white;
+  height: auto;
+
   ion-text {
-    margin-left: 10px;
+    position: relative;
+    background-color: white;
     margin-top: 90vw;
   }
-
-  border-radius: 0px;
-  margin-top: 10px;
-  background-color:white;
-  margin-top: 6px;
 
   .scrolling-wrapper {
 
@@ -421,9 +424,18 @@ ion-slide {
 }
 
 .text-noact {
-  position: absolute;
-  margin-top: 20vw;
-  margin-left: 20vw;
+  position: relative;
+  margin-top: 25vw;
+  /* margin-left: 20vw; */
+  align-items: center;
+}
+
+.prospect-grid {
+  background-color: white;
+  position: relative;
+  margin-top: 28px;
+  width: unset;
+  height: 60vw;
 }
 
 .prospect-text {

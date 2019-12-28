@@ -14,10 +14,7 @@
 </ion-header>
 
 <ion-content>
-
-  <body>
-    <img class="image" src="assets/img/backgroundFix.svg" />
-  </body>
+  <div class="cover">
   <!-- Kegunaan untuk membuat fill dan untuk mengupload foto ke dalam akun -->
   <ion-grid>
     <ion-row>
@@ -36,12 +33,17 @@
       <ion-col></ion-col>
     </ion-row>
   </ion-grid>
+</div>
 
+
+<div class="background-content">
+  <ion-grid>
   <!-- fill data dimana tempat pengisian Nama Lengkap  user -->
   <ion-item class="label">
     <ion-label position="floating">Full Name</ion-label>
     <ion-input class="fullname" type="text" [(ngModel)]="fullname"></ion-input>
   </ion-item>
+
 
   <!-- fill data dimana tempat pengisian No hp  user -->
   <ion-item class="label">
@@ -67,4 +69,6 @@
     <ion-input class="country" type="text" [(ngModel)]="country"></ion-input>
     <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
   </ion-item>
+</ion-grid>
+</div>
 </ion-content>

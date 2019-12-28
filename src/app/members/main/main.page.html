@@ -96,6 +96,9 @@
 
 
   <!-- Menampilkan report Activities -->
+  <div class="extra-content">
+  <ion-grid>
+  
   <div class="activities-text">
     <ion-text><b>Activities for you</b></ion-text>
   </div>
@@ -106,8 +109,11 @@
     </a>
   </div>
 
-  <div class="extra-content">
+  
     <div class="scrolling-wrapper">
+      <div class="text-noact">
+        <p text-center>{{textActivity}}</p>
+      </div>
       <div *ngFor="let item of Activity" class="card-new">
         <ion-card class="activities-card">
           <ion-card-content>
@@ -126,12 +132,14 @@
         </ion-card>
       </div>
     </div>
-  </div>
+</ion-grid>
+</div>
 
 
 
   <!-- MENAMPILKAN PROSPECT LAINNYA  -->
-
+<ion-grid>
+  <div class="prospect-grid">
   <div class="prospect-text">
     <ion-text><b>Prospect for you</b></ion-text>
   </div>
@@ -141,7 +149,7 @@
     </a>
   </div>
 
-  <div class="extra-content">
+  <div class="extra-content2">
     <div class="scrolling-wrapper">
       <div class="text-noact">
         <p text-center>{{text}}</p>
@@ -160,4 +168,6 @@
       </div>
     </div>
   </div>
+</div>
+</ion-grid>
 </ion-content>
