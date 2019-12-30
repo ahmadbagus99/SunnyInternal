@@ -30,8 +30,8 @@ export class MainPage {
   itemCustomer: any = [];
   totalCustomer: number = 0;
   totalProspect: number = 0;
-  text: string = "You don't have prospect today"
-  textActivity: string = "You don't have activities today"
+  text: string = "You don't have prospect today";
+  textActivity: string = "You don't have activities today";
   itemIncentive: any;
   NewDate : string;
 

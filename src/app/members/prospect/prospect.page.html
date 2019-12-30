@@ -51,7 +51,6 @@
         <ion-card-content>
           <h2 text-center>{{item.namaCustomer}}</h2>
             <p text-center>{{item.company}}</p>
-          
         </ion-card-content>
       </ion-card>
     </div>
@@ -64,7 +63,7 @@
   </div>
   <h4 class="judul"> Our Product</h4>
   <div class="scrolling-wrapper">
-    <p text-center>{{text}}</p>
+    <!-- <p text-center>{{text}}</p> -->
     <div *ngFor="let item of itemsproduct" class="card">
       <ion-card button
         (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">

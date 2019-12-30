@@ -109,7 +109,7 @@
     </a>
   </div>
 
-  
+  <div class="extra-content">
     <div class="scrolling-wrapper">
       <div class="text-noact">
         <p text-center>{{textActivity}}</p>
@@ -134,6 +134,7 @@
         </ion-card>
       </div>
     </div>
+  </div>
 </ion-grid>
 </div>
 
@@ -160,7 +161,7 @@
             (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
             <img class="img-customer" src="assets/img/customer-icon.png" />
             <ion-card-content class="prospect-card">
-              <p>{{item.namaCustomer}}</p>
+              <p text-center>{{item.namaCustomer}}</p>
               <div class="item-name">
                 {{item.company}}
               </div>
