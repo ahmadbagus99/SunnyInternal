@@ -125,7 +125,7 @@ ion-badge {
 }
 
 .item-name {
-  color: white;
+  color: #ff951c;
   margin-left: 10px;
   margin-right: 0;
   margin-top: -14px;
@@ -264,7 +264,7 @@ ion-badge {
 
     .card-new {
       display: inline-block;
-      margin-top: 0vw;
+      margin-top: -10vw;
       width: 100vw;
       height: 20vw;
     }
@@ -276,7 +276,7 @@ ion-badge {
   position: relative;
   width: unset;
   border-radius: 0px;
-  margin-top: -10px;
+  margin-top: -38px;
   height: auto;
 
   ion-text {
@@ -285,7 +285,7 @@ ion-badge {
     margin-top: 90vw;
   }
 
-  .scrolling-wrapper {
+  .scrolling-wrapper-2 {
 
     &::-webkit-scrollbar {
       display: none;
@@ -301,8 +301,6 @@ ion-badge {
         color: black;
         font-size: 12vw;
       }
-
-      margin-top: 15vw;
       display: inline-block;
       width: 112px;
       height: 5px;
@@ -310,12 +308,17 @@ ion-badge {
 
     .card-new {
       display: inline-block;
-      margin-top: 0vw;
+      margin-top: -10vw;
       width: 100vw;
       height: 20vw;
     }
 
   }
+}
+
+.prospect-card {
+  position: relative;
+  background-color: white;
 }
 
 
@@ -492,7 +495,7 @@ ion-slide {
 }
 
 .p {
-  color: white;
+  color:#ff951c;
   margin-top: -20vw;
   margin-left: -3vw;
 }
