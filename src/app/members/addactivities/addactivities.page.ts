@@ -17,11 +17,11 @@ export class AddactivitiesPage implements OnInit {
   limit: number = 10;
   start: number = 0;
   items: any;
-  company : string;
+  Prospect : string;
   event = {
     title: '',
     desc: '',
-    company: '',
+    Prospect: '',
     startTime: '',
     endTime: '',
     allDay: false
@@ -68,21 +68,22 @@ export class AddactivitiesPage implements OnInit {
   ionViewWillEnter() {
     this.items = [];
     this.start = 0;
-    this.loadAccount();
+    this.loadProspect();
   }
 
-  loadAccount() {
-    this.storage.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
+   loadProspect() {
+    this.storage.get('session_storage').then((iduser) => {
+      var ID = iduser;
+      this.userID = parseInt(ID.map( data => data.id))
       let body = {
         aksi: 'getdata',
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadAccount.php?Id=' + this.user).subscribe(data => {
-        for (let item of data) {
-          this.items.push(item);
-        }
+      this.postPvdr.postData(body, 'LoadProspect.php?Id=' + this.userID).subscribe(data => {
+          for (let item of data) {
+            this.items.push(item);
+          }
       });
     })
   }
@@ -96,7 +97,7 @@ export class AddactivitiesPage implements OnInit {
     this.event = {
       title: '',
       desc: '',
-      company: '',
+      Prospect: '',
       startTime: new Date().toISOString(),
       endTime: new Date().toISOString(),
       allDay: false
@@ -108,7 +109,7 @@ export class AddactivitiesPage implements OnInit {
     let eventCopy = {
       aksi: 'add',
       title: this.event.title,
-      company : this.company,
+      Prospect : this.Prospect,
       startTime: new Date(this.event.startTime),
       endTime: new Date(this.event.endTime),
       allDay: this.event.allDay,
