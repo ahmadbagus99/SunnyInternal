@@ -127,8 +127,9 @@ export class AddprospectPage implements OnInit {
   }
 
   loadContact() {
-    this.storage.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
+    this.storage.get('session_storage').then((IdLogin) => {
+      var ID = IdLogin;
+      this.user = parseInt(ID.map(data => data.id))
       let body = {
         aksi: 'getdata',
         limit: this.limit,
@@ -178,8 +179,9 @@ export class AddprospectPage implements OnInit {
       mode: 'md'
     });
     await loading.present();
-    this.storage.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
+    this.storage.get('session_storage').then((IdLogin) => {
+      var ID = IdLogin;
+      this.user = parseInt(ID.map(data => data.id))
       let body = {
         aksi: 'getdata',
         limit: this.limit,
