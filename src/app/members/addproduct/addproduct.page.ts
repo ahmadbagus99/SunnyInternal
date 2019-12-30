@@ -10,7 +10,7 @@ import { LoadingController, ToastController } from '@ionic/angular';
   styleUrls: ['./addproduct.page.scss'],
 })
 export class AddproductPage implements OnInit {
-  userID: string = "";
+  userID: number;
   namaProduk: string ='';
   tipeProduk: string;
   totalProfit: number;
@@ -72,7 +72,7 @@ export class AddproductPage implements OnInit {
     //getID   
     this.storage.get('session_storage').then((iduser) => {
       var ID = iduser;
-      this.userID = ID.map(data => data.id)
+      this.userID = parseInt(ID.map(data => data.id))
     });
   }
 

@@ -13,6 +13,7 @@ import { PostProvider } from 'src/providers/post-providers';
 })
 export class AddactivitiesPage implements OnInit {
   user: number;
+  userID : number;
   limit: number = 10;
   start: number = 0;
   items: any;
@@ -49,14 +50,17 @@ export class AddactivitiesPage implements OnInit {
 
   ngOnInit() {
     this.resetEvent();
+    this.storage.get('session_storage').then((iduser) => {
+      var ID = iduser;
+      this.userID = parseInt(ID.map( data => data.id))
+      console.log(this.userID)
+    })
     this.storage.get('Activity').then((item) => {
       this.eventSource = item;
       if (this.eventSource == null) {
         this.eventSource = [];
-        console.log(this.eventSource)
       } else {
         this.eventSource = item;
-        console.log(this.eventSource)
       }
     })
   }
@@ -102,13 +106,18 @@ export class AddactivitiesPage implements OnInit {
   // membuat format acara/add acara yang tepat dan membuat ulang tujuan sourcenya
   addEvent() {
     let eventCopy = {
+      aksi: 'add',
       title: this.event.title,
       company : this.company,
       startTime: new Date(this.event.startTime),
       endTime: new Date(this.event.endTime),
       allDay: this.event.allDay,
-      desc: this.event.desc
+      desc: this.event.desc,
+      userID : this.userID
     }
+    this.postPvdr.postData(eventCopy, 'InsertActivity.php').subscribe(data => {
+     console.log('Insert is ', data)
+    })
 
     if (eventCopy.allDay) {
       let start = eventCopy.startTime;
