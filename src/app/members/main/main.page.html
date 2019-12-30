@@ -122,8 +122,10 @@
             </div>
             <!-- <ion-datetime displayFormat="h:mm a" pickerFormat="h mm a" [(ngModel)]="time"></ion-datetime> -->
             <h2><b>{{item.title}}</b></h2>
-            <ion-textarea>
+            <ion-textarea readOnly>
               {{item.desc}}
+              <ion-text> with </ion-text>
+              {{item.Prospect}}
             </ion-textarea>
             <div class="time-activities">
               {{item.startTime}}
@@ -137,7 +139,7 @@
 
 
   <!-- MENAMPILKAN PROSPECT LAINNYA  -->
-  <ion-grid>
+  <ion-grid >
     <div class="prospect-grid">
     <div class="prospect-text">
       <ion-text><b>Prospect for you</b></ion-text>

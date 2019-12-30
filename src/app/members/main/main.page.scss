@@ -179,7 +179,7 @@ ion-badge {
 .menu {
   display: grid;
   margin-top: 6px;
-  height: 15%;
+  height: 20%;
   background-color: white;
 
   // border-radius: 10px;
@@ -226,16 +226,14 @@ ion-badge {
 }
 
 .extra-content {
-  position: relative;
   width: unset;
   border-radius: 0px;
-  margin-top: -10px;
+  margin-top: -25px;
   background-color: white;
   height: auto;
 
   ion-text {
     position: relative;
-    background-color: white;
     margin-top: 90vw;
   }
 
@@ -281,7 +279,6 @@ ion-badge {
 
   ion-text {
     position: relative;
-    background-color: white;
     margin-top: 90vw;
   }
 
@@ -483,7 +480,7 @@ ion-slide {
 .prospect-grid {
   background-color: white;
   position: relative;
-  margin-top: 28px;
+  margin-top: 0px;
   width: unset;
   height: 65vw;
 }
