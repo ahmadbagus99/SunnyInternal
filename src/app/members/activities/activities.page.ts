@@ -11,7 +11,8 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./activities.page.scss'],
 })
 export class ActivitiesPage implements OnInit {
-
+  Move : boolean;
+  changes : number=0;
   event = {
     title: '',
     desc: '',
@@ -44,11 +45,22 @@ export class ActivitiesPage implements OnInit {
  
   ngOnInit() {
     this.resetEvent();
-    
+    this.storage.get('Activity').then((item)=>{
+      var Data = item;
+      this.changes = Data.length;
+      console.log(this.changes)
+    })
   }
   ionViewWillEnter(){
     this.storage.get('Activity').then((item)=>{
       this.eventSource = item;
+      if ( this.eventSource.length == this.changes ){
+        console.log('Tidak ada Perubahan')
+        this.Move = false;
+      }else if ( this.eventSource.length != this.changes){
+        console.log('Ada Perubahan')
+        this.Move = true;
+      }
     })
   }
  // Fungsi untuk menambahkan aktivitas pada page activity.//
@@ -144,6 +156,10 @@ export class ActivitiesPage implements OnInit {
     }, 500);
   }
   movetoMain(){
-      this.router.navigate(['members/dashboard']);
+    if (this.Move == true){
+      this.router.navigate(['dashboard/dashboard/main'])
+    }else if (this.Move == false){
+      this.router.navigate(['members/dashboard'])
+    }
   }
 }

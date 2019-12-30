@@ -22,7 +22,7 @@ export class AddaccountPage implements OnInit {
   industry: string;
   employee: string;
   id: number;
-  userID: string;
+  userID: number;
   image: any;
   warning: string;
   isHidden: boolean = true;
@@ -134,7 +134,8 @@ export class AddaccountPage implements OnInit {
     //getID   
     this.storage.get('session_storage').then((iduser) => {
       var ID = iduser;
-      this.userID = ID.map(data => data.id)
+      this.userID = parseInt(ID.map(data => data.id))
+      console.log(this.userID)
     });
   }
 
@@ -143,7 +144,6 @@ export class AddaccountPage implements OnInit {
       message: "Please Wait...",
       translucent: true
     })
-
     loading.present();
     return new Promise(resolve => {
       let body = {

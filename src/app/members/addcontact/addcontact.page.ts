@@ -31,7 +31,7 @@ export class AddcontactPage implements OnInit {
   Twitter: string;
   Instagram: string;
   NPWP: string;
-  userID: string;
+  userID: number;
   penghasilan: string;
   email : string='';
   category: any;
@@ -159,7 +159,7 @@ export class AddcontactPage implements OnInit {
     //getID   
    this.storage.get('session_storage').then((iduser) => {
         var ID = iduser;
-        this.userID = ID.map(data => data.id)
+        this.userID = parseInt(ID.map(data => data.id))
       });
   }
   loadCompanyAddress() {

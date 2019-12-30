@@ -42,23 +42,31 @@ export class MainPage {
     private postPvdr: PostProvider,
   ) {
   }
-  async ionViewWillEnter() {
-    this.storage.get('Activity').then((item) => {
-      this.Activity = item;
+   ionViewWillEnter() {
+    // this.storage.get('Activity').then((item) => {
+    //   this.Activity = item;
+    //   if (this.Activity == null) {
+    //     this.textActivity;
+    //   } else {
+    //     this.textActivity = '';
+    //   }
+    //   this.NewDate = this.Activity.map( data => data.startTime);
+    //   this.NewDate = this.NewDate.toString().substring(0, this.NewDate.toString().length-29)
+    //   console.log(this.NewDate)
+    // })
+    this.Activity= [];
       if (this.Activity == null) {
         this.textActivity;
       } else {
         this.textActivity = '';
       }
-      this.NewDate = this.Activity.map( data => data.startTime);
-      this.NewDate = this.NewDate.toString().substring(0, this.NewDate.toString().length-29)
-    })
     this.items = [];
     this.start = 0;
     this.itemTotalProspect = [];
     this.itemCustomer = [];
     this.itemProspect = [];
     this.itemIncentive = [];
+    this.LoadActivity();
     this.LoadIncentive();
     this.loadProspect();
     this.LoadProfile();
@@ -176,6 +184,22 @@ export class MainPage {
       this.postPvdr.postData(body, 'LoadProfile.php?Id=' + this.user).subscribe(data => {
         for (let item of data) {
           this.items.push(item);
+        }
+      });
+    });
+  }
+  LoadActivity(){
+    this.storage.get('session_storage').then((iduser) => {
+      var ID = iduser;
+      this.user = ID.map(data => data.id)
+      let body = {
+        aksi: 'getdata',
+        limit: this.limit,
+        start: this.start,
+      };
+      this.postPvdr.postData(body, 'LoadActivity.php?Id=' + this.user).subscribe(data => {
+        for (let item of data) {
+          this.Activity.push(item);
         }
       });
     });
