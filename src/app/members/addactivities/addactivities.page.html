@@ -26,8 +26,8 @@
       </ion-item>
       <ion-item>
         <ion-label>Prospect</ion-label>
-        <ion-select placeholder="Company" [(ngModel)]="company">
-          <ion-select-option *ngFor="let item of items" value={{item.nama}}>{{item.nama}}</ion-select-option>
+        <ion-select placeholder="Prospect" [(ngModel)]="Prospect">
+          <ion-select-option *ngFor="let item of items" value={{item.namaCustomer}}>{{item.namaCustomer}}</ion-select-option>
         </ion-select>
       </ion-item>
       <ion-item>
@@ -49,10 +49,10 @@
         <ion-label>All Day</ion-label>
         <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
       </ion-item>
-      <ion-item>
+      <!-- <ion-item>
         <ion-label>Alarm</ion-label>
         <ion-toggle checked> </ion-toggle>
-      </ion-item>
+      </ion-item> -->
       <ion-button color="success" fill="solid" expand="block" (click)="addEvent()" [disabled]="event.title == ''">
         <ion-text color="light"> Add </ion-text>
       </ion-button>
