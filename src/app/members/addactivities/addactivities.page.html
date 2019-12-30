@@ -12,7 +12,7 @@
 <ion-content>
 
   <!-- Card untuk menambahkan event baru -->
-  <ion-card color="primary">
+  <ion-card>
     <ion-card-header>
       <ion-card-title> Add Activity </ion-card-title>
     </ion-card-header>
@@ -25,7 +25,7 @@
         <ion-textarea type="text" placeholder="Description" [(ngModel)]="event.desc"></ion-textarea>
       </ion-item>
       <ion-item>
-        <ion-label>With</ion-label>
+        <ion-label>Prospect</ion-label>
         <ion-select placeholder="Company" [(ngModel)]="company">
           <ion-select-option *ngFor="let item of items" value={{item.nama}}>{{item.nama}}</ion-select-option>
         </ion-select>
@@ -53,8 +53,8 @@
         <ion-label>Alarm</ion-label>
         <ion-toggle checked> </ion-toggle>
       </ion-item>
-      <ion-button fill="outline" expand="block" (click)="addEvent()" [disabled]="event.title == ''">
-        <ion-text color="light"> Tambah </ion-text>
+      <ion-button color="success" fill="solid" expand="block" (click)="addEvent()" [disabled]="event.title == ''">
+        <ion-text color="light"> Add </ion-text>
       </ion-button>
 
     </ion-card-content>

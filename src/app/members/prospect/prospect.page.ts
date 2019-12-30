@@ -78,6 +78,9 @@ export class ProspectPage implements OnInit {
   SeeAll() {
     this.router.navigate(['members/seeallprospect'])
   }
+  product() {
+    this.router.navigate(['members/product'])
+  }
   async loadProduct() {
     const loading = await this.loadingController.create({
       message: "",
