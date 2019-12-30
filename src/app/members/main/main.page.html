@@ -118,7 +118,7 @@
         <ion-card class="activities-card">
           <ion-card-content>
             <div class="icon-activities">
-              <img src="assets/icon/Activity.png" />
+              <img src="assets/icon/activity.png" />
             </div>
             <!-- <ion-datetime displayFormat="h:mm a" pickerFormat="h mm a" [(ngModel)]="time"></ion-datetime> -->
             <h2><b>{{item.title}}</b></h2>
@@ -136,38 +136,38 @@
 </div>
 
 
-
   <!-- MENAMPILKAN PROSPECT LAINNYA  -->
-<ion-grid>
-  <div class="prospect-grid">
-  <div class="prospect-text">
-    <ion-text><b>Prospect for you</b></ion-text>
-  </div>
-  <div class="see-all">
-    <a [routerLink]="['/members/prospect']">
-      <ion-text>See all</ion-text>
-    </a>
-  </div>
-
-  <div class="extra-content2">
-    <div class="scrolling-wrapper">
-      <div class="text-noact">
-        <p text-center>{{text}}</p>
-      </div>
-      <div *ngFor="let item of itemProspect" class="card">
-        <ion-card button
-          (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
-          <img class="img-customer" src="assets/img/customer-icon.png" />
-          <ion-card-content>
-            <p>{{item.nama}}</p>
-            <div class="item-name">
-              {{item.company}}
-            </div>
-          </ion-card-content>
-        </ion-card>
+  <ion-grid>
+    <div class="prospect-grid">
+    <div class="prospect-text">
+      <ion-text><b>Prospect for you</b></ion-text>
+    </div>
+    <div class="see-all">
+      <a [routerLink]="['/members/prospect']">
+        <ion-text>See all</ion-text>
+      </a>
+    </div>
+  
+    <div class="extra-content2">
+      <div class="scrolling-wrapper">
+        <div class="text-noact">
+          <p text-center>{{text}}</p>
+        </div>
+        <div *ngFor="let item of itemProspect" class="card">
+          <ion-card button
+            (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
+            <img class="img-customer" src="assets/img/customer-icon.png" />
+            <ion-card-content>
+              <p>{{item.nama}}</p>
+              <div class="item-name">
+                {{item.company}}
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</ion-grid>
+  </ion-grid>
+
 </ion-content>
