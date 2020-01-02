@@ -19,7 +19,7 @@ export class MainPage {
       maxRatio: 5
     }
   };
-  Activity: any = [];
+  Activity: any = null;
   items: any = [];
   itemsaccount: any = [];
   user: any;
@@ -54,13 +54,12 @@ export class MainPage {
     //   this.NewDate = this.NewDate.toString().substring(0, this.NewDate.toString().length-29)
     //   console.log(this.NewDate)
     // })
-    this.Activity == 0;
-      if (this.Activity == null) {
-        this.textActivity;
-      } else if (this.Activity >= 1) {
-        this.textActivity = '';
-      }
-      
+    if (this.Activity == null) {
+      this.textActivity;
+    } else {
+      this.textActivity = '';
+    }
+    this.Activity= [];
     this.items = [];
     this.start = 0;
     this.itemTotalProspect = [];

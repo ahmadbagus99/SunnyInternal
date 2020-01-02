@@ -66,6 +66,7 @@ export class AddprospectPage implements OnInit {
     address: ' Arkadia Green Park Estate, Tower F, 6th Floor, Jl. TB Simatupang No.Kav. 88, RT.1/RW.2, Kebagusan, Kec. Ps. Minggu, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12520',
     text: ' For purchasing the item with the criteria as below : '
   }
+  showAlert : boolean;
 
   @ViewChild(IonSlides) slides: IonSlides;
   items: any = [];
@@ -370,15 +371,38 @@ export class AddprospectPage implements OnInit {
     
   }
 
-  nextSlide3() {
+  async nextSlide3() {
     this.slides.lockSwipes(false);
     this.progress = this.progress + 0.5;
-    this.slides.slideNext();
     this.storage.get('Stock').then((data)=>{
       var Data = data;
       var id = Data.map( data => data.id);
       this.idProduct = parseInt(id);
     })
+    if (this.budget > this.totalPrice){
+      this.slides.slideNext();
+      this.showAlert = true;
+    }else{
+      this.showAlert = false;
+      const alert = await this.alertCtrl.create({
+        subHeader: 'Budget not fulfilled',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: (blah) => {
+              console.log('cancel');
+            }
+          }, {
+            text: 'Ya',
+            handler: () => {
+              this.slides.slideNext();
+            }
+          }
+        ]
+      })
+      await alert.present();
+    }
   }
   UpdateQuantity(){
     return new Promise(resolve => {
