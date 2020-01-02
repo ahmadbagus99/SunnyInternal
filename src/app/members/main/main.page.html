@@ -122,10 +122,11 @@
                 {{item.desc}}
                 <ion-text> with </ion-text>
                 {{item.Prospect}}
+                <p> {{item.startTime}} </p>
               </ion-textarea>
-              <div class="time-activities">
+              <!-- <div class="time-activities">
                 {{item.startTime}}
-              </div>
+              </div> -->
             </ion-card-content>
           </ion-card>
         </div>
@@ -135,8 +136,7 @@
 
 
    <!-- MENAMPILKAN PROSPECT LAINNYA  -->
-   <ion-grid >
-    <div class="prospect-grid">
+   <ion-grid class="extra-content2">
     <div class="prospect-text">
       <ion-text><b>Prospect for you</b></ion-text>
     </div>
@@ -148,24 +148,23 @@
   
     <div class="extra-content2">
       <div class="scrolling-wrapper-2">
-        <div class="text-noact">
+        <div class="text-noact2">
           <p text-center>{{text}}</p>
         </div>
         <div *ngFor="let item of itemProspect" class="card">
           <ion-card button
             (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
-            <img class="img-customer" src="assets/img/customer-icon.png" />
-            <ion-card-content class="prospect-card">
-              <p text-center>{{item.namaCustomer}}</p>
+            <img class="img-customer2" src="assets/img/customer-icon.png" />
+            <ion-card-content>
               <div class="item-name">
-               {{item.namaCustomer}} from {{item.company}}
+               <b>{{item.namaCustomer}}</b>
               </div>
+              <h5> Follow up </h5>
             </ion-card-content>
           </ion-card>
         </div>
       </div>
     </div>
-  </div>
   </ion-grid>
 
 </ion-content>

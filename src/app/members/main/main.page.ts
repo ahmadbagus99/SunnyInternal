@@ -89,7 +89,7 @@ export class MainPage {
       + hargaProduk + '/'
       + totalPrice + '/'
       + budget + '/'
-      + status
+      + status + '/'
     ]);
   }
   LoadTotalCustomer() {

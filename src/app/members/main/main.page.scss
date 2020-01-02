@@ -17,11 +17,10 @@ ion-icon {
 
 ion-card {
   height: 33vw;
-  background-color: #ff951c;
+}
 
-  .activities-card {
-    background-color: #ff951c;
-  }
+.activities-card {
+  background-color: #ff951c;
 }
 
 ion-card-content {
@@ -40,9 +39,9 @@ ion-card-content {
 
   .item-name {
     position: absolute;
-    left: 2px;
-    margin-top: -14px;
-    font-size: 10px;
+    margin-top: -5vw;
+    font-style: bold;
+    font-size: 12px;
   }
 }
 
@@ -50,6 +49,7 @@ ion-card-content {
 ion-col {
   text-align: center;
   margin-left: -55px;
+
   .customer-report {
     position: absolute;
     // margin-left: 40px;
@@ -57,7 +57,7 @@ ion-col {
     font-size: 28px;
     text-align: center;
   }
-  
+
   .incentive-report {
     // position: absolute;
     // margin-left: 40px;
@@ -125,13 +125,6 @@ ion-badge {
   margin-inline-end: 0px;
 }
 
-.item-name {
-  color: #ff951c;
-  margin-left: 10px;
-  margin-right: 0;
-  margin-top: -14px;
-}
-
 .Background-top {
   margin-top: -140px;
   height: 250px;
@@ -156,6 +149,7 @@ ion-badge {
 
   img {
     margin-top: 156px;
+
     .img-customer {
       position: absolute;
       width: 30%;
@@ -187,7 +181,7 @@ ion-grid {
   --ion-grid-width-sm: 540px !important;
   --ion-grid-width-md: 720px !important;
   --ion-grid-width-lg: 960px !important;
-  --ion-grid-width-xl: 1140px!important;
+  --ion-grid-width-xl: 1140px !important;
 }
 
 .menu {
@@ -208,11 +202,11 @@ ion-grid {
     --padding-end: 12px !important;
     --padding-bottom: 12px !important;
     --padding-start: 20px !important;
-    --ion-grid-column-padding-xs:     5px;
-    --ion-grid-column-padding-sm:     5px;
-    --ion-grid-column-padding-md:     5px;
-    --ion-grid-column-padding-lg:     5px;
-    --ion-grid-column-padding-xl:     5px;
+    --ion-grid-column-padding-xs: 5px;
+    --ion-grid-column-padding-sm: 5px;
+    --ion-grid-column-padding-md: 5px;
+    --ion-grid-column-padding-lg: 5px;
+    --ion-grid-column-padding-xl: 5px;
     // box-shadow: 2px 2px 2px #888888;
   }
 
@@ -244,7 +238,6 @@ ion-grid {
 }
 
 .extra-content {
-  border-radius: 0px;
   height: 60vw;
   background-color: white;
 
@@ -287,11 +280,8 @@ ion-grid {
 }
 
 .extra-content2 {
-  position: relative;
-  width: unset;
-  border-radius: 0px;
-  margin-top: -38px;
-  height: auto;
+  height: 60vw;
+  background-color: white;
 
   ion-text {
     position: relative;
@@ -314,9 +304,10 @@ ion-grid {
         color: black;
         font-size: 12vw;
       }
+
       display: inline-block;
-      width: 112px;
-      height: 5px;
+      width: 30vw;
+      height: 5vw;
     }
 
     .card-new {
@@ -334,6 +325,20 @@ ion-grid {
   background-color: white;
 }
 
+.img-customer2 {
+  position: relative;
+  width: 20vw;
+}
+
+h5 {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  font-size: 10px;
+  font-weight: 400;
+  color: #ff951c;
+}
 
 // Grid Report TOTAL CUSTOMER
 .report {
@@ -493,6 +498,13 @@ ion-slide {
   align-items: center;
 }
 
+.text-noact2 {
+  position: relative;
+  margin-top: 15vw;
+  /* margin-left: 20vw; */
+  align-items: center;
+}
+
 .prospect-grid {
   background-color: white;
   position: relative;
@@ -508,7 +520,7 @@ ion-slide {
 }
 
 .p {
-  color:#ff951c;
+  color: #ff951c;
   margin-top: -20vw;
   margin-left: -3vw;
 }
