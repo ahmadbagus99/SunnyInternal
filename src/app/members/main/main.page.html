@@ -23,8 +23,7 @@
 
 
   <!-- Report for you new -->
-  <div class="report-for-you">
-    <ion-grid>
+    <ion-grid class="report-for-you">
       <ion-row justify-content-center align-items-start style="height: 100%">
         <ion-col>
           <ion-text class="customer-report"><b>{{totalCustomer}}</b></ion-text>
@@ -48,7 +47,6 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
 
   <!-- FLOAT MENU BAR -->
 
@@ -94,52 +92,50 @@
   </div>
 
 
-
   <!-- Menampilkan report Activities -->
-  <div class="extra-content">
-  <ion-grid>
-  <div class="activities-text">
-    <ion-text><b>Activities for you</b></ion-text>
-  </div>
-
-  <div class="see-all">
-    <a [routerLink]="['/members/activities']">
-      <ion-text>See all</ion-text>
-    </a>
-  </div>
-
-  <div class="extra-content">
-    <div class="scrolling-wrapper">
-      <div class="text-noact">
-        <p text-center>{{text}}</p>
-      </div>
-      <div *ngFor="let item of Activity" class="card-new">
-        <ion-card class="activities-card">
-          <ion-card-content>
-            <div class="icon-activities">
-              <img src="assets/icon/activity.png" />
-            </div>
-            <!-- <ion-datetime displayFormat="h:mm a" pickerFormat="h mm a" [(ngModel)]="time"></ion-datetime> -->
-            <h2><b>{{item.title}}</b></h2>
-            <ion-textarea readOnly>
-              {{item.desc}}
-              <ion-text> with </ion-text>
-              {{item.Prospect}}
-            </ion-textarea>
-            <div class="time-activities">
-              {{item.startTime}}
-            </div>
-          </ion-card-content>
-        </ion-card>
+  
+    <ion-grid class="extra-content">
+    <div class="activities-text">
+      <ion-text><b>Activities for you</b></ion-text>
+    </div>
+  
+    <div class="see-all">
+      <a [routerLink]="['/members/activities']">
+        <ion-text>See all</ion-text>
+      </a>
+    </div>
+  
+    <div class="extra-content">
+      <div class="scrolling-wrapper">
+        <div class="text-noact">
+          <p text-center>{{textActivity}}</p>
+        </div>
+        <div *ngFor="let item of Activity" class="card-new">
+          <ion-card class="activities-card">
+            <ion-card-content>
+              <div class="icon-activities">
+                <img src="assets/icon/activity.png" />
+              </div>
+              <!-- <ion-datetime displayFormat="h:mm a" pickerFormat="h mm a" [(ngModel)]="time"></ion-datetime> -->
+              <h2><b>{{item.title}}</b></h2>
+              <ion-textarea readOnly>
+                {{item.desc}}
+                <ion-text> with </ion-text>
+                {{item.Prospect}}
+              </ion-textarea>
+              <div class="time-activities">
+                {{item.startTime}}
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
       </div>
     </div>
-  </div>
-</ion-grid>
-</div>
+  </ion-grid>
 
 
-  <!-- MENAMPILKAN PROSPECT LAINNYA  -->
-  <ion-grid >
+   <!-- MENAMPILKAN PROSPECT LAINNYA  -->
+   <ion-grid >
     <div class="prospect-grid">
     <div class="prospect-text">
       <ion-text><b>Prospect for you</b></ion-text>

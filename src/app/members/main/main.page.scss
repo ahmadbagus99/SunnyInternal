@@ -1,5 +1,10 @@
 * {
   --ion-background-color: white;
+  --ion-grid-column-padding-sm: 5px;
+  --ion-grid-column-padding-xs: 5px;
+  --ion-grid-column-padding-md: 5px;
+  --ion-grid-column-padding-lg: 5px;
+  --ion-grid-column-padding-xl: 5px;
 }
 
 ion-content {
@@ -98,17 +103,13 @@ ion-col {
 }
 
 ion-grid {
-  display: grid;
-  background-color: white;
-  height: 10%;
+  position: relative;
+}
 
-  .report-for-you {
-    width: 100%;
-    background-color: white;
-    position: absolute;
-    margin-top: 5vw;
-    margin-left: 3vw;
-  }
+.report-for-you {
+  width: 100%;
+  background-color: white;
+  position: absolute;
 }
 
 ion-badge {
@@ -176,10 +177,22 @@ ion-badge {
   }
 }
 
+ion-grid {
+  --ion-grid-column-padding-xs: 5px !important;
+  --ion-grid-column-padding-sm: 5px !important;
+  --ion-grid-column-padding-md: 5px !important;
+  --ion-grid-column-padding-lg: 5px !important;
+  --ion-grid-column-padding-xl: 5px !important;
+  --ion-grid-width-xs: 100% !important;
+  --ion-grid-width-sm: 540px !important;
+  --ion-grid-width-md: 720px !important;
+  --ion-grid-width-lg: 960px !important;
+  --ion-grid-width-xl: 1140px!important;
+}
+
 .menu {
-  display: grid;
-  margin-top: 6px;
-  height: 20%;
+  margin-top: 85px;
+  height: 26vw;
   background-color: white;
 
   // border-radius: 10px;
@@ -195,6 +208,11 @@ ion-badge {
     --padding-end: 12px !important;
     --padding-bottom: 12px !important;
     --padding-start: 20px !important;
+    --ion-grid-column-padding-xs:     5px;
+    --ion-grid-column-padding-sm:     5px;
+    --ion-grid-column-padding-md:     5px;
+    --ion-grid-column-padding-lg:     5px;
+    --ion-grid-column-padding-xl:     5px;
     // box-shadow: 2px 2px 2px #888888;
   }
 
@@ -226,10 +244,9 @@ ion-badge {
 }
 
 .extra-content {
-  width: unset;
   border-radius: 0px;
-  margin-top: -25px;
-  height: auto;
+  height: 60vw;
+  background-color: white;
 
   ion-text {
     position: relative;
@@ -239,7 +256,7 @@ ion-badge {
   .scrolling-wrapper {
 
     &::-webkit-scrollbar {
-      display: none;
+      display: grid var(--ion-grid-width-xs) var(--ion-grid-width-sm);
     }
 
     overflow-x: scroll;
