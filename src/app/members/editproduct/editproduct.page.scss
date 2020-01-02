@@ -86,13 +86,13 @@ ion-back-button {
 }
 
 .perusahaan {
-  position: absolute;
+  position: sticky;
   color: white;
-  width: 98px;
+  width: 100%;
   height: 50px;
   top: 39%;
   left: 50%;
-  margin-left: -54px;
+  /* margin-left: -201px; */
   margin-top: -25px;
   text-align: center;
 }

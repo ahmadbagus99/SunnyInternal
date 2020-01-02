@@ -109,7 +109,7 @@
     </a>
   </div>
 
-  
+  <div class="extra-content">
     <div class="scrolling-wrapper">
       <div class="text-noact">
         <p text-center>{{textActivity}}</p>
@@ -122,8 +122,10 @@
             </div>
             <!-- <ion-datetime displayFormat="h:mm a" pickerFormat="h mm a" [(ngModel)]="time"></ion-datetime> -->
             <h2><b>{{item.title}}</b></h2>
-            <ion-textarea>
+            <ion-textarea readOnly>
               {{item.desc}}
+              <ion-text> with </ion-text>
+              {{item.Prospect}}
             </ion-textarea>
             <div class="time-activities">
               {{item.startTime}}
@@ -132,12 +134,13 @@
         </ion-card>
       </div>
     </div>
+  </div>
 </ion-grid>
 </div>
 
 
   <!-- MENAMPILKAN PROSPECT LAINNYA  -->
-  <ion-grid>
+  <ion-grid >
     <div class="prospect-grid">
     <div class="prospect-text">
       <ion-text><b>Prospect for you</b></ion-text>
@@ -158,7 +161,7 @@
             (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
             <img class="img-customer" src="assets/img/customer-icon.png" />
             <ion-card-content class="prospect-card">
-              <!-- <p>{{item.nama}}</p> -->
+              <p text-center>{{item.namaCustomer}}</p>
               <div class="item-name">
                {{item.namaCustomer}} from {{item.company}}
               </div>

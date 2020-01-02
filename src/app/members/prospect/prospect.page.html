@@ -49,10 +49,8 @@
         (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
         <img src="assets/img/prospectforyou-page.png" />
         <ion-card-content>
-          <h2>{{item.nama}}</h2>
-          <p>
-            {{item.company}}
-          </p>
+          <h2 text-center>{{item.namaCustomer}}</h2>
+            <p text-center>{{item.company}}</p>
         </ion-card-content>
       </ion-card>
     </div>
@@ -65,7 +63,7 @@
   </div>
   <h4 class="judul"> Our Product</h4>
   <div class="scrolling-wrapper">
-    <p text-center>{{text}}</p>
+    <!-- <p text-center>{{text}}</p> -->
     <div *ngFor="let item of itemsproduct" class="card">
       <ion-card button
         (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
@@ -91,7 +89,7 @@
         (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
         <img src="assets/img/customer-icon.png">
         <ion-card-content>
-          <h2 text-center>{{item.nameCustomer}}</h2>
+          <h2 text-center>{{item.namaCustomer}}</h2>
           <p text-center>{{item.company}}</p>
         </ion-card-content>
       </ion-card>
