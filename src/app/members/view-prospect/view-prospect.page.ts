@@ -24,7 +24,7 @@ export class ViewProspectPage implements OnInit {
   stock: string;
   hargaProduk: string;
   totalPrice: number;
-  budget: string;
+  budget: number;
   toggleParam: number;
   toggleWon: boolean;
   note: string = "On Progress";

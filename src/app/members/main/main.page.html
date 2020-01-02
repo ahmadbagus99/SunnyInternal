@@ -158,9 +158,9 @@
             (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
             <img class="img-customer" src="assets/img/customer-icon.png" />
             <ion-card-content class="prospect-card">
-              <p>{{item.nama}}</p>
+              <!-- <p>{{item.nama}}</p> -->
               <div class="item-name">
-                {{item.company}}
+               {{item.namaCustomer}} from {{item.company}}
               </div>
             </ion-card-content>
           </ion-card>

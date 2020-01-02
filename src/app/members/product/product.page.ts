@@ -28,9 +28,6 @@ export class ProductPage implements OnInit {
     private dataService: DataService,
     public loadingController: LoadingController,
   ) {
-    setTimeout(() => {
-      this.isLoaded = true;
-    }, 2000);
   }
   ngOnInit() {
     this.setFilteredItems();
@@ -100,6 +97,7 @@ export class ProductPage implements OnInit {
       };
       this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
         loading.dismiss().then(() => {
+          this.isLoaded = true;
           for (let item of data) {
             this.items.push(item);
           }

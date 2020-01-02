@@ -8,7 +8,7 @@
     <ion-title *ngIf="!id">Add Prospect</ion-title>
     <ion-title *ngIf="id>=1">Edit Prospect</ion-title>
     <ion-buttons slot="primary">
-      <ion-button [routerLink]="['/members/main']" [disabled]="!pdfObj">Done</ion-button>
+      <ion-button (click)="SaveProspect()" [hidden]="savebutton">Done</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -258,14 +258,15 @@
             <ion-item>
               <ion-label position="stacked"> Sub Budget </ion-label>
               <ion-input type="text" value="{{ budget | currency:'Rp'}}" readOnly></ion-input>
+              <ion-icon [hidden]="showAlert" slot="end" name="alert" color="danger"></ion-icon>
             </ion-item>
           </span>
         </div>
         <div>
           <ion-button expand="full" (click)="prev()" color="primary">Previous</ion-button>
-          <ion-button expand="full" (click)="SaveProspect()" [hidden]="savebutton" color="success">Save</ion-button>
-          <ion-button fill="clear" (click)="downloadPdf()" color="dark" [disabled]="!pdfObj">Download PDF
-          </ion-button>
+          <!-- <ion-button expand="full" (click)="SaveProspect()" [hidden]="savebutton" color="success">Save</ion-button> -->
+          <!-- <ion-button fill="clear" (click)="downloadPdf()" color="dark" [disabled]="!pdfObj">Download PDF
+          </ion-button> -->
           <br>
         </div>
       </ion-col>
