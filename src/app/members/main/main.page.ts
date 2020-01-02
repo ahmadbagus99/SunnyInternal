@@ -54,12 +54,13 @@ export class MainPage {
     //   this.NewDate = this.NewDate.toString().substring(0, this.NewDate.toString().length-29)
     //   console.log(this.NewDate)
     // })
-    this.Activity= [];
+    this.Activity == 0;
       if (this.Activity == null) {
         this.textActivity;
-      } else {
+      } else if (this.Activity >= 1) {
         this.textActivity = '';
       }
+      
     this.items = [];
     this.start = 0;
     this.itemTotalProspect = [];

@@ -54,7 +54,7 @@
 
   <div class="menu">
     <ion-grid>
-      <ion-row justify-content-center align-items-center style="height: 100%">
+      <ion-row justify-content-center align-items-center style="height: 100%" col-12 col-md-6 col-lg-4 col-xl-3>
         <div class="button">
           <a [routerLink]="['/members/contact']">
             <ion-icon class="icon" src="/assets/icon/contact.svg"></ion-icon>
@@ -98,7 +98,6 @@
   <!-- Menampilkan report Activities -->
   <div class="extra-content">
   <ion-grid>
-  
   <div class="activities-text">
     <ion-text><b>Activities for you</b></ion-text>
   </div>
@@ -112,7 +111,7 @@
   <div class="extra-content">
     <div class="scrolling-wrapper">
       <div class="text-noact">
-        <p text-center>{{textActivity}}</p>
+        <p text-center>{{text}}</p>
       </div>
       <div *ngFor="let item of Activity" class="card-new">
         <ion-card class="activities-card">
