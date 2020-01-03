@@ -19,7 +19,7 @@ export class MainPage {
       maxRatio: 5
     }
   };
-  Activity: any = null;
+  Activity: any= null;
   items: any = [];
   itemsaccount: any = [];
   user: any;
@@ -43,35 +43,24 @@ export class MainPage {
   ) {
   }
    ionViewWillEnter() {
-    // this.storage.get('Activity').then((item) => {
-    //   this.Activity = item;
-    //   if (this.Activity == null) {
-    //     this.textActivity;
-    //   } else {
-    //     this.textActivity = '';
-    //   }
-    //   this.NewDate = this.Activity.map( data => data.startTime);
-    //   this.NewDate = this.NewDate.toString().substring(0, this.NewDate.toString().length-29)
-    //   console.log(this.NewDate)
-    // })
-    if (this.Activity == null) {
-      this.textActivity;
-    } else {
-      this.textActivity = '';
-    }
-    this.Activity= [];
     this.items = [];
     this.start = 0;
     this.itemTotalProspect = [];
     this.itemCustomer = [];
     this.itemProspect = [];
     this.itemIncentive = [];
+    this.Activity = [];
     this.LoadActivity();
     this.LoadIncentive();
     this.loadProspect();
     this.LoadProfile();
     this.LoadTotalCustomer();
     this.LoadTotalProspect();
+    if (this.Activity == null) {
+      this.textActivity;
+    } else {
+      this.textActivity = '';
+    }
   }
   updateprospect(id, namaCustomer, emailCustomer, alamatCustomer, no_tlp, company, alamatCompany, emailCompany, nomorCompany, customerneed, stock, hargaProduk, totalPrice, budget, status) {
     this.router.navigate(['members/view-prospect/'

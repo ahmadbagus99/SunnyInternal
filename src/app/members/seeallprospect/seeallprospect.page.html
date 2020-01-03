@@ -27,7 +27,7 @@
   </ion-segment>
 
   <div [ngSwitch]="selectCategory">
-    <div *ngSwitchCase="'On Progress'">
+    <div *ngSwitchCase="'Populer'">
       <ng-container *ngIf="isLoaded; else elseTemplate">
         <ion-list>
           <ion-item-sliding *ngFor="let item of items">
@@ -100,7 +100,7 @@
         </ion-item>
       </ng-template>
     </div>
-    <div *ngSwitchCase="'Close Won'">
+    <div *ngSwitchCase="'Kategori'">
       <ng-container *ngIf="isLoaded; else elseTemplate">
         <ion-list>
           <ion-item-sliding *ngFor="let item of itemsCustomer">

@@ -1,11 +1,9 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { DataService } from "src/app/services/data.service";
 import { NativePageTransitions, NativeTransitionOptions  } from '@ionic-native/native-page-transitions/ngx';
-import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @Component({
   selector: 'app-seeallprospect',
@@ -23,7 +21,7 @@ export class SeeallprospectPage implements OnInit {
   data : any = [];
   id : string;
   public searchTerm: string = ""; 
-  selectCategory ='On Progress';
+  selectCategory :string;
   
     constructor(
       private router : Router,
@@ -31,9 +29,8 @@ export class SeeallprospectPage implements OnInit {
       private storage : Storage,
       public alertController : AlertController,
       public loadingController : LoadingController,
-      private dataService: DataService,
+      private actRoute : ActivatedRoute,
       private nativePageTransitions: NativePageTransitions,
-      private callNumber : CallNumber
     ) { 
       setTimeout(() => {
         this.isLoaded = true;
@@ -41,7 +38,10 @@ export class SeeallprospectPage implements OnInit {
     }
   
     ngOnInit() {
-      
+      this.actRoute.params.subscribe((data)=>{
+        var Data = data.param;
+        this.selectCategory = Data;
+      })
     }
 
     addprospect(){
@@ -102,8 +102,9 @@ export class SeeallprospectPage implements OnInit {
         mode: 'md'
       });
       await loading.present();
-      this.storage.get('IdLogin').then((IdLogin)=>{
-          this.user = IdLogin;
+      this.storage.get('session_storage').then((data)=>{
+         var ID = data;
+         this.user = parseInt(ID.map( data => data.id));
           let body = {
             aksi : 'getdata',
             limit : this.limit,
@@ -128,8 +129,9 @@ export class SeeallprospectPage implements OnInit {
         mode: 'md'
       });
       await loading.present();
-      this.storage.get('IdLogin').then((IdLogin)=>{
-          this.user = IdLogin;
+      this.storage.get('session_storage').then((data)=>{
+        var ID = data;
+        this.user = parseInt(ID.map( data => data.id));
           let body = {
             aksi : 'getdata',
             limit : this.limit,
@@ -146,8 +148,9 @@ export class SeeallprospectPage implements OnInit {
     }
 
     loadProspectNew(){
-      this.storage.get('IdLogin').then((IdLogin)=>{
-          this.user = IdLogin;
+      this.storage.get('session_storage').then((data)=>{
+        var ID = data;
+        this.user = parseInt(ID.map( data => data.id));
           let body = {
             aksi : 'getdata',
             limit : this.limit,

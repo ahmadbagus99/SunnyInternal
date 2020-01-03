@@ -28,6 +28,7 @@ const routes: Routes = [
   { path: 'language', loadChildren: './language/language.module#LanguagePageModule' },
   { path: 'syaratketentuan', loadChildren: './syaratketentuan/syaratketentuan.module#SyaratketentuanPageModule' },
   { path: 'addactivities', loadChildren: './addactivities/addactivities.module#AddactivitiesPageModule' },
+  { path: 'seeallprospect/:param', loadChildren: './seeallprospect/seeallprospect.module#SeeallprospectPageModule' },
   { path: 'seeallprospect', loadChildren: './seeallprospect/seeallprospect.module#SeeallprospectPageModule' },
   { path: 'addprospect', loadChildren: './addprospect/addprospect.module#AddprospectPageModule' },
   { path: 'addprospect/:id/:namaCustomer/:emailCustomer/:alamatCustomer/:no_tlp/:company/:alamatCompany/:emailCompany/:nomorCompany/:customerneed/:stock/:hargaProduk/:totalPrice/:budget', loadChildren: './addprospect/addprospect.module#AddprospectPageModule' },
