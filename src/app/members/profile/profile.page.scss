@@ -109,7 +109,6 @@ ion-back-button {
 
   ion-input {
     font-size: 13px;
-    font-style: oblique;
     margin: 2px;
   }
 
@@ -125,7 +124,6 @@ ion-back-button {
 
   ion-input {
     font-size: 13px;
-    font-style: oblique;
   }
 
   ion-label {
@@ -140,7 +138,6 @@ ion-back-button {
 
   ion-input {
     font-size: 13px;
-    font-style: oblique;
   }
 
   ion-label {
@@ -155,7 +152,7 @@ ion-back-button {
 
   ion-input {
     font-size: 13px;
-    font-style: oblique;
+
   }
 
   ion-label {
@@ -203,9 +200,12 @@ div.content ion-button {
 
 .add {
   img {
-    text-indent: -10000px
+    text-indent: -10000px;
+    margin-right: -13.1%;
+    margin-bottom: 1%;
   }
 }
+
 
 .items {
   position: relative;
