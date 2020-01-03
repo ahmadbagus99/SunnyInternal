@@ -25,7 +25,7 @@ export class ProspectPage implements OnInit {
   totalProspect: number = 0;
   text: string = "You don't have prospect for today!";
   textProduct: string = "You haven't added product";
-  textCustomer: string = "Keep following your prospect to get customer!";
+  textCustomer: string = "Keep follow up your prospect!";
   url: any;
   ProspectTotal : number;
   itemProspectVerify : any = [];
@@ -75,8 +75,13 @@ export class ProspectPage implements OnInit {
   addprospect() {
     this.router.navigate(['members/addprospect'])
   }
-  SeeAll() {
-    this.router.navigate(['members/seeallprospect'])
+  SeeAllCustomer(param:string) {
+    param = 'Kategori';
+    this.router.navigate(['members/seeallprospect',param])
+  }
+  SeeAllProspect(param:string) {
+    param = 'Populer';
+    this.router.navigate(['members/seeallprospect',param])
   }
   product() {
     this.router.navigate(['members/product'])

@@ -110,6 +110,7 @@ ion-grid {
   width: 100%;
   background-color: white;
   position: absolute;
+  border-radius: 0px 0px 20px 20px;
 }
 
 ion-badge {
@@ -257,13 +258,13 @@ ion-grid {
     white-space: nowrap;
 
     .card {
+      margin-top: -15vw;
+
       ion-card-title {
         position: relative;
         color: black;
         font-size: 12vw;
       }
-
-      margin-top: 15vw;
       display: inline-block;
       width: 112px;
       height: 5px;
@@ -275,12 +276,11 @@ ion-grid {
       width: 100vw;
       height: 20vw;
     }
-
   }
 }
 
 .extra-content2 {
-  height: 60vw;
+  // height: 60vw;
   background-color: white;
 
   ion-text {
@@ -308,6 +308,7 @@ ion-grid {
       display: inline-block;
       width: 30vw;
       height: 5vw;
+      margin-top: -18vw;
     }
 
     .card-new {
@@ -325,10 +326,10 @@ ion-grid {
   background-color: white;
 }
 
-.img-customer2 {
-  position: relative;
-  width: 20vw;
-}
+// .img-customer2 {
+//   position: relative;
+//   width: 20vw;
+// }
 
 h5 {
   margin-left: 0;
@@ -500,7 +501,7 @@ ion-slide {
 
 .text-noact2 {
   position: relative;
-  margin-top: 15vw;
+  margin-top: 35vw;
   /* margin-left: 20vw; */
   align-items: center;
 }
@@ -546,5 +547,16 @@ h2 {
 
 ion-textarea {
   font-size: 15px;
+}
+
+.time2 {
   color: white;
+}
+
+.prospectcard {
+  height: 50vw;
+}
+
+.followup {
+  position: absolute;
 }
