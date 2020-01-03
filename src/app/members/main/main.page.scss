@@ -280,7 +280,7 @@ ion-grid {
 }
 
 .extra-content2 {
-  height: 60vw;
+  // height: 60vw;
   background-color: white;
 
   ion-text {
@@ -326,10 +326,10 @@ ion-grid {
   background-color: white;
 }
 
-.img-customer2 {
-  position: relative;
-  width: 20vw;
-}
+// .img-customer2 {
+//   position: relative;
+//   width: 20vw;
+// }
 
 h5 {
   margin-left: 0;
@@ -547,5 +547,16 @@ h2 {
 
 ion-textarea {
   font-size: 15px;
+}
+
+.time2 {
   color: white;
+}
+
+.prospectcard {
+  height: 50vw;
+}
+
+.followup {
+  position: absolute;
 }
