@@ -194,16 +194,9 @@ div[scrolly=true] {
     display: inline-block;
     width: 30vw;
 
-    // border-radius:200vw;
-    // box-shadow: #989aa2 8px;
-    // --padding-top:30px !important;
-    //   --padding-end:30px !important;
-    //   --padding-bottom:30px !important;
-    //   --padding-start:30px !important;
-    //   box-shadow: 10px 10px 10px #888888;
     p {
       // margin-left:  -12vw;
-      font-size: 10px;
+      font-size: 6px;
       position: absolute;
       margin-top: 2vw;
     }
@@ -212,88 +205,74 @@ div[scrolly=true] {
       font-weight: bold;
       position: absolute;
       /* margin-top: -7vw; */
-      font-size: 2vw;
+      font-size: 4vw;
       font-style: normal;
     }
   }
 }
 
-.scrolling-wrapper-2 {
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  height: 35%;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-  background-color: #ffffff;
+// .scrolling-wrapper-2 {
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+//   height: 35%;
+//   overflow-x: scroll;
+//   overflow-y: hidden;
+//   white-space: nowrap;
+//   background-color: #ffffff;
 
-  .card {
-    display: inline-block;
-    width: 30vw;
+//   .card {
+//     display: inline-block;
+//     width: 30vw;
 
-    // border-radius:200vw;
-    // box-shadow: #989aa2 8px;
-    // --padding-top:30px !important;
-    //   --padding-end:30px !important;
-    //   --padding-bottom:30px !important;
-    //   --padding-start:30px !important;
-    //   box-shadow: 10px 10px 10px #888888;
-    p {
-      // margin-left:  -12vw;
-      font-size: 10px;
-      position: absolute;
-      margin-top: 2vw;
-    }
+//     p {
+//       // margin-left:  -12vw;
+//       font-size: 10px;
+//       position: absolute;
+//       margin-top: 2vw;
+//     }
 
-    h2 {
-      font-weight: bold;
-      position: absolute;
-      /* margin-top: -7vw; */
-      font-size: 2vw;
-      font-style: normal;
-    }
-  }
-}
+//     h2 {
+//       font-weight: bold;
+//       position: absolute;
+//       /* margin-top: -7vw; */
+//       font-size: 2vw;
+//       font-style: normal;
+//     }
+//   }
+// }
 
 
-.scrolling-wrapper-3 {
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  height: 35%;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-  background-color: #ffffff;
+// .scrolling-wrapper-3 {
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+//   height: 35%;
+//   overflow-x: scroll;
+//   overflow-y: hidden;
+//   white-space: nowrap;
+//   background-color: #ffffff;
 
-  .card {
-    display: inline-block;
-    width: 30vw;
+//   .card {
+//     display: inline-block;
+//     width: 30vw;
 
-    // border-radius:200vw;
-    // box-shadow: #989aa2 8px;
-    // --padding-top:30px !important;
-    //   --padding-end:30px !important;
-    //   --padding-bottom:30px !important;
-    //   --padding-start:30px !important;
-    //   box-shadow: 10px 10px 10px #888888;
-    p {
-      // margin-left:  -12vw;
-      font-size: 10px;
-      position: absolute;
-      margin-top: 2vw;
-    }
+//     p {
+//       // margin-left:  -12vw;
+//       font-size: 10px;
+//       position: absolute;
+//       margin-top: 2vw;
+//     }
 
-    h2 {
-      font-weight: bold;
-      position: absolute;
-      /* margin-top: -7vw; */
-      font-size: 2vw;
-      font-style: normal;
-    }
-  }
-}
+//     h2 {
+//       font-weight: bold;
+//       position: absolute;
+//       /* margin-top: -7vw; */
+//       font-size: 2vw;
+//       font-style: normal;
+//     }
+//   }
+// }
 
 img {
   display: block;
