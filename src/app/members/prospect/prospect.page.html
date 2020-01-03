@@ -38,7 +38,7 @@
 <ion-content>
 
   <ion-grid class="newprospect">
-    <div class="see-all" (click)="SeeAll()">
+    <div class="see-all" (click)="SeeAllProspect(param)">
       <div class="text1">
         <ion-text color="primary"> See all </ion-text>
       </div>
@@ -64,7 +64,7 @@
 
 
   <!-- CUSTOMER -->
-  <div class="see-all" (click)="SeeAll()">
+  <div class="see-all" (click)="SeeAllCustomer(param)">
     <div class="text3">
       <ion-text color="primary"> See all </ion-text>
     </div>
@@ -73,8 +73,8 @@
 
   <div class="scrolling-wrapper-1">
     <p text-center>{{textCustomer}}</p>
-    <div *ngFor="let item of itemsCustomer" class="card">
-      <ion-card button
+    <div *ngFor="let item of itemsCustomer; let i=index" class="card">
+      <ion-card *ngIf="i<5" button
         (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
         <img src="assets/img/customer-icon.png">
         <ion-card-content>
@@ -95,8 +95,8 @@
 
   <div class="scrolling-wrapper-1">
     <p text-center>{{textProduct}}</p>
-    <div *ngFor="let item of itemsproduct" class="card">
-      <ion-card button
+    <div *ngFor="let item of itemsproduct; let i=index" class="card">
+      <ion-card *ngIf="i<3" button
         (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
         <img src="assets/img/product.png">
         <ion-card-content>

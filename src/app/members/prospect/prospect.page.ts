@@ -75,8 +75,13 @@ export class ProspectPage implements OnInit {
   addprospect() {
     this.router.navigate(['members/addprospect'])
   }
-  SeeAll() {
-    this.router.navigate(['members/seeallprospect'])
+  SeeAllCustomer(param:string) {
+    param = 'Kategori';
+    this.router.navigate(['members/seeallprospect',param])
+  }
+  SeeAllProspect(param:string) {
+    param = 'Populer';
+    this.router.navigate(['members/seeallprospect',param])
   }
   product() {
     this.router.navigate(['members/product'])
