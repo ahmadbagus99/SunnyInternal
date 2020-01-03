@@ -1,3 +1,17 @@
+* {
+  --ion-background-color: white;
+  --ion-grid-column-padding-sm: 5px;
+  --ion-grid-column-padding-xs: 5px;
+  --ion-grid-column-padding-md: 5px;
+  --ion-grid-column-padding-lg: 5px;
+  --ion-grid-column-padding-xl: 5px;
+}
+
+ion-content {
+  --ion-background-color: #EEEEEE !important;
+}
+
+
 ion-title {
   position: absolute;
   top: 0;
@@ -48,6 +62,7 @@ ion-segment {
 ion-card-content {
   display: block;
   position: relative;
+  height: 14vw;
   background: white;
 }
 
@@ -56,12 +71,13 @@ ion-card-content {
   margin-inline-start: 6px;
   -webkit-margin-end: 6px;
   margin-inline-end: 6px;
+
 }
+
 
 .text1 {
   position: relative;
   text-align: center;
-  font-weight: bold;
   margin-top: 2vw;
   margin-left: 0vw;
 }
@@ -69,7 +85,6 @@ ion-card-content {
 .text2 {
   position: relative;
   text-align: center;
-  font-weight: bold;
   margin-top: 2vw;
   margin-left: 0vw;
 }
@@ -77,7 +92,6 @@ ion-card-content {
 .text3 {
   position: relative;
   text-align: center;
-  font-weight: bold;
   margin-top: 2vw;
   margin-left: 0vw;
 }
@@ -166,11 +180,11 @@ div[scrolly=true] {
   margin-bottom: 10px;
 }
 
-.scrolling-wrapper {
+.scrolling-wrapper-1 {
   &::-webkit-scrollbar {
     display: none;
   }
-  height: 40%;
+  // height: 50%;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -188,18 +202,104 @@ div[scrolly=true] {
     //   --padding-start:30px !important;
     //   box-shadow: 10px 10px 10px #888888;
     p {
-      color: #F57F17;
-      
+      // margin-left:  -12vw;
+      font-size: 10px;
+      position: absolute;
+      margin-top: 2vw;
     }
 
     h2 {
       font-weight: bold;
-      position: relative;
-      margin-top: 2vw;
-      font-size: 3.5vw;
-
+      position: absolute;
+      /* margin-top: -7vw; */
+      font-size: 2vw;
+      font-style: normal;
     }
   }
+}
+
+.scrolling-wrapper-2 {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  height: 35%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  background-color: #ffffff;
+
+  .card {
+    display: inline-block;
+    width: 30vw;
+
+    // border-radius:200vw;
+    // box-shadow: #989aa2 8px;
+    // --padding-top:30px !important;
+    //   --padding-end:30px !important;
+    //   --padding-bottom:30px !important;
+    //   --padding-start:30px !important;
+    //   box-shadow: 10px 10px 10px #888888;
+    p {
+      // margin-left:  -12vw;
+      font-size: 10px;
+      position: absolute;
+      margin-top: 2vw;
+    }
+
+    h2 {
+      font-weight: bold;
+      position: absolute;
+      /* margin-top: -7vw; */
+      font-size: 2vw;
+      font-style: normal;
+    }
+  }
+}
+
+
+.scrolling-wrapper-3 {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  height: 35%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  background-color: #ffffff;
+
+  .card {
+    display: inline-block;
+    width: 30vw;
+
+    // border-radius:200vw;
+    // box-shadow: #989aa2 8px;
+    // --padding-top:30px !important;
+    //   --padding-end:30px !important;
+    //   --padding-bottom:30px !important;
+    //   --padding-start:30px !important;
+    //   box-shadow: 10px 10px 10px #888888;
+    p {
+      // margin-left:  -12vw;
+      font-size: 10px;
+      position: absolute;
+      margin-top: 2vw;
+    }
+
+    h2 {
+      font-weight: bold;
+      position: absolute;
+      /* margin-top: -7vw; */
+      font-size: 2vw;
+      font-style: normal;
+    }
+  }
+}
+
+img {
+  display: block;
+  width: 20vw;
+  margin-top: 3vw;
+  margin-left: 3vw;
 }
 
 .judul {
@@ -243,4 +343,8 @@ div[scrolly=true] {
   padding: 0 10px;
   color: #F57F17;
   text-decoration: underline;
+}
+
+.customergrid {
+  position: relative;
 }
