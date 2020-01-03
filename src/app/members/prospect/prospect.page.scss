@@ -184,6 +184,7 @@ div[scrolly=true] {
   &::-webkit-scrollbar {
     display: none;
   }
+
   // height: 50%;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -326,4 +327,8 @@ img {
 
 .customergrid {
   position: relative;
+}
+
+.prospectcard {
+  height: 50vw;
 }
