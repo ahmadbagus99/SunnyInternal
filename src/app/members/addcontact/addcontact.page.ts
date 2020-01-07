@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostProvider } from 'src/providers/post-providers';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/storage';
-import { ToastController, LoadingController } from '@ionic/angular';
+import { ToastController, LoadingController, AlertController } from '@ionic/angular';
 import { ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 
@@ -39,6 +39,7 @@ export class AddcontactPage implements OnInit {
   isHidden: boolean = true;
   itemsPerusahaan : any = [];
   selectHidden: boolean;
+  buttonDisabled : boolean;
 
   @ViewChild(IonSlides) slides: IonSlides;
   items: any = [];
@@ -52,6 +53,7 @@ export class AddcontactPage implements OnInit {
     private storage: Storage,
     public loadingController: LoadingController,
     public toastCtrl: ToastController,
+    private alertCtrl: AlertController,
   ) { }
 
   ionViewWillEnter() {
@@ -249,13 +251,22 @@ export class AddcontactPage implements OnInit {
           this.clearDataStorage();
           this.router.navigate(['members/contact']);
         })
+        
       });
     });
   }
  //fungsi untuk memajukan next page yang akan di isi di contact
   next() {
-    this.slides.slideNext();
-  }
+    if (this.nama == '') {
+      this.warning = 'Data Cannot Be Empty'
+    } else if (this.email == '') {
+      this.warning = 'Data Cannot Be Empty'
+    } else if (this.no_tlp == '') {
+        this.warning = 'Data Cannot Be Empty'
+    }else{
+      this.slides.slideNext ()
+    }
+}
    //fungsi untuk memundurkan prev page yang akan di isi di contact
   prev() {
     this.slides.slidePrev();
@@ -289,4 +300,29 @@ export class AddcontactPage implements OnInit {
     this.storage.remove('Data');
   }
 
+  async cancel() {
+    const alert = await this.alertCtrl.create({
+      header: 'Are you sure ?',
+      subHeader:'Canceled this process ?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: (blah) => {
+            console.log('cancel')
+          }
+        },
+        {
+          text: 'Ya',
+          handler: () => {
+            this.router.navigate(['members/contact'])
+          
+          }
+        }
+      ]
+    })
+    await alert.present();
+  }
+ 
+  
 }
