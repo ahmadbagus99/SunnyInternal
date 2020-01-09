@@ -1,7 +1,9 @@
 <ion-header>
   <ion-toolbar color=#F57F17 class="new-background-color">
     <ion-buttons color=#FFFFFF slot="start">
-      <ion-back-button (click)="clearDataStorage()" defaultHref="/"></ion-back-button>
+      <ion-button (click)="cancel()">
+        <ion-icon name="arrow-round-back" color=#FFFFFF></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-title *ngIf="!id">Add Contact</ion-title>
     <ion-title *ngIf="id>=1">Edit Contact</ion-title>

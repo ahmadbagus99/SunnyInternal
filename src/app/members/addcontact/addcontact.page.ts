@@ -324,5 +324,24 @@ export class AddcontactPage implements OnInit {
     await alert.present();
   }
  
+  removeStorage(){
+    this.storage.remove('nama');
+    this.storage.remove('alamat');
+    this.storage.remove('tgl_lahir');
+    this.storage.remove('kelamin');
+    this.storage.remove('owner');
+    this.storage.remove('no_tlp');
+    this.storage.remove('type');
+    this.storage.remove('almt_rumah');
+    this.storage.remove('title');
+    this.storage.remove('perusahaan');
+    this.storage.remove('Hobi');
+    this.storage.remove('Makanan_Favorit');
+    this.storage.remove('Facebook');
+    this.storage.remove('Twitter');
+    this.storage.remove(' Instagram');
+    this.storage.remove('NPWP');
+    this.storage.remove('penghasilan');
+  }
   
 }

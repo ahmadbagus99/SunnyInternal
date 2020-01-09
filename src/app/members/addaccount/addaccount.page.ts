@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostProvider } from 'src/providers/post-providers';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Storage } from '@ionic/storage';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, ToastController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-addaccount',
@@ -27,13 +27,16 @@ export class AddaccountPage implements OnInit {
   warning: string;
   isHidden: boolean = true;
 
+  pdfObj = null;
   constructor(
     private postPvdr: PostProvider,
     private router: Router,
     private actRoute: ActivatedRoute,
     private storage: Storage,
+    private alertCtrl: AlertController,
     public loadingController: LoadingController,
     public toastCtrl: ToastController
+    
   ) {
   }
   showNow() {
@@ -179,4 +182,43 @@ export class AddaccountPage implements OnInit {
   // ionViewWillEnter() {
     
   // }
+
+  async cancel() {
+    const alert = await this.alertCtrl.create({
+      header: 'Are you sure ?',
+      subHeader:'Canceled this process ?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: (blah) => {
+            console.log('cancel')
+          }
+        },
+        {
+          text: 'Ya',
+          handler: () => {
+            this.router.navigate(['members/account'])
+            this.removeStorage();
+          }
+        }
+      ]
+    })
+    await alert.present();
+  }
+  removeStorage(){
+    this.storage.remove('nama');
+    this.storage.remove('web');
+    this.storage.remove('phone');
+    this.storage.remove('email');
+    this.storage.remove('owner');
+    this.storage.remove('alamat');
+    this.storage.remove('type');
+    this.storage.remove('event_date');
+    this.storage.remove('category');
+    this.storage.remove('industry');
+    this.storage.remove('employee');
+  }
 }
+
+
