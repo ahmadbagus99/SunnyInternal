@@ -77,22 +77,33 @@ ion-toolbar {
 
   size: 10vw;
 }
+.prev {
+
+  size: 10vw;
+}
 
 .button-next {
   ion-button {
     right: 10px;
+    margin-left: 76vw;
+    margin-top: 5vw;
   }
 }
 
-.button-next1 {
+.button-prev {
   ion-button {
-    right: 10px;
+    left:  10px;
+    margin-right: 58vw;
+    margin-top: 5vw;
+    
   }
 }
 
 .button-before {
   ion-button {
     right: 120px;
+    margin-left: 8vw;
+    margin-top: 5vw;
   }
 }
 

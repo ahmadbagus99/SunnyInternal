@@ -1,7 +1,9 @@
 <ion-header>
   <ion-toolbar color=#F57F17 class="new-background-color">
     <ion-buttons color=#FFFFFF slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-button (click)="cancel()">
+        <ion-icon name="arrow-round-back" color=#FFFFFF></ion-icon>
+      </ion-button>
     </ion-buttons>
     <ion-buttons slot="primary">
       <ion-button *ngIf="!id" (click)="AddAccount()">save</ion-button>

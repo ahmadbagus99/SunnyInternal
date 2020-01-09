@@ -20,6 +20,7 @@ ion-title {
   text-transform: capitalize;
 }
 
+
 ion-title {
   color: #F57F17;
 }
@@ -70,8 +71,10 @@ ion-toolbar {
 }
 
 ion-card {
-  margin-top: 1vw;
+  margin-top: -1vw;
   height: 50vw;
+  width: 100vw;
+  margin-left: -1vw;
 }
 
 ion-card-content {
@@ -123,3 +126,9 @@ ion-card-content {
 .previous {
   margin-top: 5vw;
 }
+
+ion-slides {
+  overflow: hidden;
+  --overflow: hidden;
+}
+

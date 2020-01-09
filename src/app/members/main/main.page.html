@@ -23,30 +23,31 @@
 
 
   <!-- Report for you new -->
-    <ion-grid class="report-for-you">
-      <ion-row justify-content-center align-items-start style="height: 100%">
-        <ion-col>
-          <ion-text class="customer-report"><b>{{totalCustomer}}</b></ion-text>
-          <ion-text class="sub-text"><b> Customer </b></ion-text>
-          <ion-text class="month-text"><b> / month </b></ion-text>
-        </ion-col>
+  <ion-grid class="report-for-you">
+    <ion-row justify-content-center align-items-start style="height: 100%">
+      <ion-col>
+        <ion-text class="customer-report"><b>{{totalCustomer}}</b></ion-text>
+        <ion-text class="sub-text"><b> Customer </b></ion-text>
+        <ion-text class="month-text"><b> / month </b></ion-text>
+      </ion-col>
 
-        <ion-col>
-          <ion-text class="sub-text"><b> Incentive </b></ion-text>
-          <ion-text class="month-text"><b> / month </b></ion-text>
-          <div class="vertical-line">
-            <!-- <ion-text class="incentive-report"><b>30K</b></ion-text> -->
-            <ion-input class="incentive-report" *ngFor="let item of itemIncentive"value="{{ item.Incentive | currency:'Rp '}}" readOnly></ion-input>
-          </div>
-        </ion-col>
+      <ion-col>
+        <ion-text class="sub-text"><b> Incentive </b></ion-text>
+        <ion-text class="month-text"><b> / month </b></ion-text>
+        <div class="vertical-line">
+          <!-- <ion-text class="incentive-report"><b>30K</b></ion-text> -->
+          <ion-input class="incentive-report" *ngFor="let item of itemIncentive"
+            value="{{ item.Incentive | currency:'Rp '}}" readOnly></ion-input>
+        </div>
+      </ion-col>
 
-        <ion-col>
-          <ion-text class="prospect-report"><b>{{totalProspect}}</b></ion-text>
-          <ion-text class="sub-text"><b> Prospect </b></ion-text>
-          <ion-text class="month-text"><b> / month </b></ion-text>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+      <ion-col>
+        <ion-text class="prospect-report"><b>{{totalProspect}}</b></ion-text>
+        <ion-text class="sub-text"><b> Prospect </b></ion-text>
+        <ion-text class="month-text"><b> / month </b></ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- FLOAT MENU BAR -->
 
@@ -93,18 +94,18 @@
 
 
   <!-- Menampilkan report Activities -->
-  
-    <ion-grid class="extra-content">
+
+  <ion-grid class="extra-content">
     <div class="activities-text">
       <ion-text><b>Activities for you</b></ion-text>
     </div>
-  
+
     <div class="see-all">
       <a [routerLink]="['/members/activities']">
         <ion-text>See all</ion-text>
       </a>
     </div>
-  
+
     <div class="extra-content">
       <div class="scrolling-wrapper">
         <div class="text-noact">
@@ -113,17 +114,14 @@
         <div *ngFor="let item of Activity" class="card-new">
           <ion-card class="activities-card">
             <ion-card-content>
-              <div class="icon-activities">
-                <img src="assets/icon/activity.png" />
-              </div>
               <!-- <ion-datetime displayFormat="h:mm a" pickerFormat="h mm a" [(ngModel)]="time"></ion-datetime> -->
               <h2><b>{{item.title}}</b></h2>
-              <ion-textarea readOnly>
+              <ion-text class="time2" readOnly>
                 {{item.desc}}
                 <ion-text> with </ion-text>
                 {{item.Prospect}}
                 <p> {{item.startTime}} </p>
-              </ion-textarea>
+              </ion-text>
               <!-- <div class="time-activities">
                 {{item.startTime}}
               </div> -->
@@ -135,8 +133,8 @@
   </ion-grid>
 
 
-   <!-- MENAMPILKAN PROSPECT LAINNYA  -->
-   <ion-grid class="extra-content2">
+  <!-- MENAMPILKAN PROSPECT LAINNYA  -->
+  <ion-grid class="extra-content2">
     <div class="prospect-text">
       <ion-text><b>Prospect for you</b></ion-text>
     </div>
@@ -145,21 +143,22 @@
         <ion-text>See all</ion-text>
       </a>
     </div>
-  
+
     <div class="extra-content2">
       <div class="scrolling-wrapper-2">
         <div class="text-noact2">
           <p text-center>{{text}}</p>
         </div>
         <div *ngFor="let item of itemProspect" class="card">
-          <ion-card button
+          <ion-card class="prospectcard" button
             (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
-            <img class="img-customer2" src="assets/img/customer-icon.png" />
+            <img center src="assets/img/customer-icon.png" />
             <ion-card-content>
-              <div class="item-name">
-               <b>{{item.namaCustomer}}</b>
-              </div>
-              <h5> Follow up </h5>
+                <ion-textarea class="item-name" readOnly><b>{{item.namaCustomer}}</b></ion-textarea>
+                <br>
+                <ion-textarea readOnly>
+                  <h5> Follow up </h5>
+                </ion-textarea>
             </ion-card-content>
           </ion-card>
         </div>
