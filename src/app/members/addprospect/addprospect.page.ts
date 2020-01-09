@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostProvider } from 'src/providers/post-providers';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { LoadingController, ToastController, AlertController } from '@ionic/angular';
 import { ViewChild } from '@angular/core';
@@ -15,6 +15,8 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 import { stringify } from 'querystring';
 import { setCheckNoChangesMode } from '@angular/core/src/render3/state';
+import { forEach } from '@angular/router/src/utils/collection';
+import { element } from '@angular/core/src/render3';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -24,6 +26,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 
 export class AddprospectPage implements OnInit {
+  IdProspect : number;
   isHidden = true;
   selectHidden: boolean;
   savebutton : boolean;
@@ -42,10 +45,11 @@ export class AddprospectPage implements OnInit {
   progress = 0;
   itemProduct = [];
   itemQunatityProduct = [];
-  Nameproduct: any;
+  Nameproduct: any = [];
   jumlahProduk: any;
   hargaProduk: any;
-  stock: number;
+  stock: any = [];
+  quantity: string;
   totalPrice: number;
   price: number;
   itemsAccount: any;
@@ -67,13 +71,16 @@ export class AddprospectPage implements OnInit {
     text: ' For purchasing the item with the criteria as below : '
   }
   showAlert : boolean;
-
+  item : number=0;
   @ViewChild(IonSlides) slides: IonSlides;
   items: any = [];
   limit: number = 10;
   start: number = 0;
-
   pdfObj = null;
+  index : number = 0;
+  attributes:Array<number> = [];
+  values:Array<string> = [];
+
   constructor(
     private postPvdr: PostProvider,
     private router: Router,
@@ -113,6 +120,44 @@ export class AddprospectPage implements OnInit {
         unit: ELocalNotificationTriggerUnit.SECOND,
       }
     })
+  }
+  async Add(NamaProduk){
+    this.item = this.attributes.length;
+    const toast = await this.toastCtrl.create({
+      message: this.item.toString()+' Item Added',
+      color: 'success',
+      buttons: [
+         {
+          text: 'Done',
+          handler: () => {
+            this.slides.slideNext();
+            this.progress = this.progress + 0.5;
+          }
+        }
+      ]
+    });
+    toast.present();
+  }
+  showOnceToast(id,NamaProduk){
+    this.addInput();
+    this.toastCtrl.dismiss().then((obj)=>{
+    }).catch(()=>{
+    }).finally(()=>{
+      this.Add(NamaProduk);
+      this.Nameproduct.push(NamaProduk);
+      const index = this.itemProduct.findIndex( data => data.namaProduk == NamaProduk)
+      this.itemProduct[index].status = 'Delete'
+      this.loadQuantityroduct();
+    });
+  }
+  Delete(NamaProduk){
+    const index = this.itemProduct.findIndex( data => data.namaProduk == NamaProduk)
+    const indexProduct = this.itemQunatityProduct.findIndex ( data => data.namaProduk == NamaProduk)
+    this.itemQunatityProduct.splice(indexProduct, 1)
+    this.itemProduct[index].status = null
+    this.Nameproduct.splice(index, 1)
+    this.attributes.splice(index, 1)
+    this.values.splice(index, 1)
   }
   showNow() {
     if (this.namaCustomer == 'new') {
@@ -204,6 +249,9 @@ export class AddprospectPage implements OnInit {
       limit: this.limit,
       start: this.start,
     };
+    this.Nameproduct.forEach((product)=>{
+      this.customerneed = product;
+    })
     this.postPvdr.postData(body, 'LoadQuantityProduct.php?Product=' + this.customerneed).subscribe(data => {
       for (let item of data) {
         this.itemQunatityProduct.push(item);
@@ -304,8 +352,11 @@ export class AddprospectPage implements OnInit {
                 userID: this.userID
               };
               this.postPvdr.postData(body, 'InsertProspect.php').subscribe(data => {
-                this.router.navigate(['members/seeallprospect']);
-                this.savebutton = true;
+                this.IdProspect = data.id;
+                this.Process();
+                this.Process2();
+                this.router.navigate(['members/prospect']);
+                // this.savebutton = true;
               });
             });
           }
@@ -315,7 +366,36 @@ export class AddprospectPage implements OnInit {
     this.pushNotif(5);
     await alert.present();
   }
-
+  Process(){
+    return new Promise(resolve => {
+      this.Nameproduct.forEach((data)=>{
+        this.customerneed = data
+        let body = {
+          aksi : 'add',
+          Product : this.customerneed,
+          idProspect : this.IdProspect
+      };
+      this.postPvdr.postData(body,'InsertProductProspect.php').subscribe(data =>{
+        console.log(data)
+      });
+  })
+  });
+  }
+  Process2(){
+    return new Promise(resolve => {
+      this.values.forEach((data)=>{
+        this.quantity = data
+        let body = {
+          aksi : 'add',
+          Quantity : this.quantity,
+          idProspect : this.IdProspect
+      };
+      this.postPvdr.postData(body,'InsertQtyProduct.php').subscribe(data =>{
+        console.log(data)
+      });
+  })
+  });
+  }
   async updateProcess() {
     const loading = await this.loadingController.create({
       message: "Process",
@@ -341,25 +421,35 @@ export class AddprospectPage implements OnInit {
     });
   }
 
-  hitung() {
-    this.storage.get('Stock').then((stock) => {
-      this.jumlahProduk = stock;
-      this.jumlahProduk = this.jumlahProduk.map(user => user.jumlahProduk);
-      var hasilStok = parseInt(this.jumlahProduk);
-      var SisaStok = hasilStok - this.stock;
-      this.sisaStock = SisaStok;
+  hitung(){
+    // this.getValues();
+    var GetPrice = this.itemQunatityProduct.map( data => data.hargaProduk);
+    var Price = GetPrice.map((x)=>{
+     return parseInt(x,10);
+   })
+    var Qty = this.values.map((y)=>{
+      return parseInt(y,10);
     })
-    this.price = parseInt(this.hargaProduk)
-    var totalHarga = this.price * this.stock;
-    this.totalPrice = totalHarga;
+    var Sum = Price.map((num,idx)=>{
+      return num * Qty[idx];
+    })
+    this.totalPrice = Sum.reduce(function(a,b){
+      return a + b 
+    },0
+    )
   }
-
+  valChange(value:string, index:number):void{
+    this.values[index] = value;
+  }
+  addInput():void{
+      this.attributes.push(this.attributes.length);
+      this.values.push('');
+  }
   TakeEmail() {
     // this.storage.set('EmailAccount', this.company)
     this.loadEmailAccount();
     this.itemsEmailAccount = [];
   }
-
   next() {
     this.stock = 0;
     this.slides.slideNext();
@@ -368,7 +458,6 @@ export class AddprospectPage implements OnInit {
     this.progress = this.progress + 0.5;
     this.storage.set('NamaProduk', this.customerneed);
     this.loadQuantityroduct()
-    
   }
 
   async nextSlide3() {
@@ -414,12 +503,18 @@ export class AddprospectPage implements OnInit {
       });
     });
   }
-
   prev() {
+    this.Add(name)
+    this.values = [];
     this.slides.lockSwipes(false);
     this.progress = this.progress - 0.5;
     this.slides.slidePrev();
-
+    this.item = 0;
+  }
+  prev1() {
+    this.slides.lockSwipes(false);
+    this.progress = this.progress - 0.5;
+    this.slides.slidePrev();
   }
   async loadAcount() {
     const loading = await this.loadingController.create({

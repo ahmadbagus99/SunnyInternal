@@ -5,7 +5,9 @@
   color: #F57F17;
   text-align: center;
 }
-
+.grid, .row, .col {
+  border: 1px solid black;
+}
 ion-title {
   position: absolute;
   top: 0;

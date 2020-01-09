@@ -13,25 +13,6 @@
 </ion-header>
 
 <ion-content>
-  <!-- Kegunaan untuk membuat fill dan untuk mengupload foto ke dalam akun -->
-  <!-- <ion-grid>
-    <ion-row>
-      <ion-col></ion-col>
-      <ion-col></ion-col>
-      <ion-col>
-        <div class="image-upload">
-          <label for="file-input">
-            <img src="assets/icon/add.png" />
-          </label>
-
-          <input id="file-input" type="file" />
-        </div>
-      </ion-col>
-      <ion-col></ion-col>
-      <ion-col></ion-col>
-    </ion-row>
-  </ion-grid> -->
-
   <ion-slides [options]="options" #slides class="swiper-no-swiping">
     <ion-slide>
       <ion-col>
@@ -239,13 +220,6 @@
           <ion-button expand="full" (click)="prev()" color="secondary">
             <ion-icon name="arrow-round-back"></ion-icon> Previous
           </ion-button>
-
-          <div class="button-next1">
-            <ion-button expand="full" color="success" *ngIf="!id" (click)="createdProcess()">
-              <ion-icon name="save"></ion-icon> Done </ion-button>
-            <ion-button expand="full" color="success" *ngIf="id>=1" (click)="updateProcess()">
-              <ion-icon name="save"></ion-icon> Done </ion-button>
-          </div>
         </div>
       </ion-col>
     </ion-slide>

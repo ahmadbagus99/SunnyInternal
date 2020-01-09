@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { ShareService } from 'src/app/share/share';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { PostProvider } from 'src/providers/post-providers';
 import { IonSlides } from '@ionic/angular';
 
@@ -10,7 +10,7 @@ import { IonSlides } from '@ionic/angular';
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
 })
-export class MainPage {
+export class MainPage implements OnInit{
   @ViewChild('mySlider') slider: IonSlides;
   sliderOpts = {
     autoplay: true,
@@ -19,7 +19,7 @@ export class MainPage {
       maxRatio: 5
     }
   };
-  Activity: any= null;
+  Activity: any = null;
   items: any = [];
   itemsaccount: any = [];
   user: any;
@@ -56,11 +56,14 @@ export class MainPage {
     this.LoadProfile();
     this.LoadTotalCustomer();
     this.LoadTotalProspect();
+  }
+  ngOnInit(){
     if (this.Activity == null) {
       this.textActivity;
     } else {
       this.textActivity = '';
     }
+    console.log(this.Activity)
   }
   updateprospect(id, namaCustomer, emailCustomer, alamatCustomer, no_tlp, company, alamatCompany, emailCompany, nomorCompany, customerneed, stock, hargaProduk, totalPrice, budget, status) {
     this.router.navigate(['members/view-prospect/'

@@ -1,6 +1,13 @@
 * {
   --ion-background-color: #ffffff !important;
 }
+.grid, .row, .col {
+  border: 1px solid black;
+}
+.Slide1{
+  overflow-y: scroll;
+  display: block;
+}
 
 ion-title {
   position: absolute;

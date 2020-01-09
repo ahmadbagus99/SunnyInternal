@@ -37,7 +37,8 @@ export class ViewProspectPage implements OnInit {
   buttonSave:boolean=true;
   backButton:boolean;
   pdfObj = null;
-
+  DataProduct : any = [];
+  DataQuantity : any = [];
   constructor(
     private actRoute: ActivatedRoute,
     private postPvdr: PostProvider,
@@ -86,6 +87,32 @@ export class ViewProspectPage implements OnInit {
       this.note = "On Progress"
     }
     this.isHidden = this.toggleWon;
+    this.LoadDataProspect();
+    this.LoadDataQuantity();
+  }
+  LoadDataProspect(){
+    let body = {
+      aksi:'getdata',
+      limit: this.limit,
+      start: this.start
+    };
+    this.postPvdr.postData(body,'LoadDataProduct.php?IdProspect='+this.id).subscribe(data =>{
+      for(let item of data){
+        this.DataProduct.push(item)
+      }
+    })
+  }
+  LoadDataQuantity(){
+    let body = {
+      aksi: 'getdata',
+      limit: this.limit,
+      start: this.start
+    };
+    this.postPvdr.postData(body,'LoadDataQtyProduct.php?IdProspect='+this.id).subscribe(data =>{
+      for(let item of data){
+        this.DataQuantity.push(item)
+      }
+    })
   }
 
   checkToggle() {

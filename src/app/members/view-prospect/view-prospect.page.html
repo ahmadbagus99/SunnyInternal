@@ -79,29 +79,41 @@
     <br>
   </div>
   <div>
+    <ion-grid style="width:100%" class="grid">
+      <ion-row class="row">
+        <ion-col class="col">
+          <ion-label text-center>Product</ion-label>
+        </ion-col>
+        <ion-col class="col">
+          <ion-label text-center>Quantity</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid class="grid">
+      <ion-row class="row" >
+        <ion-col class="col">
+          <ion-item *ngFor="let item of DataProduct">
+            <ion-label text-center>{{item.Product}}</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col class="col">
+          <ion-item *ngFor="let item of DataQuantity">
+            <ion-label text-center>{{item.Quantity}}</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
     <span>
-      <ion-item>
-        <ion-label position="stacked">Product Name</ion-label>
-        <ion-input [(ngModel)]="customerneed" readOnly></ion-input>
-      </ion-item>
-    </span>
-    <span>
-      <ion-item>
-        <ion-label position="stacked">Quantity</ion-label>
-        <ion-input [(ngModel)]="stock" readOnly></ion-input>
-      </ion-item>
-    </span>
-    <span>
-      <ion-item>
-        <ion-label position="stacked"> Details price Per unit </ion-label>
-        <ion-input type="text" value="{{ hargaProduk | currency:'Rp'}}" readOnly></ion-input>
-      </ion-item>
-    </span>
-    <span>
-      <ion-item>
-        <ion-label position="stacked"> Total Price </ion-label>
-        <ion-input type="text" value="{{ totalPrice | currency:'Rp'}}" readOnly></ion-input>
-      </ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-label position="stacked"> Total Price </ion-label>
+          </ion-col>
+          <ion-col class="col">
+            <ion-input type="text" value="{{ totalPrice | currency:'Rp'}}" readOnly></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </span>
     <span>
       <ion-item>
