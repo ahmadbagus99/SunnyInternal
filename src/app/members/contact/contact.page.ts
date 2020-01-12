@@ -34,7 +34,6 @@ export class ContactPage implements OnInit {
     ) { 
       
     }
-  
     ngOnInit() {
       this.setFilteredItems();
     }
@@ -109,6 +108,9 @@ export class ContactPage implements OnInit {
       }
       if(almt_perusahaan==""){
         almt_perusahaan=" "
+      }
+      if(NPWP==""){
+        NPWP=0
       }
       this.router.navigate(['members/editcontact/'
       +id+'/'

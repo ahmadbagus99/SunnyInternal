@@ -43,8 +43,6 @@ export class AddproductPage implements OnInit {
       if ( data.id == null){
       }else{
       this.id = data.id;
-      }
-
       if ( data.namaProduk == " "){
         this.namaProduk ="";
       }else{
@@ -68,6 +66,7 @@ export class AddproductPage implements OnInit {
       }else{
         this.deskripsiProduk = data.deskripsiProduk
       }
+    }
     });
     //getID   
     this.storage.get('session_storage').then((iduser) => {

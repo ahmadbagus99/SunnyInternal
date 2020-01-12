@@ -63,7 +63,6 @@ export class MainPage implements OnInit{
     } else {
       this.textActivity = '';
     }
-    console.log(this.Activity)
   }
   updateprospect(id, namaCustomer, emailCustomer, alamatCustomer, no_tlp, company, alamatCompany, emailCompany, nomorCompany, customerneed, stock, hargaProduk, totalPrice, budget, status) {
     this.router.navigate(['members/view-prospect/'

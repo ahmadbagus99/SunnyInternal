@@ -179,12 +179,13 @@ export class AddcontactPage implements OnInit {
 
    //Fungsi dimana user harus mengisi semua fill yang ada di UI dan tidak boleh kosong pas di simpan  
    createdProcess() {
+     var text = 'Data Cannot Be Empty';
     if (this.nama == '') {
-      this.warning = 'Data Cannot Be Empty'
+      this.warning = text;
     } else if (this.email == '') {
-      this.warning = 'Data Cannot Be Empty'
+      this.warning = text;
     } else if (this.no_tlp == '') {
-        this.warning = 'Data Cannot Be Empty'
+        this.warning = text;
     } else {
       return new Promise(resolve => {
         let body = {
@@ -257,6 +258,7 @@ export class AddcontactPage implements OnInit {
   }
  //fungsi untuk memajukan next page yang akan di isi di contact
   next() {
+    console.log(this.nama)
     if (this.nama == '') {
       this.warning = 'Data Cannot Be Empty'
     } else if (this.email == '') {
