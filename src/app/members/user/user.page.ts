@@ -9,7 +9,7 @@ import { LoadingController } from '@ionic/angular';
   templateUrl: './user.page.html',
   styleUrls: ['./user.page.scss'],
 })
-export class UserPage implements OnInit {
+export class UserPage {
   items : any = [];
   limit : number = 10;
   start : number = 0;
@@ -29,12 +29,8 @@ export class UserPage implements OnInit {
       this.items = [];
       this.start = 0;
       this.LoadUser();
+      console.log(this.items)
   }
-  
-  ngOnInit() {
-    
-  }
-  
   edit(id, email, password){
     this.router.navigate(['members/edituser/'+id+'/'+email+'/'+password]);
   }
@@ -47,10 +43,9 @@ export class UserPage implements OnInit {
         cssClass:'custom-loader-class',
         mode: 'md'
     });
-
     await loading.present();
-    this.storage.get('IdLogin').then((IdLogin)=>{
-      this.user = IdLogin;
+    this.storage.get('session_storage').then((Data)=>{
+      this.user = Data.map( data => data.id);
       let body = {
       aksi : 'getdata',
       limit : this.limit,

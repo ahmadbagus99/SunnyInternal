@@ -29,7 +29,7 @@ export class AddprospectPage implements OnInit {
   IdProspect : number;
   isHidden = true;
   selectHidden: boolean;
-  savebutton : boolean;
+  savebutton : boolean=true;
   id: number;
   items2: any;
   user: any;
@@ -110,6 +110,63 @@ export class AddprospectPage implements OnInit {
       this.userID = this.user;
     });
   }
+  nextSlide1() {
+    this.stock = 0;
+    this.slides.slideNext();
+    this.itemQunatityProduct = [];
+    this.slides.lockSwipes(false);
+    this.progress = this.progress + 0.5;
+    this.storage.set('NamaProduk', this.customerneed);
+    this.loadQuantityroduct()
+  }
+  async nextSlide3() {
+    this.savebutton = false;
+    this.slides.lockSwipes(false);
+    this.progress = this.progress + 0.5;
+    this.storage.get('Stock').then((data)=>{
+      var Data = data;
+      var id = Data.map( data => data.id);
+      this.idProduct = parseInt(id);
+    })
+    if (this.budget > this.totalPrice){
+      this.slides.slideNext();
+      this.showAlert = true;
+    }else{
+      this.showAlert = false;
+      const alert = await this.alertCtrl.create({
+        subHeader: 'Budget not fulfilled',
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: (blah) => {
+              console.log('cancel');
+            }
+          }, {
+            text: 'Ya',
+            handler: () => {
+              this.slides.slideNext();
+            }
+          }
+        ]
+      })
+      await alert.present();
+    }
+  }
+  BackSlide3() {
+    this.Add(name)
+    this.values = [];
+    this.slides.lockSwipes(false);
+    this.progress = this.progress - 0.5;
+    this.slides.slidePrev();
+    this.item = 0;
+  }
+  BackSlide4() {
+    this.savebutton = true;
+    this.slides.lockSwipes(false);
+    this.progress = this.progress - 0.5;
+    this.slides.slidePrev();
+  }
   pushNotif(seconds: number){
     this.localNotifications.schedule({
       title : `New Prospect`,
@@ -146,12 +203,13 @@ export class AddprospectPage implements OnInit {
       this.Add(NamaProduk);
       this.Nameproduct.push(NamaProduk);
       const index = this.itemProduct.findIndex( data => data.namaProduk == NamaProduk)
-      this.itemProduct[index].status = 'Delete'
+      this.itemProduct[index].status = 'true'
       this.loadQuantityroduct();
     });
   }
   Delete(NamaProduk){
     const index = this.itemProduct.findIndex( data => data.namaProduk == NamaProduk)
+    this.itemProduct[index].status = ''
     const indexProduct = this.itemQunatityProduct.findIndex ( data => data.namaProduk == NamaProduk)
     this.itemQunatityProduct.splice(indexProduct, 1)
     this.itemProduct[index].status = null
@@ -353,8 +411,8 @@ export class AddprospectPage implements OnInit {
               };
               this.postPvdr.postData(body, 'InsertProspect.php').subscribe(data => {
                 this.IdProspect = data.id;
-                this.Process();
-                this.Process2();
+                this.ProcessInsertDataProduct();
+                this.ProcessInsertDataQty();
                 this.router.navigate(['members/prospect']);
                 // this.savebutton = true;
               });
@@ -366,7 +424,7 @@ export class AddprospectPage implements OnInit {
     this.pushNotif(5);
     await alert.present();
   }
-  Process(){
+  ProcessInsertDataProduct(){
     return new Promise(resolve => {
       this.Nameproduct.forEach((data)=>{
         this.customerneed = data
@@ -381,7 +439,7 @@ export class AddprospectPage implements OnInit {
   })
   });
   }
-  Process2(){
+  ProcessInsertDataQty(){
     return new Promise(resolve => {
       this.values.forEach((data)=>{
         this.quantity = data
@@ -422,7 +480,6 @@ export class AddprospectPage implements OnInit {
   }
 
   hitung(){
-    // this.getValues();
     var GetPrice = this.itemQunatityProduct.map( data => data.hargaProduk);
     var Price = GetPrice.map((x)=>{
      return parseInt(x,10);
@@ -446,52 +503,8 @@ export class AddprospectPage implements OnInit {
       this.values.push('');
   }
   TakeEmail() {
-    // this.storage.set('EmailAccount', this.company)
     this.loadEmailAccount();
     this.itemsEmailAccount = [];
-  }
-  next() {
-    this.stock = 0;
-    this.slides.slideNext();
-    this.itemQunatityProduct = [];
-    this.slides.lockSwipes(false);
-    this.progress = this.progress + 0.5;
-    this.storage.set('NamaProduk', this.customerneed);
-    this.loadQuantityroduct()
-  }
-
-  async nextSlide3() {
-    this.slides.lockSwipes(false);
-    this.progress = this.progress + 0.5;
-    this.storage.get('Stock').then((data)=>{
-      var Data = data;
-      var id = Data.map( data => data.id);
-      this.idProduct = parseInt(id);
-    })
-    if (this.budget > this.totalPrice){
-      this.slides.slideNext();
-      this.showAlert = true;
-    }else{
-      this.showAlert = false;
-      const alert = await this.alertCtrl.create({
-        subHeader: 'Budget not fulfilled',
-        buttons: [
-          {
-            text: 'Cancel',
-            role: 'cancel',
-            handler: (blah) => {
-              console.log('cancel');
-            }
-          }, {
-            text: 'Ya',
-            handler: () => {
-              this.slides.slideNext();
-            }
-          }
-        ]
-      })
-      await alert.present();
-    }
   }
   UpdateQuantity(){
     return new Promise(resolve => {
@@ -502,19 +515,6 @@ export class AddprospectPage implements OnInit {
       this.postPvdr.postData(body, 'updateQuantity.php?Id='+this.idProduct).subscribe(data => {
       });
     });
-  }
-  prev() {
-    this.Add(name)
-    this.values = [];
-    this.slides.lockSwipes(false);
-    this.progress = this.progress - 0.5;
-    this.slides.slidePrev();
-    this.item = 0;
-  }
-  prev1() {
-    this.slides.lockSwipes(false);
-    this.progress = this.progress - 0.5;
-    this.slides.slidePrev();
   }
   async loadAcount() {
     const loading = await this.loadingController.create({
@@ -541,7 +541,6 @@ export class AddprospectPage implements OnInit {
       });
     })
   }
-
   createPdf() {
     var docDefinition = {
       content: [
@@ -602,7 +601,6 @@ export class AddprospectPage implements OnInit {
     }
     this.pdfObj = pdfMake.createPdf(docDefinition);
   }
-
   downloadPdf() {
     if (this.plt.is('cordova')) {
       this.pdfObj.getBuffer((buffer) => {

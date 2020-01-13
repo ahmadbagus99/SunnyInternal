@@ -40,27 +40,34 @@ export class ActivitiesPage implements OnInit {
     @Inject(LOCALE_ID) private locale: string,
     private storage : Storage,
     ){
-
-     }
+    }
  
   ngOnInit() {
     this.resetEvent();
     this.storage.get('Activity').then((item)=>{
       var Data = item;
+       if ( Data == null){
+        //Do nothing
+       }else{
       this.changes = Data.length;
       console.log(this.changes)
+       }
     })
   }
   ionViewWillEnter(){
     this.storage.get('Activity').then((item)=>{
       this.eventSource = item;
-      if ( this.eventSource.length == this.changes ){
-        console.log('Tidak ada Perubahan')
-        this.Move = false;
-      }else if ( this.eventSource.length != this.changes){
-        console.log('Ada Perubahan')
-        this.Move = true;
-      }
+        if ( this.eventSource == null){
+          //Do nothing
+        }else{
+          if ( this.eventSource.length == this.changes ){
+            console.log('Tidak ada Perubahan')
+            this.Move = false;
+          }else if ( this.eventSource.length != this.changes){
+            console.log('Ada Perubahan')
+            this.Move = true;
+          }
+        }
     })
   }
  // Fungsi untuk menambahkan aktivitas pada page activity.//

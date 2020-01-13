@@ -8,7 +8,7 @@
     <ion-title *ngIf="!id">Add Prospect</ion-title>
     <ion-title *ngIf="id>=1">Edit Prospect</ion-title>
     <ion-buttons slot="primary">
-      <ion-button (click)="SaveProspect()" [hidden]="savebutton">Done</ion-button>
+      <ion-button (click)="SaveProspect()" [hidden]="savebutton">Order Now</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -77,20 +77,9 @@
               <ion-input [(ngModel)]="company"></ion-input>
             </ion-item>
           </span>
-          <!-- <span>
-            <ion-item>
-              <ion-label position="floating">Product Needed</ion-label>
-              <ion-select placeholder="Product" [(ngModel)]="customerneed">
-                <ion-select-option *ngFor="let item of itemProduct" value="{{item.namaProduk}}">{{item.namaProduk}}
-                </ion-select-option>
-              </ion-select>
-            </ion-item>
-          </span> -->
-
         </div>
-
         <div class="next-prog">
-          <ion-button expand="full" (click)="next()" color="success" [disabled]="!namaCustomer">Next Progress
+          <ion-button (click)="nextSlide1()" color="success" [disabled]="!namaCustomer">Next Progress
           </ion-button>
         </div>
       </ion-col>
@@ -100,18 +89,13 @@
       <span>
         <ion-list>
           <ion-item *ngFor="let item of itemProduct">
-            <!-- <ion-avatar slot="start">
-              
-            </ion-avatar> -->
             <ion-icon slot="start" name="ios-basket"></ion-icon>
               <ion-label>
                 <h3>{{item.namaProduk}}</h3>
                 <ion-input type="text" value="{{ item.hargaProduk | currency:'Rp '}}" readOnly></ion-input>
               </ion-label>
-            <ion-button slot="end" color="success" (click)="showOnceToast(item.id,item.namaProduk)" [hidden]="!isHidden">Add</ion-button>
-                    <div *ngIf="item.status!=null">
-                      <ion-button slot="end" (click)="Delete(item.namaProduk)" color="danger">{{item.status}}</ion-button>
-                    </div>
+            <ion-button slot="end" color="success" (click)="showOnceToast(item.id,item.namaProduk)" [hidden]=item.status>Add</ion-button>
+            <ion-button slot="end" (click)="Delete(item.namaProduk)" color="danger" [hidden]=!item.status>Remove</ion-button>
           </ion-item>
         </ion-list>
         </span>
@@ -133,19 +117,10 @@
                 <span>
                   <ion-item *ngFor="let items of itemQunatityProduct">
                     <ion-label position="stacked">{{items.namaProduk}}</ion-label>
-                    <!-- <ion-input type="text" readOnly></ion-input> -->
                     <ion-input type="text" value="{{ items.hargaProduk | currency:'Rp '}}" readOnly></ion-input>
                   </ion-item>
                 </span>
               </ion-col>
-              <!-- <ion-col>
-                <span>
-                  <ion-item>
-                    <ion-label position="stacked">Price</ion-label>
-                    <ion-input type="text" value="{{ items.hargaProduk | currency:'Rp '}}" readOnly></ion-input>
-                  </ion-item>
-                </span>
-              </ion-col> -->
               <ion-col>
                 <ion-item *ngFor="let item of attributes; let i = index">
                   <ion-label position="stacked">Quantity</ion-label>
@@ -154,25 +129,6 @@
               </ion-col>
             </ion-row>
           </ion-grid>
-           
-          <!-- <span>
-            <ion-item *ngFor="let item of itemQunatityProduct">
-              <ion-label position="stacked">Price</ion-label>
-              <ion-input type="text" value="{{ item.hargaProduk | currency:'Rp '}}" readOnly></ion-input>
-            </ion-item>
-          </span> -->
-          <!-- <span>
-            <ion-item>
-              <ion-label position="floating">Stock Needed</ion-label>
-              <ion-input type="number" [(ngModel)]="stock" (change)="hitung()"></ion-input>
-            </ion-item>
-          </span> -->
-          <!-- <span>
-            <ion-item *ngFor="let item of itemQunatityProduct">
-              <ion-label position="stacked">Available Stock</ion-label>
-              <ion-input readOnly>{{item.jumlahProduk}}</ion-input>
-            </ion-item>
-          </span> -->
           <span>
             <ion-item>
               <ion-label position="floating">Total Price</ion-label>
@@ -188,8 +144,8 @@
         </div> 
 
         <div class="next-prog">
-          <!-- <ion-button expand="full" (click)="prev()" color="primary">Previous</ion-button> -->
-          <ion-button  (click)="nextSlide3()" color="success">Next</ion-button>
+          <ion-button (click)="BackSlide3()" color="primary">Back</ion-button>
+          <ion-button (click)="nextSlide3()" color="success">Next</ion-button>
         </div>
       </ion-col>
     </ion-slide>
@@ -330,12 +286,8 @@
             </ion-item>
           </span>
         </div>
-        <div>
-          <ion-button expand="full" (click)="prev1()" color="primary">Previous</ion-button>
-          <!-- <ion-button expand="full" (click)="SaveProspect()" [hidden]="savebutton" color="success">Save</ion-button> -->
-          <!-- <ion-button fill="clear" (click)="downloadPdf()" color="dark" [disabled]="!pdfObj">Download PDF
-          </ion-button> -->
-          <br>
+        <div class="ButtonSlide4">
+          <ion-button (click)="BackSlide4()" color="primary">Back</ion-button>
         </div>
       </ion-col>
     </ion-slide>
