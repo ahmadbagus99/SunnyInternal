@@ -166,6 +166,7 @@ export class AddcontactPage implements OnInit {
       });
   }
   loadCompanyAddress() {
+    this.itemsPerusahaan = [];
     let body = {
       aksi: 'getdata',
       limit: this.limit,
