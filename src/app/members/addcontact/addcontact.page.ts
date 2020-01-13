@@ -60,6 +60,7 @@ export class AddcontactPage implements OnInit {
     this.items = [];
     this.start = 0;
     this.loadAcount();
+    console.log(this.items)
   }
   showNow() {
     this.isHidden = false;
@@ -174,6 +175,8 @@ export class AddcontactPage implements OnInit {
       for (let item of data) {
         this.itemsPerusahaan.push(item);
       }
+      var GetAddress = this.itemsPerusahaan.map(data => data.alamat)
+      this.almt_perusahaan = GetAddress;
     });
   }
 
