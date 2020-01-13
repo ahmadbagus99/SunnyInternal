@@ -309,7 +309,7 @@ export class AddcontactPage implements OnInit {
           }
         },
         {
-          text: 'Ya',
+          text: 'Yes',
           handler: () => {
             this.router.navigate(['members/contact'])
           

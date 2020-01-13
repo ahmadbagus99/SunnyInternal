@@ -628,7 +628,7 @@ export class AddprospectPage implements OnInit {
           }
         },
         {
-          text: 'Ya',
+          text: 'Yes',
           handler: () => {
             this.router.navigate(['members/prospect'])
             this.removeStorage();
