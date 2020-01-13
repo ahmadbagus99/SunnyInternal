@@ -274,27 +274,17 @@ export class AddcontactPage implements OnInit {
     this.slides.slidePrev();
   }
   async loadAcount() {
-    const loading = await this.loadingController.create({
-      message: "",
-      spinner: 'crescent',
-      translucent: true,
-      cssClass: 'custom-loader-class',
-      mode: 'md'
-    });
-    await loading.present();
-    this.storage.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
+    this.storage.get('session_storage').then((Data) => {
+      this.user = Data.map(data => data.id);
       let body = {
         aksi: 'getdata',
         limit: this.limit,
         start: this.start,
       };
       this.postPvdr.postData(body, 'LoadAccount.php?Id=' + this.user).subscribe(data => {
-        loading.dismiss().then(() => {
           for (let item of data) {
             this.items.push(item);
           }
-        })
       });
     })
   }
