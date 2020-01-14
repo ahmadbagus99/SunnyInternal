@@ -1,9 +1,9 @@
 * {
-  --ion-background-color: #ffffff !important;
+  --ion-background-color: #ffffff  !important;
 }
 
 ion-content {
-  --ion-background-color: #EEEEEE !important;
+  --ion-background-color: rgb(255, 255, 255) fixed !important;  
 }
 
 ion-title {
@@ -32,16 +32,16 @@ ion-back-button {
   color: #FFFFFF;
 }
 
+
 .new-background-color {
   --background: #54d61c;
 }
 
 .background {
-  position: relative;
-  margin: 10px;
-  height: 96%;
+  position: fixed;
+  // margin: 10px;
+  // height: 100%;
   background-color: white;
-  border-radius: 6px;
 }
 
 .background2 {
@@ -56,8 +56,9 @@ ion-back-button {
   background-image: url('../../../assets/img/Protruding-Squares.svg');
   background-attachment: fixed;
   background-size: cover;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  height: 45vw;
+  // border-top-left-radius: 6px;
+  // border-top-right-radius: 6px;
 }
 
   img {
@@ -66,8 +67,8 @@ ion-back-button {
     left: 35%;
     border-style: solid;
     border: 3px solid #EEEEEE;
-    width: 100px;
-    height: 100px;
+    width: 25vw;
+    height: 25vw;
     border-radius: 50%;
     /* left: 46%; */
     /* margin-left: -10vw; */
@@ -85,7 +86,7 @@ ion-back-button {
 }
 
   h3 {
-    font-size: 18px;
+    font-size: 4vw;
     margin-bottom: 0vw;
     margin-left: 0px;
   }
@@ -209,7 +210,7 @@ div.content ion-button {
 
 
 .items {
-  position: relative;
+  // position: relative;
   align-items: center;
   size: 100px;
   left: -8%;
@@ -219,4 +220,8 @@ div.content ion-button {
 .field {
   position: relative;
   height: 50px;
+}
+
+.content {
+  position: fixed;
 }

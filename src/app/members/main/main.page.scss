@@ -9,7 +9,7 @@
 
 ion-content {
   --ion-background-color: #EEEEEE !important;
-  
+
 }
 
 ion-icon {
@@ -42,6 +42,7 @@ ion-card-content {
 
   .item-name {
     position: absolute;
+    text-align: left;
     margin-top: -5vw;
     font-style: bold;
     font-size: 12px;
@@ -65,7 +66,7 @@ ion-col {
     // position: absolute;
     // margin-left: 40px;
     margin-top: 0px;
-    font-size: 13px;
+    font-size: 28px;
     text-align: center;
     left: 1vw;
     // border-left: solid 1px black;
@@ -242,6 +243,7 @@ ion-grid {
 }
 
 .extra-content {
+  margin-top: 1.5vw;
   background-color: white;
   height: 30%;
 
@@ -273,6 +275,7 @@ ion-grid {
         color: black;
         font-size: 12vw;
       }
+
       display: inline-block;
       width: 112px;
       height: 5px;
@@ -283,13 +286,14 @@ ion-grid {
       margin-top: -10vw;
       width: 100vw;
       height: 20vw;
+      text-align: left;
     }
   }
 }
 
 .extra-content2 {
-  // height: 60vw;
   background-color: white;
+  height: 30%;
 
   ion-text {
     position: relative;
@@ -324,6 +328,7 @@ ion-grid {
       margin-top: -10vw;
       width: 100vw;
       height: 20vw;
+      text-align: left;
     }
 
   }
@@ -497,7 +502,7 @@ ion-slide {
 .activities-text {
   position: absolute;
   text-align: start;
-  margin-left: 18%;
+  margin-left: 15vw;
   font-size: 4vw;
 }
 
@@ -512,9 +517,8 @@ ion-slide {
   position: relative;
   margin-top: 20vw;
   font-size: 4vw;
-  // left: 12vw;
+  margin-left: 20vw;
   // height: 35vw;
-  align-items: center;
 }
 
 .prospect-grid {
@@ -528,7 +532,7 @@ ion-slide {
 .prospect-text {
   position: absolute;
   text-align: start;
-  margin-left: 18%;
+  margin-left: 15vw;
   font-size: 4vw;
 }
 
@@ -566,7 +570,10 @@ ion-textarea {
 }
 
 .prospectcard {
-  height: 50vw;
+  height: 55vw;
+  width: 35vw;
+  position: relative;
+  left: 11vw;
 }
 
 .followup {

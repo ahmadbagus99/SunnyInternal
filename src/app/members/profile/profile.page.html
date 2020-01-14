@@ -12,28 +12,26 @@
       </div>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
 
-<ion-content>
-  <div class="background">
+  <div class="cover">
     <ion-col size="12" size-sm align-self-center>
-    <div class="cover">
       <div class="add">
         <label for="file-input">
           <img [src]="url" *ngIf="url">
           <img [hidden]="isLoaded" src="assets/img/avatar-contact.png" />
         </label>
         <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" />
+        <ion-col size="12" size-sm>
+          <div class="nama">
+            <h3 *ngFor="let item of items">{{item.fullname}}</h3>
+          </div>
+        </ion-col>
       </div>
-      <ion-col size="12" size-sm>
-      <div class="nama">
-        <h3 *ngFor="let item of items">{{item.fullname}}</h3>
-      </div>
-    </ion-col>
-    </div>
   </ion-col>
-  
+</div>
+</ion-header>
 
+<ion-content style="position: relative;">
   
     <div *ngFor="let item of items" class="items">
       <!-- fungsi sebagai munculnya tampilan nomor telepon ketika di view -->
@@ -68,5 +66,4 @@
     </div>
   </div>
     <!-- fungsi sebagai munculnya tampilan Twitter ketika di view -->
-  </div>
 </ion-content>

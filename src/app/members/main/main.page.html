@@ -35,9 +35,9 @@
         <ion-text class="sub-text"><b> Incentive </b></ion-text>
         <ion-text class="month-text"><b> / month </b></ion-text>
         <div class="vertical-line">
+        <ion-text class="incentive-report"><b>{{Incentive}}</b></ion-text>
           <!-- <ion-text class="incentive-report"><b>30K</b></ion-text> -->
           <!-- <ion-input class="incentive-report" value="{{ Incentive | currency:'Rp '}}" readOnly></ion-input> -->
-          <p>{{Incentive}}</p>
         </div>
       </ion-col>
 
@@ -95,7 +95,7 @@
 
   <ion-grid class="extra-content">
     <ion-row>
-      <ion-col text-left size="13" size-sm >
+      <ion-col text-left size="13" size-sm>
         <div class="activities-text">
           <ion-text text-sm><b>Your Activity</b></ion-text>
         </div>
@@ -151,19 +151,21 @@
 
       <ion-col>
         <div class="scrolling-wrapper-2">
-          <div class="text-noact2">
-            <p text-center>{{text}}</p>
+          <div text-center class="text-noact2">
+            <p>{{text}}</p>
           </div>
           <div *ngFor="let item of itemProspect">
             <ion-card class="prospectcard" button
               (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
               <img center src="assets/img/customer-icon.png" />
               <ion-card-content text-align-left>
-                  <ion-textarea class="item-name" readOnly><b>{{item.namaCustomer}}</b></ion-textarea>
-                  <br>
-                  <ion-textarea readOnly>
-                    <h5> Follow up </h5>
-                  </ion-textarea>
+                <ion-textarea class="item-name" readOnly><b>{{item.namaCustomer}}</b>
+                  <h5> Follow up </h5>
+                </ion-textarea>
+                <br>
+                <!-- <ion-textarea readOnly>
+                    
+                  </ion-textarea> -->
               </ion-card-content>
             </ion-card>
           </div>
