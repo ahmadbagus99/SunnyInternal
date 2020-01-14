@@ -113,6 +113,9 @@
         </div>
         <div *ngFor="let item of Activity" class="card-new">
           <ion-card class="activities-card">
+            <div class="icon-activities">
+              <img src="assets/img/Activity.png"/>
+              </div>
             <ion-card-content>
               <!-- <ion-datetime displayFormat="h:mm a" pickerFormat="h mm a" [(ngModel)]="time"></ion-datetime> -->
               <h2><b>{{item.title}}</b></h2>
@@ -121,7 +124,9 @@
                 <ion-text> with </ion-text>
                 {{item.Prospect}}
                 <p> {{item.startTime}} </p>
+             
               </ion-text>
+             
               <!-- <div class="time-activities">
                 {{item.startTime}}
               </div> -->
