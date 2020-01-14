@@ -93,77 +93,81 @@
   </div>
 
 
-  <!-- Menampilkan report Activities -->
+  <ion-grid class="extra-content">
+    <ion-row>
+      <ion-col size="13" size-sm class="ion-align-self-start">
+        <div class="activities-text">
+          <ion-text text-sm><b>Your Activity</b></ion-text>
+        </div>
+        <div class="see-all">
+          <a [routerLink]="['/members/activities']">
+            <ion-text text-sm>See all</ion-text>
+          </a>
+        </div>
+      </ion-col>
+
+
+      <ion-col class="card-activity">
+        <div class="scrolling-wrapper">
+          <div class="text-noact">
+            <p text-center>{{textActivity}}</p>
+          </div>
+          <div *ngFor="let item of Activity" class="card-new">
+            <ion-card class="activities-card">
+              <ion-card-content>
+                <!-- <ion-datetime displayFormat="h:mm a" pickerFormat="h mm a" [(ngModel)]="time"></ion-datetime> -->
+                <h2><b>{{item.title}}</b></h2>
+                <ion-text class="time2" readOnly>
+                  {{item.desc}}
+                  <ion-text> with </ion-text>
+                  {{item.Prospect}}
+                  <p> {{item.startTime}} </p>
+                </ion-text>
+                <!-- <div class="time-activities">
+                    {{item.startTime}}
+                  </div> -->
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+        <!-- </div> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-grid class="extra-content">
-    <div class="activities-text">
-      <ion-text><b>Activities for you</b></ion-text>
-    </div>
-
-    <div class="see-all">
-      <a [routerLink]="['/members/activities']">
-        <ion-text>See all</ion-text>
-      </a>
-    </div>
-
-    <div class="extra-content">
-      <div class="scrolling-wrapper">
-        <div class="text-noact">
-          <p text-center>{{textActivity}}</p>
+    <ion-row>
+      <ion-col size="13" size-sm class="ion-align-self-start">
+        <div class="prospect-text">
+          <ion-text text-sm><b>Need follow up</b></ion-text>
         </div>
-        <div *ngFor="let item of Activity" class="card-new">
-          <ion-card class="activities-card">
-            <ion-card-content>
-              <!-- <ion-datetime displayFormat="h:mm a" pickerFormat="h mm a" [(ngModel)]="time"></ion-datetime> -->
-              <h2><b>{{item.title}}</b></h2>
-              <ion-text class="time2" readOnly>
-                {{item.desc}}
-                <ion-text> with </ion-text>
-                {{item.Prospect}}
-                <p> {{item.startTime}} </p>
-              </ion-text>
-              <!-- <div class="time-activities">
-                {{item.startTime}}
-              </div> -->
-            </ion-card-content>
-          </ion-card>
+        <div class="see-all">
+          <a [routerLink]="['/members/prospect']">
+            <ion-text text-sm>See all</ion-text>
+          </a>
         </div>
-      </div>
-    </div>
+      </ion-col>
+
+
+      <ion-col class="card-activity">
+        <div class="scrolling-wrapper-2">
+          <div class="text-noact2">
+            <p text-center>{{text}}</p>
+          </div>
+          <div *ngFor="let item of itemProspect" class="card">
+            <ion-card class="prospectcard" button
+              (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
+              <img center src="assets/img/customer-icon.png" />
+              <ion-card-content>
+                  <ion-textarea class="item-name" readOnly><b>{{item.namaCustomer}}</b></ion-textarea>
+                  <br>
+                  <ion-textarea readOnly>
+                    <h5> Follow up </h5>
+                  </ion-textarea>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
   </ion-grid>
-
-
-  <!-- MENAMPILKAN PROSPECT LAINNYA  -->
-  <ion-grid class="extra-content2">
-    <div class="prospect-text">
-      <ion-text><b>Prospect for you</b></ion-text>
-    </div>
-    <div class="see-all">
-      <a [routerLink]="['/members/prospect']">
-        <ion-text>See all</ion-text>
-      </a>
-    </div>
-
-    <div class="extra-content2">
-      <div class="scrolling-wrapper-2">
-        <div class="text-noact2">
-          <p text-center>{{text}}</p>
-        </div>
-        <div *ngFor="let item of itemProspect" class="card">
-          <ion-card class="prospectcard" button
-            (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
-            <img center src="assets/img/customer-icon.png" />
-            <ion-card-content>
-                <ion-textarea class="item-name" readOnly><b>{{item.namaCustomer}}</b></ion-textarea>
-                <br>
-                <ion-textarea readOnly>
-                  <h5> Follow up </h5>
-                </ion-textarea>
-            </ion-card-content>
-          </ion-card>
-        </div>
-      </div>
-    </div>
-  </ion-grid>
-
-</ion-content>

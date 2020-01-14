@@ -242,12 +242,17 @@ ion-grid {
 }
 
 .extra-content {
-  height: 55vw;
   background-color: white;
+  height: 30%;
 
   ion-text {
     position: relative;
     margin-top: 90vw;
+  }
+
+  .card-activity {
+    position: absolute;
+    left: 12vw;
   }
 
   .scrolling-wrapper {
@@ -363,10 +368,10 @@ h5 {
 }
 
 .see-all {
-  // position: absolute;
-  margin-left: 80vw;
-  margin-top: 5vw;
-  font-size: 15px;
+  text-align: end;
+  /* margin-left: 80vw; */
+  /* margin-top: 5vw; */
+  font-size: 3vw;
   color: darkgrey;
 }
 
@@ -470,12 +475,12 @@ ion-input {
   align-content: center;
 }
 
-.seeall {
-  font-style: normal;
-  text-decoration: underline;
-  margin-top: 5vw;
-  font-size: 15px;
-}
+// .seeall {
+//   font-style: normal;
+//   text-decoration: underline;
+//   margin-top: 5vw;
+//   font-size: 15px;
+// }
 
 .time-activities {
   position: relative;
@@ -491,8 +496,9 @@ ion-slide {
 
 .activities-text {
   position: absolute;
-  margin-top: 5vw;
-  margin-left: 3vw;
+  text-align: start;
+  margin-left: 18%;
+  font-size: 4vw;
 }
 
 .text-noact {
@@ -505,8 +511,9 @@ ion-slide {
 .text-noact2 {
   position: relative;
   margin-top: 20vw;
-  /* margin-left: 20vw; */
-  height: 35vw;
+  font-size: 4vw;
+  // left: 12vw;
+  // height: 35vw;
   align-items: center;
 }
 
@@ -520,8 +527,9 @@ ion-slide {
 
 .prospect-text {
   position: absolute;
-  margin-top: 5vw;
-  margin-left: 3vw;
+  text-align: start;
+  margin-left: 18%;
+  font-size: 4vw;
 }
 
 .p {
@@ -562,5 +570,9 @@ ion-textarea {
 }
 
 .followup {
+  position: absolute;
+}
+
+.prospect {
   position: absolute;
 }
