@@ -32,7 +32,7 @@ export class MainPage implements OnInit{
   totalProspect: number = 0;
   text: string = "You don't have prospect today";
   textActivity: string = "You don't have activities today";
-  itemIncentive: any;
+  Incentive: string;
   NewDate : string;
 
   constructor(
@@ -43,13 +43,11 @@ export class MainPage implements OnInit{
   ) {
   }
    ionViewWillEnter() {
-    
     this.items = [];
     this.start = 0;
     this.itemTotalProspect = [];
     this.itemCustomer = [];
     this.itemProspect = [];
-    this.itemIncentive = [];
     this.LoadActivity();
     this.LoadIncentive();
     this.loadProspect();
@@ -61,7 +59,6 @@ export class MainPage implements OnInit{
     } else {
       this.textActivity = '';
     }
-    
   }
   ngOnInit(){
     // if (this.Activity == null) {
@@ -103,7 +100,6 @@ export class MainPage implements OnInit{
         for (let item of data) {
           this.itemCustomer.push(item);
           this.totalCustomer = this.itemCustomer.length;
-          // this.storage.set('Customer', this.itemCustomer)
         }
       });
     });
@@ -119,9 +115,15 @@ export class MainPage implements OnInit{
         start: this.start,
       };
       this.postPvdr.postData(body, 'GetIncentive.php?Id=' + this.user).subscribe(data => {
-        for (let item of data) {
-          this.itemIncentive.push(item);
-        }
+        var DataIncentive = parseInt(data.map(data => data.Incentive));
+        var GetDigit = DataIncentive.toString().length;
+        if (GetDigit <= 3){
+          this.Incentive = DataIncentive.toString();
+        }else if ( GetDigit > 3){
+         var SubsNumber = DataIncentive.toString().substring(0, DataIncentive.toString().length-3)
+         this.Incentive = SubsNumber + 'K';
+       }
+       console.log( this.Incentive)
       });
     });
   }
