@@ -43,26 +43,32 @@ export class MainPage implements OnInit{
   ) {
   }
    ionViewWillEnter() {
+    
     this.items = [];
     this.start = 0;
     this.itemTotalProspect = [];
     this.itemCustomer = [];
     this.itemProspect = [];
     this.itemIncentive = [];
-    this.Activity = [];
     this.LoadActivity();
     this.LoadIncentive();
     this.loadProspect();
     this.LoadProfile();
     this.LoadTotalCustomer();
     this.LoadTotalProspect();
-  }
-  ngOnInit(){
     if (this.Activity == null) {
       this.textActivity;
     } else {
       this.textActivity = '';
     }
+    
+  }
+  ngOnInit(){
+    // if (this.Activity == null) {
+    //   this.textActivity;
+    // } else {
+    //   this.textActivity = '';
+    // }
   }
   updateprospect(id, namaCustomer, emailCustomer, alamatCustomer, no_tlp, company, alamatCompany, emailCompany, nomorCompany, customerneed, stock, hargaProduk, totalPrice, budget, status) {
     this.router.navigate(['members/view-prospect/'
@@ -180,6 +186,7 @@ export class MainPage implements OnInit{
     });
   }
   LoadActivity(){
+    this.Activity = [];
     this.storage.get('session_storage').then((iduser) => {
       var ID = iduser;
       this.user = ID.map(data => data.id)
