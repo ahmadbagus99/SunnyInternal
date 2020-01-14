@@ -31,8 +31,8 @@
 </div>
 </ion-header>
 
-<ion-content style="position: relative;">
-  
+<ion-content>
+  <div class="all">
     <div *ngFor="let item of items" class="items">
       <!-- fungsi sebagai munculnya tampilan nomor telepon ketika di view -->
       <div class="nomor-telepon">
@@ -41,7 +41,6 @@
           <ion-input class="phonenumber" type="text" [(ngModel)]="phonenumber" readonly>{{item.phonenumber}}</ion-input>
         </ion-item>
       </div>
-    
 
     <!-- fungsi sebagai munculnya tampilan alamat rumah ketika di view -->
     <div class="alamat">
@@ -65,5 +64,6 @@
       </ion-item>
     </div>
   </div>
+</div>
     <!-- fungsi sebagai munculnya tampilan Twitter ketika di view -->
 </ion-content>
