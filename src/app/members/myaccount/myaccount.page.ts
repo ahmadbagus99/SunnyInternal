@@ -31,7 +31,7 @@ export class MyaccountPage implements OnInit {
               console.log('Confirm Cancel');
             }
           }, {
-            text: 'Ya',
+            text: 'Yes',
             handler: () => {
               this.authService.logout();
             }
