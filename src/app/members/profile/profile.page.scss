@@ -53,7 +53,6 @@ ion-back-button {
 }
 
 .cover {
-  height: 30%;
   background-image: url('../../../assets/img/Protruding-Squares.svg');
   background-attachment: fixed;
   background-size: cover;
@@ -64,14 +63,15 @@ ion-back-button {
   img {
     position: relative;
     bottom: 62%;
+    left: 35%;
     border-style: solid;
     border: 3px solid #EEEEEE;
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    left: 46%;
-    margin-left: -10vw;
-    margin-top: 5vw;
+    /* left: 46%; */
+    /* margin-left: -10vw; */
+    /* margin-top: 5vw; */
   }
 
 .nama {
@@ -198,14 +198,14 @@ div.content ion-button {
   display: none;
 }
 
-.add {
-  img {
-    text-indent: -10000px;
-    margin-right: -13.1%;
-    margin-bottom: 1%;
+// .add {
+//   img {
+//     text-indent: -10000px;
+//     margin-right: -13.1%;
+//     margin-bottom: 1%;
     
-  }
-}
+//   }
+// }
 
 
 .items {

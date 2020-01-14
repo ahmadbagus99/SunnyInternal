@@ -143,7 +143,7 @@ export class AddprospectPage implements OnInit {
               console.log('cancel');
             }
           }, {
-            text: 'Ya',
+            text: 'Yes',
             handler: () => {
               this.slides.slideNext();
             }
@@ -381,7 +381,7 @@ export class AddprospectPage implements OnInit {
             console.log('cancel')
           }
         }, {
-          text: 'Ya',
+          text: 'Yes',
           handler: () => {
             this.createPdf();
             this.removeStorage();
