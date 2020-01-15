@@ -19,8 +19,9 @@
             <ion-input placeholder="Email" [(ngModel)]="email" type="text"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input placeholder="Password" [(ngModel)]="password" type="password"></ion-input>
-          </ion-item>
+            <ion-input  [(ngModel)]="password"  placeholder="Password" [type]="getType()"></ion-input>
+            <ion-icon name="eye" item-right (click)="toggleTextPassword()"></ion-icon>
+     </ion-item>
         </div>
         <br>
         <ion-button expand="full" shape="round" (click)="login()" color="success">SIGN IN</ion-button>

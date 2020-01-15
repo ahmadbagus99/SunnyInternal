@@ -1,3 +1,5 @@
+<!-- Header Start -->
+
 <ion-header>
   <ion-toolbar color=#F57F17 class="new-background-color">
     <ion-buttons slot="start">
@@ -12,31 +14,38 @@
       </div>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
+
+  <div class="cover">
+    <ion-col class="add" size="12" size-md>
+      <div>
+        <label size="12" size-sm for="file-input">
+          <img [src]="url" *ngIf="url" />
+          <img class="add-pict" [hidden]="isLoaded" src="assets/img/avatar-contact.png" />
+        </label>
+
+        <!-- button unggah foto  -->
+        <!-- <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" /> -->
+
+        <ion-col size="12" size-sm>
+            <div class="nama">
+              <h3 *ngFor="let item of items">{{item.fullname}}</h3>
+            </div>
+          </ion-col>
+        </div>
+      </ion-col>
+    </div>
+    </ion-header>
+
+
+<!--  Header end -->
+
+
+<!-- content start -->
 
 <ion-content>
-  <div class="background">
-    <ion-col size="12" size-sm align-self-center>
-    <div class="cover">
-      <div class="add">
-        <label for="file-input">
-          <img [src]="url" *ngIf="url">
-          <img [hidden]="isLoaded" src="assets/img/avatar-contact.png" />
-        </label>
-        <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" />
-      </div>
-      <ion-col size="12" size-sm>
-      <div class="nama">
-        <h3 *ngFor="let item of items">{{item.fullname}}</h3>
-      </div>
-    </ion-col>
-    </div>
-  </ion-col>
-  
-
-  
-    <div *ngFor="let item of items" class="items">
-      <!-- fungsi sebagai munculnya tampilan nomor telepon ketika di view -->
+  <div class="all">
+    <div class="items" *ngFor="let item of items" >
+      <!-- Menampilkan nomor telepon -->
       <div class="nomor-telepon">
         <ion-item lines="none">
           <ion-label position="stacked">Phone Number </ion-label>
@@ -45,28 +54,34 @@
       </div>
     
 
-    <!-- fungsi sebagai munculnya tampilan alamat rumah ketika di view -->
-    <div class="alamat">
+    <!-- Menampilkan list birthday -->
+    <div class="birthday">
       <ion-item lines="none">
         <ion-label position="stacked">Birthday</ion-label>
         <ion-input class="birthday" type="text" [(ngModel)]="birthday" readonly>{{item.birthday}}</ion-input>
       </ion-item>
     </div>
 
-     <!-- fungsi sebagai munculnya tampilan npwp ketika di view -->
-     <div class="npwp">
+
+    <!-- Menampilkan list email -->
+    <div class="email">
       <ion-item lines="none">
         <ion-label position="stacked">Email</ion-label>
         <ion-input class="email" type="text" [(ngModel)]="email" readonly>{{item.email}}</ion-input>
       </ion-item>
     </div>
-    <div class="twitter">
+
+
+    <!-- Menampilkan list twitter -->
+    <div class="country">
       <ion-item lines="none">
         <ion-label position="stacked">Country</ion-label>
         <ion-input class="country" type="text" [(ngModel)]="country" readonly>{{item.country}}</ion-input>
       </ion-item>
     </div>
+
+
   </div>
-    <!-- fungsi sebagai munculnya tampilan Twitter ketika di view -->
-  </div>
-</ion-content>
+
+  
+

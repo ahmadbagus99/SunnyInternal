@@ -1,9 +1,9 @@
 * {
-  --ion-background-color: #ffffff !important;
+  --ion-background-color: #ffffff  !important;
 }
 
 ion-content {
-  --ion-background-color: #EEEEEE !important;
+  --ion-background-color: rgb(255, 255, 255) fixed !important;  
 }
 
 ion-title {
@@ -32,16 +32,16 @@ ion-back-button {
   color: #FFFFFF;
 }
 
+
 .new-background-color {
   --background: #54d61c;
 }
 
 .background {
-  position: relative;
-  margin: 10px;
-  height: 96%;
+  position: fixed;
+  // margin: 10px;
+  // height: 100%;
   background-color: white;
-  border-radius: 6px;
 }
 
 .background2 {
@@ -56,59 +56,45 @@ ion-back-button {
   background-image: url('../../../assets/img/Protruding-Squares.svg');
   background-attachment: fixed;
   background-size: cover;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  height: 50vw;
+  // border-top-left-radius: 6px;
+  // border-top-right-radius: 6px;
 }
 
   img {
     position: relative;
     bottom: 62%;
-    left: 35%;
+    left: 38vw;
     border-style: solid;
     border: 3px solid #EEEEEE;
-    width: 100px;
-    height: 100px;
+    width: 25vw;
+    height: 25vw;
     border-radius: 50%;
-    /* left: 46%; */
-    /* margin-left: -10vw; */
-    /* margin-top: 5vw; */
   }
 
 .nama {
   position: relative;
-  width: 141px;
-  height: 50px;
-  left: 50%;
-  margin-left: -73px;
+  /* width: 141px; */
+  /* height: 50px; */
+  /* left: 50%; */
+  /* margin-left: -73px; */
   text-align: center;
   color: white;
 }
 
   h3 {
-    font-size: 18px;
-    margin-bottom: 0vw;
-    margin-left: 0px;
+    font-size: 4vw;
+    // margin-bottom: 0vw;
+    // margin-left: 0px;
   }
 
-
-.perusahaan {
-  position: absolute;
-  width: 98px;
-  height: 50px;
-  top: 39%;
-  left: 50%;
-  margin-left: -54px;
-  margin-top: -25px;
-  text-align: center;
-}
-
 .nomor-telepon {
-  position: absolute;
-  bottom: 309px;
-  margin-left: 20%;
+  // position: absolute;
+  // bottom: 309px;
+  // margin-left: 20%;
 
   ion-input {
-    font-size: 13px;
+    font-size: 16px;
     margin: 2px;
   }
 
@@ -117,13 +103,13 @@ ion-back-button {
   }
 }
 
-.alamat {
-  position: absolute;
-  bottom: 262px;
-  margin-left: 20%;
+.birthday {
+  // position: absolute;
+  // bottom: 262px;
+  // margin-left: 20%;
 
   ion-input {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   ion-label {
@@ -131,13 +117,13 @@ ion-back-button {
   }
 }
 
-.npwp {
-  position: absolute;
-  bottom: 211px;
-  margin-left: 20%;
+.email {
+  // position: absolute;
+  // bottom: 211px;
+  // margin-left: 20%;
 
   ion-input {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   ion-label {
@@ -145,20 +131,21 @@ ion-back-button {
   }
 }
 
-.twitter {
-  position: absolute;
-  bottom: 173px;
-  margin-left: 20%;
+.country {
+  // position: absolute;
+  // bottom: 173px;
+  // margin-left: 20%;
 
   ion-input {
     font-size: 13px;
-
+    font-style: oblique;
   }
 
   ion-label {
     color: #F57F17;
   }
 }
+
 
 div.content {
   height: 10em;
@@ -198,25 +185,33 @@ div.content ion-button {
   display: none;
 }
 
-// .add {
-//   img {
-//     text-indent: -10000px;
-//     margin-right: -13.1%;
-//     margin-bottom: 1%;
+.add {
+  img {
+    text-indent: -10000px;
+    margin-right: -13.1%;
+    margin-bottom: 1%;
     
-//   }
-// }
+  }
+}
 
 
 .items {
   position: relative;
-  align-items: center;
-  size: 100px;
-  left: -8%;
-  margin-top: 400px;
+  // align-items: center;
+  // size: 100px;
+  // left: -8%;
+  // margin-top: 400px;
 }
 
-.field {
-  position: relative;
-  height: 50px;
+// .field {
+//   position: relative;
+//   height: 50px;
+// }
+
+.all {
+  position: fixed;
+}
+
+.add-pict {
+  position: sticky;
 }

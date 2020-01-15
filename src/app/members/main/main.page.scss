@@ -9,7 +9,7 @@
 
 ion-content {
   --ion-background-color: #EEEEEE !important;
-  
+
 }
 
 ion-icon {
@@ -42,6 +42,7 @@ ion-card-content {
 
   .item-name {
     position: absolute;
+    text-align: left;
     margin-top: -5vw;
     font-style: bold;
     font-size: 12px;
@@ -65,7 +66,7 @@ ion-col {
     // position: absolute;
     // margin-left: 40px;
     margin-top: 0px;
-    font-size: 13px;
+    font-size: 28px;
     text-align: center;
     left: 1vw;
     // border-left: solid 1px black;
@@ -242,12 +243,18 @@ ion-grid {
 }
 
 .extra-content {
-  height: 55vw;
+  margin-top: 1.5vw;
   background-color: white;
+  height: 30%;
 
   ion-text {
     position: relative;
     margin-top: 90vw;
+  }
+
+  .card-activity {
+    position: absolute;
+    left: 12vw;
   }
 
   .scrolling-wrapper {
@@ -268,6 +275,7 @@ ion-grid {
         color: black;
         font-size: 12vw;
       }
+
       display: inline-block;
       width: 112px;
       height: 5px;
@@ -278,13 +286,14 @@ ion-grid {
       margin-top: -10vw;
       width: 100vw;
       height: 20vw;
+      text-align: left;
     }
   }
 }
 
 .extra-content2 {
-  // height: 60vw;
   background-color: white;
+  height: 30%;
 
   ion-text {
     position: relative;
@@ -319,6 +328,7 @@ ion-grid {
       margin-top: -10vw;
       width: 100vw;
       height: 20vw;
+      text-align: left;
     }
 
   }
@@ -363,10 +373,10 @@ h5 {
 }
 
 .see-all {
-  // position: absolute;
-  margin-left: 80vw;
-  margin-top: 5vw;
-  font-size: 15px;
+  text-align: end;
+  /* margin-left: 80vw; */
+  /* margin-top: 5vw; */
+  font-size: 3vw;
   color: darkgrey;
 }
 
@@ -470,12 +480,12 @@ ion-input {
   align-content: center;
 }
 
-.seeall {
-  font-style: normal;
-  text-decoration: underline;
-  margin-top: 5vw;
-  font-size: 15px;
-}
+// .seeall {
+//   font-style: normal;
+//   text-decoration: underline;
+//   margin-top: 5vw;
+//   font-size: 15px;
+// }
 
 .time-activities {
   position: relative;
@@ -491,8 +501,9 @@ ion-slide {
 
 .activities-text {
   position: absolute;
-  margin-top: 5vw;
-  margin-left: 3vw;
+  text-align: start;
+  margin-left: 15vw;
+  font-size: 4vw;
 }
 
 .text-noact {
@@ -505,9 +516,9 @@ ion-slide {
 .text-noact2 {
   position: relative;
   margin-top: 20vw;
-  /* margin-left: 20vw; */
-  height: 35vw;
-  align-items: center;
+  font-size: 4vw;
+  margin-left: 20vw;
+  // height: 35vw;
 }
 
 .prospect-grid {
@@ -520,8 +531,9 @@ ion-slide {
 
 .prospect-text {
   position: absolute;
-  margin-top: 5vw;
-  margin-left: 3vw;
+  text-align: start;
+  margin-left: 15vw;
+  font-size: 4vw;
 }
 
 .p {
@@ -558,9 +570,16 @@ ion-textarea {
 }
 
 .prospectcard {
-  height: 50vw;
+  height: 55vw;
+  width: 35vw;
+  position: relative;
+  left: 11vw;
 }
 
 .followup {
+  position: absolute;
+}
+
+.prospect {
   position: absolute;
 }
