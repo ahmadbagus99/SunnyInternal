@@ -11,39 +11,45 @@
       <ion-button *ngIf="id>=1" (click)="updateProcess()">Save</ion-button>
     </ion-buttons>
   </ion-toolbar>
+
+  <div class="cover" size="12" size-md>
+    <!-- Kegunaan untuk membuat fill dan untuk mengupload foto ke dalam akun -->
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <div class="image-upload">
+            <label size="12" size-sm for="file-input" for="file-input">
+              <img src="assets/icon/add.png" />
+            </label>
+  
+            <input id="file-input" type="file" />
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-header>
 
 <ion-content>
-  <div class="cover">
-  <!-- Kegunaan untuk membuat fill dan untuk mengupload foto ke dalam akun -->
-  <ion-grid>
-    <ion-row>
-      <ion-col></ion-col>
-      <ion-col></ion-col>
-      <ion-col>
-        <div class="image-upload">
-          <label for="file-input">
-            <img src="assets/icon/add.png" />
-          </label>
-
-          <input id="file-input" type="file" />
-        </div>
-      </ion-col>
-      <ion-col></ion-col>
-      <ion-col></ion-col>
-    </ion-row>
-  </ion-grid>
-</div>
+  
 
 
 <div class="background-content">
-  <ion-grid>
+  
+<!-- Text -->
+<ion-col>
+  <div class="ion-text-center">
+    <h3>Edit Personalization</h3>
+    You can modified information in below :
+  </div>
+</ion-col>
+
+
   <!-- fill data dimana tempat pengisian Nama Lengkap  user -->
   <ion-item class="label">
     <ion-label position="floating">Full Name</ion-label>
-    <ion-input class="fullname" type="text" [(ngModel)]="fullname"></ion-input>
+    <ion-input type="text" [(ngModel)]="fullname"></ion-input>
   </ion-item>
-
 
   <!-- fill data dimana tempat pengisian No hp  user -->
   <ion-item class="label">
@@ -69,6 +75,9 @@
     <ion-input class="country" type="text" [(ngModel)]="country"></ion-input>
     <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
   </ion-item>
-</ion-grid>
+
+
+
+
 </div>
 </ion-content>
