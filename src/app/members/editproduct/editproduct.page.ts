@@ -3,17 +3,40 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { CallNumber } from '@ionic-native/call-number/ngx';
+//Firebase
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { finalize, tap } from 'rxjs/operators';
 
+export interface MyData {
+  name: string;
+  filepath: string;
+  size: number;
+}
 @Component({
   selector: 'app-editproduct',
   templateUrl: './editproduct.page.html',
   styleUrls: ['./editproduct.page.scss'],
 })
 export class EditproductPage implements OnInit {
+  task: AngularFireUploadTask;
+ percentage: Observable<number>;
+ snapshot: Observable<any>;
+ UploadedFileURL: Observable<string>;
+ images: Observable<MyData[]>;
+ fileName: string = '';
+ fileSize: number;
+
+ //Status check 
+ isUploading: boolean;
+ isUploaded: boolean;
+ private imageCollection: AngularFirestoreCollection<MyData>;
+ isImgLoaded: boolean;
+
   id: number;
-  items2: any;
   user: any;
+  Location: string = "Product";
   namaProduk: string = "";
   tipeProduk: string = "";
   totalProfit: string = "";
@@ -27,26 +50,33 @@ export class EditproductPage implements OnInit {
   itemsNew : any = [];
   limit : number = 10;
   start : number = 0;
-  loadproduct: any;
   status : string;
-  url :any;
-
+  
   constructor(
     private router: Router,
     private postPvdr: PostProvider,
-    private storage: Storage,
+    private storageLocal : Storage,
     public alertController: AlertController,
     private actRoute: ActivatedRoute,
     public loadingController : LoadingController,
-    private callNumber : CallNumber
+    private storage: AngularFireStorage,
+    private database: AngularFirestore,
   ) {
+    this.isUploading = false;
+    this.isUploaded = false;
+    //Set collection where our documents/ images info will save
+    this.actRoute.params.subscribe((data: any) => {
+      var ID = data.id;
+      this.imageCollection = database.collection<MyData>(this.Location+ID);
+      this.images = this.imageCollection.valueChanges();
+      this.isImgLoaded = false;
+    })
   }
   ionViewWillEnter(){
     this.items = [];
     this.start = 0;
     this.itemsNew = [];
     this.loadProduct();
-    this.loadSaved();
   }
   //fungsi sebagai router pemanggil data yang sudah disii ke dalam product
   ngOnInit() {
@@ -68,7 +98,58 @@ export class EditproductPage implements OnInit {
     }
     });
   }
-  // Fungsi untuk menarik/mendapatkan data untuk data edit Produk server php
+  uploadFile(event: FileList) {
+    const file = event.item(0)
+    if (file.type.split('/')[0] !== 'image') {
+      console.error('unsupported file type :( ')
+      return;
+    }
+    this.isUploading = true;
+    this.isUploaded = false;
+ 
+    this.fileName = file.name;
+    const path = `SunnyStorage/${new Date().getTime()}_${file.name}`;
+    const customMetadata = { app: 'Sunny Images' };
+    const fileRef = this.storage.ref(path);
+    // The main task
+    this.task = this.storage.upload(path, file, { customMetadata });
+    // Get file progress percentage
+    this.percentage = this.task.percentageChanges();
+    this.snapshot = this.task.snapshotChanges().pipe(
+      finalize(() => {
+        // Get uploaded file storage path
+        this.UploadedFileURL = fileRef.getDownloadURL();
+ 
+        this.UploadedFileURL.subscribe(resp => {
+          this.addImagetoDB({
+            name: file.name,
+            filepath: resp,
+            size: this.fileSize
+          });
+          this.isUploading = false;
+          this.isUploaded = true;
+        }, error => {
+          console.error(error);
+        })
+      }),
+      tap(snap => {
+        this.fileSize = snap.totalBytes;
+      })
+    )
+  }
+ 
+  addImagetoDB(image: MyData) {
+    //Create an ID for document
+    const id = this.database.createId();
+      //Set document id with value in database
+      this.imageCollection.doc(id).set(image).then(resp => {
+        console.log(resp);
+      }).catch(error => {
+        console.log("error " + error);
+      });
+  }
+  //End Function
+   // Fungsi untuk menarik/mendapatkan data untuk data edit Produk server php
   updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk){
     this.router.navigate(['members/addproduct/'
     +id+'/'
@@ -81,7 +162,7 @@ export class EditproductPage implements OnInit {
     +deskripsiProduk]);
   }
 
-  //fungsi untuk membuat baru produk yang akan diisi
+  // fungsi untuk membuat baru produk yang akan diisi
   async loadProduct(){
     const loading = await this.loadingController.create({
       message : "",
@@ -91,7 +172,7 @@ export class EditproductPage implements OnInit {
       mode: 'md'
     })
     await loading.present();
-    this.storage.get('IdLogin').then((IdLogin) => {
+    this.storageLocal.get('IdLogin').then((IdLogin) => {
       this.user = IdLogin;
       let body = {
         aksi: 'getdata',
@@ -107,22 +188,5 @@ export class EditproductPage implements OnInit {
       });
     })
   }
-  onSelectFile(event) {
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        // this.url = event.target.result;
-        this.url = reader.result;
-        this.storage.set(this.namaProduk, this.url)
-      }
-    }
-  }
-  loadSaved() {
-    this.storage.get(this.namaProduk).then((url) => {
-      this.url = url || [];
-    });
-  }
+  
 }

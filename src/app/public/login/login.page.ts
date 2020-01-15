@@ -21,6 +21,7 @@ type NewType = String;
 export class LoginPage implements OnInit {
   email: NewType;
   password: String;
+  isActiveToggleTextPassword: Boolean = true;
   items: any = [];
   limit = 10;
   start = 0;
@@ -32,11 +33,18 @@ export class LoginPage implements OnInit {
     public share: ShareService,
     private postPvdr: PostProvider,
     private alertController : AlertController,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
     ) { }
+    public toggleTextPassword(): void{
+      this.isActiveToggleTextPassword = (this.isActiveToggleTextPassword==true)?false:true;
+  }
+  public getType() {
+    return this.isActiveToggleTextPassword ? 'password' : 'text';
+}
 
 
   ngOnInit() {
+    
   }
 
   async login() {
@@ -101,10 +109,13 @@ export class LoginPage implements OnInit {
       })
       
     }
+
+ 
    }
 
   private newMethod() {
     return this;
+    
   }
   
 }
