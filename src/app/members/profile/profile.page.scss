@@ -56,7 +56,7 @@ ion-back-button {
   background-image: url('../../../assets/img/Protruding-Squares.svg');
   background-attachment: fixed;
   background-size: cover;
-  height: 45vw;
+  height: 50vw;
   // border-top-left-radius: 6px;
   // border-top-right-radius: 6px;
 }
@@ -64,31 +64,28 @@ ion-back-button {
   img {
     position: relative;
     bottom: 62%;
-    left: 35%;
+    left: 38vw;
     border-style: solid;
     border: 3px solid #EEEEEE;
     width: 25vw;
     height: 25vw;
     border-radius: 50%;
-    /* left: 46%; */
-    /* margin-left: -10vw; */
-    /* margin-top: 5vw; */
   }
 
 .nama {
   position: relative;
-  width: 141px;
-  height: 50px;
-  left: 50%;
-  margin-left: -73px;
+  /* width: 141px; */
+  /* height: 50px; */
+  /* left: 50%; */
+  /* margin-left: -73px; */
   text-align: center;
   color: white;
 }
 
   h3 {
     font-size: 4vw;
-    margin-bottom: 0vw;
-    margin-left: 0px;
+    // margin-bottom: 0vw;
+    // margin-left: 0px;
   }
 
 
@@ -104,12 +101,12 @@ ion-back-button {
 }
 
 .nomor-telepon {
-  position: absolute;
-  bottom: 309px;
-  margin-left: 20%;
+  // position: absolute;
+  // bottom: 309px;
+  // margin-left: 20%;
 
   ion-input {
-    font-size: 13px;
+    font-size: 16px;
     margin: 2px;
   }
 
@@ -118,13 +115,13 @@ ion-back-button {
   }
 }
 
-.alamat {
-  position: absolute;
-  bottom: 262px;
-  margin-left: 20%;
+.birthday {
+  // position: absolute;
+  // bottom: 262px;
+  // margin-left: 20%;
 
   ion-input {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   ion-label {
@@ -132,13 +129,13 @@ ion-back-button {
   }
 }
 
-.npwp {
-  position: absolute;
-  bottom: 211px;
-  margin-left: 20%;
+.email {
+  // position: absolute;
+  // bottom: 211px;
+  // margin-left: 20%;
 
   ion-input {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   ion-label {
@@ -146,10 +143,10 @@ ion-back-button {
   }
 }
 
-.twitter {
-  position: absolute;
-  bottom: 173px;
-  margin-left: 20%;
+.country {
+  // position: absolute;
+  // bottom: 173px;
+  // margin-left: 20%;
 
   ion-input {
     font-size: 13px;
@@ -210,11 +207,11 @@ div.content ion-button {
 
 
 .items {
-  // position: relative;
-  align-items: center;
-  size: 100px;
-  left: -8%;
-  margin-top: 400px;
+  position: relative;
+  // align-items: center;
+  // size: 100px;
+  // left: -8%;
+  // margin-top: 400px;
 }
 
 .field {
@@ -224,4 +221,8 @@ div.content ion-button {
 
 .all {
   position: fixed;
+}
+
+.add-pict {
+  position: sticky;
 }
