@@ -91,25 +91,14 @@ ion-back-button {
     margin-left: 0px;
   }
 
-
-.perusahaan {
-  position: absolute;
-  width: 98px;
-  height: 50px;
-  top: 39%;
-  left: 50%;
-  margin-left: -54px;
-  margin-top: -25px;
-  text-align: center;
-}
-
 .nomor-telepon {
   position: absolute;
-  bottom: 309px;
+  bottom: 204px;
   margin-left: 20%;
 
   ion-input {
     font-size: 13px;
+    font-style: oblique;
     margin: 2px;
   }
 
@@ -120,11 +109,12 @@ ion-back-button {
 
 .alamat {
   position: absolute;
-  bottom: 262px;
+  bottom: 144px;
   margin-left: 20%;
 
   ion-input {
     font-size: 13px;
+    font-style: oblique;
   }
 
   ion-label {
@@ -134,11 +124,12 @@ ion-back-button {
 
 .npwp {
   position: absolute;
-  bottom: 211px;
+  bottom: 84px;
   margin-left: 20%;
 
   ion-input {
     font-size: 13px;
+    font-style: oblique;
   }
 
   ion-label {
@@ -148,18 +139,19 @@ ion-back-button {
 
 .twitter {
   position: absolute;
-  bottom: 173px;
+  bottom: 24px;
   margin-left: 20%;
 
   ion-input {
     font-size: 13px;
-
+    font-style: oblique;
   }
 
   ion-label {
     color: #F57F17;
   }
 }
+
 
 div.content {
   height: 10em;
@@ -199,29 +191,29 @@ div.content ion-button {
   display: none;
 }
 
-// .add {
-//   img {
-//     text-indent: -10000px;
-//     margin-right: -13.1%;
-//     margin-bottom: 1%;
+.add {
+  img {
+    text-indent: -10000px;
+    margin-right: -13.1%;
+    margin-bottom: 1%;
     
-//   }
-// }
+  }
+}
 
 
 .items {
-  // position: relative;
+  position: relative;
   align-items: center;
   size: 100px;
   left: -8%;
-  margin-top: 400px;
+  margin-top: 290px;
 }
 
-.field {
-  position: relative;
-  height: 50px;
-}
+// .field {
+//   position: relative;
+//   height: 50px;
+// }
 
-.all {
-  position: fixed;
-}
+// .all {
+//   position: fixed;
+// }
