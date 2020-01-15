@@ -12,20 +12,21 @@ import { IonicStorageModule } from '@ionic/storage';
 import { ShareService } from 'src/app/share/share';
 import { HttpModule } from '@angular/http';
 import { CallNumber } from '@ionic-native/call-number/ngx';
-
 import { PostProvider } from 'src/providers/post-providers';
 import { HttpClientModule } from '@angular/common/http';
-
 import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
-
 import { NgCalendarModule  } from 'ionic2-calendar';
-
 import { MainPage } from 'src/app/members/main/main.page';
 //pdf
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import { CreatPDF } from 'src/app/services/createPDF'
+//Firebase
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { FIREBASE_CONFIG } from './firebase.config'
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,6 +39,9 @@ import { CreatPDF } from 'src/app/services/createPDF'
     NgCalendarModule,
     HttpModule,
     IonicStorageModule.forRoot(),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG, 'Sunny'), // imports firebase/app needed for everything
+    AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+    AngularFireStorageModule
   ],
   providers: [
     PostProvider,
