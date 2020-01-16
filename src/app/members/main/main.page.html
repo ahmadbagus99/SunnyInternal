@@ -92,8 +92,7 @@
     </ion-grid>
   </div>
 
-
-  <ion-grid class="extra-content">
+  <ion-grid backgroud-color-white class="extra-content">
     <ion-row>
       <ion-col text-left size="13" size-sm>
         <div class="activities-text">
@@ -137,7 +136,7 @@
 
   <ion-grid class="extra-content2">
     <ion-row>
-      <ion-col size="13" size-sm class="ion-align-self-start">
+      <ion-col background-color="white" size="13" size-sm class="ion-align-self-start">
         <div class="prospect-text">
           <ion-text text-sm><b>Need follow up</b></ion-text>
         </div>
@@ -149,11 +148,9 @@
       </ion-col>
 
 
-      <ion-col>
+      <ion-col class="prospect" size="13" size-md>
         <div class="scrolling-wrapper-2">
-          <div text-center class="text-noact2">
-            <p>{{text}}</p>
-          </div>
+          
           <div *ngFor="let item of itemProspect">
             <ion-card class="prospectcard" button
               (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
@@ -163,12 +160,16 @@
                   <h5> Follow up </h5>
                 </ion-textarea>
                 <br>
-                <!-- <ion-textarea readOnly>
-                    
-                  </ion-textarea> -->
               </ion-card-content>
             </ion-card>
           </div>
+
+         
+
+        </div>
+
+        <div text-center class="text-noact2">
+          <p>{{text}}</p>
         </div>
       </ion-col>
     </ion-row>
