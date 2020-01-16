@@ -59,9 +59,9 @@ export class ProspectPage implements OnInit {
   itemsCustomer: any = [];
   itemTotalProspect: any = [];
   totalProspect: number = 0;
-  text: string = "You don't have prospect for today!";
+  text: string = "You don't have prospect for today";
   textProduct: string = "You haven't added product";
-  textCustomer: string = "Keep follow up your prospect!";
+  textCustomer: string = "You don't have customer";
   url: any;
   ProspectTotal : number;
   itemProspectVerify : any = [];
