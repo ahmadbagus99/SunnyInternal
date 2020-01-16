@@ -235,6 +235,7 @@ addImagetoDB(image: MyData) {
       cssClass: 'custom-loader-class',
       mode: 'md'
     });
+    this
     await loading.present();
       let body = {
         aksi: 'getdata',
