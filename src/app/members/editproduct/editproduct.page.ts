@@ -21,12 +21,12 @@ export interface MyData {
 })
 export class EditproductPage implements OnInit {
   task: AngularFireUploadTask;
- percentage: Observable<number>;
- snapshot: Observable<any>;
- UploadedFileURL: Observable<string>;
- images: Observable<MyData[]>;
- fileName: string = '';
- fileSize: number;
+  percentage: Observable<number>;
+  snapshot: Observable<any>;
+  UploadedFileURL: Observable<string>;
+  images: Observable<MyData[]>;
+  fileName: string = '';
+  fileSize: number;
 
  //Status check 
  isUploading: boolean;
