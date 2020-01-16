@@ -3,7 +3,7 @@
 }
 
 ion-content {
-  --ion-background-color: rgb(255, 255, 255) fixed !important;  
+  --ion-background-color: #ffffff fixed !important;  
 }
 
 ion-title {
@@ -25,7 +25,7 @@ ion-toolbar {
 
 ion-button {
   text-transform: capitalize;
-  color: white;
+  color: #FFFFFF;
 }
 
 ion-back-button {
@@ -72,15 +72,12 @@ ion-back-button {
     border-radius: 50%;
   }
 
-.nama {
-  position: relative;
-  /* width: 141px; */
-  /* height: 50px; */
-  /* left: 50%; */
-  /* margin-left: -73px; */
-  text-align: center;
-  color: white;
-}
+  .nama {
+      position: relative;
+      margin: -15vw 10vw 0vw 10vw;
+      text-align: center;
+      color: white;
+  }
 
   h3 {
     font-size: 4vw;
@@ -223,9 +220,10 @@ div.content ion-button {
 .image-upload img
 {
   border-style: solid;
-    border:3px solid #EEEEEE;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    cursor: pointer;
+  border: 3px solid #EEEEEE;
+  width: 20vw;
+  height: 20vw;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 2vw 10vw 10vw 10vw;
 }

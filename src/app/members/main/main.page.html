@@ -35,7 +35,7 @@
         <ion-text class="sub-text"><b> Incentive </b></ion-text>
         <ion-text class="month-text"><b> / month </b></ion-text>
         <div class="vertical-line">
-        <ion-text class="incentive-report"><b>{{Incentive}}</b></ion-text>
+          <ion-text class="incentive-report"><b>{{Incentive}}</b></ion-text>
           <!-- <ion-text class="incentive-report"><b>30K</b></ion-text> -->
           <!-- <ion-input class="incentive-report" value="{{ Incentive | currency:'Rp '}}" readOnly></ion-input> -->
         </div>
@@ -92,9 +92,14 @@
     </ion-grid>
   </div>
 
-  <ion-grid backgroud-color-white class="extra-content">
-    <ion-row>
-      <ion-col text-left size="13" size-sm>
+
+  <!-- extra content -->
+
+  <ion-grid backgroud-color-white class="extra-content" >
+
+    <!-- Row untuk menampung activities -->
+    <ion-row class="row-1">
+      <ion-col text-left size="12" col-auto>
         <div class="activities-text">
           <ion-text text-sm><b>Your Activity</b></ion-text>
         </div>
@@ -132,11 +137,11 @@
         <!-- </div> -->
       </ion-col>
     </ion-row>
-  </ion-grid>
 
-  <ion-grid class="extra-content2">
-    <ion-row>
-      <ion-col background-color="white" size="13" size-sm class="ion-align-self-start">
+
+
+    <ion-row class="row-2">
+      <ion-col text-left size="12" col-auto>
         <div class="prospect-text">
           <ion-text text-sm><b>Need follow up</b></ion-text>
         </div>
@@ -148,11 +153,15 @@
       </ion-col>
 
 
-      <ion-col class="prospect" size="13" size-md>
+      <ion-col text-left size="12" col-auto class="prospect">
         <div class="scrolling-wrapper-2">
-          
+
+          <div class="text-noact2">
+            <p text-center>{{text}}</p>
+          </div>
+
           <div *ngFor="let item of itemProspect">
-            <ion-card class="prospectcard" button
+            <ion-card  class="prospectcard" button
               (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
               <img center src="assets/img/customer-icon.png" />
               <ion-card-content text-align-left>
@@ -163,15 +172,10 @@
               </ion-card-content>
             </ion-card>
           </div>
-
-         
-
         </div>
-
-        <div text-center class="text-noact2">
-          <p>{{text}}</p>
-        </div>
-        
       </ion-col>
     </ion-row>
+
+
   </ion-grid>
+  </ion-content>
