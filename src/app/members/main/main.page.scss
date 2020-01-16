@@ -293,7 +293,7 @@ ion-grid {
 
 .extra-content2 {
   background-color: white;
-  height: 30%;
+  // height: 30%;
 
   ion-text {
     position: relative;
@@ -515,9 +515,10 @@ ion-slide {
 
 .text-noact2 {
   position: relative;
-  margin-top: 20vw;
-  font-size: 4vw;
-  margin-left: 20vw;
+    height: 100px;
+    margin-top: 10vw;
+    font-size: 4vw;
+    left: 10vw;
   // height: 35vw;
 }
 
@@ -573,7 +574,7 @@ ion-textarea {
   height: 55vw;
   width: 35vw;
   position: relative;
-  left: 11vw;
+  left: 10vw;
 }
 
 .followup {
@@ -581,5 +582,7 @@ ion-textarea {
 }
 
 .prospect {
-  position: absolute;
+  position: relative;
+  left: 2vw;
+  background-color: white;
 }
