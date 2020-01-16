@@ -188,8 +188,8 @@ export class ProfilePage {
       mode: 'md'
     });
     await loading.present();
-    this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
+    this.storageLocal.get('session_storage').then((Data) => {
+      this.user = (Data.map(data => data.id)).toString();
       let body = {
         aksi: 'getdata',
         limit: this.limit,
