@@ -79,8 +79,8 @@ export class ProspectPage implements OnInit {
   ) {
       this.isUploading = false;
       this.isUploaded = false;
-      this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.userID = IdLogin.toString();
+      this.storageLocal.get('session_storage').then((Data) => {
+        this.userID = (Data.map(data => data.id)).toString();
       this.imageCollection = database.collection<MyData>(this.userID+this.userIDDesc);
       this.images = this.imageCollection.valueChanges();
     });
@@ -172,8 +172,8 @@ export class ProspectPage implements OnInit {
 addImagetoDB(image: MyData) {
   //Create an ID for document
   // const id = this.database.createId();
-  this.storageLocal.get('IdLogin').then((IdLogin) => {
-    this.userID = IdLogin.toString();
+  this.storageLocal.get('session_storage').then((Data) => {
+    this.userID = (Data.map(data => data.id)).toString();
   const id = this.userID + this.userIDDesc;
   //Set document id with value in database
   this.imageCollection.doc(id).set(image).then(resp => {

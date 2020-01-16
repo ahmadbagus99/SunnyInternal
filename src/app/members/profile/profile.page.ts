@@ -73,11 +73,21 @@ export class ProfilePage {
       this.isUploading = false;
       this.isUploaded = false;
       //Set collection where our documents/ images info will save
-      this.storageLocal.get('IdLogin').then((IdLogin) => {
-        this.userID = IdLogin.toString();
+      
+      this.storageLocal.get('session_storage').then((Data) => {
+        this.userID = (Data.map(data => data.id)).toString();
         this.imageCollection = database.collection<MyData>(this.userID+this.userIDDesc);
         this.images = this.imageCollection.valueChanges();
       });
+    }
+    async LoadImages(){
+      const loading =  await this.loadingController.create({
+        spinner: 'crescent',
+        translucent : true,
+        cssClass:'custom-loader-class',
+        mode: 'md'
+      });
+      await loading.present();
     }
 
     // upload start function
@@ -141,8 +151,8 @@ export class ProfilePage {
   addImagetoDB(image: MyData) {
     //Create an ID for document
     // const id = this.database.createId();
-    this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.userID = IdLogin.toString();
+    this.storageLocal.get('session_storage').then((Data) => {
+      this.userID = (Data.map(data => data.id)).toString();
     const id = this.userID + this.userIDDesc;
     //Set document id with value in database
     this.imageCollection.doc(id).set(image).then(resp => {
