@@ -4,13 +4,49 @@ import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { DataService } from "src/app/services/data.service";
+//upload
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { finalize, tap } from 'rxjs/operators';
 
+export interface MyData {
+  name: string;
+  filepath: string;
+  size: number;
+}
 @Component({
   selector: 'app-prospect',
   templateUrl: './prospect.page.html',
   styleUrls: ['./prospect.page.scss'],
 })
 export class ProspectPage implements OnInit {
+  // Upload Task 
+  task: AngularFireUploadTask;
+
+  // Progress in percentage
+  percentage: Observable<number>;
+
+  // Snapshot of uploading file
+  snapshot: Observable<any>;
+
+  // Uploaded File URL
+  UploadedFileURL: Observable<string>;
+
+  //Uploaded Image List
+  images: Observable<MyData[]>;
+
+  //File details  
+  fileName: string = '';
+  fileSize:number;
+
+  //Status check 
+  isUploading:boolean;
+  isUploaded:boolean;
+
+  userIDDesc : string = 'profile';
+  private imageCollection: AngularFirestoreCollection<MyData>;
+  userID: string;
   items: any = [];
   user: any;
   limit: number = 10;
@@ -35,24 +71,28 @@ export class ProspectPage implements OnInit {
   constructor(
     private router: Router,
     private postPvdr: PostProvider,
-    private storage: Storage,
+    private storageLocal: Storage,
     public alertController: AlertController,
     public loadingController: LoadingController,
-    private dataService: DataService,
+    private storage: AngularFireStorage, 
+    private database: AngularFirestore
   ) {
-    setTimeout(() => {
-      this.isLoaded = true;
-    }, 2000);
-    this.loadSaved();
+      this.isUploading = false;
+      this.isUploaded = false;
+      this.storageLocal.get('IdLogin').then((IdLogin) => {
+      this.userID = IdLogin.toString();
+      this.imageCollection = database.collection<MyData>(this.userID+this.userIDDesc);
+      this.images = this.imageCollection.valueChanges();
+    });
   }
   ngOnInit() {
-    this.storage.get('TotalProspect').then((data)=>{
+    this.storageLocal.get('TotalProspect').then((data)=>{
       this.ProspectTotal = data;
     })
   }
   ionViewWillEnter() {
     //get ID
-    this.storage.get('session_storage').then((iduser) => {
+    this.storageLocal.get('session_storage').then((iduser) => {
       var ID = iduser;
       this.user = ID.map(data => data.id)
     });
@@ -71,7 +111,80 @@ export class ProspectPage implements OnInit {
     this.LoadProfile();
     this.loadProduct();
     this.check();
+    this.CheckLoadImages();
   }
+  uploadFile(event: FileList) {
+      
+
+    // The File object
+    const file = event.item(0)
+
+    // Validation for Images Only
+    if (file.type.split('/')[0] !== 'image') { 
+    console.error('unsupported file type :( ')
+    return;
+    }
+
+    this.isUploading = true;
+    this.isUploaded = false;
+
+
+    this.fileName = file.name;
+
+    // The storage path
+    const path = `SunnyStorage/${new Date().getTime()}_${file.name}`;
+
+    // Totally optional metadata
+    const customMetadata = { app: 'Sunny Images' };
+
+    //File reference
+    const fileRef = this.storage.ref(path);
+
+    // The main task
+    this.task = this.storage.upload(path, file, { customMetadata });
+
+  // Get file progress percentage
+  this.percentage = this.task.percentageChanges();
+  this.snapshot = this.task.snapshotChanges().pipe(
+    
+    finalize(() => {
+      // Get uploaded file storage path
+      this.UploadedFileURL = fileRef.getDownloadURL();
+      
+      this.UploadedFileURL.subscribe(resp=>{
+        this.addImagetoDB({
+          name: file.name,
+          filepath: resp,
+          size: this.fileSize
+        });
+        this.isUploading = false;
+        this.isUploaded = true;
+        this.storageLocal.set("Status",this.isUploaded)
+      },error=>{
+        console.error(error);
+      })
+    }),
+    tap(snap => {
+        this.fileSize = snap.totalBytes;
+    })
+  )
+}
+addImagetoDB(image: MyData) {
+  //Create an ID for document
+  // const id = this.database.createId();
+  this.storageLocal.get('IdLogin').then((IdLogin) => {
+    this.userID = IdLogin.toString();
+  const id = this.userID + this.userIDDesc;
+  //Set document id with value in database
+  this.imageCollection.doc(id).set(image).then(resp => {
+    console.log(resp);
+  }).catch(error => {
+    console.log("error " + error);
+  });
+});
+}
+//end function
+
   addprospect() {
     this.router.navigate(['members/addprospect'])
   }
@@ -231,7 +344,7 @@ export class ProspectPage implements OnInit {
       });
   }
   LoadTotalProspect() {
-    this.storage.get('session_storage').then((iduser) => {
+    this.storageLocal.get('session_storage').then((iduser) => {
       var ID = iduser;
       this.user = ID.map(data => data.id)
       let body = {
@@ -249,7 +362,7 @@ export class ProspectPage implements OnInit {
             this.text = '';
           }
         }
-        this.storage.set('TotalProspect',this.totalProspect);
+        this.storageLocal.set('TotalProspect',this.totalProspect);
       });
       });
   }
@@ -328,14 +441,14 @@ export class ProspectPage implements OnInit {
       reader.onload = (event) => { // called once readAsDataURL is completed
         // this.url = event.target.result;
         this.url = reader.result;
-        this.storage.set('Profile', this.url)
+        this.storageLocal.set('Profile', this.url)
       }
     }
   }
-  loadSaved() {
-    this.storage.get('Profile').then((url) => {
-      this.url = url || [];
-    });
+  CheckLoadImages(){
+    this.storageLocal.get("Status").then((data)=>{
+      this.isUploaded = data;
+    })
   }
   movetoMain() {
     if (this.Move == true){
@@ -345,7 +458,7 @@ export class ProspectPage implements OnInit {
     }
   }
   check(){
-    this.storage.get('session_storage').then((iduser) => {
+    this.storageLocal.get('session_storage').then((iduser) => {
       var ID = iduser;
       this.user = ID.map(data => data.id)
       let body = {

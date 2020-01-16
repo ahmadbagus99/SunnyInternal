@@ -123,7 +123,6 @@ export class MainPage implements OnInit{
          var SubsNumber = DataIncentive.toString().substring(0, DataIncentive.toString().length-3)
          this.Incentive = SubsNumber + 'K';
        }
-       console.log( this.Incentive)
       });
     });
   }
