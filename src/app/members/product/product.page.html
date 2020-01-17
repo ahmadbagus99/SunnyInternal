@@ -58,7 +58,14 @@
             </ion-item-options>
             <ion-item button
               (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
-              <ion-icon slot="start" name="ios-basket"></ion-icon>
+              <ion-avatar slot="start">
+                <div *ngIf="item.Images">
+                  <img [src]="item.Images">
+                </div>
+                <div *ngIf="!item.Images">
+                  <ion-icon name="ios-basket"></ion-icon>
+                </div>
+              </ion-avatar>
               <ion-label>
                 <h3>{{item.namaProduk}}</h3>
               </ion-label>

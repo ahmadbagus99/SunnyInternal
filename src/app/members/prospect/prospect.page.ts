@@ -21,38 +21,24 @@ export interface MyData {
   styleUrls: ['./prospect.page.scss'],
 })
 export class ProspectPage implements OnInit {
-  // Upload Task 
   task: AngularFireUploadTask;
-
-  // Progress in percentage
   percentage: Observable<number>;
-
-  // Snapshot of uploading file
   snapshot: Observable<any>;
-
-  // Uploaded File URL
   UploadedFileURL: Observable<string>;
-
-  //Uploaded Image List
   images: Observable<MyData[]>;
-
-  //File details  
   fileName: string = '';
   fileSize:number;
-
   //Status check 
   isUploading:boolean;
   isUploaded:boolean;
-
   userIDDesc : string = 'profile';
   private imageCollection: AngularFirestoreCollection<MyData>;
+  
   userID: string;
   items: any = [];
   user: any;
   limit: number = 10;
   start: number = 0;
-  isLoaded = false;
-  selectCategory = 'Populer';
   itemsNew: any = [];
   itemsproduct: any = [];
   itemsProfile: any = [];
@@ -83,6 +69,11 @@ export class ProspectPage implements OnInit {
         this.userID = (Data.map(data => data.id)).toString();
       this.imageCollection = database.collection<MyData>(this.userID+this.userIDDesc);
       this.images = this.imageCollection.valueChanges();
+      this.images.subscribe((res: MyData[])=>{
+        if ( res.length == 1){
+          this.isUploaded = true;
+        }
+      })
     });
   }
   ngOnInit() {
@@ -111,59 +102,42 @@ export class ProspectPage implements OnInit {
     this.LoadProfile();
     this.loadProduct();
     this.check();
-    this.CheckLoadImages();
+    
   }
   uploadFile(event: FileList) {
-      
-
-    // The File object
     const file = event.item(0)
-
     // Validation for Images Only
     if (file.type.split('/')[0] !== 'image') { 
     console.error('unsupported file type :( ')
     return;
     }
-
     this.isUploading = true;
     this.isUploaded = false;
-
-
     this.fileName = file.name;
-
     // The storage path
     const path = `SunnyStorage/${new Date().getTime()}_${file.name}`;
-
-    // Totally optional metadata
     const customMetadata = { app: 'Sunny Images' };
-
-    //File reference
     const fileRef = this.storage.ref(path);
-
-    // The main task
     this.task = this.storage.upload(path, file, { customMetadata });
-
-  // Get file progress percentage
-  this.percentage = this.task.percentageChanges();
-  this.snapshot = this.task.snapshotChanges().pipe(
-    
-    finalize(() => {
-      // Get uploaded file storage path
-      this.UploadedFileURL = fileRef.getDownloadURL();
-      
-      this.UploadedFileURL.subscribe(resp=>{
-        this.addImagetoDB({
-          name: file.name,
-          filepath: resp,
-          size: this.fileSize
-        });
-        this.isUploading = false;
-        this.isUploaded = true;
-        this.storageLocal.set("Status",this.isUploaded)
-      },error=>{
-        console.error(error);
-      })
-    }),
+     // Get file progress percentage
+     this.percentage = this.task.percentageChanges();
+     this.snapshot = this.task.snapshotChanges().pipe(
+        finalize(() => {
+          // Get uploaded file storage path
+          this.UploadedFileURL = fileRef.getDownloadURL();
+          this.UploadedFileURL.subscribe(resp=>{
+            this.addImagetoDB({
+              name: file.name,
+              filepath: resp,
+              size: this.fileSize
+            });
+            this.isUploading = false;
+            this.isUploaded = true;
+            this.storageLocal.set("Status",this.isUploaded)
+          },error=>{
+            console.error(error);
+          })
+        }),
     tap(snap => {
         this.fileSize = snap.totalBytes;
     })
@@ -171,11 +145,9 @@ export class ProspectPage implements OnInit {
 }
 addImagetoDB(image: MyData) {
   //Create an ID for document
-  // const id = this.database.createId();
   this.storageLocal.get('session_storage').then((Data) => {
-    this.userID = (Data.map(data => data.id)).toString();
+  this.userID = (Data.map(data => data.id)).toString();
   const id = this.userID + this.userIDDesc;
-  //Set document id with value in database
   this.imageCollection.doc(id).set(image).then(resp => {
     console.log(resp);
   }).catch(error => {
@@ -183,8 +155,6 @@ addImagetoDB(image: MyData) {
   });
 });
 }
-//end function
-
   addprospect() {
     this.router.navigate(['members/addprospect'])
   }
@@ -432,24 +402,6 @@ addImagetoDB(image: MyData) {
       this.ionViewWillEnter();
       event.target.complete();
     }, 500);
-  }
-  onSelectFile(event) {
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        // this.url = event.target.result;
-        this.url = reader.result;
-        this.storageLocal.set('Profile', this.url)
-      }
-    }
-  }
-  CheckLoadImages(){
-    this.storageLocal.get("Status").then((data)=>{
-      this.isUploaded = data;
-    })
   }
   movetoMain() {
     if (this.Move == true){

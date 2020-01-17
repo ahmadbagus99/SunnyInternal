@@ -25,14 +25,7 @@
         </div>
       </div>
       <div text-center>
-        <div class="fileUpload btn btn-primary">
-          <!-- <input id="uploadBtn" type="file" class="upload" (change)="uploadFile($event.target.files)" /> -->
-        </div>
         <div text-center *ngIf="isUploading && !isUploaded">
-          <ion-card-header>
-            <!-- <ion-card-title>Selected File:<b>{{ fileName }}</b></ion-card-title> -->
-          </ion-card-header>
-  
           <div *ngIf="percentage | async as pct">
             <!-- Progress: {{ pct | number }}% -->
             <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>

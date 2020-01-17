@@ -1,5 +1,3 @@
-<!-- Header Start -->
-
 <ion-header>
   <ion-toolbar color=#F57F17 class="new-background-color">
     <ion-buttons slot="start">
@@ -22,48 +20,15 @@
           <img *ngFor="let item of images | async" [src]="item.filepath" />
           <img class="add-pict" [hidden]="isUploaded" src="assets/img/avatar-contact.png" />
         </label>
-        <!-- button unggah foto  -->
-        <input id="file-input" type="file" class="upload" (change)="uploadFile($event.target.files)"/>
-        <div text-center>
-          <div class="fileUpload btn btn-primary">
-            <!-- <input id="uploadBtn" type="file" class="upload" (change)="uploadFile($event.target.files)" /> -->
-          </div>
-          <div text-center *ngIf="isUploading && !isUploaded">
-            <ion-card-header>
-              <!-- <ion-card-title>Selected File:<b>{{ fileName }}</b></ion-card-title> -->
-            </ion-card-header>
-    
-            <div *ngIf="percentage | async as pct">
-              <!-- Progress: {{ pct | number }}% -->
-              <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
-            </div>
-            <div *ngIf="snapshot | async as snap">
-              <!-- File Size: {{ snap.totalBytes | fileSizePipe }} Transfered:
-              {{ snap.bytesTransferred | fileSizePipe }} -->
-              <div *ngIf="snapshot && snap.bytesTransferred != snap.totalBytes">
-                <!-- <ion-button color="warning" size="small" (click)="task.pause()" class="button is-warning">Pause</ion-button>
-                <ion-button size="small" (click)="task.resume()" class="button is-info">Resume</ion-button>
-                <ion-button color="danger" size="small" (click)="task.cancel()" class="button is-danger">Cancel</ion-button> -->
-              </div>
-            </div>
-          </div>
-        </div> 
-
         <ion-col size="12" size-sm>
             <div class="nama">
               <h3 *ngFor="let item of items">{{item.fullname}}</h3>
             </div>
-          </ion-col>
-        </div>
-      </ion-col>
-    </div>
-    </ion-header>
-
-
-<!--  Header end -->
-
-
-<!-- content start -->
+        </ion-col>
+      </div>
+    </ion-col>
+  </div>
+</ion-header>
 
 <ion-content>
   <div class="all">
@@ -75,36 +40,30 @@
           <ion-input class="phonenumber" type="text" [(ngModel)]="phonenumber" readonly>{{item.phonenumber}}</ion-input>
         </ion-item>
       </div>
-    
-
-    <!-- Menampilkan list birthday -->
-    <div class="birthday">
-      <ion-item lines="none">
-        <ion-label position="stacked">Birthday</ion-label>
-        <ion-input class="birthday" type="text" [(ngModel)]="birthday" readonly>{{item.birthday}}</ion-input>
-      </ion-item>
+        <!-- Menampilkan list birthday -->
+        <div class="birthday">
+          <ion-item lines="none">
+            <ion-label position="stacked">Birthday</ion-label>
+            <ion-input class="birthday" type="text" [(ngModel)]="birthday" readonly>{{item.birthday}}</ion-input>
+          </ion-item>
+        </div>
+          <!-- Menampilkan list email -->
+          <div class="email">
+            <ion-item lines="none">
+              <ion-label position="stacked">Email</ion-label>
+              <ion-input class="email" type="text" [(ngModel)]="email" readonly>{{item.email}}</ion-input>
+            </ion-item>
+          </div>
+            <!-- Menampilkan list twitter -->
+            <div class="country">
+              <ion-item lines="none">
+                <ion-label position="stacked">Country</ion-label>
+                <ion-input class="country" type="text" [(ngModel)]="country" readonly>{{item.country}}</ion-input>
+              </ion-item>
+            </div>
     </div>
-
-
-    <!-- Menampilkan list email -->
-    <div class="email">
-      <ion-item lines="none">
-        <ion-label position="stacked">Email</ion-label>
-        <ion-input class="email" type="text" [(ngModel)]="email" readonly>{{item.email}}</ion-input>
-      </ion-item>
-    </div>
-
-
-    <!-- Menampilkan list twitter -->
-    <div class="country">
-      <ion-item lines="none">
-        <ion-label position="stacked">Country</ion-label>
-        <ion-input class="country" type="text" [(ngModel)]="country" readonly>{{item.country}}</ion-input>
-      </ion-item>
-    </div>
-
-
   </div>
+</ion-content>
 
   
 

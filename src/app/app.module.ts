@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { MainPage } from 'src/app/members/main/main.page';
+import { ImagesUpload } from './services/UploadImages'
 //pdf
 import { File } from '@ionic-native/file/ngx';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
@@ -46,6 +47,7 @@ import { FIREBASE_CONFIG } from './firebase.config'
   providers: [
     PostProvider,
     CreatPDF,
+    ImagesUpload,
     MainPage,
     CallNumber,
     StatusBar,

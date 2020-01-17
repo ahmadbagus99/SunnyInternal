@@ -47,7 +47,8 @@
               (click)="updateAccount(item.id,item.nama,item.alamat,item.web,item.phone,item.email,item.owner,item.type,item.event_date,item.category,item.industry,item.employee)">
               <!-- <ion-icon slot="start" name="ios-contacts"></ion-icon> -->
               <ion-avatar slot="start">
-                <text-avatar [text]="item.nama" [color]="item.color"></text-avatar>
+                <img *ngIf="item.Images" [src]="item.Images">
+                <text-avatar *ngIf="!item.Images" [text]="item.nama" [color]="item.color"></text-avatar>
               </ion-avatar>
               <ion-label>
                 <h3>{{item.nama}}</h3>

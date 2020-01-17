@@ -89,7 +89,14 @@
       <span>
         <ion-list>
           <ion-item *ngFor="let item of itemProduct">
-            <ion-icon slot="start" name="ios-basket"></ion-icon>
+            <ion-avatar slot="start">
+              <div *ngIf="item.Images">
+                <img [src]="item.Images">
+              </div>
+              <div *ngIf="!item.Images">
+                <ion-icon name="ios-basket"></ion-icon>
+              </div>
+            </ion-avatar>
               <ion-label>
                 <h3>{{item.namaProduk}}</h3>
                 <ion-input type="text" value="{{ item.hargaProduk | currency:'Rp '}}" readOnly></ion-input>

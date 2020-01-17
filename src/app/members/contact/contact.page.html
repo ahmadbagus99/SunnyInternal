@@ -45,9 +45,9 @@
             </ion-item-options>
             <ion-item button
               (click)="updatecontact(item.id,item.nama,item.email,item.alamat,item.tgl_lahir,item.kelamin,item.no_tlp,item.almt_rumah,item.title,item.perusahaan,item.almt_perusahaan,item.penghasilan,item.Hobi,item.Makanan_Favorit,item.NPWP,item.Facebook,item.Twitter,item.Instagram)">
-              <!-- <ion-icon slot="start" name="ios-contact"></ion-icon> -->
               <ion-avatar slot="start">
-                <text-avatar [text]="item.nama" [color]="item.color"></text-avatar>
+                  <img *ngIf="item.Images" [src]="item.Images">
+                  <text-avatar *ngIf="!item.Images" [text]="item.nama" [color]="item.color"></text-avatar>
               </ion-avatar>
               <ion-label>
                 <h3>{{item.nama}}</h3>
