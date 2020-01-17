@@ -34,12 +34,14 @@
             </ion-item>
 
             <ion-item>
-              <ion-input placeholder="Confirm Password" type="password" [(ngModel)]="confirm_password"></ion-input>
+              <ion-input [(ngModel)]="confirm_password" placeholder="Confirm Password" [type]="getType()"></ion-input>
+              <ion-icon name="eye" item-right (click)="toggleTextPassword()"></ion-icon>
             </ion-item>
 
             <div class="gambar">
               <br>
-                <ion-button icon-left size="medium" expand="full" shape="round" color="success" (click)="prosesregister()"> Register </ion-button>
+              <ion-button icon-left size="mxedium" expand="full" shape="round" color="success"
+                (click)="prosesregister()"> Register </ion-button>
               <br>
               <div class="textlogin">
                 <ion-text routerLink="/login"><u>I have account!</u></ion-text>

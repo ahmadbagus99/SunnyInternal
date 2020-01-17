@@ -12,6 +12,7 @@ export class RegisterPage implements OnInit {
   nama = '';
   email = '';
   password = '';
+  isActiveToggleTextPassword: Boolean = true;
   // tslint:disable-next-line: variable-name
   confirm_password = '';
 
@@ -21,6 +22,13 @@ export class RegisterPage implements OnInit {
     private router: Router,
     public loadingController: LoadingController
   ) { }
+  public toggleTextPassword(): void{
+    this.isActiveToggleTextPassword = (this.isActiveToggleTextPassword==true)?false:true;
+}
+public getType() {
+  return this.isActiveToggleTextPassword ? 'password' : 'text';
+}
+
 
   ngOnInit() {
   }
