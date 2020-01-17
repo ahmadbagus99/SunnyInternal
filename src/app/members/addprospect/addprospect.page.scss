@@ -7,6 +7,8 @@
 .Slide1{
   overflow-y: scroll;
   display: block;
+
+
 }
 
 ion-title {
@@ -68,6 +70,10 @@ new-background-color {
 
 ion-toolbar {
   background-color: #F57F17;
+}
+
+ion-content {
+  --ion-background-color: rgb(255, 255, 255) fixed !important;  
 }
 
 ion-card {
