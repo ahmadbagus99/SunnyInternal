@@ -2,13 +2,10 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button color="light" (click)="movetoMain()"></ion-back-button>
-
       <div class="add-pro">
         <ion-icon (click)="addprospect()" name="md-add-circle"></ion-icon>
       </div>
-
     </ion-buttons>
-
     <ion-title>Prospect</ion-title>
   </ion-toolbar>
   <div>
@@ -36,7 +33,6 @@
 </ion-header>
 
 <ion-content>
-
   <ion-grid class="newprospect">
     <div class="see-all" (click)="SeeAllProspect(param)">
       <div class="text1">
@@ -44,11 +40,9 @@
       </div>
     </div>
     <h4 class="judul"><b> New Prospect </b></h4>
-
-
     <div class="scrolling-wrapper-1">
-      <p text-center>{{text}}</p>
-      <div *ngFor="let item of items" class="card">
+      <p text-center>{{textProspect}}</p>
+      <div *ngFor="let item of itemsProspect" class="card">
         <ion-card class="prospectcard" button
           (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
           <img center src="assets/img/customer-icon.png" />
@@ -62,7 +56,6 @@
       </div>
     </div>
   </ion-grid>
-
   <!-- CUSTOMER -->
   <div class="see-all" (click)="SeeAllCustomer(param)">
     <div class="text3">
@@ -84,7 +77,6 @@
       </ion-card>
     </div>
   </div>
-
 
   <div class="see-all" (click)="product()">
     <div class="text2">
