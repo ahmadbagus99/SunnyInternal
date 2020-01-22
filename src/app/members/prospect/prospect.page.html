@@ -21,26 +21,8 @@
               <img class="add-pict" [hidden]="isUploaded" src="assets/img/avatar-contact.png" />
             </div>
           </label>
-          <input id="file-input" type="file" class="upload" (change)="uploadFile($event.target.files)"/>
         </div>
       </div>
-      <div text-center>
-        <div text-center *ngIf="isUploading && !isUploaded">
-          <div *ngIf="percentage | async as pct">
-            <!-- Progress: {{ pct | number }}% -->
-            <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
-          </div>
-          <div *ngIf="snapshot | async as snap">
-            <!-- File Size: {{ snap.totalBytes | fileSizePipe }} Transfered:
-            {{ snap.bytesTransferred | fileSizePipe }} -->
-            <div *ngIf="snapshot && snap.bytesTransferred != snap.totalBytes">
-              <!-- <ion-button color="warning" size="small" (click)="task.pause()" class="button is-warning">Pause</ion-button>
-              <ion-button size="small" (click)="task.resume()" class="button is-info">Resume</ion-button>
-              <ion-button color="danger" size="small" (click)="task.cancel()" class="button is-danger">Cancel</ion-button> -->
-            </div>
-          </div>
-        </div>
-      </div> 
       <div *ngFor="let item of itemsProfile">
         <h2 class="text">
           {{item.fullname}}
@@ -81,8 +63,6 @@
     </div>
   </ion-grid>
 
-
-
   <!-- CUSTOMER -->
   <div class="see-all" (click)="SeeAllCustomer(param)">
     <div class="text3">
@@ -115,10 +95,15 @@
 
   <div class="scrolling-wrapper-1">
     <p text-center>{{textProduct}}</p>
-    <div *ngFor="let item of itemsproduct; let i=index" class="card">
-      <ion-card *ngIf="i<3" button
+    <div *ngFor="let item of itemsproduct" class="card">
+      <ion-card button
         (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
-        <img src="assets/img/product.png">
+        <div *ngIf="item.Images">
+          <img [src]="item.Images">
+        </div>
+        <div *ngIf="!item.Images">
+          <ion-icon name="ios-basket"></ion-icon>
+        </div>
         <ion-card-content>
           <ion-text>
             <h2 text-center>{{item.namaProduk}}</h2>

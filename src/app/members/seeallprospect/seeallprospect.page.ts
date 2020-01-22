@@ -4,6 +4,7 @@ import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { NativePageTransitions, NativeTransitionOptions  } from '@ionic-native/native-page-transitions/ngx';
+import { DataService } from "src/app/services/data.service";
 
 @Component({
   selector: 'app-seeallprospect',
@@ -13,6 +14,7 @@ import { NativePageTransitions, NativeTransitionOptions  } from '@ionic-native/n
 export class SeeallprospectPage implements OnInit {
   itemsCustomer : any = [];
   items : any = [];
+  itemsProspect : any = [];
   itemsNew : any = [];
   limit : number = 10;
   start : number = 0;
@@ -31,6 +33,7 @@ export class SeeallprospectPage implements OnInit {
       public loadingController : LoadingController,
       private actRoute : ActivatedRoute,
       private nativePageTransitions: NativePageTransitions,
+      private dataService: DataService
     ) { 
       setTimeout(() => {
         this.isLoaded = true;
@@ -42,6 +45,24 @@ export class SeeallprospectPage implements OnInit {
         var Data = data.param;
         this.selectCategory = Data;
       })
+      this.setFilteredItemsProspect();
+      this.setFilteredItemsCustomer();
+    }
+    ionViewWillEnter(){
+      this.items = [];
+      this.start = 0;
+      this.itemsNew = [];
+      this.itemsCustomer = [];
+      this.LoadCustomer();
+      this.loadProspect();
+      this.loadProspectNew();
+    }
+
+    setFilteredItemsProspect(){
+      this.itemsProspect = this.dataService.filterProspect(this.searchTerm);
+    }
+    setFilteredItemsCustomer(){
+      this.itemsCustomer = this.dataService.filterCustomer(this.searchTerm);
     }
 
     addprospect(){
@@ -51,16 +72,6 @@ export class SeeallprospectPage implements OnInit {
        };
       this.nativePageTransitions.curl(options);
       this.router.navigate(['members/addprospect'])
-    }
-
-    ionViewWillEnter(){
-      this.items = [];
-      this.start = 0;
-      this.itemsNew = [];
-      this.itemsCustomer = [];
-      this.LoadCustomer();
-      this.loadProspect();
-      this.loadProspectNew();
     }
 
     deleteProspect(id){
@@ -113,7 +124,7 @@ export class SeeallprospectPage implements OnInit {
             this.postPvdr.postData(body, 'LoadProspect.php?Id='+this.user).subscribe(data =>{
               loading.dismiss().then(()=>{
                 for(let item of data){
-                  this.items.push(item);
+                  this.itemsProspect.push(item);
               } 
               })
             });
@@ -164,10 +175,6 @@ export class SeeallprospectPage implements OnInit {
         })
     }
 
-    arrayOne(n: number): any[] {
-      return Array(n);
-    }
-
     async presentAlertMultipleButtons(id) {
       const alert = await this.alertController.create({
         header: 'Are you sure?',
@@ -206,6 +213,9 @@ export class SeeallprospectPage implements OnInit {
     }
     Moveto(){
       this.router.navigate(['members/prospect']);
+    }
+    arrayOne(n: number): any[] {
+      return Array(n);
     }
 
   }

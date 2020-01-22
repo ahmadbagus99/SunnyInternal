@@ -87,6 +87,9 @@
 <!-- Slide 2 -->
     <ion-slide class="Slide1">
       <span>
+        <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
+      </span>
+      <span>
         <ion-list>
           <ion-item *ngFor="let item of itemProduct">
             <ion-avatar slot="start">
@@ -98,8 +101,9 @@
               </div>
             </ion-avatar>
               <ion-label>
-                <h3>{{item.namaProduk}}</h3>
-                <ion-input type="text" value="{{ item.hargaProduk | currency:'Rp '}}" readOnly></ion-input>
+                <h2>{{item.namaProduk}}</h2>
+                <h3>{{item.hargaProduk | currency:'Rp '}}</h3>
+                <h3>Qty : {{item.jumlahProduk}}</h3>
               </ion-label>
             <ion-button slot="end" color="success" (click)="showOnceToast(item.id,item.namaProduk)" [hidden]=item.status>Add</ion-button>
             <ion-button slot="end" (click)="Delete(item.namaProduk)" color="danger" [hidden]=!item.status>Remove</ion-button>

@@ -11,7 +11,7 @@ export class LoadingPage implements OnInit {
   constructor(
     private router: Router
   ) { }
-S
+  
   ngOnInit() {
   }
 

@@ -19,6 +19,7 @@ export class ProductPage implements OnInit {
   user: any;
   public searchTerm: string = "";
   selectCategory = 'Populer';
+  text = "No Recent Product";
 
   constructor(
     private router: Router,
@@ -111,6 +112,11 @@ export class ProductPage implements OnInit {
         start: this.start,
       };
       this.postPvdr.postData(body, 'LoadProductNew.php?Id=' + this.user).subscribe(data => {
+        if (data.length == 0){
+          this.text;
+        }else{
+          this.text = '';
+        }
         for (let item of data) {
           this.itemsNew.push(item);
         }
@@ -125,7 +131,7 @@ export class ProductPage implements OnInit {
       this.ionViewWillEnter();
     });
   }
-  async presentAlertMultipleButtons(id) {
+  async Delete(id) {
     const alert = await this.alertController.create({
       header: 'Are you sure?',
       subHeader: '',

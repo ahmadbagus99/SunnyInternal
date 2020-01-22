@@ -19,6 +19,7 @@ export class AccountPage implements OnInit {
   user: number;
   public searchTerm: string = "";
   selectCategory = 'Populer';
+  text = "No Recent Account";
 
   constructor(
     private router: Router,
@@ -26,21 +27,15 @@ export class AccountPage implements OnInit {
     private storage: Storage,
     public alertController: AlertController,
     public loadingController: LoadingController,
-    private dataService: DataService,
+    private dataService: DataService
   ) {
   }
   ngOnInit() {
     this.setFilteredItems();
   }
-  // Fungsi untuk menambahkan item pada page account.//
-  addaccount() {
-    this.router.navigate(['members/addaccount'])
-  }
   ionViewWillEnter() {
-    //get ID
-    this.storage.get('session_storage').then((iduser) => {
-      var ID = iduser;
-      this.user = ID.map(data => data.id)
+    this.storage.get('session_storage').then((ID) => {
+      this.user = parseInt(ID.map(data => data.id));
     });
     this.items = [];
     this.start = 0;
@@ -48,7 +43,9 @@ export class AccountPage implements OnInit {
     this.loadAccount();
     this.loadAccountNew();
   }
-  // Fungsi untuk menarik/mendapatkan data untuk data edit account dari server php//
+  addaccount() {
+    this.router.navigate(['members/addaccount'])
+  }
   updateAccount(id, nama, alamat, web, phone, email, owner, type, event_date, category, industry, employee) {
     if (nama == "") {
       nama = " ";
@@ -135,14 +132,18 @@ export class AccountPage implements OnInit {
         start: this.start,
       };
       this.postPvdr.postData(body, 'LoadAccountNew.php?Id=' + this.user).subscribe(data => {
+        if (data.length == 0){
+          this.text;
+        }else{
+          this.text = '';
+        }
         for (let item of data) {
           this.itemsNew.push(item);
         }
       });
   }
 
-  //fungsi sebagai button mengahapus akun dan membuat tampilan text.//
-  async presentAlertMultipleButtons(id) {
+  async Delete(id) {
     const alert = await this.alertController.create({
       header: 'Are You Sure?',
       subHeader: '',

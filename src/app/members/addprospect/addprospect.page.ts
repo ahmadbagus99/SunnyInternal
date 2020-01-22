@@ -26,6 +26,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 
 export class AddprospectPage implements OnInit {
+  public searchTerm: string = "";
   IdProspect : number;
   isHidden = true;
   selectHidden: boolean;
@@ -91,6 +92,7 @@ export class AddprospectPage implements OnInit {
     private file: File,
     private fileOpener: FileOpener,
     private alertCtrl: AlertController,
+    private dataService: DataService,
     private localNotifications: LocalNotifications
   ) { }
 
@@ -299,6 +301,9 @@ export class AddprospectPage implements OnInit {
         })
       });
     })
+  }
+  setFilteredItems() {
+    this.itemProduct = this.dataService.filterProduct(this.searchTerm);
   }
 
   loadQuantityroduct() {
@@ -617,8 +622,7 @@ export class AddprospectPage implements OnInit {
   }
   async cancel() {
     const alert = await this.alertCtrl.create({
-      header: 'Are you sure ?',
-      subHeader:'Canceled this process ?',
+      subHeader:'Previous data will be lost, Are you sure?',
       buttons: [
         {
           text: 'Cancel',

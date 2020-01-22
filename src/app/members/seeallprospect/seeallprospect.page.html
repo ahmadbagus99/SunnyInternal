@@ -6,7 +6,14 @@
     <ion-title>Another Prospect</ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar color="light" animated [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
+    <div [ngSwitch]="selectCategory">
+      <div *ngSwitchCase="'Populer'">
+        <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="setFilteredItemsProspect()"></ion-searchbar>
+      </div>
+      <div *ngSwitchCase="'Kategori'">
+        <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="setFilteredItemsCustomer()"></ion-searchbar>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -30,7 +37,7 @@
     <div *ngSwitchCase="'Populer'">
       <ng-container *ngIf="isLoaded; else elseTemplate">
         <ion-list>
-          <ion-item-sliding *ngFor="let item of items">
+          <ion-item-sliding *ngFor="let item of itemsProspect">
             <ion-item-options side="end">
               <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
             </ion-item-options>

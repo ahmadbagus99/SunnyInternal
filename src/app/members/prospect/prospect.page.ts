@@ -185,9 +185,9 @@ addImagetoDB(image: MyData) {
       };
       this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
         loading.dismiss().then(() => {
-          for (let item of data) {
-            this.itemsproduct.push(item);
-          }
+            for ( var i=0; i<4; i++){
+              this.itemsproduct[i] = data[i]
+            }
           var product = this.itemsproduct.length;
           if (product == 0){
             this.textProduct;
