@@ -25,12 +25,9 @@ ion-title {
   text-align: center;
   text-transform: capitalize;
 }
-
-
 ion-title {
   color: #F57F17;
 }
-
 ion-button {
   color: #FFFFFF;
   text-transform: capitalize;
@@ -46,7 +43,6 @@ ion-button {
   margin-left: 10px;
   margin-right: 10px;
 }
-
 .segment {
   margin-top: 10px;
   margin-bottom: -18px;
@@ -54,83 +50,68 @@ ion-button {
   color: #F57F17;
   text-align: center;
 }
-
 .upload {
   margin-left: 143px;
   margin-bottom: 50px;
   color: #ffffff;
 }
-
-
 ion-back-button {
   color: #FFFFFF;
 }
-
 ion-title {
   color: #FFFFFF;
 }
-
 ion-header {
   background-color: #F57F17;
 }
-
 new-background-color {
   background-color: #F57F17;
 }
-
 ion-toolbar {
   background-color: #F57F17;
 }
-
+ion-content {
+  --ion-background-color: rgb(255, 255, 255) fixed !important;  
+}
 ion-card {
   margin-top: -6vw;
   height: 53vw;
   width: 100vw;
   margin-left: -0.6vw;
 }
-
 ion-card-content {
   height: 50vw;
   position: absolute;
 }
-
 .avatar {
   margin-top: 0;
 }
-
 .image-upload>input {
   display: none;
 }
-
 .image-upload img {
   width: 80px;
   cursor: pointer;
 }
-
 .scroll-content {
   display: flex;
   flex-direction: column;
-
   ion-slides {
     display: flex;
   }
 }
-
 .next {
   size: 10vw;
 }
-
 .next-butt {
   margin-top: 5vw;
 }
-
 .statusprocess {
   text-align: center;
   color: #F57F17;
   border-radius: 2vw;
   font-size: 4vw;
 }
-
 .next-prog {
   margin-top: 10vw;
   margin-right: -52vw;
@@ -139,11 +120,9 @@ ion-card-content {
   margin-top: 2vw;
   margin-right: -77vw;
 }
-
 .previous {
   margin-top: 5vw;
 }
-
 ion-slides {
   overflow: hidden;
   --overflow: hidden;

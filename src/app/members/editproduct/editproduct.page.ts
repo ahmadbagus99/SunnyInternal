@@ -28,11 +28,11 @@ export class EditproductPage implements OnInit {
   fileName: string = '';
   fileSize: number;
 
- //Status check 
- isUploading: boolean;
- isUploaded: boolean;
- private imageCollection: AngularFirestoreCollection<MyData>;
- isImgLoaded: boolean;
+  //Status check 
+  isUploading: boolean;
+  isUploaded: boolean;
+  private imageCollection: AngularFirestoreCollection<MyData>;
+  isImgLoaded: boolean;
 
   id: number;
   user: any;
@@ -51,6 +51,7 @@ export class EditproductPage implements OnInit {
   limit : number = 10;
   start : number = 0;
   status : string;
+  ImageItems : any = [];
   
   constructor(
     private router: Router,
@@ -60,25 +61,20 @@ export class EditproductPage implements OnInit {
     private actRoute: ActivatedRoute,
     public loadingController : LoadingController,
     private storage: AngularFireStorage,
-    private database: AngularFirestore,
+    private database: AngularFirestore
   ) {
-    this.isUploading = false;
-    this.isUploaded = false;
-    //Set collection where our documents/ images info will save
-    this.actRoute.params.subscribe((data: any) => {
-      var ID = data.id;
-      this.imageCollection = database.collection<MyData>(this.Location+ID);
-      this.images = this.imageCollection.valueChanges();
-      this.isImgLoaded = false;
+    this.storageLocal.get('session_storage').then(data =>{
+      var ID = parseInt(data.map( data => data.id));
+      this.imageCollection = database.collection<MyData>(ID+this.Location);
     })
   }
   ionViewWillEnter(){
     this.items = [];
     this.start = 0;
     this.itemsNew = [];
-    this.loadProduct();
+    this.loadImageProduct();
   }
-  //fungsi sebagai router pemanggil data yang sudah disii ke dalam product
+  
   ngOnInit() {
     this.actRoute.params.subscribe((data: any) => {
       this.id = data.id;
@@ -98,7 +94,14 @@ export class EditproductPage implements OnInit {
     }
     });
   }
-  uploadFile(event: FileList) {
+  async uploadFile(event: FileList) {
+    const loading = await this.loadingController.create({
+      spinner: 'crescent',
+      translucent : true,
+      cssClass:'custom-loader-class',
+      mode: 'md'
+    });
+    await loading.present();
     const file = event.item(0)
     if (file.type.split('/')[0] !== 'image') {
       console.error('unsupported file type :( ')
@@ -119,13 +122,23 @@ export class EditproductPage implements OnInit {
       finalize(() => {
         // Get uploaded file storage path
         this.UploadedFileURL = fileRef.getDownloadURL();
- 
         this.UploadedFileURL.subscribe(resp => {
           this.addImagetoDB({
-            name: file.name,
+            name: this.namaProduk,
             filepath: resp,
             size: this.fileSize
           });
+          let body = {
+            aksi:'AddImagesProduct',
+            id: this.id,
+            Images : resp
+          };
+          loading.dismiss().then(()=>{
+            this.loadImageProduct();
+          })
+          this.postPvdr.postData(body, 'InsertImages.php').subscribe(data =>{
+            console.log(data)
+          })
           this.isUploading = false;
           this.isUploaded = true;
         }, error => {
@@ -137,19 +150,17 @@ export class EditproductPage implements OnInit {
       })
     )
   }
- 
   addImagetoDB(image: MyData) {
     //Create an ID for document
-    const id = this.database.createId();
-      //Set document id with value in database
+    this.actRoute.params.subscribe((data: any) => {
+      var ID = data.id;
+      const id = ID;
       this.imageCollection.doc(id).set(image).then(resp => {
-        console.log(resp);
       }).catch(error => {
         console.log("error " + error);
       });
+    });
   }
-  //End Function
-   // Fungsi untuk menarik/mendapatkan data untuk data edit Produk server php
   updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk){
     this.router.navigate(['members/addproduct/'
     +id+'/'
@@ -161,32 +172,21 @@ export class EditproductPage implements OnInit {
     +hargaProduk+'/'
     +deskripsiProduk]);
   }
-
-  // fungsi untuk membuat baru produk yang akan diisi
-  async loadProduct(){
-    const loading = await this.loadingController.create({
-      message : "",
-      spinner: 'crescent',
-      translucent : true,
-      cssClass:'custom-loader-class',
-      mode: 'md'
-    })
-    await loading.present();
-    this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.user = IdLogin;
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
-        loading.dismiss().then(() => {
-          for (let item of data) {
-            this.items.push(item);
-          }
-        })
-      });
+  loadImageProduct(){
+    this.storageLocal.get('session_storage').then((IdLogin) => {
+      this.user = parseInt((IdLogin.map(data => data.id)));
+        let body = {
+          aksi: 'getdata',
+          limit: this.limit,
+          start: this.start,
+        };
+      this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(dataImages => {
+        dataImages.forEach(element => {
+            if(element.namaProduk == this.namaProduk){
+              this.items = element.Images;
+            }
+        });
+      })
     })
   }
-  
 }

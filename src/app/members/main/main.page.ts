@@ -3,7 +3,6 @@ import { Storage } from '@ionic/storage';
 import { ShareService } from 'src/app/share/share';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { PostProvider } from 'src/providers/post-providers';
-import { IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-main',
@@ -11,14 +10,6 @@ import { IonSlides } from '@ionic/angular';
   styleUrls: ['./main.page.scss'],
 })
 export class MainPage implements OnInit{
-  @ViewChild('mySlider') slider: IonSlides;
-  sliderOpts = {
-    autoplay: true,
-    speed: 1000,
-    zoom: {
-      maxRatio: 5
-    }
-  };
   Activity: any = null;
   items: any = [];
   itemsaccount: any = [];
@@ -33,7 +24,6 @@ export class MainPage implements OnInit{
   text: string = "You don't have prospect today";
   textActivity: string = "You don't have activities today";
   Incentive: string;
-  NewDate : string;
 
   constructor(
     private storage: Storage,
@@ -51,21 +41,11 @@ export class MainPage implements OnInit{
     this.LoadActivity();
     this.LoadIncentive();
     this.loadProspect();
-    this.LoadProfile();
     this.LoadTotalCustomer();
     this.LoadTotalProspect();
-    if (this.Activity == null) {
-      this.textActivity;
-    } else {
-      this.textActivity = '';
-    }
   }
   ngOnInit(){
-    // if (this.Activity == null) {
-    //   this.textActivity;
-    // } else {
-    //   this.textActivity = '';
-    // }
+   
   }
   updateprospect(id, namaCustomer, emailCustomer, alamatCustomer, no_tlp, company, alamatCompany, emailCompany, nomorCompany, customerneed, stock, hargaProduk, totalPrice, budget, status) {
     this.router.navigate(['members/view-prospect/'
@@ -87,7 +67,6 @@ export class MainPage implements OnInit{
     ]);
   }
   LoadTotalCustomer() {
-    //getID
     this.storage.get('session_storage').then((iduser) => {
       var ID = iduser;
       this.user = ID.map(data => data.id)
@@ -105,7 +84,6 @@ export class MainPage implements OnInit{
     });
   }
   LoadIncentive() {
-    //getID
     this.storage.get('session_storage').then((iduser) => {
       var ID = iduser;
       this.user = ID.map(data => data.id)
@@ -128,7 +106,6 @@ export class MainPage implements OnInit{
   }
 
   LoadTotalProspect() {
-    //getID
     this.storage.get('session_storage').then((iduser) => {
       var ID = iduser;
       this.user = ID.map(data => data.id)
@@ -151,7 +128,6 @@ export class MainPage implements OnInit{
     });
   }
   loadProspect() {
-    //getID
     this.storage.get('session_storage').then((iduser) => {
       var ID = iduser;
       this.user = ID.map(data => data.id)
@@ -166,26 +142,8 @@ export class MainPage implements OnInit{
         }
       });
     });
-    // this.changeRef.detectChanges();
   }
 
-  LoadProfile() {
-    //getID
-    this.storage.get('session_storage').then((iduser) => {
-      var ID = iduser;
-      this.user = ID.map(data => data.id)
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadProfile.php?Id=' + this.user).subscribe(data => {
-        for (let item of data) {
-          this.items.push(item);
-        }
-      });
-    });
-  }
   LoadActivity(){
     this.Activity = [];
     this.storage.get('session_storage').then((iduser) => {
@@ -197,6 +155,11 @@ export class MainPage implements OnInit{
         start: this.start,
       };
       this.postPvdr.postData(body, 'LoadActivity.php?Id=' + this.user).subscribe(data => {
+        if ( data.length == 0) {
+        this.textActivity;
+        } else {
+        this.textActivity = '';
+        }
         for (let item of data) {
           this.Activity.push(item);
         }

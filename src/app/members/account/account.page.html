@@ -11,7 +11,7 @@
     <ion-title>Account</ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar color="light" animated [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -27,10 +27,7 @@
       <ion-label>Top Recent</ion-label>
     </ion-segment-button>
     <ion-segment-button value="Terbaru">
-      <ion-label>New</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="Kategori">
-      <ion-label>Category</ion-label>
+      <ion-label>New Account</ion-label>
     </ion-segment-button>
   </ion-segment>
 
@@ -41,13 +38,14 @@
         <ion-list>
           <ion-item-sliding *ngFor="let item of items">
             <ion-item-options side="end">
-              <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
+              <ion-item-option color="danger" (click)="Delete(item.id)">Delete</ion-item-option>
             </ion-item-options>
             <ion-item button
               (click)="updateAccount(item.id,item.nama,item.alamat,item.web,item.phone,item.email,item.owner,item.type,item.event_date,item.category,item.industry,item.employee)">
               <!-- <ion-icon slot="start" name="ios-contacts"></ion-icon> -->
               <ion-avatar slot="start">
-                <text-avatar [text]="item.nama" [color]="item.color"></text-avatar>
+                <img *ngIf="item.Images" [src]="item.Images">
+                <text-avatar *ngIf="!item.Images" [text]="item.nama" [color]="item.color"></text-avatar>
               </ion-avatar>
               <ion-label>
                 <h3>{{item.nama}}</h3>
@@ -76,6 +74,7 @@
        <div *ngSwitchCase="'Terbaru'">
          <ng-container *ngIf="isLoaded; else elseTemplate">
            <ion-list>
+             <p text-center>{{text}}</p>
              <ion-item-sliding *ngFor="let item of itemsNew">
                <ion-item-options side="end">
                  <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
@@ -93,9 +92,6 @@
              </ion-item-sliding>
            </ion-list>
          </ng-container>
-    </div>
-    <div *ngSwitchCase="'Kategori'">
-
     </div>
   </div>
 </ion-content>

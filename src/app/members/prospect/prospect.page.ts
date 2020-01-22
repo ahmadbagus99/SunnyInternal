@@ -3,12 +3,9 @@ import { Router } from '@angular/router';
 import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { DataService } from "src/app/services/data.service";
-//upload
-import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { finalize, tap } from 'rxjs/operators';
 
 export interface MyData {
   name: string;
@@ -21,45 +18,24 @@ export interface MyData {
   styleUrls: ['./prospect.page.scss'],
 })
 export class ProspectPage implements OnInit {
-  // Upload Task 
-  task: AngularFireUploadTask;
-
-  // Progress in percentage
-  percentage: Observable<number>;
-
-  // Snapshot of uploading file
-  snapshot: Observable<any>;
-
-  // Uploaded File URL
-  UploadedFileURL: Observable<string>;
-
-  //Uploaded Image List
   images: Observable<MyData[]>;
-
-  //File details  
-  fileName: string = '';
-  fileSize:number;
-
-  //Status check 
   isUploading:boolean;
   isUploaded:boolean;
-
   userIDDesc : string = 'profile';
   private imageCollection: AngularFirestoreCollection<MyData>;
+  
   userID: string;
-  items: any = [];
+  itemsProspect: any = [];
   user: any;
   limit: number = 10;
   start: number = 0;
-  isLoaded = false;
-  selectCategory = 'Populer';
   itemsNew: any = [];
   itemsproduct: any = [];
   itemsProfile: any = [];
   itemsCustomer: any = [];
   itemTotalProspect: any = [];
   totalProspect: number = 0;
-  text: string = "You don't have prospect for today";
+  textProspect: string = "You don't have prospect for today";
   textProduct: string = "You haven't added product";
   textCustomer: string = "You don't have customer";
   url: any;
@@ -83,6 +59,11 @@ export class ProspectPage implements OnInit {
         this.userID = (Data.map(data => data.id)).toString();
       this.imageCollection = database.collection<MyData>(this.userID+this.userIDDesc);
       this.images = this.imageCollection.valueChanges();
+      this.images.subscribe((res: MyData[])=>{
+        if ( res.length == 1){
+          this.isUploaded = true;
+        }
+      })
     });
   }
   ngOnInit() {
@@ -92,99 +73,21 @@ export class ProspectPage implements OnInit {
   }
   ionViewWillEnter() {
     //get ID
-    this.storageLocal.get('session_storage').then((iduser) => {
-      var ID = iduser;
-      this.user = ID.map(data => data.id)
+    this.storageLocal.get('session_storage').then((ID) => {
+      this.user = parseInt(ID.map(data => data.id));
     });
-    this.items = [];
     this.start = 0;
-    this.itemsNew = [];
     this.itemsProfile = [];
     this.itemsproduct = [];
     this.itemsCustomer = [];
-    this.itemTotalProspect = [];
+    this.itemsProspect = [];
     this.itemProspectVerify = [];
-    this.LoadTotalProspect();
     this.LoadCustomer();
     this.loadProspect();
-    this.loadProspectNew();
     this.LoadProfile();
     this.loadProduct();
     this.check();
-    this.CheckLoadImages();
   }
-  uploadFile(event: FileList) {
-      
-
-    // The File object
-    const file = event.item(0)
-
-    // Validation for Images Only
-    if (file.type.split('/')[0] !== 'image') { 
-    console.error('unsupported file type :( ')
-    return;
-    }
-
-    this.isUploading = true;
-    this.isUploaded = false;
-
-
-    this.fileName = file.name;
-
-    // The storage path
-    const path = `SunnyStorage/${new Date().getTime()}_${file.name}`;
-
-    // Totally optional metadata
-    const customMetadata = { app: 'Sunny Images' };
-
-    //File reference
-    const fileRef = this.storage.ref(path);
-
-    // The main task
-    this.task = this.storage.upload(path, file, { customMetadata });
-
-  // Get file progress percentage
-  this.percentage = this.task.percentageChanges();
-  this.snapshot = this.task.snapshotChanges().pipe(
-    
-    finalize(() => {
-      // Get uploaded file storage path
-      this.UploadedFileURL = fileRef.getDownloadURL();
-      
-      this.UploadedFileURL.subscribe(resp=>{
-        this.addImagetoDB({
-          name: file.name,
-          filepath: resp,
-          size: this.fileSize
-        });
-        this.isUploading = false;
-        this.isUploaded = true;
-        this.storageLocal.set("Status",this.isUploaded)
-      },error=>{
-        console.error(error);
-      })
-    }),
-    tap(snap => {
-        this.fileSize = snap.totalBytes;
-    })
-  )
-}
-addImagetoDB(image: MyData) {
-  //Create an ID for document
-  // const id = this.database.createId();
-  this.storageLocal.get('session_storage').then((Data) => {
-    this.userID = (Data.map(data => data.id)).toString();
-  const id = this.userID + this.userIDDesc;
-  //Set document id with value in database
-  this.imageCollection.doc(id).set(image).then(resp => {
-    console.log(resp);
-  }).catch(error => {
-    console.log("error " + error);
-  });
-});
-}
-//end function
-
   addprospect() {
     this.router.navigate(['members/addprospect'])
   }
@@ -215,9 +118,9 @@ addImagetoDB(image: MyData) {
       };
       this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
         loading.dismiss().then(() => {
-          for (let item of data) {
-            this.itemsproduct.push(item);
-          }
+            for ( var i=0; i<4; i++){
+              this.itemsproduct[i] = data[i]
+            }
           var product = this.itemsproduct.length;
           if (product == 0){
             this.textProduct;
@@ -249,15 +152,6 @@ addImagetoDB(image: MyData) {
           }
         })
       });
-  }
-  deleteprospect(id) {
-    let body = {
-      aksi: 'delete',
-      id: id,
-    };
-    this.postPvdr.postData(body, 'InsertProspect.php').subscribe(_data => {
-      this.ionViewWillEnter();
-    });
   }
   updateprospect(id, namaCustomer, emailCustomer, alamatCustomer, no_tlp, company, alamatCompany, emailCompany, nomorCompany, customerneed, stock, hargaProduk, totalPrice, budget, status) {
     this.router.navigate(['members/view-prospect/'
@@ -325,48 +219,19 @@ addImagetoDB(image: MyData) {
         start: this.start,
       };
       this.postPvdr.postData(body, 'LoadProspect.php?Id=' + this.user).subscribe(data => {
+        if (data.length == 0) {
+          this.textProspect;
+        } else {
+          this.textProspect = '';
+        }
         loading.dismiss().then(() => {
           for (let item of data) {
-            this.items.push(item);
+            this.itemsProspect.push(item);
           }
         })
       });
   }
-  loadProspectNew() {
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadProspectNew.php?Id=' + this.user).subscribe(data => {
-        for (let item of data) {
-          this.itemsNew.push(item);
-        }
-      });
-  }
-  LoadTotalProspect() {
-    this.storageLocal.get('session_storage').then((iduser) => {
-      var ID = iduser;
-      this.user = ID.map(data => data.id)
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadTotalProspect.php?Id=' + this.user).subscribe(data => {
-        for (let item of data) {
-          this.itemTotalProspect.push(item);
-          this.totalProspect = this.itemTotalProspect.length;
-          if (this.totalProspect == 0) {
-            this.text;
-          } else if (this.totalProspect >= 1) {
-            this.text = '';
-          }
-        }
-        this.storageLocal.set('TotalProspect',this.totalProspect);
-      });
-      });
-  }
+ 
   async LoadCustomer() {
     const loading = await this.loadingController.create({
       message: "",
@@ -432,24 +297,6 @@ addImagetoDB(image: MyData) {
       this.ionViewWillEnter();
       event.target.complete();
     }, 500);
-  }
-  onSelectFile(event) {
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        // this.url = event.target.result;
-        this.url = reader.result;
-        this.storageLocal.set('Profile', this.url)
-      }
-    }
-  }
-  CheckLoadImages(){
-    this.storageLocal.get("Status").then((data)=>{
-      this.isUploaded = data;
-    })
   }
   movetoMain() {
     if (this.Move == true){

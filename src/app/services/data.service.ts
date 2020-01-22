@@ -3,9 +3,6 @@ import { ShareService } from 'src/app/share/share';
 import { Storage } from '@ionic/storage';
 import { PostProvider } from 'src/providers/post-providers';
 
-const TOKEN_data = 'data';
-const TOKEN_dataacc = 'dataacc';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,6 +11,8 @@ export class DataService {
   public itemsContact : any = [];
   public itemsAccount : any = [];
   public itemsProduct : any = [];
+  public itemsProspect : any = [];
+  public itemsCustomer : any = [];
   start : number = 0;
   limit : number = 10;
   user : number;
@@ -26,11 +25,13 @@ export class DataService {
       this.loadContact();
       this.loadAcount();
       this.loadProduct();
+      this.loadProspect();
+      this.LoadCustomer();
      }
 
      loadContact(){
-      this.storage.get('IdLogin').then((IdLogin)=>{
-          this.user = IdLogin;
+      this.storage.get('session_storage').then((data)=>{
+        this.user = parseInt(data.map(data => data.id));
           let body = {
             aksi : 'getdata',
             limit : this.limit,
@@ -45,8 +46,8 @@ export class DataService {
     }
   
     loadAcount(){
-      this.storage.get('IdLogin').then((IdLogin)=>{
-          this.user = IdLogin;
+      this.storage.get('session_storage').then((data)=>{
+        this.user = parseInt(data.map(data => data.id));
           let body = {
             aksi : 'getdata',
             limit : this.limit,
@@ -61,8 +62,8 @@ export class DataService {
     }
 
     loadProduct(){
-      this.storage.get('IdLogin').then((IdLogin)=>{
-        this.user = IdLogin;
+      this.storage.get('session_storage').then((data)=>{
+        this.user = parseInt(data.map(data => data.id));
         let body = {
         aksi : 'getdata',
         limit : this.limit,
@@ -74,6 +75,37 @@ export class DataService {
         } 
       });
     })
+    }
+     loadProspect(){
+      this.storage.get('session_storage').then((data)=>{
+        this.user = parseInt(data.map(data => data.id));
+          let body = {
+            aksi : 'getdata',
+            limit : this.limit,
+            start : this.start,
+            };
+            this.postPvdr.postData(body, 'LoadProspect.php?Id='+this.user).subscribe(data =>{
+                for(let item of data){
+                  this.itemsProspect.push(item);
+              }
+            });
+        })
+    }
+
+    LoadCustomer(){
+      this.storage.get('session_storage').then((data)=>{
+        this.user = parseInt(data.map(data => data.id));
+          let body = {
+            aksi : 'getdata',
+            limit : this.limit,
+            start : this.start,
+            };
+            this.postPvdr.postData(body, 'LoadCustomer.php?Id='+this.user).subscribe(data =>{
+                for(let item of data){
+                  this.itemsCustomer.push(item);
+              } 
+            });
+        })
     }
 
     filterContact(searchTerm) {
@@ -92,6 +124,18 @@ export class DataService {
       return this.itemsProduct.filter(item => {
         return item.namaProduk.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
       });
+    }
+
+    filterProspect(searchTerm){
+      return this.itemsProspect.filter(item => {
+        return item.namaCustomer.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+      })
+    }
+    
+    filterCustomer(searchTerm){
+      return this.itemsCustomer.filter(item => {
+        return item.namaCustomer.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1;
+      })
     }
     
 }
