@@ -167,23 +167,19 @@
           </div>
           <div *ngFor="let item of itemProspect" class="card-new">
             <ion-card class="prospectcard">
-              <ion-card-content>
-                <h2><b>{{item.title}}</b></h2>
-                <ion-text class="time2" readOnly>
-                  {{item.desc}}
-                  <ion-text> with </ion-text>
-                  {{item.Prospect}}
-                  <p> {{item.startTime}} </p>
-                </ion-text>
-              </ion-card-content>
+              <img text-align-center src="assets/img/customer-icon.png" />
+            <ion-card-content text-align-left>
+              <ion-textarea class="item-name" readOnly><b>{{item.namaCustomer}}</b></ion-textarea>>
+               <div class="followup"> <p text-align-center> Follow up </p> </div>
+              <!-- <ion-textarea class="followup"><h5> Follow up </h5></ion-textarea> -->
+              
+              <br>
+            </ion-card-content>
             </ion-card>
           </div>
         </div>
 
       </ion-col>
     </ion-row>
-
-      
-    
 
     </ion-grid>
