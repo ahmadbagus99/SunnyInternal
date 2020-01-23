@@ -1,13 +1,20 @@
 * {
   --ion-background-color: #ffffff !important;
 }
+
+ion-content {
+  --ion-background-color: #ffffff fixed !important;  
+}
+
 .grid, .row, .col {
   border: 1px solid black;
 }
 .Slide1{
-  overflow-y: scroll;
+  // overflow-y: scroll;
   display: block;
 }
+
+
 ion-title {
   position: absolute;
   top: 0;
@@ -25,6 +32,13 @@ ion-button {
   color: #FFFFFF;
   text-transform: capitalize;
 }
+
+// ion-content {
+//   .scroll-content {
+    
+//   }
+// }
+
 .card1 {
   margin-left: 10px;
   margin-right: 10px;
