@@ -119,21 +119,8 @@ ion-grid {
 
 ion-badge {
   position: absolute;
-  margin-top: 2vw;
-  margin-left: 92vw;
-  font-size: 10px;
-  background-color: red;
-}
-.notif {
-  margin-top: 111px;
-  ion-icon {
-    color: #ff951c;
-    height: 35px;
-    width: 35px;
-    margin-left: 86%;
-    margin-top: 10px;
-
-  }
+  margin-top: 4vw;
+  margin-left: 84vw;
 }
 
 .sc-ion-card-md-h {
@@ -167,10 +154,25 @@ ion-badge {
 
   img {
     margin-top: 156px;
+
     .img-customer {
       position: absolute;
       width: 30%;
     }
+  }
+}
+
+.notif {
+  margin-top: 111px;
+
+  ion-icon {
+    color: #ff951c;
+    ;
+    height: 40px;
+    width: 40px;
+    margin-left: 86%;
+    margin-top: 10px;
+
   }
 }
 
@@ -258,19 +260,24 @@ ion-grid {
   }
 
   .scrolling-wrapper {
+
     &::-webkit-scrollbar {
       display: grid var(--ion-grid-width-xs) var(--ion-grid-width-sm);
     }
+
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
+
     .card {
       margin-top: -15vw;
+
       ion-card-title {
         position: relative;
         color: black;
         font-size: 12vw;
       }
+
       display: inline-block;
       width: 112px;
       height: 5px;

@@ -17,7 +17,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule.forRoot({animated : false}),
+    IonicModule,
     TextAvatarModule,
     RouterModule.forChild(routes)
   ],
