@@ -75,7 +75,6 @@
     <div *ngSwitchCase="'Terbaru'">
       <ng-container *ngIf="isLoaded; else elseTemplate">
         <ion-list>
-          <p text-center>{{text}}</p>
           <ion-item-sliding *ngFor="let item of itemsNew">
             <ion-item-options side="end">
               <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
@@ -89,6 +88,7 @@
             </ion-item>
           </ion-item-sliding>
         </ion-list>
+        <p class="ion-text-center">{{text}}</p>
       </ng-container>
     </div>
 
