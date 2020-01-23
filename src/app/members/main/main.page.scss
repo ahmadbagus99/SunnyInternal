@@ -337,7 +337,7 @@ ion-card-content {
     // CSS bagian prosepct slide
     .row-2 {
       position: relative;
-      top: 35vw;;
+      top: 40vw;;
       // background: white;
       // height: 50vw;
     }
@@ -348,7 +348,7 @@ ion-card-content {
       width: 25vw;
       padding: 5px;
       height: fit-content;
-      top: 20px;
+      top: 10px;
       position: absolute;
     }
 
@@ -402,7 +402,7 @@ ion-card-content {
           width: 25vw;
           padding: 5px;
           height: fit-content;
-          top: 20px;
+          top: 10px;
           position: absolute;
         }
 
@@ -443,7 +443,7 @@ ion-card-content {
     
 
     ion-card-content {
-      height: 30px;
+      // height: 30px;
       margin-left: -2vw;
     
       .sc-ion-card-md-h {
@@ -458,6 +458,7 @@ ion-card-content {
 
       .sc-ion-card-ios-h {
         height: 30px;
+        margin-top: 5vw;
         margin-left: unset;
         margin-right: unset;
         -webkit-margin-start: 6px;
