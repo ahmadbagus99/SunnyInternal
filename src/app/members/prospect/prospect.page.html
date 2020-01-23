@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button color="light" (click)="movetoMain()"></ion-back-button>
       <div class="add-pro">
-        <ion-icon (click)="addprospect()" name="md-add-circle"></ion-icon>
+        <ion-icon (click)="addprospect()" name="add-circle"></ion-icon>
       </div>
     </ion-buttons>
     <ion-title>Prospect</ion-title>
@@ -34,12 +34,15 @@
 
 <ion-content>
   <ion-grid class="newprospect">
+    <ion-row col-12 col-md-6 col-lg-4 col-xl-3>
     <div class="see-all" (click)="SeeAllProspect(param)">
       <div class="text1">
         <ion-text color="primary"> See all </ion-text>
       </div>
     </div>
     <h4 class="judul"><b> New Prospect </b></h4>
+  </ion-row>
+
     <div class="scrolling-wrapper-1">
       <p text-center>{{textProspect}}</p>
       <div *ngFor="let item of itemsProspect" class="card">
@@ -47,9 +50,8 @@
           (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
           <img center src="assets/img/customer-icon.png" />
           <ion-card-content>
-            <ion-textarea readOnly>
-              <h2>{{item.namaCustomer}}</h2>
-            </ion-textarea>
+            <ion-textarea readOnly><h2>{{item.namaCustomer}}</h2></ion-textarea>
+            <div class="followup"> <p text-align-center> Follow up </p> </div>
            <ion-textarea> <p>{{item.company}}</p> </ion-textarea>
           </ion-card-content>
         </ion-card>
@@ -71,8 +73,8 @@
         (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
         <img src="assets/img/customer-icon.png">
         <ion-card-content>
-          <h2 text-center>{{item.namaCustomer}}</h2>
-          <p text-center>{{item.company}}</p>
+          <ion-textarea><h2 text-align-left>{{item.namaCustomer}}</h2></ion-textarea>
+          <div class="sub-text"><p text-align-left>{{item.company}}</p></div>
         </ion-card-content>
       </ion-card>
     </div>
@@ -90,17 +92,16 @@
     <div *ngFor="let item of itemsproduct" class="card">
       <ion-card button
         (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
-        <div *ngIf="item.Images">
-          <img [src]="item.Images">
+        <div class="product-image" *ngIf="item.Images">
+          <img class="product-img" [src]="item.Images">
         </div>
         <div *ngIf="!item.Images">
           <ion-icon name="ios-basket"></ion-icon>
         </div>
         <ion-card-content>
-          <ion-text>
-            <h2 text-center>{{item.namaProduk}}</h2>
-            <p text-center>{{item.tipeProduk}}</p>
-          </ion-text>
+          <ion-textarea><h2 text-center>{{item.namaProduk}}</h2></ion-textarea>
+            <div class="tipe-produk"><p text-center>{{item.tipeProduk}}</p></div>
+          
         </ion-card-content>
       </ion-card>
     </div>

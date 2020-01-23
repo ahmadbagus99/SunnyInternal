@@ -23,8 +23,9 @@ ion-title {
 }
 
 ion-icon {
+  -webkit-transform-origin: 5px 5px;
   transform-origin: 5px 5px;
-  margin-left: 75vw;
+  margin-left: 70vw;
   margin-top: -4vw;
   position: fixed;
   height: 9vw;
@@ -60,7 +61,7 @@ ion-segment {
 ion-card-content {
   display: block;
   position: relative;
-  height: 14vw;
+  // height: 14vw;
   background: white;
 }
 
@@ -69,6 +70,15 @@ ion-card-content {
   margin-inline-start: 6px;
   -webkit-margin-end: 6px;
   margin-inline-end: 6px;
+}
+
+.sc-ion-card-ios-h {
+  margin-left: unset;
+  margin-right: unset;
+  -webkit-margin-start: 16px;
+  margin-inline-start: 5px;
+  -webkit-margin-end: 0px;
+  margin-inline-end: 2px;
 }
 
 .text1 {
@@ -188,12 +198,12 @@ div[scrolly=true] {
   .card {
     display: inline-block;
     width: 30vw;
+    text-align: left;
 
     p {
       // margin-left:  -12vw;
       font-size: 10px;
       position: absolute;
-      margin-top: 5vw;
     }
 
     h2 {
@@ -208,9 +218,14 @@ div[scrolly=true] {
 
 img {
   display: block;
-  width: 20vw;
+  width: 22vw;
   margin-top: 3vw;
   margin-left: 3vw;
+}
+
+.product-img {
+  height: 26vw;
+  // width: 50vw;
 }
 
 .judul {
@@ -247,7 +262,7 @@ img {
 
 .see-all {
   position: absolute;
-  margin-left: 66vw;
+  margin-left: 62vw;
   margin-top: 1vw;
   height: 10vw;
   width: 50vw;
@@ -262,4 +277,29 @@ img {
 
 .prospectcard {
   height: 50vw;
+}
+
+.product-image {
+  height: 100px;
+  width: 100px;
+  /* text-align: center; */
+  position: relative;
+}
+
+.sub-text {
+  position: absolute;
+  top: 15vw;
+  color: #F57F17;
+}
+
+.tipe-produk {
+  position: absolute;
+  top: 10vw;
+  color: #F57F17;
+}
+
+.followup {
+  position: absolute;
+  top: 15vw;
+  color: #F57F17;
 }
