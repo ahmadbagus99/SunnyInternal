@@ -128,6 +128,7 @@ ion-badge {
   margin-inline-start: 0vw;
   -webkit-margin-end: 2vw;
   margin-inline-end: 2vw;
+  margin-top: 4vw;
 }
 
 .Background-top {
@@ -287,8 +288,11 @@ ion-badge {
 
 .activities-card {
   background-color: #ff951c;
+  padding-left: 10px;
   // bottom: 2vw;
 }
+
+
 
 // CSS didalam activities card
 
@@ -444,7 +448,7 @@ ion-card-content {
 
     ion-card-content {
       // height: 30px;
-      margin-left: -2vw;
+      margin-left: -4vw;
     
       .sc-ion-card-md-h {
         height: 30px;
