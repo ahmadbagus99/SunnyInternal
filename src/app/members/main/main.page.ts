@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Storage } from '@ionic/storage';
 import { ShareService } from 'src/app/share/share';
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { PostProvider } from 'src/providers/post-providers';
 
 @Component({
@@ -9,7 +9,7 @@ import { PostProvider } from 'src/providers/post-providers';
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
 })
-export class MainPage implements OnInit{
+export class MainPage {
   Activity: any = null;
   items: any = [];
   itemsaccount: any = [];
@@ -43,9 +43,6 @@ export class MainPage implements OnInit{
     this.loadProspect();
     this.LoadTotalCustomer();
     this.LoadTotalProspect();
-  }
-  ngOnInit(){
-   
   }
   updateprospect(id, namaCustomer, emailCustomer, alamatCustomer, no_tlp, company, alamatCompany, emailCompany, nomorCompany, customerneed, stock, hargaProduk, totalPrice, budget, status) {
     this.router.navigate(['members/view-prospect/'

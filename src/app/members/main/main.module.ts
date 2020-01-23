@@ -18,7 +18,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
+    IonicModule.forRoot({animated : false}),
     RouterModule.forChild(routes)
   ],
   declarations: [MainPage]
