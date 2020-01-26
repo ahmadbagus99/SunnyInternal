@@ -37,8 +37,8 @@ ion-back-button {
 }
 
 .background {
-  margin: 10px;
-  height: 460px;
+  // margin: 10px;
+  height: 480px;
   background-color: white;
   border-radius: 6px;
   position: relative;
@@ -69,21 +69,21 @@ ion-back-button {
     height: 70px;
     border-radius: 50%;
     left: 50%;
-    margin-left: -35px; 
+    margin-left: -35px;
   }
 }
 .nama {
   position: absolute;
   color: white;
-  // width: 141px;
   height: 50px;
-  top: 34%;
-  left: 50%;
-  margin-left: -100px;
+  top: 38%;
+  left: 26%;
+  /* margin-left: -100px; */
   margin-top: -25px;
   text-align: center;
   
 }
+
 
 .perusahaan {
   position: sticky;
@@ -178,7 +178,8 @@ div.content ion-button {
   --ion-color-primary: #ffffff;
 }
 
-.new-content {
+// pertanyaan 1 //
+.text1 {
   h2 {
     font-size: 4vw;
     text-align: left;

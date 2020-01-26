@@ -37,8 +37,8 @@ ion-back-button {
 }
 
 .background {
-  margin: 10px;
-  height: 460px;
+  // margin: 10px;
+  height: 480px;
   background-color: white;
   border-radius: 6px;
   position: relative;
@@ -61,39 +61,36 @@ ion-back-button {
 
   img {
     position: absolute;
-    bottom: 322px;
-    // margin-left: 40%;
+    display: block;
+    bottom: 340px;
     border-style: solid;
     border: 3px solid #EEEEEE;
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    left: 50%;
-    margin-left: -35px;
+    left: 40%;
   }
 }
-
 .nama {
   position: absolute;
   color: white;
-  // width: 141px;
   height: 50px;
-  top: 34%;
-  left: 50%;
-  margin-left: -100px;
+  top: 35%;
+  left: 26%;
+  /* margin-left: -100px; */
   margin-top: -25px;
   text-align: center;
   
 }
 
+
 .perusahaan {
-  position: sticky;
+  position: relative;
   color: white;
   width: 100%;
   height: 50px;
-  top: 39%;
-  left: 50%;
-  /* margin-left: -201px; */
+  top: 82%;
+  /* left: 50%; */
   margin-top: -25px;
   text-align: center;
 }
@@ -178,6 +175,25 @@ div.content ion-button {
   background-color: #14c214;
   --ion-color-primary: #ffffff;
 }
+
+// pertanyaan 1 //
+.text1 {
+  h2 {
+    font-size: 4vw;
+    text-align: left;
+    color: black;
+  }
+
+  p {
+    text-align: justify;
+    color: black;
+  }
+}
 .add>input {
   display: none;
+}
+.add{
+  img{
+    text-indent: -10000px
+  }
 }
