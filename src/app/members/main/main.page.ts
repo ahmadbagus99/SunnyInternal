@@ -25,6 +25,11 @@ export class MainPage implements OnInit{
   textActivity: string = "You don't have activities today";
   Incentive: string;
 
+  slideOpts = {
+    initialSlide: 4,
+    slidesPerView: 1,
+    autoplay:true
+  };
   constructor(
     private storage: Storage,
     private router: Router,

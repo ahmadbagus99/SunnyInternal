@@ -3,8 +3,6 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <!-- NOTIFICATION -->
-
   <div class="Background-top">
     <div class="logo">
       <img src="assets/img/logo-isa-white.png" />
@@ -13,79 +11,64 @@
       <a [routerLink]="['/members/notifications']">
         <ion-badge>{{totalProspect}}</ion-badge>
         <ion-icon name="notifications"></ion-icon>
-
       </a>
     </div>
-    <div class="fullname">
-      <!-- <ion-text *ngFor="let item of items">{{item.fullname}}</ion-text> -->
-    </div>
   </div>
-
-
   <!-- Report for you new -->
   <ion-grid class="report-for-you">
     <ion-row >
-      <ion-col justify-content-center text-center style="height: 100%" col-12 col-md-6 col-lg-4 col-xl-3>
-        <ion-text class="customer-report"><b>{{totalCustomer}}</b></ion-text>
-        <div class="keterangan">
-          <ion-text class="sub-text"><b> Customer </b></ion-text>
-          <ion-text class="month-text"><b> / month </b></ion-text>
-        </div>
+      <ion-col class="ion-text-center">
+        <ion-content color="white">
+          <ion-slides [options]="slideOpts">
+            <ion-slide>
+             <b>{{totalProspect}}
+              Propect</b> 
+            </ion-slide>
+            <ion-slide>
+              <b>{{totalCustomer}}
+              Customer</b>
+            </ion-slide>
+          </ion-slides>
+          <ion-text>in a Month</ion-text>
+        </ion-content>
       </ion-col>
-
-      <ion-col justify-content-center text-center style="height: 100%" col-12 col-md-6 col-lg-4 col-xl-2>
-        <div class="keterangan">
-        <ion-text class="sub-text"><b> Incentive </b></ion-text>
-        <ion-text class="month-text"><b> / month </b></ion-text>
-        </div>
+      <ion-col class="ion-text-center" style="height: 100%" col-12 col-md-6 col-lg-4 col-xl-2>
         <div class="vertical-line">
-          <ion-text class="incentive-report"><b>{{Incentive}}</b></ion-text>
-        </div>
-      </ion-col>
-
-      <ion-col justify-content-center text-center style="height: 100%" col-12 col-md-6 col-lg-4 col-xl-2>
-        <ion-text class="prospect-report"><b>{{totalProspect}}</b></ion-text>
-        <div class="keterangan">
-        <ion-text class="sub-text"><b> Prospect </b></ion-text>
-        <ion-text class="month-text"><b> / month </b></ion-text>
+          <ion-text class="incentive-report">Incentive <b>{{Incentive}}</b></ion-text>
+          <br>
+          <ion-text>in a Month</ion-text>
         </div>
       </ion-col>
     </ion-row>
   </ion-grid>
-
   <!-- FLOAT MENU BAR -->
-
   <div class="menu">
     <ion-grid>
-      <ion-row justify-content-center align-items-center style="height: 100%" col-12 col-md-6 col-lg-4 col-xl-3>
+      <ion-row class="ion-justify-content-center ion-text-center" style="height: 100%" col-12 col-md-6 col-lg-4 col-xl-3>
         <div class="button">
           <a [routerLink]="['/members/contact']">
             <ion-icon class="icon" src="/assets/icon/contact.svg"></ion-icon>
           </a>
           <div class="font"> CONTACT </div>
         </div>
-
         <div class="button">
           <a [routerLink]="['/members/account']">
             <ion-icon class="icon" src="/assets/icon/account.svg"></ion-icon>
           </a>
           <div class="font"> ACCOUNT </div>
         </div>
-
         <div class="button">
           <a [routerLink]="['/members/product']">
             <ion-icon class="icon" src="/assets/icon/product.svg"></ion-icon>
           </a>
           <div class="font"> PRODUCT </div>
         </div>
-
         <div class="button">
           <a [routerLink]="['/members/prospect']">
             <ion-icon class="icon" src="/assets/icon/prospect.svg"></ion-icon>
           </a>
           <div class="font"> PROSPECT </div>
         </div>
-
         <div class="button">
           <a [routerLink]="['/members/activities']">
             <ion-icon class="icon" src="/assets/icon/activities.svg"></ion-icon>
@@ -95,34 +78,24 @@
       </ion-row>
     </ion-grid>
   </div>
-
-
-
   <!--  activities section -->
-
   <ion-grid backgroud-color-white class="extra-content" col-12 col-md-6 col-lg-4 col-xl-3>
-
     <!-- Row untuk menampung activities -->
     <ion-row class="row-1" col-12 col-md-6 col-lg-4 col-xl-3>
-      <ion-col text-left col-9 push-3>
+      <ion-col class="ion-text-left" col-9 push-3>
         <div class="activities-text">
           <ion-text text-sm><b>Your Activity</b></ion-text>
         </div>
       </ion-col>
-      <ion-col text-right col-3 push-9>
+      <ion-col class="ion-text-right" col-3 push-9>
         <div class="see-all">
           <a [routerLink]="['/members/activities.html']">
             <ion-text text-sm>See all</ion-text>
           </a>
         </div>
       </ion-col>
-
-
-      <ion-col class="card-activity" col-12 col-6 col-lg-4 col-xl-3>
+      <ion-col class="card-activity" col-12 col-md-6 col-lg-4 col-xl-3>
         <div class="scrolling-wrapper">
-          <div class="text-noact">
-            <p text-center>{{textActivity}}</p>
-          </div>
           <div *ngFor="let item of Activity" class="card-new">
             <ion-card class="activities-card">
               <ion-card-content>
@@ -133,54 +106,46 @@
                   {{item.Prospect}}
                   <p> {{item.startTime}} </p>
                 </ion-text>
-                <img class="pict-activities" src="assets/img/Activity.png" />
               </ion-card-content>
             </ion-card>
           </div>
         </div>
-
       </ion-col>
     </ion-row>
-
-
-
-    <!--  prospect section  -->
-
-    <ion-row class="row-2" col-12 col-md-6 col-lg-4 col-xl-3>
-      <ion-col text-left col-9 push-3>
-        <div class="prospect-text">
-          <ion-text text-sm><b>Your prospect</b></ion-text>
-        </div>
-      </ion-col>
-      <ion-col text-right col-3 push-9>
-        <div class="see-all">
-          <a [routerLink]="['/members/activities.html']">
-            <ion-text text-sm>See all</ion-text>
-          </a>
-        </div>
-      </ion-col>
-
-
-      <ion-col class="prospectcard" col-12 col-md-6 col-lg-4 col-xl-3>
-        <div class="scrolling-wrapper-2">
-          <div class="text-noact">
-            <p text-center>{{text}}</p>
-          </div>
-          <div *ngFor="let item of itemProspect" class="card-new">
-            <ion-card class="prospectcard" webkitbox>
-              <img text-align-center src="assets/img/customer-icon.png" />
-            <ion-card-content text-align-left>
-              <ion-textarea class="item-name" readOnly><b>{{item.namaCustomer}}</b></ion-textarea>
-               <div class="followup"> <p text-align-center> Follow up </p> </div>
-              <!-- <ion-textarea class="followup"><h5> Follow up </h5></ion-textarea> -->
-              
-              <br>
-            </ion-card-content>
-            </ion-card>
-          </div>
-        </div>
-
-      </ion-col>
-    </ion-row>
-
+     <p class="ion-text-center">{{textActivity}}</p>
     </ion-grid>
+    <!--  prospect section  -->
+    <ion-grid backgroud-color-white class="extra-content" col-12 col-md-6 col-lg-4 col-xl-3>
+      <!-- Row untuk menampung activities -->
+      <ion-row class="row-1" col-12 col-md-6 col-lg-4 col-xl-3>
+        <ion-col class="ion-text-left" col-9 push-3>
+          <div class="activities-text">
+            <ion-text text-sm><b>Your Prospect</b></ion-text>
+          </div>
+        </ion-col>
+        <ion-col class="ion-text-right" col-3 push-9>
+          <div class="see-all">
+            <a [routerLink]="['/members/activities.html']">
+              <ion-text text-sm>See all</ion-text>
+            </a>
+          </div>
+        </ion-col>
+        <ion-col class="card-activity" col-12 col-md-6 col-lg-4 col-xl-3>
+          <br>
+          <div class="scrolling-wrapper">
+            <div *ngFor="let item of itemProspect" class="card-new">
+              <ion-card class="prospectcard">
+                <img text-align-center src="assets/img/customer-icon.png" />
+              <ion-card-content text-align-left>
+                <ion-textarea class="item-name" readOnly><b>{{item.namaCustomer}}</b></ion-textarea>
+                 <div class="followup"> <p text-align-center> Follow up </p> </div>
+                <br>
+              </ion-card-content>
+              </ion-card>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+       <p class="ion-text-center">{{textProspect}}</p>
+      </ion-grid>
+</ion-content>

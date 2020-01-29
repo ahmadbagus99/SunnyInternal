@@ -36,22 +36,11 @@ ion-icon {
 ion-button {
   text-transform: capitalize;
   color: white;
+  width: 30vw;
   span {
     text-align: left;
     width: 100%;
   }
-}
-
-ion-header {
-  background-color: #F57F17;
-}
-
-new-background-color {
-  background-color: #F57F17;
-}
-
-ion-toolbar {
-  background-color: #F57F17;
 }
 
 ion-segment {
@@ -152,10 +141,6 @@ ion-card-content {
   color: white
 }
 
-ion-button {
-  width: 30vw;
-}
-
 .fixed[scrollx=true],
 div[scrolly=true] {
   position: relative;
@@ -174,10 +159,8 @@ div[scrolly=true] {
   overflow-y: auto;
 }
 
-
 #myFixZone {
   height: 200px;
-
 }
 
 .tombol {
