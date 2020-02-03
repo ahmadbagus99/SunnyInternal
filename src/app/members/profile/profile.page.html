@@ -17,7 +17,7 @@
     <ion-col class="add" size="12" size-md>
       <div class="image-upload">
         <label for="file-input" size="12" size-sm >
-          <img *ngFor="let item of images | async" [src]="item.filepath" />
+          <img *ngFor="let item of items" [src]="item.Images"/>
           <img class="add-pict" [hidden]="isUploaded" src="assets/img/avatar-contact.png" />
         </label>
         <ion-col size="12" size-sm>

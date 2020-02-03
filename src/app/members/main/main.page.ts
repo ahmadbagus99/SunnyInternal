@@ -21,7 +21,7 @@ export class MainPage {
   itemCustomer: any = [];
   totalCustomer: number = 0;
   totalProspect: number = 0;
-  text: string = "You don't have prospect today";
+  textProspect: string = "You don't have prospect today";
   textActivity: string = "You don't have activities today";
   Incentive: string;
 
@@ -120,9 +120,9 @@ export class MainPage {
         //Total Prospect
         this.totalProspect = data.length;
         if (this.totalProspect == 0) {
-          this.text;
+          this.textProspect;
         } else if (this.totalProspect >= 1) {
-          this.text = '';
+          this.textProspect = '';
         }
         for (let item of data) {
           this.itemProspect.push(item);

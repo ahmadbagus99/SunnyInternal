@@ -130,11 +130,10 @@
             </a>
           </div>
         </ion-col>
-        <ion-col class="card-activity" col-12 col-md-6 col-lg-4 col-xl-3>
-          <br>
-          <div class="scrolling-wrapper">
+        <ion-col class="prospectcard" col-12 col-md-6 col-lg-4 col-xl-3>
+          <div class="scrolling-wrapper-2">
             <div *ngFor="let item of itemProspect" class="card-new">
-              <ion-card class="prospectcard">
+              <ion-card class="prospectcard" webkitbox>
                 <img text-align-center src="assets/img/customer-icon.png" />
               <ion-card-content text-align-left>
                 <ion-textarea class="item-name" readOnly><b>{{item.namaCustomer}}</b></ion-textarea>
@@ -146,6 +145,6 @@
           </div>
         </ion-col>
       </ion-row>
-       <p class="ion-text-center">{{textProspect}}</p>
+      <p class="ion-text-center">{{textProspect}}</p>
       </ion-grid>
 </ion-content>

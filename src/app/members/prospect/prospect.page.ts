@@ -9,6 +9,7 @@ import { AlertController, LoadingController } from '@ionic/angular';
   templateUrl: './prospect.page.html',
   styleUrls: ['./prospect.page.scss'],
 })
+
 export class ProspectPage {
   isUploaded:boolean = false;
   itemsProspect: any = [];
@@ -24,6 +25,7 @@ export class ProspectPage {
   textCustomer: string = "You don't have customer";
   ProspectTotal : number;
   Move : boolean;
+  Images : string;
 
   constructor(
     private router: Router,
@@ -106,11 +108,13 @@ export class ProspectPage {
         start: this.start,
       };
       this.postPvdr.Integration(body, 'LoadProfile.php?Id=' + this.user).subscribe(data => {
-        var Images = data.map(element => element.Images);
+        var img = data.map(element => element.Images);
           //Check Images
-          if (Images.length != 0){
+          if (img.length != 0){
+            this.Images = img;
             this.isUploaded = true;
           }else{
+            
             this.isUploaded = false;
           }
         loading.dismiss().then(() => {

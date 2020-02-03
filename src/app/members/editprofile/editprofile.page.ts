@@ -175,6 +175,12 @@ addImagetoDB(image: MyData) {
       this.birthday = data.birthday;
       this.email = data.email;
       this.country = data.country;
+      if (this.phonenumber==' '){
+        this.phonenumber='';
+      }
+      if(this.country==' '){
+        this.country ='';
+      }
     });
     //fungsi dimana data yang akan di isi langsung ke storge database
     this.storageLocal.get('session_storage').then((iduser) => {
