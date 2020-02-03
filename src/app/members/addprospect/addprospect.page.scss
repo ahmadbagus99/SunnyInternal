@@ -33,12 +33,6 @@ ion-button {
   text-transform: capitalize;
 }
 
-// ion-content {
-//   .scroll-content {
-    
-//   }
-// }
-
 .card1 {
   margin-left: 20px;
   margin-right: 10px;
@@ -70,21 +64,18 @@ new-background-color {
 ion-toolbar {
   background-color: #F57F17;
 }
-ion-content {
-  --ion-background-color: rgb(255, 255, 255) fixed !important;  
-    overflow: hidden;
-    --overflow: hidden;
-  
-}
 ion-card {
-  margin-top: -6vw;
-  height: 53vw;
-  width: 100vw;
-  margin-left: -2.2vw;
+  position: relative;
+  display: contents;
+  /* margin-top: -6vw; */
+  /* height: 53vw; */
+  /* width: 100vw; */
+  /* margin-left: -2.2vw; */
 }
 ion-card-content {
-  height: 50vw;
-  position: absolute;
+  // height: 50vw;
+  position: relative;
+  top: 0vw;
 }
 .avatar {
   margin-top: 0;
@@ -135,3 +126,6 @@ ion-slides {
   overflow-y: hidden;
 }
 
+.qualify-text {
+  position: relative;
+}
