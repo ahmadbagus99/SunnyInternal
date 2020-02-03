@@ -152,7 +152,7 @@ export class ViewProspectPage implements OnInit {
       subHeader:'Canceled this process ?',
       buttons: [
         {
-          text: 'Batal',
+          text: 'Cancel',
           role: 'cancel',
           handler: (blah) => {
             console.log('cancel')
