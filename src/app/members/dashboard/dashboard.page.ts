@@ -22,27 +22,5 @@ export class DashboardPage  {
     private postPvdr: PostProvider,
     private router : Router
     ) {}
-    ionViewWillEnter() {
-      // this.itemTotalProspect = [];
-      // this.LoadTotalProspect();
-    }
-    // LoadTotalProspect() {
-    //   //getID
-    //   this.storage.get('session_storage').then((iduser) => {
-    //     var ID = iduser;
-    //     this.user = ID.map(data => data.id)
-    //     let body = {
-    //       aksi: 'getdata',
-    //       limit: this.limit,
-    //       start: this.start,
-    //     };
-    //     this.postPvdr.postData(body, 'LoadTotalProspect.php?Id=' + this.user).subscribe(data => {
-    //       for (let item of data) {
-    //         this.itemTotalProspect.push(item);
-    //         this.totalProspect = this.itemTotalProspect.length;
-    //       }
-    //       this.storage.set('TotalProspect', this.totalProspect)
-    //     });
-    //   });
-    // }
+    
 }

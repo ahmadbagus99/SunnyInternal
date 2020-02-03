@@ -241,7 +241,7 @@ export class AddprospectPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadContact.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadContact.php?Id=' + this.user).subscribe(data => {
         for (let item of data) {
           this.itemsContact.push(item);
           this.storage.set('Data', this.itemsContact)
@@ -256,7 +256,7 @@ export class AddprospectPage implements OnInit {
       limit: this.limit,
       start: this.start,
     };
-    this.postPvdr.postData(body, 'LoadDataCustomer.php?Customer=' + this.namaCustomer).subscribe(data => {
+    this.postPvdr.Integration(body, 'LoadDataCustomer.php?Customer=' + this.namaCustomer).subscribe(data => {
       for (let item of data) {
         this.itemsCustomer.push(item);
         this.storage.set('DataCustomer', this.itemsCustomer).then(() => {
@@ -293,7 +293,7 @@ export class AddprospectPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
         loading.dismiss().then(() => {
           for (let item of data) {
             this.itemProduct.push(item);
@@ -315,7 +315,7 @@ export class AddprospectPage implements OnInit {
     this.Nameproduct.forEach((product)=>{
       this.customerneed = product;
     })
-    this.postPvdr.postData(body, 'LoadQuantityProduct.php?Product=' + this.customerneed).subscribe(data => {
+    this.postPvdr.Integration(body, 'LoadQuantityProduct.php?Product=' + this.customerneed).subscribe(data => {
       for (let item of data) {
         this.itemQunatityProduct.push(item);
         this.storage.set('Stock', this.itemQunatityProduct).then(() => {
@@ -337,7 +337,7 @@ export class AddprospectPage implements OnInit {
       limit: this.limit,
       start: this.start,
     };
-    this.postPvdr.postData(body, 'LoadEmailAccount.php?Account=' + this.company).subscribe(data => {
+    this.postPvdr.Integration(body, 'LoadEmailAccount.php?Account=' + this.company).subscribe(data => {
       for (let item of data) {
         this.itemsEmailAccount.push(item);
         this.storage.set('DataAccount', this.itemsEmailAccount).then(() => {
@@ -358,7 +358,7 @@ export class AddprospectPage implements OnInit {
   SaveContact(){
     return new Promise(resolve => {
       let body = {
-        aksi: 'add',
+        aksi: 'Contact',
         nama: this.namaCustomer,
         email: this.emailCustomer,
         alamat: this.alamatCustomer,
@@ -370,7 +370,7 @@ export class AddprospectPage implements OnInit {
         userID: this.userID
       };
       //Fungsi untuk menarik/mendapatkan data untuk data add contact dari server php
-      this.postPvdr.postData(body, 'InsertContact.php').subscribe(data => {
+      this.postPvdr.Integration(body, 'Insert.php').subscribe(data => {
     });
     });
   }
@@ -398,7 +398,7 @@ export class AddprospectPage implements OnInit {
             this.UpdateQuantity();
             return new Promise(resolve => {
               let body = {
-                aksi: 'add',
+                aksi: 'Prospect',
                 namaCustomer: this.namaCustomer,
                 emailCustomer: this.emailCustomer,
                 alamatCustomer: this.alamatCustomer,
@@ -414,7 +414,7 @@ export class AddprospectPage implements OnInit {
                 budget: this.budget,
                 userID: this.userID
               };
-              this.postPvdr.postData(body, 'InsertProspect.php').subscribe(data => {
+              this.postPvdr.Integration(body, 'Insert.php').subscribe(data => {
                 this.IdProspect = data.id;
                 this.ProcessInsertDataProduct();
                 this.ProcessInsertDataQty();
@@ -434,11 +434,11 @@ export class AddprospectPage implements OnInit {
       this.Nameproduct.forEach((data)=>{
         this.customerneed = data
         let body = {
-          aksi : 'add',
+          aksi : 'DataProduct',
           Product : this.customerneed,
           idProspect : this.IdProspect
       };
-      this.postPvdr.postData(body,'InsertProductProspect.php').subscribe(data =>{
+      this.postPvdr.Integration(body,'Insert.php').subscribe(data =>{
         console.log(data)
       });
   })
@@ -449,11 +449,11 @@ export class AddprospectPage implements OnInit {
       this.values.forEach((data)=>{
         this.quantity = data
         let body = {
-          aksi : 'add',
+          aksi : 'QtyProduct',
           Quantity : this.quantity,
           idProspect : this.IdProspect
       };
-      this.postPvdr.postData(body,'InsertQtyProduct.php').subscribe(data =>{
+      this.postPvdr.Integration(body,'Insert.php').subscribe(data =>{
         console.log(data)
       });
   })
@@ -467,7 +467,7 @@ export class AddprospectPage implements OnInit {
     loading.present();
     return new Promise(resolve => {
       let body = {
-        aksi: 'update',
+        aksi: 'Prospect',
         id: this.id,
         nama: this.namaCustomer,
         company: this.company,
@@ -476,7 +476,7 @@ export class AddprospectPage implements OnInit {
         customerneed: this.customerneed,
         email: this.email,
       };
-      this.postPvdr.postData(body, 'InsertProspect.php').subscribe(data => {
+      this.postPvdr.Integration(body, 'Update.php').subscribe(data => {
         loading.dismiss().then(() => {
           this.router.navigate(['members/seeallprospect']);
         })
@@ -514,10 +514,10 @@ export class AddprospectPage implements OnInit {
   UpdateQuantity(){
     return new Promise(resolve => {
       let body = {
-        aksi: 'update',
+        aksi: 'UpdateQtyProduct',
         jumlahProduk: this.sisaStock,
       };
-      this.postPvdr.postData(body, 'updateQuantity.php?Id='+this.idProduct).subscribe(data => {
+      this.postPvdr.Integration(body, 'Update.php?Id='+this.idProduct).subscribe(data => {
       });
     });
   }
@@ -537,7 +537,7 @@ export class AddprospectPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadAccount.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadAccount.php?Id=' + this.user).subscribe(data => {
         loading.dismiss().then(() => {
           for (let item of data) {
             this.itemsAccount.push(item);

@@ -80,7 +80,7 @@ export class AddactivitiesPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProspect.php?Id=' + this.userID).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadProspect.php?Id=' + this.userID).subscribe(data => {
           for (let item of data) {
             this.items.push(item);
           }
@@ -107,7 +107,7 @@ export class AddactivitiesPage implements OnInit {
   // membuat format acara/add acara yang tepat dan membuat ulang tujuan sourcenya
   addEvent() {
     let eventCopy = {
-      aksi: 'add',
+      aksi: 'Activity',
       title: this.event.title,
       Prospect : this.Prospect,
       startTime: new Date(this.event.startTime),
@@ -116,7 +116,7 @@ export class AddactivitiesPage implements OnInit {
       desc: this.event.desc,
       userID : this.userID
     }
-    this.postPvdr.postData(eventCopy, 'InsertActivity.php').subscribe(data => {
+    this.postPvdr.Integration(eventCopy, 'Insert.php').subscribe(data => {
      console.log('Insert is ', data)
     })
 

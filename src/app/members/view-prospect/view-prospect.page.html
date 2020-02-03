@@ -90,15 +90,15 @@
       </ion-row>
     </ion-grid>
     <ion-grid class="grid">
-      <ion-row class="row" >
+      <ion-row class="row" *ngFor="let item of ProductQty">
         <ion-col class="col">
-          <ion-item *ngFor="let item of DataProduct">
+          <ion-item>
             <ion-label text-center>{{item.Product}}</ion-label>
           </ion-item>
         </ion-col>
         <ion-col class="col">
-          <ion-item *ngFor="let item of DataQuantity">
-            <ion-label text-center>{{item.Quantity}}</ion-label>
+          <ion-item>
+            <ion-label text-center>{{item.Qty}}</ion-label>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -110,7 +110,7 @@
             <ion-label position="stacked"> Total Price </ion-label>
           </ion-col>
           <ion-col class="col">
-            <ion-input type="text" value="{{ totalPrice | currency:'Rp'}}" readOnly></ion-input>
+            <ion-text>{{ totalPrice | currency:'Rp'}}</ion-text>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -118,7 +118,7 @@
     <span>
       <ion-item>
         <ion-label position="stacked"> Sub Budget </ion-label>
-        <ion-input type="text" value="{{ budget | currency:'Rp'}}" readOnly></ion-input>
+        <ion-text>{{budget | currency:'Rp '}}</ion-text>
       </ion-item>
     </span>
   </div>

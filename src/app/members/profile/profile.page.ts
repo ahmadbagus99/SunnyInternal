@@ -156,7 +156,7 @@ export class ProfilePage {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProfile.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadProfile.php?Id=' + this.user).subscribe(data => {
         loading.dismiss().then(() => {
           for (let item of data) {
             this.items.push(item);

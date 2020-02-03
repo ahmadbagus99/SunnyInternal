@@ -91,7 +91,7 @@ export class AddproductPage implements OnInit {
     } else {
       return new Promise(resolve => {
         let body = {
-          aksi: 'add',
+          aksi: 'Product',
           namaProduk: this.namaProduk,
           tipeProduk: this.tipeProduk,
           totalProfit: this.profit,
@@ -102,7 +102,7 @@ export class AddproductPage implements OnInit {
           userID: this.userID
         };
           //Fungsi untuk menarik/mendapatkan data untuk data product dari server php
-        this.postPvdr.postData(body, 'InsertProduct.php').subscribe(async data => {
+        this.postPvdr.Integration(body, 'Insert.php').subscribe(async data => {
             this.router.navigate(['members/product']);
         });
       });
@@ -117,7 +117,7 @@ export class AddproductPage implements OnInit {
     loading.present();
     return new Promise(resolve => {
       let body = {
-        aksi: 'update',
+        aksi: 'Product',
         id: this.id,
         namaProduk: this.namaProduk,
         tipeProduk: this.tipeProduk,
@@ -127,7 +127,7 @@ export class AddproductPage implements OnInit {
         hargaProduk: this.hargaProduk,
         deskripsiProduk: this.deskripsiProduk,
       };
-      this.postPvdr.postData(body, 'InsertProduct.php').subscribe(data => {
+      this.postPvdr.Integration(body, 'Update.php').subscribe(data => {
         loading.dismiss().then(() => {
           this.router.navigate(['members/product']);
         })

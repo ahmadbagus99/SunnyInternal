@@ -14,7 +14,7 @@
         <div class="image-upload">
           <label for="file-input">
             <div class="add">
-              <img *ngFor="let item of images | async" [src]="item.filepath" />
+              <img *ngFor="let item of itemsProfile" [src]="item.Images" />
               <img class="add-pict" [hidden]="isUploaded" src="assets/img/avatar-contact.png" />
             </div>
           </label>

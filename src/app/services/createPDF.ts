@@ -22,11 +22,43 @@ export class CreatPDF {
         private fileOpener: FileOpener
         ) {
     }
-    createPdf(company, emailCompany, alamatCompany, nomorCompany, namaCustomer, companyCustomer, emailCustomer, alamatCustomer, no_tlp, customerneed, hargaProduk, stock, totalPrice) {
+    createPdf(company, emailCompany, alamatCompany, nomorCompany, namaCustomer, companyCustomer, emailCustomer, alamatCustomer, no_tlp, DataProduct, totalPrice) {
+        var Product = DataProduct;
+        var Time = new Date().toTimeString();
+        Time = Time.toString().substring(0, Time.toString().length-25);
+
+        var date = new Date().toString();
+        date = date.toString().substring(0, date.toString().length-34);
+
+        function buildTableBody(data, columns) {
+            var body = [];
+            body.push(columns);
+            data.forEach(function(row) {
+                var dataRow = [];
+                columns.forEach(function(column) {
+                    dataRow.push({text : row[column].toString(), alignment : 'center', fillColor: 'white'});
+                })
+                body.push(dataRow);
+            });
+            return body;
+        }
+        function table(data, columns) {
+            return {
+                widths : [ '*', 'auto', 100, '*' ],
+                alignment : 'center',
+                fillColor: 'lightgrey',
+                table: {
+                    widths: ['*','*'],
+                    alignment : 'center',
+                    headerRows: 1,
+                    body: buildTableBody(data, columns)
+                }
+            };
+        }
         var docDefinition = {
             content: [
                 { text: 'Quotation', style: 'header' },
-                { text: new Date().toTimeString(), alignment: 'right' },
+                { text: Time, alignment: 'right' },
 
                 { text: 'Isystem Asia', style: 'subheader1' },
                 { text: this.letterObj.address },
@@ -45,18 +77,18 @@ export class CreatPDF {
                 no_tlp,
 
                 { text: this.letterObj.text, style: 'story', margin: [0, 20, 0, 20] },
+                table(Product, ['Product','Qty']),
                 {
                     table:
                     {
-                        widths: ['*', '*', '*', '*'],
-                        body: [
-                            [{ text: 'Item Name' }, { text: 'Price' }, { text: 'Quantity' }, { text: 'Total Price' }],
-                            [{ text: customerneed }, { text: hargaProduk }, { text: stock }, { text: totalPrice }],
-                        ]
+                      widths: ['*', '*'],
+                      body: [
+                        [{ text: 'Total Price', alignment:'center' ,fillColor: 'lightgrey'}, { text: 'Rp' + totalPrice, alignment:'center', fillColor: 'lightgrey'}],
+                      ]
                     }
-                },
+                  },
                 { text: 'Thank you for your bussiness!', style: 'subheader', alignment: 'right' },
-                { text: new Date().toString(), alignment: 'right' },
+                { text: date, alignment: 'right' },
             ],
             styles: {
                 header: {

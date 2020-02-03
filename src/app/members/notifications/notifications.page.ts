@@ -72,7 +72,7 @@ limit: number = 10;
           limit : this.limit,
           start : this.start,
           };
-          this.postPvdr.postData(body, 'LoadProspect.php?Id='+this.userID).subscribe(data =>{
+          this.postPvdr.Integration(body, 'LoadProspect.php?Id='+this.userID).subscribe(data =>{
             loading.dismiss().then(()=>{
               for(let item of data){
                 this.items.push(item);

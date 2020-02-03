@@ -19,6 +19,7 @@ export class ContactPage implements OnInit {
   user : number;
   public searchTerm: string = ""; 
   selectCategory ='Populer';
+  textNew = "No Recent Contact Added";
   text = "No Recent Contact";
     constructor(
       private router : Router,
@@ -50,7 +51,7 @@ export class ContactPage implements OnInit {
         aksi : 'delete',
         id : id,
         };
-        this.postPvdr.postData(body, 'InsertContact.php').subscribe(data =>{
+        this.postPvdr.Integration(body, 'InsertContact.php').subscribe(data =>{
           this.ionViewWillEnter();
         });
     }
@@ -136,7 +137,12 @@ export class ContactPage implements OnInit {
           limit : this.limit,
           start : this.start,
         };
-        this.postPvdr.postData(body, 'LoadContact.php?Id='+this.user).subscribe(data =>{
+        this.postPvdr.Integration(body, 'LoadContact.php?Id='+this.user).subscribe(data =>{
+          if(data.length == 0){
+            this.text;
+          }else{
+            this.text = '';
+          }
           loading.dismiss().then(()=>{
             this.isLoaded = true;
               for(let item of data){
@@ -152,11 +158,11 @@ export class ContactPage implements OnInit {
         limit : this.limit,
         start : this.start,
       };
-      this.postPvdr.postData(body, 'LoadContactNew.php?Id='+this.user).subscribe(data =>{
+      this.postPvdr.Integration(body, 'LoadContactNew.php?Id='+this.user).subscribe(data =>{
         if (data.length == 0){
-          this.text;
+          this.textNew;
         }else{
-          this.text = '';
+          this.textNew = '';
         }
         for(let item of data){
           this.itemsNew.push(item);
@@ -185,10 +191,10 @@ export class ContactPage implements OnInit {
             text: 'Yes',
             handler: () => {
               let body = {
-                aksi : 'delete',
+                aksi : 'Contact',
                 id : id,
                 };
-                this.postPvdr.postData(body, 'InsertContact.php').subscribe(data =>{
+                this.postPvdr.Integration(body, 'Delete.php').subscribe(data =>{
                   this.ionViewWillEnter();
                 });
             }

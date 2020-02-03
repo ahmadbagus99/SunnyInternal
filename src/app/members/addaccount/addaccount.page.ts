@@ -55,7 +55,7 @@ export class AddaccountPage implements OnInit {
     } else {
         return new Promise(resolve => { 
           let body = {
-            aksi: 'add',
+            aksi: 'Account',
             nama: this.nama,
             alamat: this.alamat,
             web: this.web,
@@ -69,7 +69,7 @@ export class AddaccountPage implements OnInit {
             employee: this.employee,
             userID: this.userID
           };
-          this.postPvdr.postData(body, 'InsertAccount.php').subscribe(data => {
+          this.postPvdr.Integration(body, 'Insert.php').subscribe(data => {
             this.router.navigate(['members/account']);
           });
         });
@@ -150,7 +150,7 @@ export class AddaccountPage implements OnInit {
     loading.present();
     return new Promise(resolve => {
       let body = {
-        aksi: 'update',
+        aksi: 'Account',
         id: this.id,
         nama: this.nama,
         alamat: this.alamat,
@@ -164,7 +164,7 @@ export class AddaccountPage implements OnInit {
         industry: this.industry,
         employee: this.employee
       };
-      this.postPvdr.postData(body, 'InsertAccount.php').subscribe(data => {
+      this.postPvdr.Integration(body, 'Update.php').subscribe(data => {
         loading.dismiss().then(() => {
           this.router.navigate(['members/account']);
           console.log('Ok');
