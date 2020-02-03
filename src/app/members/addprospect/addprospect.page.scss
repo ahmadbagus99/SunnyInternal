@@ -40,7 +40,7 @@ ion-button {
 // }
 
 .card1 {
-  margin-left: 10px;
+  margin-left: 20px;
   margin-right: 10px;
 }
 .segment {
@@ -72,12 +72,15 @@ ion-toolbar {
 }
 ion-content {
   --ion-background-color: rgb(255, 255, 255) fixed !important;  
+    overflow: hidden;
+    --overflow: hidden;
+  
 }
 ion-card {
   margin-top: -6vw;
   height: 53vw;
   width: 100vw;
-  margin-left: -0.6vw;
+  margin-left: -2.2vw;
 }
 ion-card-content {
   height: 50vw;
@@ -128,5 +131,7 @@ ion-slides {
   --overflow: hidden;
 }
 
-
+.no-scroll .scroll-content{
+  overflow-y: hidden;
+}
 

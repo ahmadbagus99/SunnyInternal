@@ -25,10 +25,10 @@ export class RegisterPage implements OnInit {
   public toggleTextPassword(): void{
     this.isActiveToggleTextPassword = (this.isActiveToggleTextPassword==true)?false:true;
 }
+
 public getType() {
   return this.isActiveToggleTextPassword ? 'password' : 'text';
 }
-
 
   ngOnInit() {
   }
@@ -36,7 +36,6 @@ public getType() {
   login() {
     this.router.navigate(['login']);
   }
-
   async prosesregister() {
     const loading = await this.loadingController.create({
       message: "",
@@ -50,7 +49,7 @@ public getType() {
     if (this.nama == '') {
       loading.dismiss().then(async () => {
         const toast = await this.toastCtrl.create({
-          message: 'Nama diperlukan!',
+          message: 'Name required!',
           duration: 2000
         });
         toast.present();
@@ -59,7 +58,7 @@ public getType() {
     } else if (this.email == '') {
       loading.dismiss().then(async () => {
         const toast = await this.toastCtrl.create({
-          message: 'Email diperlukan',
+          message: 'Email required',
           duration: 2000
         });
         toast.present();
@@ -68,7 +67,7 @@ public getType() {
     } else if (this.password == '') {
       loading.dismiss().then(async () => {
         const toast = await this.toastCtrl.create({
-          message: 'Password diperlukan!',
+          message: 'Password required!',
           duration: 2000
         });
         toast.present();
@@ -77,7 +76,7 @@ public getType() {
     } else if (this.password != this.confirm_password) {
       loading.dismiss().then(async () => {
         const toast = await this.toastCtrl.create({
-          message: 'Password tidak sama!',
+          message: 'password not match!',
           duration: 2000
         });
         toast.present();
@@ -96,7 +95,7 @@ public getType() {
           loading.dismiss().then(async () => {
             this.router.navigate(['login']);
             const toast = await this.toastCtrl.create({
-              message: 'Pendaftaran Berhasil!',
+              message: 'Registration Successful!',
               duration: 2000
             });
             toast.present();
