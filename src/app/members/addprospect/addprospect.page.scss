@@ -33,14 +33,8 @@ ion-button {
   text-transform: capitalize;
 }
 
-// ion-content {
-//   .scroll-content {
-    
-//   }
-// }
-
 .card1 {
-  margin-left: 10px;
+  margin-left: 20px;
   margin-right: 10px;
 }
 .segment {
@@ -70,18 +64,18 @@ new-background-color {
 ion-toolbar {
   background-color: #F57F17;
 }
-ion-content {
-  --ion-background-color: rgb(255, 255, 255) fixed !important;  
-}
 ion-card {
-  margin-top: -6vw;
-  height: 53vw;
-  width: 100vw;
-  margin-left: -0.6vw;
+  position: relative;
+  display: contents;
+  /* margin-top: -6vw; */
+  /* height: 53vw; */
+  /* width: 100vw; */
+  /* margin-left: -2.2vw; */
 }
 ion-card-content {
-  height: 50vw;
-  position: absolute;
+  // height: 50vw;
+  position: relative;
+  top: 0vw;
 }
 .avatar {
   margin-top: 0;
@@ -128,5 +122,11 @@ ion-slides {
   --overflow: hidden;
 }
 
+::-webkit-scrollbar, *::-webkit-scrollbar {
+  display: none;
+  overflow: hidden;
+}
 
-
+.qualify-text {
+  position: relative;
+}

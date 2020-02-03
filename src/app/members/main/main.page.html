@@ -41,34 +41,42 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  
+  
+  
   <!-- FLOAT MENU BAR -->
+
   <div class="menu">
     <ion-grid>
-      <ion-row class="ion-justify-content-center ion-text-center" style="height: 100%" col-12 col-md-6 col-lg-4 col-xl-3>
+      <ion-row justify-content-center align-items-center style="height: 100%" col-12 col-md-6 col-lg-4 col-xl-3>
         <div class="button">
           <a [routerLink]="['/members/contact']">
             <ion-icon class="icon" src="/assets/icon/contact.svg"></ion-icon>
           </a>
           <div class="font"> CONTACT </div>
         </div>
+
         <div class="button">
           <a [routerLink]="['/members/account']">
             <ion-icon class="icon" src="/assets/icon/account.svg"></ion-icon>
           </a>
           <div class="font"> ACCOUNT </div>
         </div>
+
         <div class="button">
           <a [routerLink]="['/members/product']">
             <ion-icon class="icon" src="/assets/icon/product.svg"></ion-icon>
           </a>
           <div class="font"> PRODUCT </div>
         </div>
+
         <div class="button">
           <a [routerLink]="['/members/prospect']">
             <ion-icon class="icon" src="/assets/icon/prospect.svg"></ion-icon>
           </a>
           <div class="font"> PROSPECT </div>
         </div>
+
         <div class="button">
           <a [routerLink]="['/members/activities']">
             <ion-icon class="icon" src="/assets/icon/activities.svg"></ion-icon>
@@ -78,24 +86,34 @@
       </ion-row>
     </ion-grid>
   </div>
+
+
+
   <!--  activities section -->
+
   <ion-grid backgroud-color-white class="extra-content" col-12 col-md-6 col-lg-4 col-xl-3>
+
     <!-- Row untuk menampung activities -->
     <ion-row class="row-1" col-12 col-md-6 col-lg-4 col-xl-3>
-      <ion-col class="ion-text-left" col-9 push-3>
+      <ion-col text-left col-9 push-3>
         <div class="activities-text">
           <ion-text text-sm><b>Your Activity</b></ion-text>
         </div>
       </ion-col>
-      <ion-col class="ion-text-right" col-3 push-9>
+      <ion-col text-right col-3 push-9>
         <div class="see-all">
           <a [routerLink]="['/members/activities.html']">
             <ion-text text-sm>See all</ion-text>
           </a>
         </div>
       </ion-col>
-      <ion-col class="card-activity" col-12 col-md-6 col-lg-4 col-xl-3>
+
+
+      <ion-col class="card-activity" col-12 col-6 col-lg-4 col-xl-3>
         <div class="scrolling-wrapper">
+          <div class="text-noact">
+            <p text-center>{{textActivity}}</p>
+          </div>
           <div *ngFor="let item of Activity" class="card-new">
             <ion-card class="activities-card">
               <ion-card-content>
@@ -106,45 +124,54 @@
                   {{item.Prospect}}
                   <p> {{item.startTime}} </p>
                 </ion-text>
+                <img class="pict-activities" src="assets/img/Activity.png" />
               </ion-card-content>
             </ion-card>
           </div>
         </div>
+
       </ion-col>
     </ion-row>
-     <p class="ion-text-center">{{textActivity}}</p>
-    </ion-grid>
+
+
+
     <!--  prospect section  -->
-    <ion-grid backgroud-color-white class="extra-content" col-12 col-md-6 col-lg-4 col-xl-3>
-      <!-- Row untuk menampung activities -->
-      <ion-row class="row-1" col-12 col-md-6 col-lg-4 col-xl-3>
-        <ion-col class="ion-text-left" col-9 push-3>
-          <div class="activities-text">
-            <ion-text text-sm><b>Your Prospect</b></ion-text>
+
+    <ion-row class="row-2" col-12 col-md-6 col-lg-4 col-xl-3>
+      <ion-col text-left col-9 push-3>
+        <div class="prospect-text">
+          <ion-text text-sm><b>Your prospect</b></ion-text>
+        </div>
+      </ion-col>
+      <ion-col text-right col-3 push-9>
+        <div class="see-all">
+          <a [routerLink]="['/members/activities.html']">
+            <ion-text text-sm>See all</ion-text>
+          </a>
+        </div>
+      </ion-col>
+
+
+      <ion-col class="prospectcard" col-12 col-md-6 col-lg-4 col-xl-3>
+        <div class="scrolling-wrapper-2">
+          <div class="text-noact">
+            <p text-center>{{text}}</p>
           </div>
-        </ion-col>
-        <ion-col class="ion-text-right" col-3 push-9>
-          <div class="see-all">
-            <a [routerLink]="['/members/activities.html']">
-              <ion-text text-sm>See all</ion-text>
-            </a>
+          <div *ngFor="let item of itemProspect" class="card-new">
+            <ion-card class="prospectcard" webkitbox>
+              <img text-align-center src="assets/img/customer-icon.png" />
+            <ion-card-content text-align-left>
+              <ion-textarea class="item-name" readOnly><b>{{item.namaCustomer}}</b></ion-textarea>
+               <div class="followup"> <p text-align-center> Follow up </p> </div>
+              <!-- <ion-textarea class="followup"><h5> Follow up </h5></ion-textarea> -->
+              
+              <br>
+            </ion-card-content>
+            </ion-card>
           </div>
-        </ion-col>
-        <ion-col class="prospectcard" col-12 col-md-6 col-lg-4 col-xl-3>
-          <div class="scrolling-wrapper-2">
-            <div *ngFor="let item of itemProspect" class="card-new">
-              <ion-card class="prospectcard" webkitbox>
-                <img text-align-center src="assets/img/customer-icon.png" />
-              <ion-card-content text-align-left>
-                <ion-textarea class="item-name" readOnly><b>{{item.namaCustomer}}</b></ion-textarea>
-                 <div class="followup"> <p text-align-center> Follow up </p> </div>
-                <br>
-              </ion-card-content>
-              </ion-card>
-            </div>
-          </div>
-        </ion-col>
-      </ion-row>
-      <p class="ion-text-center">{{textProspect}}</p>
-      </ion-grid>
-</ion-content>
+        </div>
+
+      </ion-col>
+    </ion-row>
+
+    </ion-grid>

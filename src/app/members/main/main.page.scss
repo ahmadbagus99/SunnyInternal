@@ -233,10 +233,11 @@ ion-badge {
 
 .extra-content {
   margin-top: 1.5vw;
-    background-color: white;
-    width: 100%;
-    height: 60vw;
-    max-height: 65%;
+  background-color: white;
+  width: 100%;
+  height: -webkit-fill-available;
+  max-height: 65%;
+
   ion-text {
     position: relative;
     margin-top: 90vw;
@@ -290,9 +291,9 @@ ion-badge {
 
 .pict-activities {
   position: absolute;
-  height: 30vw;
-  width: 38vw;
-  margin: -20vw 0vw 0vw 55vw;
+  height: 38vw;
+  width: 48vw;
+  margin: -26vw 0vw 0vw 46vw;
 }
 
 
@@ -411,7 +412,7 @@ ion-card-content {
           width: 25vw;
           padding: 5px;
           height: fit-content;
-          top: 10px;
+          top: 14px;
           position: absolute;
         }
 
@@ -496,12 +497,3 @@ ion-card-content {
     ion-textarea {
       position: absolute;
     }
-    
-    ion-slide{
-      font-size: 15px;
-    }
-
-
-
-
-
