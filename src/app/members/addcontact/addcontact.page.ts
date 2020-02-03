@@ -172,7 +172,7 @@ export class AddcontactPage implements OnInit {
       limit: this.limit,
       start: this.start,
     };
-    this.postPvdr.postData(body, 'LoadEmailAccount.php?Account=' + this.perusahaan).subscribe(data => {
+    this.postPvdr.Integration(body, 'LoadEmailAccount.php?Account=' + this.perusahaan).subscribe(data => {
       for (let item of data) {
         this.itemsPerusahaan.push(item);
       }
@@ -193,7 +193,7 @@ export class AddcontactPage implements OnInit {
     } else {
       return new Promise(resolve => {
         let body = {
-          aksi: 'add',
+          aksi: 'Contact',
           nama: this.nama,
           email: this.email,
           alamat: this.alamat,
@@ -214,7 +214,7 @@ export class AddcontactPage implements OnInit {
           userID: this.userID
         };
         //Fungsi untuk menarik/mendapatkan data untuk data add contact dari server php
-        this.postPvdr.postData(body, 'InsertContact.php').subscribe(data => {
+        this.postPvdr.Integration(body, 'Insert.php').subscribe(data => {
           console.log(data)
             this.router.navigate(['members/contact']);
       });
@@ -230,7 +230,7 @@ export class AddcontactPage implements OnInit {
     loading.present();
     return new Promise(resolve => {
       let body = {
-        aksi: 'update',
+        aksi: 'Contact',
         id: this.id,
         nama: this.nama,
         email: this.email,
@@ -251,7 +251,7 @@ export class AddcontactPage implements OnInit {
         Twitter: this.Twitter,
         Instagram: this.Instagram
       };
-      this.postPvdr.postData(body, 'InsertContact.php').subscribe(data => {
+      this.postPvdr.Integration(body, 'Update.php').subscribe(data => {
         loading.dismiss().then(() => {
           this.clearDataStorage();
           this.router.navigate(['members/contact']);
@@ -285,7 +285,7 @@ export class AddcontactPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadAccount.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadAccount.php?Id=' + this.user).subscribe(data => {
           for (let item of data) {
             this.items.push(item);
           }

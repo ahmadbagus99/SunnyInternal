@@ -109,6 +109,14 @@ export class EditprofilePage implements OnInit {
                 filepath: resp,
                 size: this.fileSize
               });
+              let body = {
+                aksi:'AddImagesProfile',
+                id: this.id,
+                Images : resp
+              };
+              this.postPvdr.Integration(body, 'InsertImages.php').subscribe(data =>{
+                console.log(data)
+              })
               this.isUploading = false;
               this.isUploaded = true;
             },error=>{
@@ -144,7 +152,7 @@ addImagetoDB(image: MyData) {
     });
     await loading.present();
     let body = {
-      aksi: 'update',
+      aksi: 'Profile',
       id: this.id,
       fullname: this.fullname,
       phonenumber: this.phonenumber,
@@ -152,7 +160,7 @@ addImagetoDB(image: MyData) {
       email: this.email,
       country: this.country
     };
-    this.postPvdr.postData(body, 'InsertProfile.php').subscribe(data => {
+    this.postPvdr.Integration(body, 'Update.php').subscribe(data => {
       loading.dismiss().then(()=>{
         this.router.navigate(['members/profile']);
       })
@@ -180,7 +188,7 @@ addImagetoDB(image: MyData) {
   createdProcess() {
     return new Promise(resolve => {
       let body = {
-        aksi: 'add',
+        aksi: 'Profile',
         fullname: this.fullname,
         phonenumber: this.phonenumber,
         birthday: this.birthday,
@@ -188,8 +196,8 @@ addImagetoDB(image: MyData) {
         country: this.country,
         userID: this.userID
       };
-      this.postPvdr.postData(body, 'InsertProfile.php').subscribe(data => {
-        console.log('Ok');
+      this.postPvdr.Integration(body, 'Insert.php').subscribe(data => {
+        console.log(data);
       });
     });
   }

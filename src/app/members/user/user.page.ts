@@ -51,7 +51,7 @@ export class UserPage {
       limit : this.limit,
       start : this.start,
       };
-      this.postPvdr.postData(body, 'ReadUser.php?Id='+this.user).subscribe(data =>{
+      this.postPvdr.Integration(body, 'ReadUser.php?Id='+this.user).subscribe(data =>{
         loading.dismiss().then(()=>{
           for(let item of data){
             this.items.push(item);

@@ -148,7 +148,7 @@ export class EditaccountPage implements OnInit {
           loading.dismiss().then(()=>{
             this.loadImageAccount();
           })
-          this.postPvdr.postData(body, 'InsertImages.php').subscribe(data =>{
+          this.postPvdr.Integration(body, 'InsertImages.php').subscribe(data =>{
             console.log(data)
           })
           this.isUploading = false;
@@ -200,7 +200,7 @@ export class EditaccountPage implements OnInit {
           limit: this.limit,
           start: this.start,
         };
-        this.postPvdr.postData(body, 'LoadAccount.php?Id='+this.user).subscribe(dataImages => {
+        this.postPvdr.Integration(body, 'LoadAccount.php?Id='+this.user).subscribe(dataImages => {
         dataImages.forEach(element => {
             if(element.nama == this.nama){
               this.items = element.Images;

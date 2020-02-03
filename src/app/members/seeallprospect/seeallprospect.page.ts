@@ -79,7 +79,7 @@ export class SeeallprospectPage implements OnInit {
         aksi : 'delete',
         id : id,
         };
-        this.postPvdr.postData(body, 'InsertProspect.php').subscribe(data =>{
+        this.postPvdr.Integration(body, 'InsertProspect.php').subscribe(data =>{
           this.ionViewWillEnter();
         });
     }
@@ -121,7 +121,7 @@ export class SeeallprospectPage implements OnInit {
             limit : this.limit,
             start : this.start,
             };
-            this.postPvdr.postData(body, 'LoadProspect.php?Id='+this.user).subscribe(data =>{
+            this.postPvdr.Integration(body, 'LoadProspect.php?Id='+this.user).subscribe(data =>{
               loading.dismiss().then(()=>{
                 for(let item of data){
                   this.itemsProspect.push(item);
@@ -148,7 +148,7 @@ export class SeeallprospectPage implements OnInit {
             limit : this.limit,
             start : this.start,
             };
-            this.postPvdr.postData(body, 'LoadCustomer.php?Id='+this.user).subscribe(data =>{
+            this.postPvdr.Integration(body, 'LoadCustomer.php?Id='+this.user).subscribe(data =>{
               loading.dismiss().then(()=>{
                 for(let item of data){
                   this.itemsCustomer.push(item);
@@ -167,7 +167,7 @@ export class SeeallprospectPage implements OnInit {
             limit : this.limit,
             start : this.start,
             };
-            this.postPvdr.postData(body, 'LoadProspectNew.php?Id='+this.user).subscribe(data =>{
+            this.postPvdr.Integration(body, 'LoadProspectNew.php?Id='+this.user).subscribe(data =>{
               for(let item of data){
                 this.itemsNew.push(item);
             } 
@@ -195,7 +195,7 @@ export class SeeallprospectPage implements OnInit {
                 aksi : 'delete',
                 id : id,
                 };
-                this.postPvdr.postData(body, 'InsertProspect.php').subscribe(data =>{
+                this.postPvdr.Integration(body, 'InsertProspect.php').subscribe(data =>{
                   this.ionViewWillEnter();
                 });
             }

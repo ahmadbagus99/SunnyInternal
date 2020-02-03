@@ -3,45 +3,26 @@ import { Router } from '@angular/router';
 import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { AngularFireStorage } from '@angular/fire/storage';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
 
-export interface MyData {
-  name: string;
-  filepath: string;
-  size: number;
-}
 @Component({
   selector: 'app-prospect',
   templateUrl: './prospect.page.html',
   styleUrls: ['./prospect.page.scss'],
 })
-export class ProspectPage implements OnInit {
-  images: Observable<MyData[]>;
-  isUploading:boolean;
-  isUploaded:boolean;
-  userIDDesc : string = 'profile';
-  private imageCollection: AngularFirestoreCollection<MyData>;
-  
-  userID: string;
+export class ProspectPage {
+  isUploaded:boolean = false;
   itemsProspect: any = [];
   user: any;
   limit: number = 10;
   start: number = 0;
-  itemsNew: any = [];
   itemsproduct: any = [];
   itemsProfile: any = [];
   itemsCustomer: any = [];
-  itemTotalProspect: any = [];
   totalProspect: number = 0;
   textProspect: string = "You don't have prospect for today";
   textProduct: string = "You haven't added product";
   textCustomer: string = "You don't have customer";
-  url: any;
   ProspectTotal : number;
-  itemProspectVerify : any = [];
-  prospectVerify : number = 0;
   Move : boolean;
 
   constructor(
@@ -50,26 +31,7 @@ export class ProspectPage implements OnInit {
     private storageLocal: Storage,
     public alertController: AlertController,
     public loadingController: LoadingController,
-    private storage: AngularFireStorage, 
-    private database: AngularFirestore
   ) {
-      this.isUploading = false;
-      this.isUploaded = false;
-      this.storageLocal.get('session_storage').then((Data) => {
-        this.userID = (Data.map(data => data.id)).toString();
-      this.imageCollection = database.collection<MyData>(this.userID+this.userIDDesc);
-      this.images = this.imageCollection.valueChanges();
-      this.images.subscribe((res: MyData[])=>{
-        if ( res.length == 1){
-          this.isUploaded = true;
-        }
-      })
-    });
-  }
-  ngOnInit() {
-    this.storageLocal.get('TotalProspect').then((data)=>{
-      this.ProspectTotal = data;
-    })
   }
   ionViewWillEnter() {
     //get ID
@@ -81,12 +43,10 @@ export class ProspectPage implements OnInit {
     this.itemsproduct = [];
     this.itemsCustomer = [];
     this.itemsProspect = [];
-    this.itemProspectVerify = [];
     this.LoadCustomer();
     this.loadProspect();
     this.LoadProfile();
     this.loadProduct();
-    this.check();
   }
   addprospect() {
     this.router.navigate(['members/addprospect'])
@@ -116,7 +76,7 @@ export class ProspectPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
         loading.dismiss().then(() => {
             for ( var i=0; i<4; i++){
               this.itemsproduct[i] = data[i]
@@ -145,7 +105,14 @@ export class ProspectPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProfile.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadProfile.php?Id=' + this.user).subscribe(data => {
+        var Images = data.map(element => element.Images);
+          //Check Images
+          if (Images.length != 0){
+            this.isUploaded = true;
+          }else{
+            this.isUploaded = false;
+          }
         loading.dismiss().then(() => {
           for (let item of data) {
             this.itemsProfile.push(item);
@@ -218,16 +185,28 @@ export class ProspectPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProspect.php?Id=' + this.user).subscribe(data => {
-        if (data.length == 0) {
-          this.textProspect;
-        } else {
-          this.textProspect = '';
-        }
+      this.postPvdr.Integration(body, 'LoadProspect.php?Id=' + this.user).subscribe(data => {
+        this.storageLocal.set('TotalProspect', data.length);
+            if (data.length == 0) {
+              this.textProspect;
+            } else {
+              this.textProspect = '';
+            }
         loading.dismiss().then(() => {
           for (let item of data) {
             this.itemsProspect.push(item);
           }
+        })
+        //Check Something new
+        this.storageLocal.get('TotalProspect').then((nProspectbefore)=>{
+          this.ProspectTotal = nProspectbefore;
+              if ( this.ProspectTotal == data.length){
+                this.Move = false;
+                console.log('Tidak ada perubahan');
+              }else{
+                this.Move = true;
+                console.log('ada perubahan');
+              }
         })
       });
   }
@@ -246,7 +225,7 @@ export class ProspectPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadCustomer.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadCustomer.php?Id=' + this.user).subscribe(data => {
         loading.dismiss().then(() => {
           for (let item of data) {
             this.itemsCustomer.push(item);
@@ -283,7 +262,7 @@ export class ProspectPage implements OnInit {
               aksi: 'delete',
               id: id,
             };
-            this.postPvdr.postData(body, 'InsertProspect.php').subscribe(_data => {
+            this.postPvdr.Integration(body, 'InsertProspect.php').subscribe(_data => {
               this.ionViewWillEnter();
             });
           }
@@ -305,26 +284,5 @@ export class ProspectPage implements OnInit {
       this.router.navigate(['members/dashboard'])
     }
   }
-  check(){
-    this.storageLocal.get('session_storage').then((iduser) => {
-      var ID = iduser;
-      this.user = ID.map(data => data.id)
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadTotalProspect.php?Id=' + this.user).subscribe(data => {
-        for (let item of data) {
-          this.itemProspectVerify.push(item);
-          this.prospectVerify = this.itemProspectVerify.length;
-        }
-          if ( this.ProspectTotal == this.prospectVerify){
-            this.Move = false;
-          }else{
-            this.Move = true;
-          }
-      });
-    });
-  }
+
 }

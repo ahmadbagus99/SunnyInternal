@@ -9,7 +9,7 @@ import { PostProvider } from 'src/providers/post-providers';
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
 })
-export class MainPage implements OnInit{
+export class MainPage {
   Activity: any = null;
   items: any = [];
   itemsaccount: any = [];
@@ -46,11 +46,7 @@ export class MainPage implements OnInit{
     this.LoadActivity();
     this.LoadIncentive();
     this.loadProspect();
-    this.LoadTotalCustomer();
-    this.LoadTotalProspect();
-  }
-  ngOnInit(){
-   
+    this.LoadCustomer();
   }
   updateprospect(id, namaCustomer, emailCustomer, alamatCustomer, no_tlp, company, alamatCompany, emailCompany, nomorCompany, customerneed, stock, hargaProduk, totalPrice, budget, status) {
     this.router.navigate(['members/view-prospect/'
@@ -71,7 +67,7 @@ export class MainPage implements OnInit{
       + status + '/'
     ]);
   }
-  LoadTotalCustomer() {
+  LoadCustomer() {
     this.storage.get('session_storage').then((iduser) => {
       var ID = iduser;
       this.user = ID.map(data => data.id)
@@ -80,7 +76,8 @@ export class MainPage implements OnInit{
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadTotalCustomer.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadCustomer.php?Id=' + this.user).subscribe(data => {
+        this.totalCustomer = data.length;
         for (let item of data) {
           this.itemCustomer.push(item);
           this.totalCustomer = this.itemCustomer.length;
@@ -97,7 +94,7 @@ export class MainPage implements OnInit{
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'GetIncentive.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'GetIncentive.php?Id=' + this.user).subscribe(data => {
         var DataIncentive = parseInt(data.map(data => data.Incentive));
         var GetDigit = DataIncentive.toString().length;
         if (GetDigit <= 3){
@@ -110,28 +107,6 @@ export class MainPage implements OnInit{
     });
   }
 
-  LoadTotalProspect() {
-    this.storage.get('session_storage').then((iduser) => {
-      var ID = iduser;
-      this.user = ID.map(data => data.id)
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadTotalProspect.php?Id=' + this.user).subscribe(data => {
-        for (let item of data) {
-          this.itemTotalProspect.push(item);
-          this.totalProspect = this.itemTotalProspect.length;
-          if (this.totalProspect == 0) {
-            this.text;
-          } else if (this.totalProspect >= 1) {
-            this.text = '';
-          }
-        }
-      });
-    });
-  }
   loadProspect() {
     this.storage.get('session_storage').then((iduser) => {
       var ID = iduser;
@@ -141,7 +116,14 @@ export class MainPage implements OnInit{
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProspect.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadProspect.php?Id=' + this.user).subscribe(data => {
+        //Total Prospect
+        this.totalProspect = data.length;
+        if (this.totalProspect == 0) {
+          this.text;
+        } else if (this.totalProspect >= 1) {
+          this.text = '';
+        }
         for (let item of data) {
           this.itemProspect.push(item);
         }
@@ -159,7 +141,7 @@ export class MainPage implements OnInit{
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadActivity.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadActivity.php?Id=' + this.user).subscribe(data => {
         if ( data.length == 0) {
         this.textActivity;
         } else {

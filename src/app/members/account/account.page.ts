@@ -20,7 +20,7 @@ export class AccountPage implements OnInit {
   public searchTerm: string = "";
   selectCategory = 'Populer';
   text = "No Recent Account";
-
+  textNew = "No Recent Account Added";
   constructor(
     private router: Router,
     private postPvdr: PostProvider,
@@ -97,7 +97,7 @@ export class AccountPage implements OnInit {
       aksi: 'delete',
       id: id,
     };
-    this.postPvdr.postData(body, 'InsertAccount.php').subscribe(data => {
+    this.postPvdr.Integration(body, 'InsertAccount.php').subscribe(data => {
       this.ionViewWillEnter();
     });
   }
@@ -111,11 +111,16 @@ export class AccountPage implements OnInit {
     });
     await loading.present();
       let body = {
-        aksi: 'getdata',
+        aksi: 'getAccount',
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadAccount.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadAccount.php?Id=' + this.user).subscribe(data => {
+        if(data.length == 0){
+          this.text;
+        }else{
+          this.text = '';
+        }
         loading.dismiss().then(() => {
           this.isLoaded = true;
           for (let item of data) {
@@ -131,11 +136,11 @@ export class AccountPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadAccountNew.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadAccountNew.php?Id=' + this.user).subscribe(data => {
         if (data.length == 0){
-          this.text;
+          this.textNew;
         }else{
-          this.text = '';
+          this.textNew = '';
         }
         for (let item of data) {
           this.itemsNew.push(item);
@@ -160,10 +165,10 @@ export class AccountPage implements OnInit {
           text: 'Yes',
           handler: () => {
             let body = {
-              aksi: 'delete',
+              aksi: 'Account',
               id: id,
             };
-            this.postPvdr.postData(body, 'InsertAccount.php').subscribe(data => {
+            this.postPvdr.Integration(body, 'Delete.php').subscribe(data => {
               this.ionViewWillEnter();
             });
           }

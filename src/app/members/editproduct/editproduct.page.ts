@@ -136,7 +136,7 @@ export class EditproductPage implements OnInit {
           loading.dismiss().then(()=>{
             this.loadImageProduct();
           })
-          this.postPvdr.postData(body, 'InsertImages.php').subscribe(data =>{
+          this.postPvdr.Integration(body, 'InsertImages.php').subscribe(data =>{
             console.log(data)
           })
           this.isUploading = false;
@@ -180,7 +180,7 @@ export class EditproductPage implements OnInit {
           limit: this.limit,
           start: this.start,
         };
-      this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(dataImages => {
+      this.postPvdr.Integration(body, 'LoadProduct.php?Id=' + this.user).subscribe(dataImages => {
         dataImages.forEach(element => {
             if(element.namaProduk == this.namaProduk){
               this.items = element.Images;

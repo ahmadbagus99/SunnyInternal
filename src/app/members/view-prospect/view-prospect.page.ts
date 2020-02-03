@@ -37,8 +37,7 @@ export class ViewProspectPage implements OnInit {
   buttonSave:boolean=true;
   backButton:boolean;
   pdfObj = null;
-  DataProduct : any = [];
-  DataQuantity : any = [];
+  ProductQty : any = [];
   constructor(
     private actRoute: ActivatedRoute,
     private postPvdr: PostProvider,
@@ -87,34 +86,20 @@ export class ViewProspectPage implements OnInit {
       this.note = "On Progress"
     }
     this.isHidden = this.toggleWon;
-    this.LoadDataProspect();
-    this.LoadDataQuantity();
+    this.LoadProductQty();
   }
-  LoadDataProspect(){
-    let body = {
-      aksi:'getdata',
-      limit: this.limit,
-      start: this.start
-    };
-    this.postPvdr.postData(body,'LoadDataProduct.php?IdProspect='+this.id).subscribe(data =>{
-      for(let item of data){
-        this.DataProduct.push(item)
-      }
-    })
-  }
-  LoadDataQuantity(){
+  LoadProductQty(){
     let body = {
       aksi: 'getdata',
       limit: this.limit,
       start: this.start
     };
-    this.postPvdr.postData(body,'LoadDataQtyProduct.php?IdProspect='+this.id).subscribe(data =>{
+    this.postPvdr.Integration(body,'LoadProductandQty.php?IdProspect='+this.id).subscribe(data =>{
       for(let item of data){
-        this.DataQuantity.push(item)
+        this.ProductQty.push(item)
       }
     })
   }
-
   checkToggle() {
     if (this.toggleWon == true) {
       this.note = "Close Won"
@@ -124,7 +109,6 @@ export class ViewProspectPage implements OnInit {
       this.note = "On Progress"
     }
   }
-
   Update() {
     return new Promise(resolve => {
       let body = {
@@ -132,7 +116,7 @@ export class ViewProspectPage implements OnInit {
         id: this.id,
         toggleWon: this.toggleWon,
       };
-      this.postPvdr.postData(body, 'InsertCustomer.php').subscribe(data => {
+      this.postPvdr.Integration(body, 'InsertCustomer.php').subscribe(data => {
         console.log(data)
         this.router.navigate(['members/prospect']);
       })
@@ -159,7 +143,7 @@ export class ViewProspectPage implements OnInit {
           }
         },
         {
-          text: 'Ya',
+          text: 'Yes',
           handler: () => {
             this.router.navigate(['members/seeallprospect']);
           }
@@ -179,9 +163,7 @@ export class ViewProspectPage implements OnInit {
       this.emailCustomer,
       this.alamatCustomer,
       this.no_tlp,
-      this.customerneed,
-      this.hargaProduk,
-      this.stock,
+      this.ProductQty,
       this.totalPrice
       );
     this.pdf.downloadPdf();
