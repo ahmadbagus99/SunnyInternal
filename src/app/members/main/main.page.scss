@@ -294,6 +294,7 @@ ion-badge {
   height: 38vw;
   width: 48vw;
   margin: -26vw 0vw 0vw 46vw;
+
 }
 
 
@@ -333,14 +334,6 @@ ion-card-content {
       color: white;
     }
 }
-
-    .text-noact {
-      position: relative;
-      display: block;
-      /* margin-left: 20vw; */
-      align-items: center;
-      margin-top: 5vw;
-    }
 
 
 
@@ -391,9 +384,10 @@ ion-card-content {
     }
     
         .text-noact {
-          position: relative;
-          /* margin-left: 20vw; */
+          position: absolute;
+          -webkit-box-align: center;
           align-items: center;
+          margin: 13vw 0vw 0vw 15vw;
         }
     
     
