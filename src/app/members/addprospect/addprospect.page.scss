@@ -107,16 +107,30 @@ ion-card-content {
   font-size: 4vw;
 }
 .next-prog {
-  margin-top: 10vw;
-  margin-right: -52vw;
+  ion-button {
+    margin-top: 5vw;
+    width: 70vw;
+  }
 }
 .ButtonSlide4{
-  margin-top: 2vw;
-  margin-right: -77vw;
+  ion-button {
+    margin: 10px 0px 10px 0px;
+    width: 250px;
+  }
 }
 .previous {
   margin-top: 5vw;
 }
+.button-back {
+    width: 150px;
+    margin: 30px 0px 0px 0px;
+}
+.button-next {
+    width: 150px;
+    margin: 30px 0px 0px 30px;
+}
+
+
 ion-slides {
   overflow: hidden;
   --overflow: hidden;
