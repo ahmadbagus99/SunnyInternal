@@ -35,13 +35,13 @@
 <ion-content>
   <ion-grid class="newprospect">
     <ion-row col-12 col-md-6 col-lg-4 col-xl-3>
-    <div class="see-all" (click)="SeeAllProspect(param)">
-      <div class="text1">
-        <ion-text color="primary"> See all </ion-text>
+      <div class="see-all" (click)="SeeAllProspect(param)">
+        <div class="text1">
+          <ion-text color="primary"> See all </ion-text>
+        </div>
       </div>
-    </div>
-    <h4 class="judul"><b> New Prospect </b></h4>
-  </ion-row>
+      <h4 class="judul"><b> New Prospect </b></h4>
+    </ion-row>
 
     <div class="scrolling-wrapper-1">
       <p text-center>{{textProspect}}</p>
@@ -50,9 +50,15 @@
           (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
           <img center src="assets/img/customer-icon.png" />
           <ion-card-content>
-            <ion-textarea readOnly><h2>{{item.namaCustomer}}</h2></ion-textarea>
-            <div class="followup"> <p text-align-center> Follow up </p> </div>
-           <ion-textarea> <p>{{item.company}}</p> </ion-textarea>
+            <ion-textarea readOnly>
+              <h2>{{item.namaCustomer}}</h2>
+            </ion-textarea>
+            <div class="followup">
+              <p text-align-center> Follow up </p>
+            </div>
+            <ion-textarea>
+              <p>{{item.company}}</p>
+            </ion-textarea>
           </ion-card-content>
         </ion-card>
       </div>
@@ -73,8 +79,12 @@
         (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
         <img src="assets/img/customer-icon.png">
         <ion-card-content>
-          <ion-textarea><h2 text-align-left>{{item.namaCustomer}}</h2></ion-textarea>
-          <div class="sub-text"><p text-align-left>{{item.company}}</p></div>
+          <ion-textarea>
+            <h2 text-align-left>{{item.namaCustomer}}</h2>
+          </ion-textarea>
+          <div class="sub-text">
+            <p text-align-left>{{item.company}}</p>
+          </div>
         </ion-card-content>
       </ion-card>
     </div>
@@ -99,9 +109,13 @@
           <ion-icon name="ios-basket"></ion-icon>
         </div>
         <ion-card-content>
-          <ion-textarea><h2 text-center>{{item.namaProduk}}</h2></ion-textarea>
-            <div class="tipe-produk"><p text-center>{{item.tipeProduk}}</p></div>
-          
+          <ion-textarea>
+            <h2 text-center>{{item.namaProduk}}</h2>
+          </ion-textarea>
+          <div class="tipe-produk">
+            <p text-center>{{item.tipeProduk}}</p>
+          </div>
+
         </ion-card-content>
       </ion-card>
     </div>

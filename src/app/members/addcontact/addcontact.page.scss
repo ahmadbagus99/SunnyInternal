@@ -23,8 +23,9 @@ ion-title {
 }
 
 ion-button {
-  color: #F57F17;
+  color: rgb(255, 255, 255);
   text-transform: capitalize;
+  border-radius: 50px;
 }
 
 ion-back-button {
@@ -33,10 +34,6 @@ ion-back-button {
 
 ion-title {
   color: #FFFFFF;
-}
-
-ion-button {
-  color: white;
 }
 
 ion-header {
@@ -73,37 +70,38 @@ ion-toolbar {
   }
 }
 
-.next {
+.rounded-next {
+  border-radius: 50px;
+}
 
+.next {
   size: 10vw;
 }
 .prev {
-
   size: 10vw;
 }
 
 .button-next {
   ion-button {
-    right: 10px;
-    margin-left: 76vw;
+    border-radius: 50px;
     margin-top: 5vw;
+    width: 70vw;
   }
 }
 
 .button-prev {
   ion-button {
-    left:  10px;
-    margin-right: 58vw;
+    border-radius: 50px;
     margin-top: 5vw;
+    width: 70vw;
     
   }
 }
 
 .button-before {
   ion-button {
-    right: 120px;
-    margin-left: 8vw;
-    margin-top: 5vw;
+    width: 130px;
+    margin: 25px 20px 0px 15px;
   }
 }
 
