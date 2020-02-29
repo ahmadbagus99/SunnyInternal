@@ -26,6 +26,8 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 
 export class AddprospectPage implements OnInit {
+
+  Order : any = [];
   public searchTerm: string = "";
   IdProspect : number;
   isHidden = true;
@@ -125,6 +127,19 @@ export class AddprospectPage implements OnInit {
     this.savebutton = false;
     this.slides.lockSwipes(false);
     this.progress = this.progress + 0.5;
+    
+    this.Nameproduct.forEach(product => {
+      let body = {
+        Product: product,
+        Qty: 0
+      }
+      this.Order.push(body);
+    });
+
+    for (let i=0; i<this.values.length; i++){
+      this.Order[i].Qty = this.values[i]
+    }
+   
     this.storage.get('Stock').then((data)=>{
       var Data = data;
       var id = Data.map( data => data.id);
@@ -416,8 +431,7 @@ export class AddprospectPage implements OnInit {
               };
               this.postPvdr.Integration(body, 'Insert.php').subscribe(data => {
                 this.IdProspect = data.id;
-                this.ProcessInsertDataProduct();
-                this.ProcessInsertDataQty();
+                this.InsertDataOrder();
                 this.router.navigate(['members/prospect']);
                 // this.savebutton = true;
               });
@@ -429,36 +443,19 @@ export class AddprospectPage implements OnInit {
     this.pushNotif(5);
     await alert.present();
   }
-  ProcessInsertDataProduct(){
-    return new Promise(resolve => {
-      this.Nameproduct.forEach((data)=>{
-        this.customerneed = data
+      InsertDataOrder(){
+      this.Order.forEach(dataOrder => {
         let body = {
-          aksi : 'DataProduct',
-          Product : this.customerneed,
-          idProspect : this.IdProspect
-      };
-      this.postPvdr.Integration(body,'Insert.php').subscribe(data =>{
-        console.log(data)
+          aksi : 'DataOrder',
+          Product: dataOrder.Product,
+          Qty: dataOrder.Qty,
+          idProspect: this.userID
+        }
+        this.postPvdr.Integration(body,'Insert.php').subscribe(data =>{
+        });
       });
-  })
-  });
   }
-  ProcessInsertDataQty(){
-    return new Promise(resolve => {
-      this.values.forEach((data)=>{
-        this.quantity = data
-        let body = {
-          aksi : 'QtyProduct',
-          Quantity : this.quantity,
-          idProspect : this.IdProspect
-      };
-      this.postPvdr.Integration(body,'Insert.php').subscribe(data =>{
-        console.log(data)
-      });
-  })
-  });
-  }
+
   async updateProcess() {
     const loading = await this.loadingController.create({
       message: "Process",

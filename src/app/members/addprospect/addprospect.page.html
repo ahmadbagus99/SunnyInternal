@@ -79,6 +79,12 @@
               <ion-input [(ngModel)]="company"></ion-input>
             </ion-item>
           </span>
+          <span>
+            <ion-item>
+              <ion-label position="floating">Budget</ion-label>
+              <ion-input type="text" [(ngModel)]="budget"></ion-input>
+            </ion-item>
+          </span>
         </div>
         <div class="next-prog">
           <ion-button shape="round" (click)="nextSlide1()" color="primary" [disabled]="!namaCustomer">Next Progress
@@ -148,12 +154,6 @@
             <ion-item>
               <ion-label position="floating">Total Price</ion-label>
               <ion-input type="text" value="{{ totalPrice | currency:'Rp ' }}" readOnly></ion-input>
-            </ion-item>
-          </span>
-          <span>
-            <ion-item>
-              <ion-label position="floating">Budget</ion-label>
-              <ion-input type="text" [(ngModel)]="budget"></ion-input>
             </ion-item>
           </span>
         </div> 
