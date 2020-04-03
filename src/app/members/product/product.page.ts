@@ -19,6 +19,8 @@ export class ProductPage implements OnInit {
   user: any;
   public searchTerm: string = "";
   selectCategory = 'Populer';
+  text = "No Recent Product";
+  textNew = "No Recent Product Added";
 
   constructor(
     private router: Router,
@@ -95,7 +97,12 @@ export class ProductPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
+        if(data.length == 0){
+          this.text;
+        }else{
+          this.text = '';
+        }
         loading.dismiss().then(() => {
           this.isLoaded = true;
           for (let item of data) {
@@ -110,7 +117,12 @@ export class ProductPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProductNew.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadProductNew.php?Id=' + this.user).subscribe(data => {
+        if(data.length == 0){
+          this.textNew;
+        }else{
+          this.textNew = '';
+        }
         for (let item of data) {
           this.itemsNew.push(item);
         }
@@ -121,11 +133,11 @@ export class ProductPage implements OnInit {
       aksi: 'delete',
       id: id,
     };
-    this.postPvdr.postData(body, 'InsertProduct.php').subscribe(data => {
+    this.postPvdr.Integration(body, 'Delete.php').subscribe(data => {
       this.ionViewWillEnter();
     });
   }
-  async presentAlertMultipleButtons(id) {
+  async Delete(id) {
     const alert = await this.alertController.create({
       header: 'Are you sure?',
       subHeader: '',
@@ -145,7 +157,7 @@ export class ProductPage implements OnInit {
               aksi: 'delete',
               id: id,
             };
-            this.postPvdr.postData(body, 'InsertProduct.php').subscribe(data => {
+            this.postPvdr.Integration(body, 'InsertProduct.php').subscribe(data => {
               this.ionViewWillEnter();
             });
           }

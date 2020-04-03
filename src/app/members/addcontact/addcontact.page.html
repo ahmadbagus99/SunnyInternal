@@ -80,7 +80,7 @@
         <span>
           <!-- fungsi untuk lanjut (next) ke slide ke 2 atau page ke 2 -->
           <div class="button-next">
-            <ion-button (click)="next()" color="primary"> Next 
+            <ion-button shape="round" (click)="next()" color="primary"> Next 
               <ion-icon name="arrow-round-forward"></ion-icon>
             </ion-button>
             
@@ -123,7 +123,7 @@
               <!-- fill data pengisian Alamat Perusahaan user-->
               <ion-label position="stacked">Company</ion-label>
               <!-- <ion-input *ngFor="let item of items" type="text" [(ngModel)]="perusahaan">{{item.nama}}</ion-input> -->
-              <ion-select (ionChange)="loadCompanyAddress()" placeholder="Comapany Select" [(ngModel)]="perusahaan">
+              <ion-select (ionChange)="loadCompanyAddress()" placeholder="Company Select" [(ngModel)]="perusahaan">
                 <ion-select-option *ngFor="let item of items">{{item.nama}}</ion-select-option>
               </ion-select>
             </ion-item>
@@ -159,16 +159,20 @@
           <!-- fungsi untuk kembali(back) ke slide ke 1 atau page ke 1-->
         </div>
         <div class="button-before">
-          <ion-button  (click)="prev()" color="light">
+          <ion-button class="prev" shape="round" (click)="prev()" color="light">
             <ion-icon name="arrow-round-back"></ion-icon>Previous
           </ion-button>
         <!-- fungsi untuk lanjut (next) ke slide ke 3 atau page ke 3-->
-          <ion-button  (click)="next()" color="primary">next
+          <ion-button class="next" shape="round" (click)="next()" color="primary">next
             <ion-icon name="arrow-round-forward"></ion-icon>
           </ion-button>
         </div>
       </ion-col>
     </ion-slide>
+
+
+    <!-- Slide ke - 3 -->
+
 
     <ion-slide>
       <ion-col>
@@ -217,7 +221,7 @@
         </div>
         <!-- fungsi untuk kembali(back) ke slide ke 2 atau page ke 2-->
         <div class="button-prev">
-          <ion-button  (click)="prev()" color="light">
+          <ion-button shape="round" (click)="prev()" color="light">
             <ion-icon name="arrow-round-back"></ion-icon> Previous
           </ion-button>
             <!-- <ion-button color="success" *ngIf="!id" (click)="createdProcess()">

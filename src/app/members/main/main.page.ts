@@ -3,22 +3,13 @@ import { Storage } from '@ionic/storage';
 import { ShareService } from 'src/app/share/share';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { PostProvider } from 'src/providers/post-providers';
-import { IonSlides } from '@ionic/angular';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
   styleUrls: ['./main.page.scss'],
 })
-export class MainPage implements OnInit{
-  @ViewChild('mySlider') slider: IonSlides;
-  sliderOpts = {
-    autoplay: true,
-    speed: 1000,
-    zoom: {
-      maxRatio: 5
-    }
-  };
+export class MainPage {
   Activity: any = null;
   items: any = [];
   itemsaccount: any = [];
@@ -30,11 +21,15 @@ export class MainPage implements OnInit{
   itemCustomer: any = [];
   totalCustomer: number = 0;
   totalProspect: number = 0;
-  text: string = "You don't have prospect today";
+  textProspect: string = "You don't have prospect today";
   textActivity: string = "You don't have activities today";
   Incentive: string;
-  NewDate : string;
 
+  slideOpts = {
+    initialSlide: 4,
+    slidesPerView: 1,
+    autoplay:true
+  };
   constructor(
     private storage: Storage,
     private router: Router,
@@ -51,21 +46,7 @@ export class MainPage implements OnInit{
     this.LoadActivity();
     this.LoadIncentive();
     this.loadProspect();
-    this.LoadProfile();
-    this.LoadTotalCustomer();
-    this.LoadTotalProspect();
-    if (this.Activity == null) {
-      this.textActivity;
-    } else {
-      this.textActivity = '';
-    }
-  }
-  ngOnInit(){
-    // if (this.Activity == null) {
-    //   this.textActivity;
-    // } else {
-    //   this.textActivity = '';
-    // }
+    this.LoadCustomer();
   }
   updateprospect(id, namaCustomer, emailCustomer, alamatCustomer, no_tlp, company, alamatCompany, emailCompany, nomorCompany, customerneed, stock, hargaProduk, totalPrice, budget, status) {
     this.router.navigate(['members/view-prospect/'
@@ -86,8 +67,7 @@ export class MainPage implements OnInit{
       + status + '/'
     ]);
   }
-  LoadTotalCustomer() {
-    //getID
+  LoadCustomer() {
     this.storage.get('session_storage').then((iduser) => {
       var ID = iduser;
       this.user = ID.map(data => data.id)
@@ -96,7 +76,8 @@ export class MainPage implements OnInit{
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadTotalCustomer.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadCustomer.php?Id=' + this.user).subscribe(data => {
+        this.totalCustomer = data.length;
         for (let item of data) {
           this.itemCustomer.push(item);
           this.totalCustomer = this.itemCustomer.length;
@@ -105,7 +86,6 @@ export class MainPage implements OnInit{
     });
   }
   LoadIncentive() {
-    //getID
     this.storage.get('session_storage').then((iduser) => {
       var ID = iduser;
       this.user = ID.map(data => data.id)
@@ -114,7 +94,7 @@ export class MainPage implements OnInit{
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'GetIncentive.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'GetIncentive.php?Id=' + this.user).subscribe(data => {
         var DataIncentive = parseInt(data.map(data => data.Incentive));
         var GetDigit = DataIncentive.toString().length;
         if (GetDigit <= 3){
@@ -127,31 +107,7 @@ export class MainPage implements OnInit{
     });
   }
 
-  LoadTotalProspect() {
-    //getID
-    this.storage.get('session_storage').then((iduser) => {
-      var ID = iduser;
-      this.user = ID.map(data => data.id)
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadTotalProspect.php?Id=' + this.user).subscribe(data => {
-        for (let item of data) {
-          this.itemTotalProspect.push(item);
-          this.totalProspect = this.itemTotalProspect.length;
-          if (this.totalProspect == 0) {
-            this.text;
-          } else if (this.totalProspect >= 1) {
-            this.text = '';
-          }
-        }
-      });
-    });
-  }
   loadProspect() {
-    //getID
     this.storage.get('session_storage').then((iduser) => {
       var ID = iduser;
       this.user = ID.map(data => data.id)
@@ -160,32 +116,21 @@ export class MainPage implements OnInit{
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProspect.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadProspect.php?Id=' + this.user).subscribe(data => {
+        //Total Prospect
+        this.totalProspect = data.length;
+        if (this.totalProspect == 0) {
+          this.textProspect;
+        } else if (this.totalProspect >= 1) {
+          this.textProspect = '';
+        }
         for (let item of data) {
           this.itemProspect.push(item);
         }
       });
     });
-    // this.changeRef.detectChanges();
   }
 
-  LoadProfile() {
-    //getID
-    this.storage.get('session_storage').then((iduser) => {
-      var ID = iduser;
-      this.user = ID.map(data => data.id)
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadProfile.php?Id=' + this.user).subscribe(data => {
-        for (let item of data) {
-          this.items.push(item);
-        }
-      });
-    });
-  }
   LoadActivity(){
     this.Activity = [];
     this.storage.get('session_storage').then((iduser) => {
@@ -196,7 +141,12 @@ export class MainPage implements OnInit{
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadActivity.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadActivity.php?Id=' + this.user).subscribe(data => {
+        if ( data.length == 0) {
+        this.textActivity;
+        } else {
+        this.textActivity = '';
+        }
         for (let item of data) {
           this.Activity.push(item);
         }

@@ -6,13 +6,9 @@ import { Router } from '@angular/router';
   templateUrl: './about.page.html',
   styleUrls: ['./about.page.scss'],
 })
-export class AboutPage implements OnInit {
+export class AboutPage {
 
   constructor(  private router : Router, ) { }
-
-  ngOnInit() {
-  }
-
      // Fungsi untuk masuk ke pages HTML faq //
   faq(){
     this.router.navigate(['members/faq'])

@@ -12,6 +12,7 @@ export class RegisterPage implements OnInit {
   nama = '';
   email = '';
   password = '';
+  isActiveToggleTextPassword: Boolean = true;
   // tslint:disable-next-line: variable-name
   confirm_password = '';
 
@@ -21,6 +22,13 @@ export class RegisterPage implements OnInit {
     private router: Router,
     public loadingController: LoadingController
   ) { }
+  public toggleTextPassword(): void{
+    this.isActiveToggleTextPassword = (this.isActiveToggleTextPassword==true)?false:true;
+}
+
+public getType() {
+  return this.isActiveToggleTextPassword ? 'password' : 'text';
+}
 
   ngOnInit() {
   }
@@ -28,7 +36,6 @@ export class RegisterPage implements OnInit {
   login() {
     this.router.navigate(['login']);
   }
-
   async prosesregister() {
     const loading = await this.loadingController.create({
       message: "",
@@ -42,7 +49,7 @@ export class RegisterPage implements OnInit {
     if (this.nama == '') {
       loading.dismiss().then(async () => {
         const toast = await this.toastCtrl.create({
-          message: 'Nama diperlukan!',
+          message: 'Name required!',
           duration: 2000
         });
         toast.present();
@@ -51,7 +58,7 @@ export class RegisterPage implements OnInit {
     } else if (this.email == '') {
       loading.dismiss().then(async () => {
         const toast = await this.toastCtrl.create({
-          message: 'Email diperlukan',
+          message: 'Email required',
           duration: 2000
         });
         toast.present();
@@ -60,7 +67,7 @@ export class RegisterPage implements OnInit {
     } else if (this.password == '') {
       loading.dismiss().then(async () => {
         const toast = await this.toastCtrl.create({
-          message: 'Password diperlukan!',
+          message: 'Password required!',
           duration: 2000
         });
         toast.present();
@@ -69,7 +76,7 @@ export class RegisterPage implements OnInit {
     } else if (this.password != this.confirm_password) {
       loading.dismiss().then(async () => {
         const toast = await this.toastCtrl.create({
-          message: 'Password tidak sama!',
+          message: 'password not match!',
           duration: 2000
         });
         toast.present();
@@ -82,13 +89,25 @@ export class RegisterPage implements OnInit {
         aksi: 'register'
       };
        //fungsi untuk tampilan loading text/tulisan ketika user berhasil daftar//
-      this.postPvdr.postData(body, 'LoadUser.php').subscribe(async data => {
-        const alertmsg = data;
+      this.postPvdr.Integration(body, 'Insert.php').subscribe(async data => {
+      console.log(data);
         if (data.success) {
+          //Create Profile
+          const bodyProfile = {
+            aksi : 'Profile',
+            fullname : this.nama,
+            phonenumber : '',
+            birthday : '',
+            email: this.email,
+            country : '',
+            userID : data.id
+          };
+        this.postPvdr.Integration(bodyProfile, 'Insert.php').subscribe( dump => {
+        })
           loading.dismiss().then(async () => {
             this.router.navigate(['login']);
             const toast = await this.toastCtrl.create({
-              message: 'Pendaftaran Berhasil!',
+              message: 'Registration Successful!',
               duration: 2000
             });
             toast.present();
@@ -96,7 +115,7 @@ export class RegisterPage implements OnInit {
         } else {
           loading.dismiss().then(async () => {
             const toast = await this.toastCtrl.create({
-              message: alertmsg,
+              message: 'Register Failed',
               duration: 2000
             });
             toast.present();

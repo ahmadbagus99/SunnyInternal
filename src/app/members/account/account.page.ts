@@ -19,28 +19,23 @@ export class AccountPage implements OnInit {
   user: number;
   public searchTerm: string = "";
   selectCategory = 'Populer';
-
+  text = "No Recent Account";
+  textNew = "No Recent Account Added";
   constructor(
     private router: Router,
     private postPvdr: PostProvider,
     private storage: Storage,
     public alertController: AlertController,
     public loadingController: LoadingController,
-    private dataService: DataService,
+    private dataService: DataService
   ) {
   }
   ngOnInit() {
     this.setFilteredItems();
   }
-  // Fungsi untuk menambahkan item pada page account.//
-  addaccount() {
-    this.router.navigate(['members/addaccount'])
-  }
   ionViewWillEnter() {
-    //get ID
-    this.storage.get('session_storage').then((iduser) => {
-      var ID = iduser;
-      this.user = ID.map(data => data.id)
+    this.storage.get('session_storage').then((ID) => {
+      this.user = parseInt(ID.map(data => data.id));
     });
     this.items = [];
     this.start = 0;
@@ -48,7 +43,9 @@ export class AccountPage implements OnInit {
     this.loadAccount();
     this.loadAccountNew();
   }
-  // Fungsi untuk menarik/mendapatkan data untuk data edit account dari server php//
+  addaccount() {
+    this.router.navigate(['members/addaccount'])
+  }
   updateAccount(id, nama, alamat, web, phone, email, owner, type, event_date, category, industry, employee) {
     if (nama == "") {
       nama = " ";
@@ -100,7 +97,7 @@ export class AccountPage implements OnInit {
       aksi: 'delete',
       id: id,
     };
-    this.postPvdr.postData(body, 'InsertAccount.php').subscribe(data => {
+    this.postPvdr.Integration(body, 'InsertAccount.php').subscribe(data => {
       this.ionViewWillEnter();
     });
   }
@@ -114,11 +111,16 @@ export class AccountPage implements OnInit {
     });
     await loading.present();
       let body = {
-        aksi: 'getdata',
+        aksi: 'getAccount',
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadAccount.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadAccount.php?Id=' + this.user).subscribe(data => {
+        if(data.length == 0){
+          this.text;
+        }else{
+          this.text = '';
+        }
         loading.dismiss().then(() => {
           this.isLoaded = true;
           for (let item of data) {
@@ -134,15 +136,19 @@ export class AccountPage implements OnInit {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadAccountNew.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadAccountNew.php?Id=' + this.user).subscribe(data => {
+        if (data.length == 0){
+          this.textNew;
+        }else{
+          this.textNew = '';
+        }
         for (let item of data) {
           this.itemsNew.push(item);
         }
       });
   }
 
-  //fungsi sebagai button mengahapus akun dan membuat tampilan text.//
-  async presentAlertMultipleButtons(id) {
+  async Delete(id) {
     const alert = await this.alertController.create({
       header: 'Are You Sure?',
       subHeader: '',
@@ -159,10 +165,10 @@ export class AccountPage implements OnInit {
           text: 'Yes',
           handler: () => {
             let body = {
-              aksi: 'delete',
+              aksi: 'Account',
               id: id,
             };
-            this.postPvdr.postData(body, 'InsertAccount.php').subscribe(data => {
+            this.postPvdr.Integration(body, 'Delete.php').subscribe(data => {
               this.ionViewWillEnter();
             });
           }

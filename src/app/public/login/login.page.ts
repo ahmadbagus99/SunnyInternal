@@ -4,12 +4,9 @@ import { ShareService } from 'src/app/share/share';
 import { ToastController, AlertController,LoadingController  } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { PostProvider } from 'src/providers/post-providers';
-import { async } from 'q';
-
 
 const TOKEN_KEY = 'auth-token';
 
-// tslint:disable-next-line: ban-types
 type NewType = String;
 
 @Component({
@@ -18,7 +15,7 @@ type NewType = String;
   styleUrls: ['./login.page.scss'],
 })
 
-export class LoginPage implements OnInit {
+export class LoginPage {
   email: NewType;
   password: String;
   isActiveToggleTextPassword: Boolean = true;
@@ -34,17 +31,14 @@ export class LoginPage implements OnInit {
     private postPvdr: PostProvider,
     private alertController : AlertController,
     public loadingController: LoadingController,
-    ) { }
-    public toggleTextPassword(): void{
-      this.isActiveToggleTextPassword = (this.isActiveToggleTextPassword==true)?false:true;
+    ) { 
+
+    }
+  public toggleTextPassword(): void{
+    this.isActiveToggleTextPassword = (this.isActiveToggleTextPassword==true)?false:true;
   }
   public getType() {
     return this.isActiveToggleTextPassword ? 'password' : 'text';
-}
-
-
-  ngOnInit() {
-    
   }
 
   async login() {
@@ -107,10 +101,7 @@ export class LoginPage implements OnInit {
            });
         toast.present();
       })
-      
     }
-
- 
    }
 
   private newMethod() {

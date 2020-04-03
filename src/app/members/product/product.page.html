@@ -11,7 +11,7 @@
     <ion-title>Product</ion-title>
   </ion-toolbar>
   <ion-toolbar>
-    <ion-searchbar color="light" animated [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="setFilteredItems()"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -41,10 +41,7 @@
       <ion-label>Top Recent</ion-label>
     </ion-segment-button>
     <ion-segment-button value="Terbaru">
-      <ion-label>New</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="Kategori">
-      <ion-label>Category</ion-label>
+      <ion-label>New Product</ion-label>
     </ion-segment-button>
   </ion-segment>
 
@@ -52,13 +49,21 @@
     <div *ngSwitchCase="'Populer'">
       <ng-container *ngIf="isLoaded; else elseTemplate">
         <ion-list>
+          <p class="ion-text-center">{{text}}</p>
           <ion-item-sliding *ngFor="let item of items">
             <ion-item-options side="end">
-              <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>
+              <ion-item-option color="danger" (click)="Delete(item.id)">Delete</ion-item-option>
             </ion-item-options>
             <ion-item button
               (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
-              <ion-icon slot="start" name="ios-basket"></ion-icon>
+              <ion-avatar slot="start">
+                <div *ngIf="item.Images">
+                  <img [src]="item.Images">
+                </div>
+                <div *ngIf="!item.Images">
+                  <ion-icon name="ios-basket"></ion-icon>
+                </div>
+              </ion-avatar>
               <ion-label>
                 <h3>{{item.namaProduk}}</h3>
               </ion-label>
@@ -68,10 +73,10 @@
       </ng-container>
     </div>
 
-
     <div *ngSwitchCase="'Terbaru'">
       <ng-container *ngIf="isLoaded; else elseTemplate">
         <ion-list>
+          <p class="ion-text-center">{{textNew}}</p>
           <ion-item-sliding *ngFor="let item of itemsNew">
             <ion-item-options side="end">
               <ion-item-option color="danger" (click)="presentAlertMultipleButtons(item.id)">Delete</ion-item-option>

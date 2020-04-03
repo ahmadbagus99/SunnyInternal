@@ -11,19 +11,34 @@
       <ion-button *ngIf="id>=1" (click)="updateProcess()">Save</ion-button>
     </ion-buttons>
   </ion-toolbar>
-
   <div class="cover" size="12" size-md>
-    <!-- Kegunaan untuk membuat fill dan untuk mengupload foto ke dalam akun -->
     <ion-grid>
       <ion-row>
         <ion-col>
           <div class="image-upload">
             <label size="12" size-sm for="file-input" for="file-input">
-              <img src="assets/icon/add.png" />
+              <img *ngFor="let item of images | async" [src]="item.filepath" />
+              <img class="add-pict" [hidden]="isUploaded" src="assets/img/avatar-contact.png" />
             </label>
-  
-            <input id="file-input" type="file" />
+            <input id="file-input" type="file" class="upload" (change)="uploadFile($event.target.files)"/>
           </div>
+          <div text-center>
+            <div text-center *ngIf="isUploading && !isUploaded">
+              <div *ngIf="snapshot | async as snap">
+                <!-- File Size: {{ snap.totalBytes | fileSizePipe }} Transfered:
+                {{ snap.bytesTransferred | fileSizePipe }} -->
+                <div *ngIf="snapshot && snap.bytesTransferred != snap.totalBytes">
+                  <!-- <ion-button color="warning" size="small" (click)="task.pause()" class="button is-warning">Pause</ion-button>
+                  <ion-button size="small" (click)="task.resume()" class="button is-info">Resume</ion-button>
+                  <ion-button color="danger" size="small" (click)="task.cancel()" class="button is-danger">Cancel</ion-button> -->
+                </div>
+              </div>
+              <div *ngIf="percentage | async as pct">
+                <!-- Progress: {{ pct | number }}% -->
+                <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
+              </div>
+            </div>
+          </div> 
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -31,53 +46,38 @@
 </ion-header>
 
 <ion-content>
-  
-
-
 <div class="background-content">
-  
-<!-- Text -->
-<ion-col>
-  <div class="ion-text-center">
-    <h3>Edit Personalization</h3>
-    You can modified information in below :
-  </div>
-</ion-col>
-
-
-  <!-- fill data dimana tempat pengisian Nama Lengkap  user -->
-  <ion-item class="label">
-    <ion-label position="floating">Full Name</ion-label>
-    <ion-input type="text" [(ngModel)]="fullname"></ion-input>
-  </ion-item>
-
-  <!-- fill data dimana tempat pengisian No hp  user -->
-  <ion-item class="label">
-    <ion-label position="floating">Phone Number</ion-label>
-    <ion-input class="phonenumber" type="text" [(ngModel)]="phonenumber"></ion-input>
-  </ion-item>
-
-  <!-- fill data dimana tempat pengisian ulang tahun  user -->
-  <ion-item class="label">
-    <ion-label position="floating">Date of birth</ion-label>
-    <ion-datetime [(ngModel)]="birthday"></ion-datetime>
-  </ion-item>
-
-  <!-- fill data dimana tempat pengisian email kantor user -->
-  <ion-item class="label">
-    <ion-label position="floating">Email</ion-label>
-    <ion-input class="email" type="text" [(ngModel)]="email"></ion-input>
-  </ion-item>
-
-  <!-- fill data dimana tempat pengisian Negara user -->
-  <ion-item class="label">
-    <ion-label position="floating">Country</ion-label>
-    <ion-input class="country" type="text" [(ngModel)]="country"></ion-input>
-    <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
-  </ion-item>
-
-
-
-
+    <ion-col>
+      <div class="ion-text-center">
+        <h3>Edit Personalization</h3>
+        You can modified information in below :
+      </div>
+    </ion-col>
+      <!-- fill data dimana tempat pengisian Nama Lengkap  user -->
+      <ion-item class="label">
+        <ion-label position="floating">Full Name</ion-label>
+        <ion-input type="text" [(ngModel)]="fullname"></ion-input>
+      </ion-item>
+      <!-- fill data dimana tempat pengisian No hp  user -->
+      <ion-item class="label">
+        <ion-label position="floating">Phone Number</ion-label>
+        <ion-input class="phonenumber" type="text" [(ngModel)]="phonenumber"></ion-input>
+      </ion-item>
+      <!-- fill data dimana tempat pengisian ulang tahun  user -->
+      <ion-item class="label">
+        <ion-label position="floating">Date of birth</ion-label>
+        <ion-datetime [(ngModel)]="birthday"></ion-datetime>
+      </ion-item>
+      <!-- fill data dimana tempat pengisian email kantor user -->
+      <ion-item class="label">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input class="email" type="text" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <!-- fill data dimana tempat pengisian Negara user -->
+      <ion-item class="label">
+        <ion-label position="floating">Country</ion-label>
+        <ion-input class="country" type="text" [(ngModel)]="country"></ion-input>
+        <ion-input type="text" [(ngModel)]="userID" hidden></ion-input>
+      </ion-item>
 </div>
 </ion-content>

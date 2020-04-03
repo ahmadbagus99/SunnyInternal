@@ -3,70 +3,29 @@ import { Router } from '@angular/router';
 import { PostProvider } from 'src/providers/post-providers';
 import { Storage } from '@ionic/storage';
 import { AlertController, LoadingController } from '@ionic/angular';
-import { DataService } from "src/app/services/data.service";
-//upload
-import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { finalize, tap } from 'rxjs/operators';
 
-export interface MyData {
-  name: string;
-  filepath: string;
-  size: number;
-}
 @Component({
   selector: 'app-prospect',
   templateUrl: './prospect.page.html',
   styleUrls: ['./prospect.page.scss'],
 })
-export class ProspectPage implements OnInit {
-  // Upload Task 
-  task: AngularFireUploadTask;
 
-  // Progress in percentage
-  percentage: Observable<number>;
-
-  // Snapshot of uploading file
-  snapshot: Observable<any>;
-
-  // Uploaded File URL
-  UploadedFileURL: Observable<string>;
-
-  //Uploaded Image List
-  images: Observable<MyData[]>;
-
-  //File details  
-  fileName: string = '';
-  fileSize:number;
-
-  //Status check 
-  isUploading:boolean;
-  isUploaded:boolean;
-
-  userIDDesc : string = 'profile';
-  private imageCollection: AngularFirestoreCollection<MyData>;
-  userID: string;
-  items: any = [];
+export class ProspectPage {
+  isUploaded:boolean = false;
+  itemsProspect: any = [];
   user: any;
   limit: number = 10;
   start: number = 0;
-  isLoaded = false;
-  selectCategory = 'Populer';
-  itemsNew: any = [];
   itemsproduct: any = [];
   itemsProfile: any = [];
   itemsCustomer: any = [];
-  itemTotalProspect: any = [];
   totalProspect: number = 0;
-  text: string = "You don't have prospect for today!";
+  textProspect: string = "You don't have prospect for today";
   textProduct: string = "You haven't added product";
-  textCustomer: string = "Keep follow up your prospect!";
-  url: any;
+  textCustomer: string = "You don't have customer";
   ProspectTotal : number;
-  itemProspectVerify : any = [];
-  prospectVerify : number = 0;
   Move : boolean;
+  Images : string;
 
   constructor(
     private router: Router,
@@ -74,117 +33,23 @@ export class ProspectPage implements OnInit {
     private storageLocal: Storage,
     public alertController: AlertController,
     public loadingController: LoadingController,
-    private storage: AngularFireStorage, 
-    private database: AngularFirestore
   ) {
-      this.isUploading = false;
-      this.isUploaded = false;
-      this.storageLocal.get('IdLogin').then((IdLogin) => {
-      this.userID = IdLogin.toString();
-      this.imageCollection = database.collection<MyData>(this.userID+this.userIDDesc);
-      this.images = this.imageCollection.valueChanges();
-    });
-  }
-  ngOnInit() {
-    this.storageLocal.get('TotalProspect').then((data)=>{
-      this.ProspectTotal = data;
-    })
   }
   ionViewWillEnter() {
     //get ID
-    this.storageLocal.get('session_storage').then((iduser) => {
-      var ID = iduser;
-      this.user = ID.map(data => data.id)
+    this.storageLocal.get('session_storage').then((ID) => {
+      this.user = parseInt(ID.map(data => data.id));
     });
-    this.items = [];
     this.start = 0;
-    this.itemsNew = [];
     this.itemsProfile = [];
     this.itemsproduct = [];
     this.itemsCustomer = [];
-    this.itemTotalProspect = [];
-    this.itemProspectVerify = [];
-    this.LoadTotalProspect();
+    this.itemsProspect = [];
     this.LoadCustomer();
     this.loadProspect();
-    this.loadProspectNew();
     this.LoadProfile();
     this.loadProduct();
-    this.check();
-    this.CheckLoadImages();
   }
-  uploadFile(event: FileList) {
-      
-
-    // The File object
-    const file = event.item(0)
-
-    // Validation for Images Only
-    if (file.type.split('/')[0] !== 'image') { 
-    console.error('unsupported file type :( ')
-    return;
-    }
-
-    this.isUploading = true;
-    this.isUploaded = false;
-
-
-    this.fileName = file.name;
-
-    // The storage path
-    const path = `SunnyStorage/${new Date().getTime()}_${file.name}`;
-
-    // Totally optional metadata
-    const customMetadata = { app: 'Sunny Images' };
-
-    //File reference
-    const fileRef = this.storage.ref(path);
-
-    // The main task
-    this.task = this.storage.upload(path, file, { customMetadata });
-
-  // Get file progress percentage
-  this.percentage = this.task.percentageChanges();
-  this.snapshot = this.task.snapshotChanges().pipe(
-    
-    finalize(() => {
-      // Get uploaded file storage path
-      this.UploadedFileURL = fileRef.getDownloadURL();
-      
-      this.UploadedFileURL.subscribe(resp=>{
-        this.addImagetoDB({
-          name: file.name,
-          filepath: resp,
-          size: this.fileSize
-        });
-        this.isUploading = false;
-        this.isUploaded = true;
-        this.storageLocal.set("Status",this.isUploaded)
-      },error=>{
-        console.error(error);
-      })
-    }),
-    tap(snap => {
-        this.fileSize = snap.totalBytes;
-    })
-  )
-}
-addImagetoDB(image: MyData) {
-  //Create an ID for document
-  // const id = this.database.createId();
-  this.storageLocal.get('IdLogin').then((IdLogin) => {
-    this.userID = IdLogin.toString();
-  const id = this.userID + this.userIDDesc;
-  //Set document id with value in database
-  this.imageCollection.doc(id).set(image).then(resp => {
-    console.log(resp);
-  }).catch(error => {
-    console.log("error " + error);
-  });
-});
-}
-//end function
-
   addprospect() {
     this.router.navigate(['members/addprospect'])
   }
@@ -213,11 +78,11 @@ addImagetoDB(image: MyData) {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadProduct.php?Id=' + this.user).subscribe(data => {
         loading.dismiss().then(() => {
-          for (let item of data) {
-            this.itemsproduct.push(item);
-          }
+            for ( var i=0; i<4; i++){
+              this.itemsproduct[i] = data[i]
+            }
           var product = this.itemsproduct.length;
           if (product == 0){
             this.textProduct;
@@ -235,28 +100,29 @@ addImagetoDB(image: MyData) {
       cssClass: 'custom-loader-class',
       mode: 'md'
     });
+    this
     await loading.present();
       let body = {
         aksi: 'getdata',
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProfile.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadProfile.php?Id=' + this.user).subscribe(data => {
+        var img = data.map(element => element.Images);
+          //Check Images
+          if (img.length != 0){
+            this.Images = img;
+            this.isUploaded = true;
+          }else{
+            
+            this.isUploaded = false;
+          }
         loading.dismiss().then(() => {
           for (let item of data) {
             this.itemsProfile.push(item);
           }
         })
       });
-  }
-  deleteprospect(id) {
-    let body = {
-      aksi: 'delete',
-      id: id,
-    };
-    this.postPvdr.postData(body, 'InsertProspect.php').subscribe(_data => {
-      this.ionViewWillEnter();
-    });
   }
   updateprospect(id, namaCustomer, emailCustomer, alamatCustomer, no_tlp, company, alamatCompany, emailCompany, nomorCompany, customerneed, stock, hargaProduk, totalPrice, budget, status) {
     this.router.navigate(['members/view-prospect/'
@@ -323,49 +189,32 @@ addImagetoDB(image: MyData) {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadProspect.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadProspect.php?Id=' + this.user).subscribe(data => {
+        this.storageLocal.set('TotalProspect', data.length);
+            if (data.length == 0) {
+              this.textProspect;
+            } else {
+              this.textProspect = '';
+            }
         loading.dismiss().then(() => {
           for (let item of data) {
-            this.items.push(item);
+            this.itemsProspect.push(item);
           }
+        })
+        //Check Something new
+        this.storageLocal.get('TotalProspect').then((nProspectbefore)=>{
+          this.ProspectTotal = nProspectbefore;
+              if ( this.ProspectTotal == data.length){
+                this.Move = false;
+                console.log('Tidak ada perubahan');
+              }else{
+                this.Move = true;
+                console.log('ada perubahan');
+              }
         })
       });
   }
-  loadProspectNew() {
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadProspectNew.php?Id=' + this.user).subscribe(data => {
-        for (let item of data) {
-          this.itemsNew.push(item);
-        }
-      });
-  }
-  LoadTotalProspect() {
-    this.storageLocal.get('session_storage').then((iduser) => {
-      var ID = iduser;
-      this.user = ID.map(data => data.id)
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadTotalProspect.php?Id=' + this.user).subscribe(data => {
-        for (let item of data) {
-          this.itemTotalProspect.push(item);
-          this.totalProspect = this.itemTotalProspect.length;
-          if (this.totalProspect == 0) {
-            this.text;
-          } else if (this.totalProspect >= 1) {
-            this.text = '';
-          }
-        }
-        this.storageLocal.set('TotalProspect',this.totalProspect);
-      });
-      });
-  }
+ 
   async LoadCustomer() {
     const loading = await this.loadingController.create({
       message: "",
@@ -380,7 +229,7 @@ addImagetoDB(image: MyData) {
         limit: this.limit,
         start: this.start,
       };
-      this.postPvdr.postData(body, 'LoadCustomer.php?Id=' + this.user).subscribe(data => {
+      this.postPvdr.Integration(body, 'LoadCustomer.php?Id=' + this.user).subscribe(data => {
         loading.dismiss().then(() => {
           for (let item of data) {
             this.itemsCustomer.push(item);
@@ -417,7 +266,7 @@ addImagetoDB(image: MyData) {
               aksi: 'delete',
               id: id,
             };
-            this.postPvdr.postData(body, 'InsertProspect.php').subscribe(_data => {
+            this.postPvdr.Integration(body, 'InsertProspect.php').subscribe(_data => {
               this.ionViewWillEnter();
             });
           }
@@ -432,24 +281,6 @@ addImagetoDB(image: MyData) {
       event.target.complete();
     }, 500);
   }
-  onSelectFile(event) {
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        // this.url = event.target.result;
-        this.url = reader.result;
-        this.storageLocal.set('Profile', this.url)
-      }
-    }
-  }
-  CheckLoadImages(){
-    this.storageLocal.get("Status").then((data)=>{
-      this.isUploaded = data;
-    })
-  }
   movetoMain() {
     if (this.Move == true){
       this.router.navigate(['dashboard/dashboard/main'])
@@ -457,26 +288,5 @@ addImagetoDB(image: MyData) {
       this.router.navigate(['members/dashboard'])
     }
   }
-  check(){
-    this.storageLocal.get('session_storage').then((iduser) => {
-      var ID = iduser;
-      this.user = ID.map(data => data.id)
-      let body = {
-        aksi: 'getdata',
-        limit: this.limit,
-        start: this.start,
-      };
-      this.postPvdr.postData(body, 'LoadTotalProspect.php?Id=' + this.user).subscribe(data => {
-        for (let item of data) {
-          this.itemProspectVerify.push(item);
-          this.prospectVerify = this.itemProspectVerify.length;
-        }
-          if ( this.ProspectTotal == this.prospectVerify){
-            this.Move = false;
-          }else{
-            this.Move = true;
-          }
-      });
-    });
-  }
+
 }

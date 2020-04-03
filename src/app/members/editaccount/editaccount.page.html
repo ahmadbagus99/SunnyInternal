@@ -21,17 +21,31 @@
         <div class="cover">
           <div class="add">
             <label for="file-input">
-              <img src="assets/img/4_avatar-512.png" />
+              <img [src]="items" />
+              <img [hidden]="isUploaded" src="assets/img/4_avatar-512.png" />
             </label>
-            <input id="file-input" type="file" class="upload" (change)="onSelectFile($event)" />
+            <input id="file-input" type="file" class="upload" (change)="uploadFile($event.target.files)"/>
           </div>
+          <div text-center>
+            <div text-center *ngIf="isUploading && !isUploaded">
+              <div *ngIf="snapshot | async as snap">
+                <!-- File Size: {{ snap.totalBytes | fileSizePipe }} Transfered:
+                {{ snap.bytesTransferred | fileSizePipe }} -->
+                <div *ngIf="snapshot && snap.bytesTransferred != snap.totalBytes">
+                  <!-- <ion-button color="warning" size="small" (click)="task.pause()" class="button is-warning">Pause</ion-button>
+                  <ion-button size="small" (click)="task.resume()" class="button is-info">Resume</ion-button>
+                  <ion-button color="danger" size="small" (click)="task.cancel()" class="button is-danger">Cancel</ion-button> -->
+                </div>
+              </div>
+              <div *ngIf="percentage | async as pct">
+                <!-- Progress: {{ pct | number }}% -->
+                <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
+              </div>
+            </div>
+          </div> 
       <div class="nama">
         <!-- fungsi sebagai munculnya tampilan Nama ketika di view -->
         <ion-input type="text" [(ngModel)]="nama" readonly></ion-input>
-      </div>
-      <!-- fungsi sebagai munculnya tampilan Phone ketika di view -->
-      <div class="perusahaan">
-        <ion-input type="text" [(ngModel)]="alamat" readonly></ion-input>
       </div>
     </div>
     <!-- fungsi sebagai munculnya tampilan Owner ketika di view -->

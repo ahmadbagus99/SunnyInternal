@@ -60,11 +60,17 @@ ion-back-button {
   background-size: cover;
 }
 
-// .background-content {
-//   position: fixed;
-//   background-color: white;
-// }
+.image-upload > input
+{
+    display: none;
+}
 
-// .label {
-//   background-color: white;
-// }
+.image-upload img
+{
+  border-style: solid;
+    border:3px solid #EEEEEE;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+}

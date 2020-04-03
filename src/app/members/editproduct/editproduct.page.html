@@ -5,7 +5,7 @@
     </ion-buttons>
             <ion-buttons color=#FFFFFF slot="primary">
             <ion-button
-              (click)="updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk)">
+            (click)="updateProduct(id,namaProduk,tipeProduk,totalProfit,normalPrice,jumlahProduk,hargaProduk,deskripsiProduk)">
               Edit
             </ion-button>
          </ion-buttons>
@@ -16,7 +16,7 @@
 <ion-content>
   <div class="background">
       <div class="coverProduk">
-        <img *ngFor="let item of images | async" [src]="item.filepath" />
+        <img [src]="items" />
       </div>
           <div class="cover">
             <div class="add">
@@ -26,18 +26,7 @@
               <input id="file-input" type="file" class="upload" (change)="uploadFile($event.target.files)"/>
             </div>
             <div text-center>
-              <div class="fileUpload btn btn-primary">
-                <!-- <input id="uploadBtn" type="file" class="upload" (change)="uploadFile($event.target.files)" /> -->
-              </div>
               <div text-center *ngIf="isUploading && !isUploaded">
-                <ion-card-header>
-                  <!-- <ion-card-title>Selected File:<b>{{ fileName }}</b></ion-card-title> -->
-                </ion-card-header>
-        
-                <div *ngIf="percentage | async as pct">
-                  <!-- Progress: {{ pct | number }}% -->
-                  <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
-                </div>
                 <div *ngIf="snapshot | async as snap">
                   <!-- File Size: {{ snap.totalBytes | fileSizePipe }} Transfered:
                   {{ snap.bytesTransferred | fileSizePipe }} -->
@@ -46,6 +35,10 @@
                     <ion-button size="small" (click)="task.resume()" class="button is-info">Resume</ion-button>
                     <ion-button color="danger" size="small" (click)="task.cancel()" class="button is-danger">Cancel</ion-button> -->
                   </div>
+                </div>
+                <div *ngIf="percentage | async as pct">
+                  <!-- Progress: {{ pct | number }}% -->
+                  <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
                 </div>
               </div>
             </div> 

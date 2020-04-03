@@ -2,52 +2,24 @@
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button color="light" (click)="movetoMain()"></ion-back-button>
-
       <div class="add-pro">
-        <ion-icon (click)="addprospect()" name="md-add-circle"></ion-icon>
+        <ion-icon (click)="addprospect()" name="add-circle"></ion-icon>
       </div>
-
     </ion-buttons>
-
     <ion-title>Prospect</ion-title>
   </ion-toolbar>
   <div>
-    <ion-toolbar color="primary">
+    <ion-toolbar class="banner" color="primary">
       <div class="fullname">
         <div class="image-upload">
           <label for="file-input">
             <div class="add">
-              <img *ngFor="let item of images | async" [src]="item.filepath" />
+              <img *ngFor="let item of itemsProfile" [src]="item.Images" />
               <img class="add-pict" [hidden]="isUploaded" src="assets/img/avatar-contact.png" />
             </div>
           </label>
-          <input id="file-input" type="file" class="upload" (change)="uploadFile($event.target.files)"/>
         </div>
       </div>
-      <div text-center>
-        <div class="fileUpload btn btn-primary">
-          <!-- <input id="uploadBtn" type="file" class="upload" (change)="uploadFile($event.target.files)" /> -->
-        </div>
-        <div text-center *ngIf="isUploading && !isUploaded">
-          <ion-card-header>
-            <!-- <ion-card-title>Selected File:<b>{{ fileName }}</b></ion-card-title> -->
-          </ion-card-header>
-  
-          <div *ngIf="percentage | async as pct">
-            <!-- Progress: {{ pct | number }}% -->
-            <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
-          </div>
-          <div *ngIf="snapshot | async as snap">
-            <!-- File Size: {{ snap.totalBytes | fileSizePipe }} Transfered:
-            {{ snap.bytesTransferred | fileSizePipe }} -->
-            <div *ngIf="snapshot && snap.bytesTransferred != snap.totalBytes">
-              <!-- <ion-button color="warning" size="small" (click)="task.pause()" class="button is-warning">Pause</ion-button>
-              <ion-button size="small" (click)="task.resume()" class="button is-info">Resume</ion-button>
-              <ion-button color="danger" size="small" (click)="task.cancel()" class="button is-danger">Cancel</ion-button> -->
-            </div>
-          </div>
-        </div>
-      </div> 
       <div *ngFor="let item of itemsProfile">
         <h2 class="text">
           {{item.fullname}}
@@ -61,19 +33,19 @@
 </ion-header>
 
 <ion-content>
-
   <ion-grid class="newprospect">
-    <div class="see-all" (click)="SeeAllProspect(param)">
-      <div class="text1">
-        <ion-text color="primary"> See all </ion-text>
+    <ion-row col-12 col-md-6 col-lg-4 col-xl-3>
+      <div class="see-all" (click)="SeeAllProspect(param)">
+        <div class="text1">
+          <ion-text color="primary"> See all </ion-text>
+        </div>
       </div>
-    </div>
-    <h4 class="judul"><b> New Prospect </b></h4>
-
+      <h4 class="judul"><b> New Prospect </b></h4>
+    </ion-row>
 
     <div class="scrolling-wrapper-1">
-      <p text-center>{{text}}</p>
-      <div *ngFor="let item of items" class="card">
+      <p text-center>{{textProspect}}</p>
+      <div *ngFor="let item of itemsProspect" class="card">
         <ion-card class="prospectcard" button
           (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
           <img center src="assets/img/customer-icon.png" />
@@ -81,15 +53,17 @@
             <ion-textarea readOnly>
               <h2>{{item.namaCustomer}}</h2>
             </ion-textarea>
-           <ion-textarea> <p>{{item.company}}</p> </ion-textarea>
+            <div class="followup">
+              <p text-align-center> Follow up </p>
+            </div>
+            <ion-textarea>
+              <p>{{item.company}}</p>
+            </ion-textarea>
           </ion-card-content>
         </ion-card>
       </div>
     </div>
   </ion-grid>
-
-
-
   <!-- CUSTOMER -->
   <div class="see-all" (click)="SeeAllCustomer(param)">
     <div class="text3">
@@ -105,13 +79,16 @@
         (click)="updateprospect(item.id,item.namaCustomer,item.emailCustomer,item.alamatCustomer,item.no_tlp,item.company,item.alamatCompany,item.emailCompany,item.nomorCompany,item.customerneed,item.stock,item.hargaProduk,item.totalPrice,item.budget,item.status)">
         <img src="assets/img/customer-icon.png">
         <ion-card-content>
-          <h2 text-center>{{item.namaCustomer}}</h2>
-          <p text-center>{{item.company}}</p>
+          <ion-textarea>
+            <h2 text-align-left>{{item.namaCustomer}}</h2>
+          </ion-textarea>
+          <div class="sub-text">
+            <p text-align-left>{{item.company}}</p>
+          </div>
         </ion-card-content>
       </ion-card>
     </div>
   </div>
-
 
   <div class="see-all" (click)="product()">
     <div class="text2">
@@ -122,15 +99,23 @@
 
   <div class="scrolling-wrapper-1">
     <p text-center>{{textProduct}}</p>
-    <div *ngFor="let item of itemsproduct; let i=index" class="card">
-      <ion-card *ngIf="i<3" button
+    <div *ngFor="let item of itemsproduct" class="card">
+      <ion-card button
         (click)="updateProduct(item.id,item.namaProduk,item.tipeProduk,item.totalProfit,item.normalPrice,item.jumlahProduk,item.hargaProduk,item.deskripsiProduk)">
-        <img src="assets/img/product.png">
+        <div class="product-image" *ngIf="item.Images">
+          <img class="product-img" [src]="item.Images">
+        </div>
+        <div *ngIf="!item.Images">
+          <ion-icon name="ios-basket"></ion-icon>
+        </div>
         <ion-card-content>
-          <ion-text>
+          <ion-textarea>
             <h2 text-center>{{item.namaProduk}}</h2>
+          </ion-textarea>
+          <div class="tipe-produk">
             <p text-center>{{item.tipeProduk}}</p>
-          </ion-text>
+          </div>
+
         </ion-card-content>
       </ion-card>
     </div>
